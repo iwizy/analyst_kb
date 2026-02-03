@@ -1,4 +1,4 @@
-## Пример PlantUML
+## Пример PlantUML!
 
 ```kroki-plantuml
 @startuml
