@@ -1,0 +1,33 @@
+site_name: Analysts knowledge base
+site_url: https://iwizy.github.io/analyst_kb/
+repo_url: https://github.com/iwizy/analyst_kb
+repo_name: iwizy/analyst_kb
+
+theme:
+  name: material
+  language: ru
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search
+  - mkdocs_puml:
+      server: https://www.plantuml.com/plantuml
+      encoding: deflate
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
