@@ -3,6 +3,9 @@ site_url: https://iwizy.github.io/analyst_kb/
 repo_url: https://github.com/iwizy/analyst_kb
 repo_name: iwizy/analyst_kb
 
+# Чтобы ссылки на страницы были “красивые” (/page/ вместо /page.html)
+use_directory_urls: true
+
 theme:
   name: material
   language: ru
@@ -10,24 +13,48 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.indexes
+    - navigation.top
     - toc.follow
     - content.code.copy
     - content.tabs.link
+    - search.highlight
+    - search.suggest
+  icon:
+    repo: fontawesome/brands/github
 
 plugins:
-  - search
-  - mkdocs_puml:
-      server: https://www.plantuml.com/plantuml
-      encoding: deflate
+  - search:
+      lang:
+        - ru
+        - en
+      separator: '[\s\-\.]+'
+  - kroki:
+      # публичный сервер (потом можно заменить на свой)
+      server_url: https://kroki.io
+      # svg — лучший формат для docs
+      file_types:
+        - svg
+      # POST: скачивает и кеширует картинки (быстрее и стабильнее при serve/build)
+      http_method: POST
 
 markdown_extensions:
   - admonition
   - tables
   - toc:
       permalink: true
-  - pymdownx.superfences
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
+
+  # Красивые спойлеры/раскрывашки
   - pymdownx.details
+
+  # Код: подсветка + якоря строк (удобно ссылаться в ревью/гайдах)
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+  - pymdownx.inlinehilite
+
+  # Вкладки (варианты, примеры/контрпримеры, A/B)
   - pymdownx.tabbed:
       alternate_style: true
+
+  # Нормальная обработка вложенных блоков кода (и вообще must-have для Material)
+  - pymdownx.superfences
