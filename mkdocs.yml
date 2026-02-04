@@ -2,6 +2,7 @@ site_name: Analysts knowledge base
 site_url: https://iwizy.github.io/analyst_kb/
 repo_url: https://github.com/iwizy/analyst_kb
 repo_name: iwizy/analyst_kb
+edit_uri: edit/main/docs/
 
 # Чтобы ссылки на страницы были “красивые” (/page/ вместо /page.html)
 use_directory_urls: true
@@ -9,6 +10,22 @@ use_directory_urls: true
 theme:
   name: material
   language: ru
+
+  # ✅ Переключатель светлая/тёмная тема
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Темная тема
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Светлая тема
+
   features:
     - navigation.tabs
     - navigation.sections
@@ -19,6 +36,7 @@ theme:
     - content.tabs.link
     - search.highlight
     - search.suggest
+
   icon:
     repo: fontawesome/brands/github
 
@@ -58,3 +76,8 @@ markdown_extensions:
 
   # Нормальная обработка вложенных блоков кода (и вообще must-have для Material)
   - pymdownx.superfences
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/iwizy/analyst_kb
