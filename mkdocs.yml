@@ -81,3 +81,36 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/iwizy/analyst_kb
+
+nav:
+  - Главная:
+      - Введение: index.md
+      - Манифест аналитика: manifesto.md
+      - Карта компетенций: competence-map.md
+
+  - Требования:
+      - Введение: requirements/index.md
+
+      - Определение границ системы:
+          - Обзор: requirements/system-boundaries/index.md
+          - Зона ответственности: requirements/system-boundaries/responsibility-zone.md
+          - Ограничения: requirements/system-boundaries/constraints.md
+
+      - Уровни требований:
+          - Обзор: requirements/levels/index.md
+          - Бизнес-требования: requirements/levels/business.md
+          - Пользовательские требования: requirements/levels/user.md
+          - Системные требования: requirements/levels/system.md
+
+      - Виды требований:
+          - Функциональные: requirements/types/functional.md
+          - Нефункциональные: requirements/types/non-functional.md
+
+      - Сбор требований: requirements/elicitation.md
+      - Валидация и верификация: requirements/validation.md
+      - Качество требований: requirements/quality.md
+      - Управление требованиями:
+          - Обзор: requirements/management/index.md
+          - Трассировка: requirements/management/traceability.md
+          - Управление изменениями: requirements/management/change-management.md
+          - Приоритизация: requirements/management/prioritization.md
