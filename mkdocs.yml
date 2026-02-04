@@ -92,17 +92,18 @@ nav:
       - Введение: requirements/index.md
 
       - Определение границ системы:
-          - Обзор: requirements/system-boundaries/index.md
+          - Определение границ системы: requirements/system-boundaries/index.md
           - Зона ответственности: requirements/system-boundaries/responsibility-zone.md
           - Ограничения: requirements/system-boundaries/constraints.md
 
       - Уровни требований:
-          - Обзор: requirements/levels/index.md
+          - Уровни требований: requirements/levels/index.md
           - Бизнес-требования: requirements/levels/business.md
           - Пользовательские требования: requirements/levels/user.md
           - Системные требования: requirements/levels/system.md
 
       - Виды требований:
+          - Виды требований: requirements/types/index.md
           - Функциональные: requirements/types/functional.md
           - Нефункциональные: requirements/types/non-functional.md
 
@@ -110,7 +111,7 @@ nav:
       - Валидация и верификация: requirements/validation.md
       - Качество требований: requirements/quality.md
       - Управление требованиями:
-          - Обзор: requirements/management/index.md
+          - Управление требованиями: requirements/management/index.md
           - Трассировка: requirements/management/traceability.md
           - Управление изменениями: requirements/management/change-management.md
           - Приоритизация: requirements/management/prioritization.md
