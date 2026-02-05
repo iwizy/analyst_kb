@@ -113,5 +113,7 @@ nav:
       - Управление требованиями:
           - Управление требованиями: requirements/management/index.md
           - Трассировка: requirements/management/traceability.md
+          - Поддержка актуальности требований: requirements/management/relevance.md
           - Управление изменениями: requirements/management/change-management.md
+          - Согласование требований: requirements/management/coordination.md
           - Приоритизация: requirements/management/prioritization.md
