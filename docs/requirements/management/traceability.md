@@ -76,6 +76,12 @@ BR ..> BG : value alignment
 | FR-RET-012 | Авторасчет суммы возврата | FE-RET-07 | DEV-211 | QA-355 | PR-913 | Passed |
 | NFR-RET-004 | p95 <= 1 сек | FE-RET-07 | DEV-225 | PERF-022 | PR-918 | Planned |
 
+## Шаблон RTM
+
+| Requirement ID | Source Goal | Feature/Epic | Task | Test | Defect Link | Status | Owner |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ... | ... | ... | ... | ... | ... | ... | ... |
+
 ## Автоматизация трассировки
 
 ### Jira + XRay (пример)
