@@ -194,21 +194,21 @@
   - [Тест-кейсы](development-process/testing/test-cases.md) 🔴
   - [Ручное тестирование](development-process/testing/manual-testing.md) 🔴
 
-## Методологии разработки ПО 🔴
+## Методологии разработки ПО 🟢
 
-- [Waterfall](methodologies/waterfall/index.md) 🔴
-  - [V-образная](methodologies/waterfall/v-model.md) 🔴
-  - [Инкрементная](methodologies/waterfall/incremental.md) 🔴
-  - [Спиральная](methodologies/waterfall/spiral.md) 🔴
-- [Agile](methodologies/agile.md) 🔴
-- [Методологии](methodologies/frameworks/index.md) 🔴
-  - [Scrum](methodologies/frameworks/scrum.md) 🔴
-  - [Lean](methodologies/frameworks/lean.md) 🔴
-  - [XP](methodologies/frameworks/xp.md) 🔴
-  - [RUP](methodologies/frameworks/rup.md) 🔴
-  - [Kanban](methodologies/frameworks/kanban.md) 🔴
-  - [LeSS](methodologies/frameworks/less.md) 🔴
-  - [PDCA](methodologies/frameworks/pdca.md) 🔴
+- [Waterfall](methodologies/waterfall/index.md) 🟢
+  - [V-образная](methodologies/waterfall/v-model.md) 🟢
+  - [Инкрементная](methodologies/waterfall/incremental.md) 🟢
+  - [Спиральная](methodologies/waterfall/spiral.md) 🟢
+- [Agile](methodologies/agile.md) 🟢
+- [Методологии и фреймворки](methodologies/frameworks/index.md) 🟢
+  - [Scrum](methodologies/frameworks/scrum.md) 🟢
+  - [Lean](methodologies/frameworks/lean.md) 🟢
+  - [XP](methodologies/frameworks/xp.md) 🟢
+  - [RUP](methodologies/frameworks/rup.md) 🟢
+  - [Kanban](methodologies/frameworks/kanban.md) 🟢
+  - [LeSS](methodologies/frameworks/less.md) 🟢
+  - [PDCA](methodologies/frameworks/pdca.md) 🟢
 
 ## Инструменты 🔴
 

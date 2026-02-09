@@ -8,12 +8,12 @@
 - Алгоритмы: 0
 - Проектирование и архитектура: 42
 - Процесс разработки: 17
-- Методологии разработки ПО: 13
+- Методологии разработки ПО: 0
 - Инструменты: 10
 - Общие компетенции: 23
 - Смежные навыки: 16
 - Софт-скилы: 20
-- Итого: 141
+- Итого: 128
 
 ## Нотации и моделирование
 
@@ -90,19 +90,7 @@
 
 ## Методологии разработки ПО
 
-- [Agile](methodologies/agile.md)
-- [Методологии и фреймворки](methodologies/frameworks/index.md)
-- [Kanban](methodologies/frameworks/kanban.md)
-- [Lean](methodologies/frameworks/lean.md)
-- [LeSS](methodologies/frameworks/less.md)
-- [PDCA](methodologies/frameworks/pdca.md)
-- [RUP](methodologies/frameworks/rup.md)
-- [Scrum](methodologies/frameworks/scrum.md)
-- [XP](methodologies/frameworks/xp.md)
-- [Инкрементная модель](methodologies/waterfall/incremental.md)
-- [Waterfall](methodologies/waterfall/index.md)
-- [Спиральная модель](methodologies/waterfall/spiral.md)
-- [V-образная модель](methodologies/waterfall/v-model.md)
+Раздел заполнен.
 
 ## Инструменты
 
