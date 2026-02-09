@@ -1,9 +1,53 @@
 # TOGAF
 
-Статья находится в разработке.
+TOGAF (The Open Group Architecture Framework) - один из наиболее используемых
+фреймворков для развития архитектуры предприятия. Центральный механизм TOGAF -
+цикл ADM (Architecture Development Method).
 
-## Что будет в материале
+## Что дает TOGAF
 
-- ключевые термины и область применения;
-- типовые сценарии и практические примеры;
-- ошибки, риски и рекомендации по внедрению.
+- повторяемый процесс проектирования архитектуры;
+- единый формат архитектурных артефактов;
+- управляемый переход от текущего состояния к целевому.
+
+## Фазы ADM (укрупненно)
+
+- Preliminary и Vision: контекст, принципы и целевое видение.
+- Business Architecture: бизнес-способности и процессы.
+- Information Systems Architecture: данные и приложения.
+- Technology Architecture: инфраструктурный слой.
+- Opportunities and Solutions, Migration Planning: сценарии реализации и дорожная карта.
+- Implementation Governance и Architecture Change Management: контроль внедрения и изменений.
+
+## Пример применения на программе трансформации
+
+```kroki-plantuml
+@startuml
+left to right direction
+rectangle "Vision" as V
+rectangle "Business" as B
+rectangle "Data/Application" as A
+rectangle "Technology" as T
+rectangle "Migration Plan" as M
+rectangle "Governance" as G
+
+V --> B
+B --> A
+A --> T
+T --> M
+M --> G
+G --> V : Change feedback
+@enduml
+```
+
+## Типичные ошибки
+
+- формальное внедрение TOGAF без связи с решениями на проектах;
+- избыточная документация без практической ценности;
+- отсутствие архитектурного governance после утверждения target state.
+
+## Чек-лист качества
+
+- Зафиксированы архитектурные принципы и критерии соответствия.
+- Для перехода as-is -> to-be есть реалистичная roadmap.
+- Контроль архитектурных отклонений встроен в delivery-процесс.

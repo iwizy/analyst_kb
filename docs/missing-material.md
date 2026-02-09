@@ -6,14 +6,14 @@
 
 - Нотации и моделирование: 0
 - Алгоритмы: 0
-- Проектирование и архитектура: 42
+- Проектирование и архитектура: 0
 - Процесс разработки: 17
 - Методологии разработки ПО: 0
 - Инструменты: 10
 - Общие компетенции: 23
 - Смежные навыки: 16
 - Софт-скилы: 20
-- Итого: 128
+- Итого: 86
 
 ## Нотации и моделирование
 
@@ -25,48 +25,7 @@
 
 ## Проектирование и архитектура
 
-- [Функциональное проектирование](architecture/design-approaches/functional-design.md)
-- [Подходы к проектированию](architecture/design-approaches/index.md)
-- [DDD](architecture/design-approaches/oop-design/ddd.md)
-- [Event Storming](architecture/design-approaches/oop-design/event-storming.md)
-- [Объектно-ориентированное проектирование](architecture/design-approaches/oop-design/index.md)
-- [DODAF](architecture/enterprise-architecture/dodaf.md)
-- [FEAF](architecture/enterprise-architecture/feaf.md)
-- [Архитектура предприятия](architecture/enterprise-architecture/index.md)
-- [TOGAF](architecture/enterprise-architecture/togaf.md)
-- [Zachman](architecture/enterprise-architecture/zachman.md)
-- [Авторизация и аутентификация](architecture/information-security/authorization-authentication.md)
-- [Основные уязвимости веб-сервисов и приложений](architecture/information-security/common-web-vulnerabilities.md)
-- [Основы криптографии](architecture/information-security/cryptography-basics.md)
-- [Электронная подпись](architecture/information-security/digital-signature.md)
-- [Хеширование и шифрование](architecture/information-security/hashing-encryption.md)
-- [Информационная безопасность](architecture/information-security/index.md)
-- [Способы обеспечения ИБ](architecture/information-security/security-methods.md)
-- [SSL/TLS](architecture/information-security/ssl-tls.md)
-- [Клиент-серверная архитектура](architecture/systems-architecture/architecture-types/client-server.md)
-- [Виды архитектур](architecture/systems-architecture/architecture-types/index.md)
-- [Микрофронтенды](architecture/systems-architecture/architecture-types/microfrontends.md)
-- [Микросервисная архитектура](architecture/systems-architecture/architecture-types/microservices.md)
-- [Модульный монолит](architecture/systems-architecture/architecture-types/modular-monolith.md)
-- [Монолитная архитектура](architecture/systems-architecture/architecture-types/monolith.md)
-- [Многослойная архитектура](architecture/systems-architecture/architecture-types/multilayer.md)
-- [MVC, MVP, MVVM](architecture/systems-architecture/architecture-types/mvc-mvp-mvvm.md)
-- [Peer-to-peer](architecture/systems-architecture/architecture-types/p2p.md)
-- [SOA](architecture/systems-architecture/architecture-types/soa.md)
-- [Кэширование](architecture/systems-architecture/caching.md)
-- [Облачные вычисления](architecture/systems-architecture/cloud-computing.md)
-- [Контейнеризация](architecture/systems-architecture/containerization.md)
-- [Архитектура информационных систем](architecture/systems-architecture/index.md)
-- [Мониторинг и поддержка](architecture/systems-architecture/monitoring-support.md)
-- [Оркестрация и хореография](architecture/systems-architecture/orchestration-choreography.md)
-- [Архитектурные паттерны и антипаттерны](architecture/systems-architecture/patterns-antipatterns.md)
-- [Масштабирование сервисов](architecture/systems-architecture/service-scaling.md)
-- [Синхронное и асинхронное взаимодействие](architecture/systems-architecture/sync-async.md)
-- [Декомпозиция задач](architecture/task-decomposition.md)
-- [Основы UI/UX](architecture/ui-ux/basics.md)
-- [Customer Journey Map](architecture/ui-ux/customer-journey-map.md)
-- [Пользовательский интерфейс (UI/UX)](architecture/ui-ux/index.md)
-- [Прототипирование](architecture/ui-ux/prototyping.md)
+Раздел заполнен.
 
 ## Процесс разработки
 

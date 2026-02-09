@@ -129,50 +129,50 @@
 - [Области использования алгоритмов и структур данных](algorithms/usage-areas.md) 🟢
 - [Сложность алгоритмов и O-нотация](algorithms/complexity-big-o.md) 🟢
 
-## Проектирование и архитектура 🔴
+## Проектирование и архитектура 🟢
 
-- [Архитектура информационных систем](architecture/systems-architecture/index.md) 🔴
-  - [Виды архитектур](architecture/systems-architecture/architecture-types/index.md) 🔴
-    - [Клиент-серверная архитектура](architecture/systems-architecture/architecture-types/client-server.md) 🔴
-    - [Монолитная архитектура](architecture/systems-architecture/architecture-types/monolith.md) 🔴
-    - [Микросервисная архитектура](architecture/systems-architecture/architecture-types/microservices.md) 🔴
-    - [Модульный монолит (цитадель)](architecture/systems-architecture/architecture-types/modular-monolith.md) 🔴
-    - [Многослойная архитектура](architecture/systems-architecture/architecture-types/multilayer.md) 🔴
-    - [SOA](architecture/systems-architecture/architecture-types/soa.md) 🔴
-    - [Микрофронтенды](architecture/systems-architecture/architecture-types/microfrontends.md) 🔴
-    - [MVC, MVP, MVVM](architecture/systems-architecture/architecture-types/mvc-mvp-mvvm.md) 🔴
-    - [Peer-to-peer](architecture/systems-architecture/architecture-types/p2p.md) 🔴
-  - [Архитектурные паттерны и антипаттерны](architecture/systems-architecture/patterns-antipatterns.md) 🔴
-  - [Синхронное и асинхронное взаимодействие](architecture/systems-architecture/sync-async.md) 🔴
-  - [Кэширование](architecture/systems-architecture/caching.md) 🔴
-  - [Оркестрация и хореография](architecture/systems-architecture/orchestration-choreography.md) 🔴
-  - [Масштабирование сервисов](architecture/systems-architecture/service-scaling.md) 🔴
-  - [Контейнеризация](architecture/systems-architecture/containerization.md) 🔴
-  - [Мониторинг и поддержка](architecture/systems-architecture/monitoring-support.md) 🔴
-  - [Облачные вычисления](architecture/systems-architecture/cloud-computing.md) 🔴
-- [Подходы к проектированию](architecture/design-approaches/index.md) 🔴
-  - [Объектно-ориентированное проектирование](architecture/design-approaches/oop-design/index.md) 🔴
-    - [DDD](architecture/design-approaches/oop-design/ddd.md) 🔴
-    - [Event Storming](architecture/design-approaches/oop-design/event-storming.md) 🔴
-  - [Функциональное (структурное) проектирование](architecture/design-approaches/functional-design.md) 🔴
-- [Декомпозиция задач](architecture/task-decomposition.md) 🔴
-- [Архитектура предприятия](architecture/enterprise-architecture/index.md) 🔴
-  - [TOGAF](architecture/enterprise-architecture/togaf.md) 🔴
-  - [Zachman](architecture/enterprise-architecture/zachman.md) 🔴
-  - [FEAF](architecture/enterprise-architecture/feaf.md) 🔴
-  - [DODAF](architecture/enterprise-architecture/dodaf.md) 🔴
-- [Пользовательский интерфейс (UI/UX)](architecture/ui-ux/index.md) 🔴
-  - [Основы UI/UX](architecture/ui-ux/basics.md) 🔴
-  - [Прототипирование](architecture/ui-ux/prototyping.md) 🔴
-  - [Customer Journey Map](architecture/ui-ux/customer-journey-map.md) 🔴
-- [Информационная безопасность](architecture/information-security/index.md) 🔴
-  - [Способы обеспечения ИБ](architecture/information-security/security-methods.md) 🔴
-  - [Авторизация и аутентификация](architecture/information-security/authorization-authentication.md) 🔴
-  - [Хеширование и шифрование](architecture/information-security/hashing-encryption.md) 🔴
-  - [Основы криптографии](architecture/information-security/cryptography-basics.md) 🔴
-  - [SSL / TLS](architecture/information-security/ssl-tls.md) 🔴
-  - [Электронная подпись](architecture/information-security/digital-signature.md) 🔴
-  - [Основные уязвимости веб-сервисов и приложений](architecture/information-security/common-web-vulnerabilities.md) 🔴
+- [Архитектура информационных систем](architecture/systems-architecture/index.md) 🟢
+  - [Виды архитектур](architecture/systems-architecture/architecture-types/index.md) 🟢
+    - [Клиент-серверная архитектура](architecture/systems-architecture/architecture-types/client-server.md) 🟢
+    - [Монолитная архитектура](architecture/systems-architecture/architecture-types/monolith.md) 🟢
+    - [Микросервисная архитектура](architecture/systems-architecture/architecture-types/microservices.md) 🟢
+    - [Модульный монолит](architecture/systems-architecture/architecture-types/modular-monolith.md) 🟢
+    - [Многослойная архитектура](architecture/systems-architecture/architecture-types/multilayer.md) 🟢
+    - [SOA](architecture/systems-architecture/architecture-types/soa.md) 🟢
+    - [Микрофронтенды](architecture/systems-architecture/architecture-types/microfrontends.md) 🟢
+    - [MVC, MVP, MVVM](architecture/systems-architecture/architecture-types/mvc-mvp-mvvm.md) 🟢
+    - [Peer-to-peer](architecture/systems-architecture/architecture-types/p2p.md) 🟢
+  - [Архитектурные паттерны и антипаттерны](architecture/systems-architecture/patterns-antipatterns.md) 🟢
+  - [Синхронное и асинхронное взаимодействие](architecture/systems-architecture/sync-async.md) 🟢
+  - [Кэширование](architecture/systems-architecture/caching.md) 🟢
+  - [Оркестрация и хореография](architecture/systems-architecture/orchestration-choreography.md) 🟢
+  - [Масштабирование сервисов](architecture/systems-architecture/service-scaling.md) 🟢
+  - [Контейнеризация](architecture/systems-architecture/containerization.md) 🟢
+  - [Мониторинг и поддержка](architecture/systems-architecture/monitoring-support.md) 🟢
+  - [Облачные вычисления](architecture/systems-architecture/cloud-computing.md) 🟢
+- [Подходы к проектированию](architecture/design-approaches/index.md) 🟢
+  - [Объектно-ориентированное проектирование](architecture/design-approaches/oop-design/index.md) 🟢
+    - [DDD](architecture/design-approaches/oop-design/ddd.md) 🟢
+    - [Event Storming](architecture/design-approaches/oop-design/event-storming.md) 🟢
+  - [Функциональное (структурное) проектирование](architecture/design-approaches/functional-design.md) 🟢
+- [Декомпозиция задач](architecture/task-decomposition.md) 🟢
+- [Архитектура предприятия](architecture/enterprise-architecture/index.md) 🟢
+  - [TOGAF](architecture/enterprise-architecture/togaf.md) 🟢
+  - [Zachman](architecture/enterprise-architecture/zachman.md) 🟢
+  - [FEAF](architecture/enterprise-architecture/feaf.md) 🟢
+  - [DODAF](architecture/enterprise-architecture/dodaf.md) 🟢
+- [Пользовательский интерфейс (UI/UX)](architecture/ui-ux/index.md) 🟢
+  - [Основы UI/UX](architecture/ui-ux/basics.md) 🟢
+  - [Прототипирование](architecture/ui-ux/prototyping.md) 🟢
+  - [Customer Journey Map](architecture/ui-ux/customer-journey-map.md) 🟢
+- [Информационная безопасность](architecture/information-security/index.md) 🟢
+  - [Способы обеспечения ИБ](architecture/information-security/security-methods.md) 🟢
+  - [Авторизация и аутентификация](architecture/information-security/authorization-authentication.md) 🟢
+  - [Хеширование и шифрование](architecture/information-security/hashing-encryption.md) 🟢
+  - [Основы криптографии](architecture/information-security/cryptography-basics.md) 🟢
+  - [SSL / TLS](architecture/information-security/ssl-tls.md) 🟢
+  - [Электронная подпись](architecture/information-security/digital-signature.md) 🟢
+  - [Основные уязвимости веб-сервисов и приложений](architecture/information-security/common-web-vulnerabilities.md) 🟢
 
 ## Процесс разработки 🔴
 
