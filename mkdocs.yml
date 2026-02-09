@@ -87,6 +87,7 @@ nav:
       - Введение: index.md
       - Манифест аналитика: manifesto.md
       - Карта компетенций: competence-map.md
+      - План наполнения: missing-material.md
 
   - Требования:
       - Введение: requirements/index.md
@@ -110,6 +111,7 @@ nav:
       - Сбор требований: requirements/elicitation.md
       - Валидация и верификация: requirements/validation.md
       - Качество требований: requirements/quality.md
+
       - Управление требованиями:
           - Управление требованиями: requirements/management/index.md
           - Трассировка: requirements/management/traceability.md
@@ -117,3 +119,295 @@ nav:
           - Управление изменениями: requirements/management/change-management.md
           - Согласование требований: requirements/management/coordination.md
           - Приоритизация: requirements/management/prioritization.md
+
+  - Базы данных:
+      - Введение: database/index.md
+      - Типы баз данных:
+          - Типы баз данных: database/types/index.md
+          - Реляционные: database/types/relational.md
+          - NoSQL:
+              - NoSQL: database/types/nosql/index.md
+              - Документоориентированные: database/types/nosql/document.md
+              - Ключ-значение: database/types/nosql/key-value.md
+              - Колоночные: database/types/nosql/columnar.md
+              - Временной ряд: database/types/nosql/time-series.md
+              - Графовые: database/types/nosql/graph.md
+              - Поисковые: database/types/nosql/search.md
+      - Распределенные реестры:
+          - Распределенные реестры: database/distributed-ledgers/index.md
+          - Blockchain и смарт-контракты: database/distributed-ledgers/blockchain-and-smart-contracts.md
+      - Проектирование модели данных: database/data-modeling.md
+      - Нормализация и денормализация:
+          - Нормализация и денормализация: database/normalization/index.md
+          - Нормальные формы: database/normalization/normal-forms.md
+      - SQL:
+          - SQL: database/sql/index.md
+          - Селекты: database/sql/selects.md
+          - Агрегатные функции: database/sql/aggregate-functions.md
+          - Группировка и сортировка: database/sql/grouping-sorting.md
+          - Вложенные запросы: database/sql/subqueries.md
+          - Индексы: database/sql/indexes.md
+          - Хранимые процедуры и пользовательские функции: database/sql/stored-procedures-and-udf.md
+          - Оконные функции: database/sql/window-functions.md
+      - Масштабирование БД:
+          - Масштабирование БД: database/scaling/index.md
+          - Партицирование: database/scaling/partitioning.md
+          - Шардирование: database/scaling/sharding.md
+      - Master Data Management (MDM): database/mdm.md
+      - Реплицирование данных: database/replication.md
+      - Бэкапирование данных: database/backup.md
+
+  - Интеграции:
+      - Введение: integrations/index.md
+      - Проектирование API:
+          - Проектирование API: integrations/api-design/index.md
+          - Сущности, атрибуты, контракты: integrations/api-design/entities-attributes-contracts.md
+          - Документирование API: integrations/api-design/api-documentation.md
+          - Форматы сериализации:
+              - Форматы сериализации: integrations/api-design/serialization-formats/index.md
+              - JSON: integrations/api-design/serialization-formats/json.md
+              - XML/XSD: integrations/api-design/serialization-formats/xml-xsd.md
+              - YAML: integrations/api-design/serialization-formats/yaml.md
+          - Обратная совместимость: integrations/api-design/backward-compatibility.md
+          - Идемпотентность: integrations/api-design/idempotency.md
+      - Виды интеграций:
+          - Виды интеграций: integrations/integration-methods/index.md
+          - API:
+              - API: integrations/integration-methods/api/index.md
+              - REST/HTTP(S): integrations/integration-methods/api/rest-http.md
+              - SOAP: integrations/integration-methods/api/soap.md
+              - GraphQL: integrations/integration-methods/api/graphql.md
+              - gRPC: integrations/integration-methods/api/grpc.md
+              - JSON-RPC: integrations/integration-methods/api/json-rpc.md
+              - WebSockets: integrations/integration-methods/api/websockets.md
+          - Брокеры сообщений:
+              - Брокеры сообщений: integrations/integration-methods/message-brokers/index.md
+              - Kafka: integrations/integration-methods/message-brokers/kafka.md
+              - RabbitMQ: integrations/integration-methods/message-brokers/rabbitmq.md
+          - Общая БД: integrations/integration-methods/shared-database.md
+          - Обмен файлами: integrations/integration-methods/file-exchange.md
+      - Сетевое взаимодействие:
+          - Сетевое взаимодействие: integrations/networking/index.md
+          - Модель OSI: integrations/networking/osi.md
+          - TCP/IP: integrations/networking/tcp-ip.md
+          - UDP: integrations/networking/udp.md
+          - Сокеты: integrations/networking/sockets.md
+
+  - Нотации и моделирование:
+      - Введение: notations/index.md
+      - UML:
+          - UML: notations/uml/index.md
+          - Sequence: notations/uml/sequence.md
+          - Activity: notations/uml/activity.md
+          - Class: notations/uml/class.md
+          - State Machine: notations/uml/state-machine.md
+      - BPMN: notations/bpmn.md
+      - C4: notations/c4.md
+      - ERD: notations/erd.md
+      - DFD: notations/dfd.md
+      - eEPC: notations/eepc.md
+      - IDEF0: notations/idef0.md
+      - Archimate: notations/archimate.md
+      - Диаграмма Исикавы: notations/fishbone-diagram.md
+      - Деревья решений: notations/decision-trees.md
+      - Карта целей: notations/goals-map.md
+      - Impact Map: notations/impact-map.md
+      - Модели зрелости:
+          - Модели зрелости: notations/maturity-models/index.md
+          - CMMI: notations/maturity-models/cmmi.md
+          - COBIT: notations/maturity-models/cobit.md
+          - ACMM: notations/maturity-models/acmm.md
+
+  - Алгоритмы:
+      - Введение: algorithms/index.md
+      - Типовые алгоритмы:
+          - Типовые алгоритмы: algorithms/typical/index.md
+          - Алгоритмы сортировки: algorithms/typical/sorting.md
+          - Теория графов и бинарные деревья: algorithms/typical/graphs-and-binary-trees.md
+          - Рекурсия: algorithms/typical/recursion.md
+          - Циклы: algorithms/typical/loops.md
+      - Области использования алгоритмов и структур данных: algorithms/usage-areas.md
+      - Сложность алгоритмов и O-нотация: algorithms/complexity-big-o.md
+
+  - Проектирование и архитектура:
+      - Введение: architecture/index.md
+      - Архитектура информационных систем:
+          - Архитектура информационных систем: architecture/systems-architecture/index.md
+          - Виды архитектур:
+              - Виды архитектур: architecture/systems-architecture/architecture-types/index.md
+              - Клиент-серверная: architecture/systems-architecture/architecture-types/client-server.md
+              - Монолитная: architecture/systems-architecture/architecture-types/monolith.md
+              - Микросервисная: architecture/systems-architecture/architecture-types/microservices.md
+              - Модульный монолит: architecture/systems-architecture/architecture-types/modular-monolith.md
+              - Многослойная: architecture/systems-architecture/architecture-types/multilayer.md
+              - SOA: architecture/systems-architecture/architecture-types/soa.md
+              - Микрофронтенды: architecture/systems-architecture/architecture-types/microfrontends.md
+              - MVC, MVP, MVVM: architecture/systems-architecture/architecture-types/mvc-mvp-mvvm.md
+              - Peer-to-peer: architecture/systems-architecture/architecture-types/p2p.md
+          - Архитектурные паттерны и антипаттерны: architecture/systems-architecture/patterns-antipatterns.md
+          - Синхронное и асинхронное взаимодействие: architecture/systems-architecture/sync-async.md
+          - Кэширование: architecture/systems-architecture/caching.md
+          - Оркестрация и хореография: architecture/systems-architecture/orchestration-choreography.md
+          - Масштабирование сервисов: architecture/systems-architecture/service-scaling.md
+          - Контейнеризация: architecture/systems-architecture/containerization.md
+          - Мониторинг и поддержка: architecture/systems-architecture/monitoring-support.md
+          - Облачные вычисления: architecture/systems-architecture/cloud-computing.md
+      - Подходы к проектированию:
+          - Подходы к проектированию: architecture/design-approaches/index.md
+          - Объектно-ориентированное проектирование:
+              - ООП-проектирование: architecture/design-approaches/oop-design/index.md
+              - DDD: architecture/design-approaches/oop-design/ddd.md
+              - Event Storming: architecture/design-approaches/oop-design/event-storming.md
+          - Функциональное проектирование: architecture/design-approaches/functional-design.md
+      - Декомпозиция задач: architecture/task-decomposition.md
+      - Архитектура предприятия:
+          - Архитектура предприятия: architecture/enterprise-architecture/index.md
+          - TOGAF: architecture/enterprise-architecture/togaf.md
+          - Zachman: architecture/enterprise-architecture/zachman.md
+          - FEAF: architecture/enterprise-architecture/feaf.md
+          - DODAF: architecture/enterprise-architecture/dodaf.md
+      - Пользовательский интерфейс (UI/UX):
+          - UI/UX: architecture/ui-ux/index.md
+          - Основы UI/UX: architecture/ui-ux/basics.md
+          - Прототипирование: architecture/ui-ux/prototyping.md
+          - Customer Journey Map: architecture/ui-ux/customer-journey-map.md
+      - Информационная безопасность:
+          - Информационная безопасность: architecture/information-security/index.md
+          - Способы обеспечения ИБ: architecture/information-security/security-methods.md
+          - Авторизация и аутентификация: architecture/information-security/authorization-authentication.md
+          - Хеширование и шифрование: architecture/information-security/hashing-encryption.md
+          - Основы криптографии: architecture/information-security/cryptography-basics.md
+          - SSL/TLS: architecture/information-security/ssl-tls.md
+          - Электронная подпись: architecture/information-security/digital-signature.md
+          - Основные уязвимости веб-сервисов: architecture/information-security/common-web-vulnerabilities.md
+
+  - Процесс разработки:
+      - Введение: development-process/index.md
+      - Жизненный цикл программного продукта:
+          - Жизненный цикл ПО: development-process/product-lifecycle/index.md
+          - Этапы жизненного цикла ПО: development-process/product-lifecycle/stages.md
+          - Основы DevOps: development-process/product-lifecycle/devops-basics.md
+          - Основы CI/CD: development-process/product-lifecycle/cicd-basics.md
+          - Git: development-process/product-lifecycle/git.md
+      - Сопровождение функциональности:
+          - Сопровождение функциональности: development-process/feature-support/index.md
+          - Мониторинг и логирование: development-process/feature-support/monitoring-logging.md
+          - Разбор инцидентов: development-process/feature-support/incident-analysis.md
+          - Основы SRE: development-process/feature-support/sre-basics.md
+      - Основы программирования:
+          - Основы программирования: development-process/programming-basics/index.md
+          - ООП: development-process/programming-basics/oop.md
+          - Чтение кода: development-process/programming-basics/code-reading.md
+          - Написание кода: development-process/programming-basics/coding.md
+      - Тестирование:
+          - Тестирование: development-process/testing/index.md
+          - Приемка функциональности: development-process/testing/acceptance-testing.md
+          - Тест-кейсы: development-process/testing/test-cases.md
+          - Ручное тестирование: development-process/testing/manual-testing.md
+
+  - Методологии разработки ПО:
+      - Введение: methodologies/index.md
+      - Waterfall:
+          - Waterfall: methodologies/waterfall/index.md
+          - V-образная: methodologies/waterfall/v-model.md
+          - Инкрементная: methodologies/waterfall/incremental.md
+          - Спиральная: methodologies/waterfall/spiral.md
+      - Agile: methodologies/agile.md
+      - Методологии и фреймворки:
+          - Методологии и фреймворки: methodologies/frameworks/index.md
+          - Scrum: methodologies/frameworks/scrum.md
+          - Lean: methodologies/frameworks/lean.md
+          - XP: methodologies/frameworks/xp.md
+          - RUP: methodologies/frameworks/rup.md
+          - Kanban: methodologies/frameworks/kanban.md
+          - LeSS: methodologies/frameworks/less.md
+          - PDCA: methodologies/frameworks/pdca.md
+
+  - Инструменты:
+      - Введение: tools/index.md
+      - PlantUML: tools/plantuml.md
+      - Camunda Modeler: tools/camunda-modeler.md
+      - Jira: tools/jira.md
+      - Confluence: tools/confluence.md
+      - Swagger: tools/swagger.md
+      - Postman: tools/postman.md
+      - SOAP UI: tools/soap-ui.md
+      - Figma: tools/figma.md
+      - Draw.io: tools/drawio.md
+      - Консоль браузера: tools/browser-console.md
+
+  - Общие компетенции:
+      - Введение: common-competencies/index.md
+      - Оценка задач и рисков:
+          - Оценка задач и рисков: common-competencies/estimation-risks/index.md
+          - Оценка трудоемкости: common-competencies/estimation-risks/effort-estimation.md
+          - Выявление рисков: common-competencies/estimation-risks/risk-identification.md
+          - Управление рисками: common-competencies/estimation-risks/risk-management.md
+      - Стандарты и своды знаний:
+          - Стандарты и своды знаний: common-competencies/standards/index.md
+          - BABOK: common-competencies/standards/babok.md
+          - SEBOK: common-competencies/standards/sebok.md
+          - DAMA DMBOK: common-competencies/standards/dama-dmbok.md
+          - ITIL: common-competencies/standards/itil.md
+          - COBIT: common-competencies/standards/cobit.md
+          - CBAP: common-competencies/standards/cbap.md
+          - CPRE: common-competencies/standards/cpre.md
+          - ГОСТ 19: common-competencies/standards/gost-19.md
+          - ГОСТ 34: common-competencies/standards/gost-34.md
+          - PMBOK: common-competencies/standards/pmbok.md
+          - ISO 12207: common-competencies/standards/iso-12207.md
+          - ISO 15288: common-competencies/standards/iso-15288.md
+          - IEEE: common-competencies/standards/ieee.md
+          - ARIS: common-competencies/standards/aris.md
+      - Техники:
+          - Техники: common-competencies/techniques/index.md
+          - SWOT: common-competencies/techniques/swot.md
+          - 5 Why: common-competencies/techniques/five-why.md
+          - Mind Map: common-competencies/techniques/mind-map.md
+
+  - Смежные навыки:
+      - Введение: related-skills/index.md
+      - Анализ данных:
+          - Анализ данных: related-skills/data-analysis/index.md
+          - DWH: related-skills/data-analysis/dwh.md
+          - OLTP: related-skills/data-analysis/oltp.md
+          - OLAP: related-skills/data-analysis/olap.md
+          - ETL/ELT: related-skills/data-analysis/etl-elt.md
+          - Data Science: related-skills/data-analysis/data-science.md
+          - Инструменты:
+              - Инструменты: related-skills/data-analysis/tools/index.md
+              - Tableau: related-skills/data-analysis/tools/tableau.md
+              - QlikView: related-skills/data-analysis/tools/qlikview.md
+              - Power BI: related-skills/data-analysis/tools/power-bi.md
+      - Управление продуктом: related-skills/product-management.md
+      - Экономика и финансы:
+          - Экономика и финансы: related-skills/economics-finance/index.md
+          - TCO: related-skills/economics-finance/tco.md
+          - ROI, NPV, IRR: related-skills/economics-finance/roi-npv-irr.md
+      - Управление проектами: related-skills/project-management.md
+      - Промпт-инжиниринг: related-skills/prompt-engineering.md
+
+  - Софт-скилы:
+      - Введение: soft-skills/index.md
+      - Коммуникативные навыки:
+          - Коммуникативные навыки: soft-skills/communication/index.md
+          - Ведение переговоров: soft-skills/communication/negotiation.md
+          - Ведение переписки: soft-skills/communication/correspondence.md
+          - Умение общаться: soft-skills/communication/communication.md
+          - Проведение презентаций: soft-skills/communication/presentations.md
+          - Фасилитация встреч: soft-skills/communication/facilitation.md
+          - Эмоциональный интеллект: soft-skills/communication/emotional-intelligence.md
+          - Участие в коммьюнити: soft-skills/communication/community.md
+          - Грамотность: soft-skills/communication/literacy.md
+      - Тайм-менеджмент: soft-skills/time-management.md
+      - Управление ожиданиями заказчика: soft-skills/expectation-management.md
+      - Работа в команде: soft-skills/teamwork.md
+      - Личностные качества:
+          - Личностные качества: soft-skills/qualities/index.md
+          - Аналитическое мышление: soft-skills/qualities/analytical-thinking.md
+          - Адаптивность: soft-skills/qualities/adaptability.md
+          - Проактивность: soft-skills/qualities/proactivity.md
+          - Ответственность: soft-skills/qualities/responsibility.md
+          - Общительность: soft-skills/qualities/sociability.md
+          - Обучаемость: soft-skills/qualities/learnability.md
+          - Критическое мышление: soft-skills/qualities/critical-thinking.md
