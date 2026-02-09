@@ -4,7 +4,7 @@
 
 ## Основной синтаксис SELECT
 
-```
+```text
 SELECT [столбцы] FROM [таблица] [WHERE условия] [GROUP BY группировка] [HAVING условия для группировки] [ORDER BY сортировка] [LIMIT ограничение];
 ```
 
@@ -12,7 +12,7 @@ SELECT [столбцы] FROM [таблица] [WHERE условия] [GROUP BY �
 
 ### Выбор всех данных из таблицы
 
-```
+```text
 SELECT * FROM employees;
 ```
 
@@ -20,7 +20,7 @@ SELECT * FROM employees;
 
 ### Выбор определённых столбцов
 
-```
+```text
 SELECT first_name, last_name, salary FROM employees;
 ```
 
@@ -28,7 +28,7 @@ SELECT first_name, last_name, salary FROM employees;
 
 ### Фильтрация данных с помощью WHERE
 
-```
+```text
 SELECT first_name, salary FROM employees WHERE salary > 50000;
 ```
 
@@ -39,15 +39,15 @@ SELECT first_name, salary FROM employees WHERE salary > 50000;
 - AND (И)
 - OR (ИЛИ)
 - NOT (НЕ)
-Пример с несколькими условиями:
+  Пример с несколькими условиями:
 
-```
+```text
 SELECT first_name, salary FROM employees WHERE salary > 50000 AND department_id = 10;
 ```
 
 ### Сортировка данных с помощью ORDER BY
 
-```
+```text
 SELECT first_name, salary FROM employees ORDER BY salary DESC;
 ```
 
@@ -55,7 +55,7 @@ SELECT first_name, salary FROM employees ORDER BY salary DESC;
 
 ### Ограничение количества строк с LIMIT
 
-```
+```text
 SELECT first_name, salary FROM employees ORDER BY salary DESC LIMIT 5;
 ```
 
@@ -63,7 +63,7 @@ SELECT first_name, salary FROM employees ORDER BY salary DESC LIMIT 5;
 
 ### Группировка данных с GROUP BY
 
-```
+```text
 SELECT department_id, AVG(salary) AS avg_salary FROM employees GROUP BY department_id;
 ```
 
@@ -71,7 +71,7 @@ SELECT department_id, AVG(salary) AS avg_salary FROM employees GROUP BY departme
 
 ### Условия для группировки с HAVING
 
-```
+```text
 SELECT department_id, AVG(salary) AS avg_salary FROM employees GROUP BY department_id HAVING AVG(salary) > 60000;
 ```
 
@@ -79,7 +79,7 @@ HAVING применяется для фильтрации уже агрегир�
 
 ### Объединение таблиц с JOIN
 
-```
+```text
 SELECT e.first_name, e.last_name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;
 ```
 
@@ -89,7 +89,7 @@ SELECT e.first_name, e.last_name, d.department_name FROM employees e JOIN depart
 
 Подзапросы (subqueries) позволяют использовать результат одного запроса в другом:
 
-```
+```text
 SELECT first_name, salary FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);
 ```
 
@@ -101,9 +101,9 @@ SELECT first_name, salary FROM employees WHERE salary > (SELECT AVG(salary) FROM
 - SUM() — сумма.
 - AVG() — среднее значение.
 - MIN() / MAX() — минимальное и максимальное значения.
-Пример:
+  Пример:
 
-```
+```text
 SELECT COUNT(*) AS total_employees, MAX(salary) AS highest_salary FROM employees;
 ```
 
@@ -115,13 +115,13 @@ SQL поддерживает встроенные функции для рабо
 
 Пример работы с текстом:
 
-```
+```text
 SELECT UPPER(first_name) AS uppercase_name FROM employees;
 ```
 
 ### Объединение результатов с UNION
 
-```
+```text
 SELECT first_name FROM employees WHERE department_id = 10 UNION SELECT first_name FROM employees WHERE department_id = 20;
 ```
 
@@ -130,6 +130,3 @@ SELECT first_name FROM employees WHERE department_id = 10 UNION SELECT first_nam
 ## Заключение
 
 Команда SELECT чрезвычайно мощная и гибкая. Она позволяет выполнять простые выборки, сложные фильтрации, группировки, объединения данных и многое другое. Для повышения эффективности работы важно понимать её возможности и уметь комбинировать различные операторы.
-
-> Материал адаптирован по статье `https://iwizy.github.io/database/sql/select`.
-

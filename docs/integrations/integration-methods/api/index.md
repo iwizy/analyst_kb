@@ -16,5 +16,11 @@ WebSockets — протокол, обеспечивающий двусторон
 
 Каждая из этих технологий играет важную роль в экосистеме API-интеграции, и в зависимости от специфики задачи, одна из них может быть предпочтительнее других.
 
-> Материал адаптирован по статье `https://iwizy.github.io/integrations/types/api`.
+## Переход к подразделам
 
+- [GraphQL](graphql.md)
+- [gRPC](grpc.md)
+- [JSON-RPC](json-rpc.md)
+- [REST/HTTP(S)](rest-http.md)
+- [SOAP](soap.md)
+- [WebSockets](websockets.md)

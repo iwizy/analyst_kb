@@ -7,29 +7,34 @@
 Работают "поверх" набора данных:
 
 - Они вычисляют значения на основе текущего состояния строк, но не изменяют их количество.
-Используют ключевое слово OVER:
+  Используют ключевое слово OVER:
 
 - Это обязательная часть синтаксиса, которая определяет, как обрабатываются строки (группы, сортировка и др.).
-Могут быть использованы с PARTITION BY и ORDER BY:
+  Могут быть использованы с PARTITION BY и ORDER BY:
 
 - PARTITION BY делит строки на группы, аналогично GROUP BY, но каждая строка остаётся в результате.
+
 - ORDER BY задаёт порядок обработки строк внутри каждой группы.
-Поддерживают широкий спектр встроенных функций:
+  Поддерживают широкий спектр встроенных функций:
 
 - Агрегатные функции (SUM, AVG, MIN, MAX).
+
 - Функции для ранжирования (ROW_NUMBER, RANK, DENSE_RANK, NTILE).
+
 - Функции для доступа к соседним строкам (LAG, LEAD).
+
 ## Синтаксис оконных функций
 
-```
+```text
 <Оконная функция>() OVER ( [PARTITION BY <столбец1>, <столбец2>, ...] [ORDER BY <столбец1>, <столбец2>, ...] )
 ```
 
 ### Элементы
 
-- <Оконная функция>() — функция, например, SUM, ROW_NUMBER, RANK.
+- \<Оконная функция>() — функция, например, SUM, ROW_NUMBER, RANK.
 - PARTITION BY — (необязательно) делит строки на группы.
 - ORDER BY — (необязательно) задаёт порядок обработки строк внутри групп.
+
 ### Примеры оконных функций
 
 #### ROW_NUMBER: Нумерация строк
@@ -38,20 +43,20 @@
 
 Пример:
 
-```
+```text
 SELECT department_id, employee_id, ROW_NUMBER() OVER (PARTITION BY department_id ORDER BY salary DESC) AS row_num FROM employees;
 ```
 
 - Каждому сотруднику в отделе присваивается уникальный номер в порядке убывания зарплаты.
-Результат:
+  Результат:
 
 #### RANK и DENSE_RANK: Ранжирование
 
 - RANK присваивает ранги строкам и пропускает следующий ранг, если есть дубликаты.
 - DENSE_RANK присваивает последовательные ранги без пропусков.
-Пример:
+  Пример:
 
-```
+```text
 SELECT department_id, employee_id, salary, RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rank, DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS dense_rank FROM employees;
 ```
 
@@ -63,7 +68,7 @@ SELECT department_id, employee_id, salary, RANK() OVER (PARTITION BY department_
 
 Пример:
 
-```
+```text
 SELECT department_id, employee_id, salary, SUM(salary) OVER (PARTITION BY department_id) AS total_salary, AVG(salary) OVER (PARTITION BY department_id) AS avg_salary FROM employees;
 ```
 
@@ -73,9 +78,9 @@ SELECT department_id, employee_id, salary, SUM(salary) OVER (PARTITION BY depart
 
 - LAG возвращает значение из предыдущей строки.
 - LEAD возвращает значение из следующей строки.
-Пример:
+  Пример:
 
-```
+```text
 SELECT employee_id, salary, LAG(salary) OVER (ORDER BY salary) AS prev_salary, LEAD(salary) OVER (ORDER BY salary) AS next_salary FROM employees;
 ```
 
@@ -87,7 +92,7 @@ SELECT employee_id, salary, LAG(salary) OVER (ORDER BY salary) AS prev_salary, L
 
 Пример:
 
-```
+```text
 SELECT employee_id, salary, NTILE(3) OVER (ORDER BY salary DESC) AS group_num FROM employees;
 ```
 
@@ -98,14 +103,12 @@ SELECT employee_id, salary, NTILE(3) OVER (ORDER BY salary DESC) AS group_num FR
 Анализ данных и отчёты:
 
 - Нумерация строк (например, ROW_NUMBER).
+
 - Ранжирование сотрудников по зарплатам (RANK, DENSE_RANK).
-Сравнение данных между строками:
+  Сравнение данных между строками:
 
 - Анализ разницы между значениями (LAG, LEAD).
-Сочетание агрегатов и детализации:
+  Сочетание агрегатов и детализации:
 
 - Одновременный расчёт суммарных значений по группам (SUM, AVG) и отображение детальных данных.
-Оконные функции делают SQL удобным для сложной аналитики. Они объединяют мощь агрегатов, детализацию данных и возможности анализа временных рядов или последовательностей.
-
-> Материал адаптирован по статье `https://iwizy.github.io/database/sql/window`.
-
+  Оконные функции делают SQL удобным для сложной аналитики. Они объединяют мощь агрегатов, детализацию данных и возможности анализа временных рядов или последовательностей.

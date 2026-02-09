@@ -111,6 +111,10 @@ nav:
       - Сбор требований: requirements/elicitation.md
       - Валидация и верификация: requirements/validation.md
       - Качество требований: requirements/quality.md
+      - Подходы к спецификации: requirements/specification-approaches.md
+      - Структурирование требований: requirements/structuring.md
+      - Декомпозиция требований: requirements/decomposition.md
+      - Выявление стейкхолдеров: requirements/stakeholders.md
 
       - Управление требованиями:
           - Управление требованиями: requirements/management/index.md

@@ -18,7 +18,7 @@ YAML (YAML Ain't Markup Language) — это формат сериализаци
 
 ### Пример 1: Простейшая структура
 
-```
+```text
 name: John Doe age: 30 city: New York
 ```
 
@@ -26,7 +26,7 @@ name: John Doe age: 30 city: New York
 
 ### Пример 2: Список
 
-```
+```text
 fruits: - apple - banana - cherry
 ```
 
@@ -34,7 +34,7 @@ fruits: - apple - banana - cherry
 
 ### Пример 3: Вложенные структуры
 
-```
+```text
 person: name: Alice address: street: 123 Main St city: Springfield hobbies: - reading - hiking - cooking
 ```
 
@@ -42,7 +42,7 @@ person: name: Alice address: street: 123 Main St city: Springfield hobbies: - re
 
 ### Пример 4: Многострочная строка
 
-```
+```text
 description: | This is a description that spans multiple lines. Each line is preserved.
 ```
 
@@ -50,7 +50,7 @@ description: | This is a description that spans multiple lines. Each line is pre
 
 ### Пример 5: Числа и булевы значения
 
-```
+```text
 is_active: true score: 100
 ```
 
@@ -58,7 +58,7 @@ is_active: true score: 100
 
 ### Пример 6: Переменные и сложные данные
 
-```
+```text
 server: host: localhost port: 8080 endpoints: - /api/v1 - /api/v2 auth: enabled: true token: "abcdef12345"
 ```
 
@@ -69,13 +69,13 @@ server: host: localhost port: 8080 endpoints: - /api/v1 - /api/v2 auth: enabled:
 Преимущества:
 
 - Читаемость: YAML прост в восприятии человеком.
+
 - Поддержка сложных структур данных, таких как вложенные списки и словари.
+
 - Легкость для парсинга программами.
-Недостатки:
+  Недостатки:
 
 - Ошибки с отступами могут привести к проблемам при обработке данных.
+
 - Не всегда подходит для очень больших структур данных, где предпочтительнее использовать более компактные форматы, такие как JSON или Protocol Buffers.
-YAML является популярным выбором для описания конфигураций (например, в Kubernetes или Docker Compose), а также для сериализации данных, поскольку он сохраняет баланс между удобочитаемостью и гибкостью.
-
-> Материал адаптирован по статье `https://iwizy.github.io/integrations/api-design/formats/yaml`.
-
+  YAML является популярным выбором для описания конфигураций (например, в Kubernetes или Docker Compose), а также для сериализации данных, поскольку он сохраняет баланс между удобочитаемостью и гибкостью.

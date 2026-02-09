@@ -18,3 +18,16 @@
 ## Статус
 
 Каркас создан, контент в работе.
+
+## Переход к подразделам
+
+- [Консоль браузера](browser-console.md)
+- [Camunda Modeler](camunda-modeler.md)
+- [Confluence](confluence.md)
+- [Draw.io](drawio.md)
+- [Figma](figma.md)
+- [Jira](jira.md)
+- [PlantUML](plantuml.md)
+- [Postman](postman.md)
+- [SOAP UI](soap-ui.md)
+- [Swagger](swagger.md)

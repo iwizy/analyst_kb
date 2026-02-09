@@ -8,7 +8,7 @@
 
 ### Синтаксис
 
-```
+```text
 SELECT столбец1, столбец2, агрегатная_функция(столбец3) FROM таблица WHERE условие GROUP BY столбец1, столбец2 HAVING условие_на_группу
 ```
 
@@ -18,11 +18,12 @@ SELECT столбец1, столбец2, агрегатная_функция(с�
 - GROUP BY — объединяет строки в группы по указанным столбцам.
 - АГРЕГАТНЫЕ ФУНКЦИИ — выполняют вычисления внутри каждой группы.
 - HAVING — фильтрует группы (аналогично WHERE, но после группировки).
+
 ### Пример
 
 Предположим, у вас есть таблица sales с колонками category, product и revenue. Вы хотите узнать общую выручку по категориям:
 
-```
+```text
 SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category;
 ```
 
@@ -30,7 +31,7 @@ SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category;
 
 Например, вывести только те категории, где выручка больше 1000:
 
-```
+```text
 SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category HAVING SUM(revenue) > 1000;
 ```
 
@@ -40,23 +41,24 @@ SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category HAVI
 
 ### Синтаксис
 
-```
+```text
 SELECT столбец1, столбец2 FROM таблица WHERE условие ORDER BY столбец1 [ASC|DESC], столбец2 [ASC|DESC];
 ```
 
 - ASC — сортировка по возрастанию (по умолчанию).
 - DESC — сортировка по убыванию.
+
 ### Пример
 
 Сортировка по одной колонке:
 
-```
+```text
 SELECT product, revenue FROM sales ORDER BY revenue DESC;
 ```
 
 Сортировка по нескольким колонкам:
 
-```
+```text
 SELECT category, product, revenue FROM sales ORDER BY category ASC, revenue DESC;
 ```
 
@@ -66,7 +68,7 @@ SELECT category, product, revenue FROM sales ORDER BY category ASC, revenue DESC
 
 ### Пример
 
-```
+```text
 SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category ORDER BY total_revenue DESC;
 ```
 
@@ -74,13 +76,13 @@ SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category ORDE
 
 GROUP BY должен включать все столбцы, которые не используются в агрегатных функциях.
 
-```
+```text
 SELECT category, product, SUM(revenue) FROM sales GROUP BY category, product;
 ```
 
 ORDER BY может ссылаться на псевдонимы столбцов или номера их позиций:
 
-```
+```text
 SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category ORDER BY total_revenue DESC;
 ```
 
@@ -91,6 +93,3 @@ HAVING нельзя использовать без GROUP BY, если нет а
 - Используйте GROUP BY для объединения строк в группы и применения к ним агрегатных функций.
 - Применяйте ORDER BY для сортировки результатов.
 - Комбинирование этих инструментов даёт возможность создавать сложные запросы для анализа данных.
-
-> Материал адаптирован по статье `https://iwizy.github.io/database/sql/group`.
-

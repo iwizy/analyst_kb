@@ -7,28 +7,39 @@ SQL (Structured Query Language) — это язык для управления 
 Манипуляция данными:
 
 - Вставка данных (INSERT): добавление новых записей в таблицы.
+
 - Извлечение данных (SELECT): выборка данных из одной или нескольких таблиц.
+
 - Обновление данных (UPDATE): изменение существующих записей.
+
 - Удаление данных (DELETE): удаление записей.
-Управление структурами базы данных:
+  Управление структурами базы данных:
 
 - Создание таблиц (CREATE TABLE): создание новой таблицы с указанием её структуры.
+
 - Изменение таблиц (ALTER TABLE): добавление, удаление или изменение столбцов.
+
 - Удаление таблиц (DROP TABLE): удаление всей таблицы.
+
 - Создание представлений (CREATE VIEW): создание виртуальных таблиц на основе запросов.
-Управление правами доступа:
+  Управление правами доступа:
 
 - GRANT: предоставление прав на выполнение операций.
+
 - REVOKE: отзыв ранее выданных прав.
-Транзакции:
+  Транзакции:
 
 - BEGIN или START TRANSACTION: начало транзакции.
+
 - COMMIT: сохранение изменений в базе данных.
+
 - ROLLBACK: отмена изменений в рамках текущей транзакции.
-Работа с индексацией:
+  Работа с индексацией:
 
 - CREATE INDEX: создание индекса для ускорения запросов.
+
 - DROP INDEX: удаление индекса.
+
 ## Основные компоненты SQL
 
 ### Команды DDL (Data Definition Language)
@@ -38,6 +49,7 @@ SQL (Structured Query Language) — это язык для управления 
 - CREATE: создание базы данных, таблиц или других объектов.
 - ALTER: изменение структуры объектов.
 - DROP: удаление объектов.
+
 ### Команды DML (Data Manipulation Language)
 
 Они управляют данными в таблицах. Примеры:
@@ -46,12 +58,14 @@ SQL (Structured Query Language) — это язык для управления 
 - INSERT: добавление данных.
 - UPDATE: обновление данных.
 - DELETE: удаление данных.
+
 ### Команды DCL (Data Control Language)
 
 Они управляют правами доступа. Примеры:
 
 - GRANT: предоставление прав.
 - REVOKE: отзыв прав.
+
 ### Команды TCL (Transaction Control Language)
 
 Они управляют транзакциями. Примеры:
@@ -59,41 +73,42 @@ SQL (Structured Query Language) — это язык для управления 
 - COMMIT: сохранение изменений.
 - ROLLBACK: откат изменений.
 - SAVEPOINT: создание точки восстановления.
+
 ## Примеры SQL-запросов
 
 ### Создание таблицы
 
-```
+```text
 CREATE TABLE employees ( id INT PRIMARY KEY, name VARCHAR(100), position VARCHAR(50), salary DECIMAL(10, 2) );
 ```
 
 ### Вставка данных
 
-```
+```text
 INSERT INTO employees (id, name, position, salary) VALUES (1, 'John Doe', 'Developer', 75000.00);
 ```
 
 ### Выборка данных
 
-```
+```text
 SELECT name, position FROM employees WHERE salary > 50000;
 ```
 
 ### Обновление данных
 
-```
+```text
 UPDATE employees SET salary = salary * 1.10 WHERE position = 'Developer';
 ```
 
 ### Удаление данных
 
-```
+```text
 DELETE FROM employees WHERE id = 1;
 ```
 
 ### Создание индекса
 
-```
+```text
 CREATE INDEX idx_position ON employees(position);
 ```
 
@@ -109,5 +124,12 @@ CREATE INDEX idx_position ON employees(position);
 - RIGHT JOIN: возвращает все записи из правой таблицы и совпадающие из левой.
 - FULL JOIN: объединяет все записи из обеих таблиц.
 
-> Материал адаптирован по статье `https://iwizy.github.io/database/sql`.
+## Переход к подразделам
 
+- [Агрегатные функции](aggregate-functions.md)
+- [Группировка и сортировка](grouping-sorting.md)
+- [Индексы](indexes.md)
+- [Селекты](selects.md)
+- [Хранимые процедуры и пользовательские функции](stored-procedures-and-udf.md)
+- [Вложенные запросы](subqueries.md)
+- [Оконные функции](window-functions.md)

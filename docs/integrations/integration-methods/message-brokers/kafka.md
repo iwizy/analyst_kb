@@ -37,13 +37,14 @@ Kafka Streams: Библиотека для обработки данных в п
 - Долговечность: Сообщения хранятся на диске, что гарантирует их сохранность.
 - Устойчивость к сбоям: Репликация данных обеспечивает высокую доступность.
 - Гибкость: Поддержка как потоковой обработки, так и обработки "батчами" (пакетами).
+
 ## Примеры использования Apache Kafka
 
 Логирование: Kafka часто используется для сбора логов с серверов. Например:
 
 - Серверы отправляют логи в тему "server-logs".
 - Аналитическая система или система мониторинга читает эти логи для анализа.
-Потоковая аналитика: Приложение для аналитики может в реальном времени обрабатывать заказы, поступающие в тему "orders", и обновлять дашборды.
+  Потоковая аналитика: Приложение для аналитики может в реальном времени обрабатывать заказы, поступающие в тему "orders", и обновлять дашборды.
 
 Передача сообщений: Kafka используется как брокер сообщений между микросервисами.
 
@@ -55,13 +56,13 @@ ETL (Extract, Transform, Load): Kafka помогает собирать данн
 
 ### Producer — отправка сообщений
 
-```
+```text
 import org.apache.kafka.clients.producer.KafkaProducer; import org.apache.kafka.clients.producer.ProducerRecord; import java.util.Properties; public class KafkaProducerExample { public static void main(String[] args) { // Настройки Kafka Producer Properties props = new Properties(); props.put("bootstrap.servers", "localhost:9092"); props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer"); props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer"); // Создание продюсера KafkaProducer<String, String> producer = new KafkaProducer<>(props); // Отправка сообщений for (int i = 0; i < 10; i++) { String key = "key-" + i; String value = "message-" + i; producer.send(new ProducerRecord<>("orders", key, value)); System.out.println("Сообщение отправлено: " + value); } producer.close(); } }
 ```
 
 ### Consumer — получение сообщений
 
-```
+```text
 import org.apache.kafka.clients.consumer.ConsumerRecords; import org.apache.kafka.clients.consumer.KafkaConsumer; import org.apache.kafka.clients.consumer.ConsumerRecord; import java.util.Collections; import java.util.Properties; public class KafkaConsumerExample { public static void main(String[] args) { // Настройки Kafka Consumer Properties props = new Properties(); props.put("bootstrap.servers", "localhost:9092"); props.put("group.id", "analytics-group"); props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer"); props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer"); // Создание консюмера KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props); // Подписка на тему consumer.subscribe(Collections.singletonList("orders")); // Чтение сообщений while (true) { ConsumerRecords<String, String> records = consumer.poll(1000); for (ConsumerRecord<String, String> record : records) { System.out.printf("Получено сообщение: key = %s, value = %s, offset = %d%n", record.key(), record.value(), record.offset()); } } } }
 ```
 
@@ -71,9 +72,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords; import org.apache.kafk
 - Надёжность: Репликация и хранение данных.
 - Поддержка интеграции: Kafka Connect поддерживает множество коннекторов к сторонним системам.
 - Сообщество и документация: Широкое сообщество пользователей и множество обучающих материалов.
+
 ## Заключение
 
 Apache Kafka — мощный инструмент для работы с потоками данных. Она подходит для различных задач: от простого логирования до сложной аналитики данных в реальном времени. Благодаря своей гибкости, Kafka нашла применение в компаниях по всему миру.
-
-> Материал адаптирован по статье `https://iwizy.github.io/integrations/types/brokers/kafka`.
-

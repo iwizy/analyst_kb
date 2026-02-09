@@ -15,7 +15,8 @@
 - Партиция 1: заказы до 2023 года.
 - Партиция 2: заказы за 2023 год.
 - Партиция 3: заказы с 2024 года.
-```
+
+```text
 CREATE TABLE orders ( id INT, order_date DATE, amount DECIMAL ) PARTITION BY RANGE (YEAR(order_date)) ( PARTITION p1 VALUES LESS THAN (2023), PARTITION p2 VALUES LESS THAN (2024), PARTITION p3 VALUES LESS THAN MAXVALUE );
 ```
 
@@ -23,7 +24,7 @@ CREATE TABLE orders ( id INT, order_date DATE, amount DECIMAL ) PARTITION BY RAN
 
 Пример: Таблица пользователей разбита на партиции по ID.
 
-```
+```text
 CREATE TABLE users ( id INT, name VARCHAR(100) ) PARTITION BY HASH(id) PARTITIONS 4;
 ```
 
@@ -31,7 +32,7 @@ CREATE TABLE users ( id INT, name VARCHAR(100) ) PARTITION BY HASH(id) PARTITION
 
 Пример: Таблица заказов разделена по регионам.
 
-```
+```text
 CREATE TABLE orders ( id INT, region VARCHAR(50), amount DECIMAL ) PARTITION BY LIST (region) ( PARTITION asia VALUES IN ('China', 'India', 'Japan'), PARTITION europe VALUES IN ('Germany', 'France', 'UK'), PARTITION americas VALUES IN ('USA', 'Canada', 'Brazil') );
 ```
 
@@ -42,10 +43,12 @@ CREATE TABLE orders ( id INT, region VARCHAR(50), amount DECIMAL ) PARTITION BY 
 - Улучшение производительности запросов (особенно на больших таблицах).
 - Простота управления данными (например, удаление старых данных с помощью удаления партиции).
 - Снижение конкуренции между запросами.
+
 ### Недостатки
 
 - Применяется в пределах одного сервера (не помогает при высокой нагрузке на сервер).
 - Необходима настройка логики для выбора партиций.
+
 ## Шардирование
 
 Шардирование — это метод горизонтального разделения данных, при котором данные распределяются между несколькими серверами (нодами). Каждый сервер (шард) содержит уникальную подмножество данных.
@@ -63,36 +66,39 @@ CREATE TABLE orders ( id INT, region VARCHAR(50), amount DECIMAL ) PARTITION BY 
 - Пользователи с ID, где ID % 3 = 0, находятся на сервере 1.
 - Пользователи с ID % 3 = 1 — на сервере 2.
 - Пользователи с ID % 3 = 2 — на сервере 3.
-Географическое шардирование (Geographic Sharding) Данные распределяются по регионам.
+  Географическое шардирование (Geographic Sharding) Данные распределяются по регионам.
 
 Пример:
 
 - Пользователи из Европы хранятся на сервере в Германии.
 - Пользователи из Азии — на сервере в Сингапуре.
-Шардирование по диапазону (Range-based Sharding) Данные разделяются по диапазонам значений, как в партицировании.
+  Шардирование по диапазону (Range-based Sharding) Данные разделяются по диапазонам значений, как в партицировании.
 
 Пример: Таблица заказов делится на шард-серверы по годам:
 
 - Сервер 1: заказы до 2020 года.
 - Сервер 2: заказы за 2021–2023 годы.
 - Сервер 3: заказы с 2024 года.
+
 ### Преимущества шардирования
 
 - Повышение масштабируемости (можно добавлять новые сервера).
 - Снижение нагрузки на отдельные серверы.
 - Возможность хранения больших объемов данных.
+
 ### Недостатки
 
 - Усложнение архитектуры.
 - Возможные проблемы с согласованностью данных (например, в распределенных транзакциях).
 - Затраты на маршрутизацию запросов к нужному серверу.
+
 ## Сравнение партицирования и шардирования
 
 ## Примеры реализации шардирования и партицирования
 
 ### Реализация партицирования (PostgreSQL)
 
-```
+```text
 CREATE TABLE sales ( id SERIAL PRIMARY KEY, sale_date DATE, amount DECIMAL ) PARTITION BY RANGE (sale_date); CREATE TABLE sales_2023 PARTITION OF sales FOR VALUES FROM ('2023-01-01') TO ('2024-01-01'); CREATE TABLE sales_2024 PARTITION OF sales FOR VALUES FROM ('2024-01-01') TO ('2025-01-01');
 ```
 
@@ -100,9 +106,9 @@ CREATE TABLE sales ( id SERIAL PRIMARY KEY, sale_date DATE, amount DECIMAL ) PAR
 
 - На уровне приложения: В коде приложения используется маршрутизатор, который направляет запросы к нужному серверу в зависимости от ключа.
 - С помощью инструментов: Базы данных, такие как MongoDB или Apache Cassandra, имеют встроенную поддержку шардирования.
-Пример маршрутизатора для шардирования:
+  Пример маршрутизатора для шардирования:
 
-```
+```text
 def get_shard(user_id): shard_number = user_id % 3 return f"db_server_{shard_number}" server = get_shard(12345) print(f"Запрос будет отправлен на {server}")
 ```
 
@@ -110,5 +116,7 @@ def get_shard(user_id): shard_number = user_id % 3 return f"db_server_{shard_num
 
 Партицирование и шардирование являются важными инструментами масштабирования. Партицирование удобно для оптимизации локальной базы данных, а шардирование необходимо для создания распределенной системы. В зависимости от требований системы, часто используют комбинацию этих методов.
 
-> Материал адаптирован по статье `https://iwizy.github.io/database/scaling`.
+## Переход к подразделам
 
+- [Партицирование](partitioning.md)
+- [Шардирование](sharding.md)

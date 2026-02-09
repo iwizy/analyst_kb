@@ -11,3 +11,9 @@
 ## Источник
 
 Основа структуры перенесена с `https://iwizy.github.io/notations/maturity`.
+
+## Переход к подразделам
+
+- [ACMM](acmm.md)
+- [CMMI](cmmi.md)
+- [COBIT](cobit.md)

@@ -17,3 +17,15 @@
 ## Статус
 
 Основные статьи перенесены с `iwizy.github.io` и адаптированы. Часть тем будет дополнена практическими шаблонами и примерами.
+
+## Переход к подразделам
+
+- [Бэкапирование данных](backup.md)
+- [Проектирование модели данных](data-modeling.md)
+- [Master Data Management (MDM)](mdm.md)
+- [Реплицирование данных](replication.md)
+- [Распределенные реестры](distributed-ledgers/index.md)
+- [Нормализация и денормализация](normalization/index.md)
+- [Масштабирование БД](scaling/index.md)
+- [SQL](sql/index.md)
+- [Типы баз данных](types/index.md)

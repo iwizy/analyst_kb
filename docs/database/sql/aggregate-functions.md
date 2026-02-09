@@ -11,21 +11,24 @@
 ### Примеры
 
 - Общее количество записей в таблице:
-```
+
+```text
 SELECT COUNT(*) AS total_employees FROM employees;
 ```
 
-Здесь COUNT(*) подсчитывает все строки в таблице employees, включая строки с NULL.
+Здесь COUNT(\*) подсчитывает все строки в таблице employees, включая строки с NULL.
 
 - Подсчет строк с условием:
-```
+
+```text
 SELECT COUNT(*) AS sales_employees FROM employees WHERE department = 'Sales';
 ```
 
 Этот запрос подсчитывает количество сотрудников, работающих в отделе Sales.
 
 - Подсчет значений в конкретном столбце:
-```
+
+```text
 SELECT COUNT(salary) AS salary_count FROM employees;
 ```
 
@@ -38,14 +41,16 @@ COUNT(salary) подсчитывает только строки, где сто�
 ### Примеры
 
 - Общая сумма зарплат сотрудников:
-```
+
+```text
 SELECT SUM(salary) AS total_salary FROM employees;
 ```
 
 Этот запрос вычисляет общую сумму всех зарплат.
 
 - Сумма зарплат с фильтром:
-```
+
+```text
 SELECT SUM(salary) AS total_it_salary FROM employees WHERE department = 'IT';
 ```
 
@@ -58,14 +63,16 @@ SELECT SUM(salary) AS total_it_salary FROM employees WHERE department = 'IT';
 ### Примеры
 
 - Средняя зарплата всех сотрудников:
-```
+
+```text
 SELECT AVG(salary) AS average_salary FROM employees;
 ```
 
 Функция суммирует все значения столбца salary и делит их на количество строк.
 
 - Средняя зарплата в разрезе отделов:
-```
+
+```text
 SELECT department, AVG(salary) AS average_salary FROM employees GROUP BY department;
 ```
 
@@ -78,12 +85,14 @@ SELECT department, AVG(salary) AS average_salary FROM employees GROUP BY departm
 ### Примеры
 
 - Максимальная зарплата среди всех сотрудников:
-```
+
+```text
 SELECT MAX(salary) AS max_salary FROM employees;
 ```
 
 - Максимальная зарплата по каждому отделу:
-```
+
+```text
 SELECT department, MAX(salary) AS max_salary FROM employees GROUP BY department;
 ```
 
@@ -96,12 +105,14 @@ SELECT department, MAX(salary) AS max_salary FROM employees GROUP BY department;
 ### Примеры
 
 - Минимальная зарплата среди всех сотрудников:
-```
+
+```text
 SELECT MIN(salary) AS min_salary FROM employees;
 ```
 
 - Минимальная зарплата по каждому отделу:
-```
+
+```text
 SELECT department, MIN(salary) AS min_salary FROM employees GROUP BY department;
 ```
 
@@ -114,12 +125,14 @@ SELECT department, MIN(salary) AS min_salary FROM employees GROUP BY department;
 ### Примеры
 
 - Количество сотрудников по отделам:
-```
+
+```text
 SELECT department, COUNT(*) AS employee_count FROM employees GROUP BY department;
 ```
 
 - Общая зарплата и максимальная зарплата по отделам:
-```
+
+```text
 SELECT department, SUM(salary) AS total_salary, MAX(salary) AS max_salary FROM employees GROUP BY department;
 ```
 
@@ -132,12 +145,14 @@ SELECT department, SUM(salary) AS total_salary, MAX(salary) AS max_salary FROM e
 ### Примеры
 
 - Отделы с общей зарплатой более 100,000:
-```
+
+```text
 SELECT department, SUM(salary) AS total_salary FROM employees GROUP BY department HAVING SUM(salary) > 100000;
 ```
 
 - Средняя зарплата в отделах с числом сотрудников более 10:
-```
+
+```text
 SELECT department, AVG(salary) AS average_salary FROM employees GROUP BY department HAVING COUNT(*) > 10;
 ```
 
@@ -148,15 +163,13 @@ SELECT department, AVG(salary) AS average_salary FROM employees GROUP BY departm
 ### Пример
 
 - Минимальная, максимальная и средняя зарплата:
-```
+
+```text
 SELECT MIN(salary) AS min_salary, MAX(salary) AS max_salary, AVG(salary) AS avg_salary FROM employees;
 ```
 
 ## Особенности агрегатных функций
 
-- Игнорирование NULL: Большинство агрегатных функций (например, SUM, AVG, MAX, MIN) игнорируют строки с NULL в целевом столбце. Однако COUNT(*) учитывает все строки, включая те, где столбцы содержат NULL.
+- Игнорирование NULL: Большинство агрегатных функций (например, SUM, AVG, MAX, MIN) игнорируют строки с NULL в целевом столбце. Однако COUNT(\*) учитывает все строки, включая те, где столбцы содержат NULL.
 - Совместное использование с фильтрацией: Для предварительной фильтрации данных используется оператор WHERE, а для фильтрации результатов группировки — HAVING.
-Эти примеры дают вам полное понимание того, как работать с агрегатными функциями SQL и анализировать данные.
-
-> Материал адаптирован по статье `https://iwizy.github.io/database/sql/agrigate`.
-
+  Эти примеры дают вам полное понимание того, как работать с агрегатными функциями SQL и анализировать данные.

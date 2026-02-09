@@ -21,3 +21,19 @@
 ## Статус
 
 Часть статей перенесена с `iwizy.github.io`. Темы, которые пока имеют только каркас, отмечены в плане наполнения.
+
+## Переход к подразделам
+
+- [Archimate](archimate.md)
+- [BPMN](bpmn.md)
+- [C4](c4.md)
+- [Деревья решений](decision-trees.md)
+- [DFD](dfd.md)
+- [eEPC](eepc.md)
+- [ERD](erd.md)
+- [Диаграмма Исикавы](fishbone-diagram.md)
+- [Карта целей](goals-map.md)
+- [IDEF0](idef0.md)
+- [Impact map](impact-map.md)
+- [Модели зрелости](maturity-models/index.md)
+- [UML](uml/index.md)
