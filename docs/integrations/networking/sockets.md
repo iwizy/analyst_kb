@@ -1,109 +1,49 @@
 # Сокеты
 
-Сокеты (Sockets) – это интерфейс для обмена данными между процессами, который используется для передачи информации через сеть или между приложениями на одном устройстве. Они лежат в основе сетевого взаимодействия в Интернете и широко применяются для разработки приложений, таких как чаты, онлайн-игры, веб-приложения и другие.
+Сокет это программная точка доступа к сети для обмена данными между процессами по TCP или UDP.
 
-## Основы сокетов
+## Модель
 
-Сокет – это абстракция, которая представляет собой конечную точку соединения. Для взаимодействия через сеть одна программа создает сокет и связывает его с определенным адресом и портом. Затем другой сокет может подключиться к этому адресу и порту, чтобы начать обмен данными.
+- server socket: слушает порт и принимает соединения;
+- client socket: устанавливает соединение с сервером;
+- двусторонний обмен данными по протоколу приложения.
 
-## Типы сокетов
+## Базовый поток TCP-сокетов
 
-Stream Sockets (SOCK_STREAM):
+```plantuml
+@startuml
+participant Client
+participant Server
 
-- Используют протокол TCP.
-
-- Обеспечивают надежную, упорядоченную и без потерь передачу данных.
-
-- Подходят для приложений, где важна целостность данных (например, веб-сайты, почтовые клиенты).
-  Datagram Sockets (SOCK_DGRAM):
-
-- Используют протокол UDP.
-
-- Передают данные без установления соединения.
-
-- Быстрее TCP, но нет гарантии доставки или порядка (подходит для онлайн-игр, потокового видео).
-  Raw Sockets:
-
-- Позволяют работать с нестандартными протоколами.
-
-- Требуют повышенных привилегий.
-
-## Пример работы с сокетами (на Python)
-
-### TCP-соединение
-
-Сервер:
-
-```text
-import socket # Создаем сокет server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Привязываем сокет к адресу и порту server_socket.bind(('127.0.0.1', 12345)) # Слушаем подключения server_socket.listen(1) print("Сервер ожидает подключения...") # Принимаем подключение client_socket, client_address = server_socket.accept() print(f"Подключение установлено с {client_address}") # Обмен данными data = client_socket.recv(1024).decode('utf-8') print(f"Сообщение от клиента: {data}") client_socket.send("Привет, клиент!".encode('utf-8')) # Закрываем соединения client_socket.close() server_socket.close()
+Client -> Server: connect()
+Server --> Client: accept()
+Client <-> Server: send()/recv()
+Client -> Server: close()
+@enduml
 ```
 
-Клиент:
+## Что важно в production
 
-```text
-import socket # Создаем сокет client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Подключаемся к серверу client_socket.connect(('127.0.0.1', 12345)) # Отправляем сообщение client_socket.send("Привет, сервер!".encode('utf-8')) # Получаем ответ response = client_socket.recv(1024).decode('utf-8') print(f"Ответ от сервера: {response}") # Закрываем соединение client_socket.close()
-```
+- connection pooling;
+- таймауты и keepalive;
+- максимальное число соединений и файловых дескрипторов;
+- backpressure и очереди;
+- TLS termination и сертификаты.
 
-### UDP-соединение
+## Типичные ошибки
 
-Сервер:
+- отсутствие read/write timeout;
+- блокирующие вызовы без ограничений;
+- игнорирование partial reads/writes;
+- утечки соединений.
 
-```text
-import socket server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) server_socket.bind(('127.0.0.1', 12345)) print("Сервер ожидает сообщений...") while True: data, address = server_socket.recvfrom(1024) print(f"Сообщение от {address}: {data.decode('utf-8')}") server_socket.sendto("Привет, клиент!".encode('utf-8'), address)
-```
+## Практические рекомендации
 
-Клиент:
+- проектировать протокол сообщений (framing, headers, correlation-id);
+- использовать неблокирующий IO там, где нужна высокая конкуррентность;
+- измерять connection errors, reset rate и saturation по fd.
 
-```text
-import socket client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # Отправляем сообщение client_socket.sendto("Привет, сервер!".encode('utf-8'), ('127.0.0.1', 12345)) # Получаем ответ response, server_address = client_socket.recvfrom(1024) print(f"Ответ от сервера: {response.decode('utf-8')}") client_socket.close()
-```
+## Смежные материалы
 
-## Объяснение кода
-
-Создание сокета:
-
-```text
-socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-```
-
-- AF_INET – семейство адресов IPv4.
-- SOCK_STREAM – тип сокета для TCP.
-  Привязка к адресу:
-
-```text
-server_socket.bind(('127.0.0.1', 12345))
-```
-
-Указываем IP-адрес и порт, на которых будет работать сервер.
-
-Слушаем подключения:
-
-```text
-server_socket.listen(1)
-```
-
-Сервер готов принимать одно или несколько подключений.
-
-Отправка и получение данных:
-
-```text
-client_socket.send("Привет".encode('utf-8')) data = client_socket.recv(1024).decode('utf-8')
-```
-
-Передача сообщений происходит в виде байтов, поэтому используется encode и decode.
-
-Закрытие соединения:
-
-```text
-client_socket.close() server_socket.close()
-```
-
-Сокеты обязательно нужно закрывать после завершения работы.
-
-## Применение сокетов
-
-- Чат-приложения – обмен текстовыми сообщениями между пользователями.
-- Онлайн-игры – передача координат и состояния игроков.
-- Потоковое видео и аудио – для передачи мультимедиа в реальном времени.
-- Веб-сервисы – обработка запросов пользователей и передача данных.
-  Сокеты – это мощный инструмент, но они требуют знаний сетевого взаимодействия и обработки ошибок. Например, важно учитывать случаи обрыва соединения, таймаутов и безопасности (например, использование шифрования с SSL/TLS).
+- [TCP/IP](tcp-ip.md)
+- [WebSockets](../integration-methods/api/websockets.md)

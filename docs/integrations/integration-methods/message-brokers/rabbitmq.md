@@ -1,80 +1,61 @@
-# RabbitQM
+# RabbitMQ
 
-RabbitMQ — это популярный брокер сообщений с открытым исходным кодом, использующий протокол AMQP (Advanced Message Queuing Protocol). Он позволяет приложениям обмениваться сообщениями асинхронно, что помогает уменьшить связность между компонентами системы, улучшить масштабируемость и повысить отказоустойчивость.
+RabbitMQ это брокер сообщений на базе AMQP с гибкой маршрутизацией и надежной доставкой через ack/requeue/DLQ.
 
-## Основные концепции RabbitMQ
+## Базовые сущности
 
-- Producer (Производитель) — это приложение, которое отправляет сообщения в очередь.
-- Queue (Очередь) — структура данных, которая хранит сообщения. Очередь гарантирует, что сообщение будет доставлено потребителю.
-- Consumer (Потребитель) — это приложение, которое получает сообщения из очереди.
-- direct — сообщения отправляются в очередь, основанную на точном совпадении маршрута.
-- fanout — все сообщения направляются во все очереди, связанные с обменником.
-- topic — маршрутизирует сообщения в зависимости от шаблона маршрута.
-- headers — использует заголовки для маршрутизации сообщений.
+- exchange (`direct`, `topic`, `fanout`, `headers`);
+- queue;
+- binding;
+- producer;
+- consumer;
+- ack/nack.
 
-## Архитектура RabbitMQ
+## Поток
 
-- Producer посылает сообщение в Exchange.
-- Exchange решает, куда отправить сообщение, и направляет его в одну или несколько Queues.
-- Consumer читает сообщения из очереди.
+```plantuml
+@startuml
+participant Producer
+participant Exchange
+queue QueueA
+queue QueueB
+participant Consumer
 
-## Пример использования RabbitMQ в Java
-
-Добавление зависимостей
-
-Для работы с RabbitMQ в Java необходимо подключить библиотеку amqp-client. Если вы используете Maven, добавьте следующую зависимость в файл pom.xml:
-
-```text
-<dependency> <groupId>com.rabbitmq</groupId> <artifactId>amqp-client</artifactId> <version>5.10.0</version> </dependency>
+Producer -> Exchange: publish(routing_key)
+Exchange -> QueueA: route
+Exchange -> QueueB: route
+QueueA -> Consumer: deliver
+Consumer --> QueueA: ack
+@enduml
 ```
 
-Создание производителя (Producer)
+## Когда выбирать RabbitMQ
 
-В следующем примере создается производитель, который отправляет простое сообщение в очередь.
+- command/task queues;
+- сложная маршрутизация сообщений;
+- приоритеты, TTL, DLQ и fine-grained control;
+- умеренные объемы при высоких требованиях к delivery control.
 
-```text
-import com.rabbitmq.client.*; public class Producer { private final static String QUEUE_NAME = "hello"; public static void main(String[] argv) throws Exception { // Устанавливаем соединение и канал ConnectionFactory factory = new ConnectionFactory(); factory.setHost("localhost"); // Адрес RabbitMQ-сервера try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) { // Создаем очередь (если она не существует) channel.queueDeclare(QUEUE_NAME, false, false, false, null); String message = "Hello World!"; // Отправляем сообщение в очередь channel.basicPublish("", QUEUE_NAME, null, message.getBytes()); System.out.println(" [x] Sent '" + message + "'"); } } }
-```
+## Достоинства
 
-В этом примере создается подключение к RabbitMQ-серверу, создается очередь с именем hello, и отправляется сообщение "Hello World!" в эту очередь.
+- гибкая маршрутизация;
+- удобные механики ack/retry/dead-letter;
+- зрелый tooling для enterprise задач.
 
-Создание потребителя (Consumer)
+## Ограничения
 
-Потребитель получает сообщение из очереди и выводит его на экран:
+- меньше throughput, чем у Kafka в stream-heavy сценариях;
+- требует аккуратной настройки при росте кластера;
+- порядок сообщений зависит от модели очередей/консюмеров.
 
-```text
-import com.rabbitmq.client.*; public class Consumer { private final static String QUEUE_NAME = "hello"; public static void main(String[] argv) throws Exception { // Устанавливаем соединение и канал ConnectionFactory factory = new ConnectionFactory(); factory.setHost("localhost"); // Адрес RabbitMQ-сервера try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) { // Создаем очередь (если она не существует) channel.queueDeclare(QUEUE_NAME, false, false, false, null); System.out.println(" [*] Waiting for messages. To exit press Ctrl+C"); // Создаем слушателя сообщений DeliverCallback deliverCallback = (consumerTag, delivery) -> { String message = new String(delivery.getBody(), "UTF-8"); System.out.println(" [x] Received '" + message + "'"); }; // Подключаемся к очереди и начинаем получать сообщения channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { }); } } }
-```
+## Практические рекомендации
 
-Этот код создает подключение к RabbitMQ, слушает очередь hello и, когда сообщение приходит, выводит его на экран.
+- использовать manual ack для критичных обработчиков;
+- настраивать DLX/DLQ и retry policy;
+- ограничивать prefetch для consumer fairness;
+- контролировать unacked messages и queue depth.
 
-## Механизм подтверждения (Acknowledgement)
+## Смежные материалы
 
-RabbitMQ поддерживает механизмы подтверждения сообщений, чтобы убедиться, что сообщения были успешно доставлены и обработаны.
-
-В Java можно включить подтверждения с помощью параметра autoAck при вызове метода basicConsume. Установка значения true означает, что сообщение считается подтвержденным сразу после его получения. Если установить false, то приложение должно явно подтверждать получение сообщения через метод basicAck.
-
-## Пример с подтверждением
-
-```text
-channel.basicConsume(QUEUE_NAME, false, deliverCallback, consumerTag -> { }); ... // В callback методе после обработки сообщения channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
-```
-
-## Типы обменников (Exchanges)
-
-- direct — прямое сопоставление между обменником и очередью.
-- fanout — рассылка сообщений во все очереди.
-- topic — маршрутизация сообщений в зависимости от шаблонов.
-- headers — маршрутизация сообщений по заголовкам.
-
-## Пример с типом обменника fanout
-
-```text
-import com.rabbitmq.client.*; public class FanoutExchangeProducer { private final static String EXCHANGE_NAME = "logs"; public static void main(String[] argv) throws Exception { ConnectionFactory factory = new ConnectionFactory(); factory.setHost("localhost"); try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) { // Создаем обменник типа fanout channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT); String message = "Hello, fanout exchange!"; // Отправляем сообщение в обменник channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes()); System.out.println(" [x] Sent '" + message + "'"); } } }
-```
-
-В этом примере мы создаем обменник типа fanout, и сообщение отправляется в этот обменник, который затем рассылет его во все очереди, связанные с ним.
-
-## Заключение
-
-RabbitMQ — это мощный инструмент для реализации асинхронной передачи сообщений в распределенных системах. Используя простые API, мы можем отправлять и получать сообщения, обрабатывать их в разных частях приложения и легко масштабировать систему.
+- [Паттерны надежности](../reliability-patterns.md)
+- [Обмен файлами](../file-exchange.md)

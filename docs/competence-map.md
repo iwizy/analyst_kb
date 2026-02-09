@@ -84,13 +84,19 @@
 - [Проектирование API](integrations/api-design/index.md) 🟢
   - [Сущности, атрибуты, контракты](integrations/api-design/entities-attributes-contracts.md) 🟢
   - [Документирование API](integrations/api-design/api-documentation.md) 🟢
+  - [Версионирование API](integrations/api-design/versioning.md) 🟢
+  - [Обратная совместимость](integrations/api-design/backward-compatibility.md) 🟢
+  - [Безопасность API](integrations/api-design/security.md) 🟢
+  - [Лимиты и квоты](integrations/api-design/rate-limiting.md) 🟢
+  - [Идемпотентность](integrations/api-design/idempotency.md) 🟢
+  - [API Gateway и Service Mesh](integrations/api-design/api-gateway-and-service-mesh.md) 🟢
   - [Форматы сериализации](integrations/api-design/serialization-formats/index.md) 🟢
     - [JSON](integrations/api-design/serialization-formats/json.md) 🟢
     - [XML / XSD](integrations/api-design/serialization-formats/xml-xsd.md) 🟢
     - [YAML](integrations/api-design/serialization-formats/yaml.md) 🟢
-  - [Обратная совместимость](integrations/api-design/backward-compatibility.md) 🟢
-  - [Идемпотентность](integrations/api-design/idempotency.md) 🟢
 - [Способы интеграции](integrations/integration-methods/index.md) 🟢
+  - [Интеграционные паттерны](integrations/integration-methods/patterns.md) 🟢
+  - [Паттерны надежности](integrations/integration-methods/reliability-patterns.md) 🟢
   - [API](integrations/integration-methods/api/index.md) 🟢
     - [REST / HTTP(S)](integrations/integration-methods/api/rest-http.md) 🟢
     - [SOAP](integrations/integration-methods/api/soap.md) 🟢
