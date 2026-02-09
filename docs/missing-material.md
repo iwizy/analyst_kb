@@ -4,7 +4,7 @@
 
 ## Сводка
 
-- Нотации и моделирование: 13
+- Нотации и моделирование: 0
 - Алгоритмы: 7
 - Проектирование и архитектура: 42
 - Процесс разработки: 17
@@ -13,23 +13,11 @@
 - Общие компетенции: 23
 - Смежные навыки: 16
 - Софт-скилы: 20
-- Итого: 161
+- Итого: 148
 
 ## Нотации и моделирование
 
-- [Archimate](notations/archimate.md)
-- [BPMN](notations/bpmn.md)
-- [Деревья решений](notations/decision-trees.md)
-- [DFD](notations/dfd.md)
-- [eEPC](notations/eepc.md)
-- [Диаграмма Исикавы](notations/fishbone-diagram.md)
-- [Карта целей](notations/goals-map.md)
-- [IDEF0](notations/idef0.md)
-- [Impact map](notations/impact-map.md)
-- [ACMM](notations/maturity-models/acmm.md)
-- [CMMI](notations/maturity-models/cmmi.md)
-- [COBIT](notations/maturity-models/cobit.md)
-- [Модели зрелости](notations/maturity-models/index.md)
+Раздел заполнен.
 
 ## Алгоритмы
 

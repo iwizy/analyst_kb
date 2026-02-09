@@ -6,6 +6,7 @@
 
 Статус темы отмечается индикатором:
 
+- `🟢` - тема заполнена базовым материалом и примерами.
 - `🔴` - тема в работе и требует дальнейшего наполнения.
 
 ## Работа с требованиями 🔴
@@ -95,28 +96,28 @@
   - [UDP](integrations/networking/udp.md) 🔴
   - [Сокеты](integrations/networking/sockets.md) 🔴
 
-## Нотации, диаграммы, моделирование 🔴
+## Нотации, диаграммы, моделирование 🟢
 
-- [UML](notations/uml/index.md) 🔴
-  - [Sequence](notations/uml/sequence.md) 🔴
-  - [Activity](notations/uml/activity.md) 🔴
-  - [Class](notations/uml/class.md) 🔴
-  - [State Machine](notations/uml/state-machine.md) 🔴
-- [BPMN](notations/bpmn.md) 🔴
-- [C4](notations/c4.md) 🔴
-- [ERD](notations/erd.md) 🔴
-- [DFD](notations/dfd.md) 🔴
-- [eEPC](notations/eepc.md) 🔴
-- [IDEF0](notations/idef0.md) 🔴
-- [Archimate](notations/archimate.md) 🔴
-- [Диаграмма Исикавы](notations/fishbone-diagram.md) 🔴
-- [Деревья решений](notations/decision-trees.md) 🔴
-- [Карта целей](notations/goals-map.md) 🔴
-- [Impact Map](notations/impact-map.md) 🔴
-- [Модели зрелости](notations/maturity-models/index.md) 🔴
-  - [CMMI](notations/maturity-models/cmmi.md) 🔴
-  - [COBIT](notations/maturity-models/cobit.md) 🔴
-  - [ACMM](notations/maturity-models/acmm.md) 🔴
+- [UML](notations/uml/index.md) 🟢
+  - [Sequence](notations/uml/sequence.md) 🟢
+  - [Activity](notations/uml/activity.md) 🟢
+  - [Class](notations/uml/class.md) 🟢
+  - [State Machine](notations/uml/state-machine.md) 🟢
+- [BPMN](notations/bpmn.md) 🟢
+- [C4](notations/c4.md) 🟢
+- [ERD](notations/erd.md) 🟢
+- [DFD](notations/dfd.md) 🟢
+- [eEPC](notations/eepc.md) 🟢
+- [IDEF0](notations/idef0.md) 🟢
+- [Archimate](notations/archimate.md) 🟢
+- [Диаграмма Исикавы](notations/fishbone-diagram.md) 🟢
+- [Деревья решений](notations/decision-trees.md) 🟢
+- [Карта целей](notations/goals-map.md) 🟢
+- [Impact Map](notations/impact-map.md) 🟢
+- [Модели зрелости](notations/maturity-models/index.md) 🟢
+  - [CMMI](notations/maturity-models/cmmi.md) 🟢
+  - [COBIT](notations/maturity-models/cobit.md) 🟢
+  - [ACMM](notations/maturity-models/acmm.md) 🟢
 
 ## Алгоритмы 🔴
 
