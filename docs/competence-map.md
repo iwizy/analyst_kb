@@ -11,9 +11,13 @@
 
 ## Работа с требованиями 🟢
 
+### Базовый уровень 🟢
+
+- [Работа с требованиями: маршрут по уровням](requirements/index.md) 🟢
 - [Определение границ системы](requirements/system-boundaries/index.md) 🟢
   - [Зона ответственности проекта](requirements/system-boundaries/responsibility-zone.md) 🟢
   - [Ограничения](requirements/system-boundaries/constraints.md) 🟢
+- [Выявление заинтересованных лиц (стейкхолдеров)](requirements/stakeholders.md) 🟢
 - [Уровни требований](requirements/levels/index.md) 🟢
   - [Бизнес-требования](requirements/levels/business.md) 🟢
   - [Пользовательские требования](requirements/levels/user.md) 🟢
@@ -22,18 +26,23 @@
   - [Функциональные требования](requirements/types/functional.md) 🟢
   - [Нефункциональные требования](requirements/types/non-functional.md) 🟢
 - [Сбор требований](requirements/elicitation.md) 🟢
-- [Валидация и верификация требований](requirements/validation.md) 🟢
-- [Подходы к спецификации требований](requirements/specification-approaches.md) 🟢
 - [Критерии качества требований](requirements/quality.md) 🟢
+
+### Средний уровень 🟢
+
+- [Подходы к спецификации требований](requirements/specification-approaches.md) 🟢
 - [Структурирование требований](requirements/structuring.md) 🟢
 - [Декомпозиция требований](requirements/decomposition.md) 🟢
+- [Валидация и верификация требований](requirements/validation.md) 🟢
+- [Приоритизация требований](requirements/management/prioritization.md) 🟢
+
+### Продвинутый уровень 🟢
+
 - [Управление требованиями](requirements/management/index.md) 🟢
   - [Трассировка требований](requirements/management/traceability.md) 🟢
   - [Поддержка актуальности требований](requirements/management/relevance.md) 🟢
   - [Управление изменениями требований](requirements/management/change-management.md) 🟢
   - [Согласование требований](requirements/management/coordination.md) 🟢
-  - [Приоритизация требований](requirements/management/prioritization.md) 🟢
-- [Выявление заинтересованных лиц (стейкхолдеров)](requirements/stakeholders.md) 🟢
 
 ## Базы данных 🟢
 
