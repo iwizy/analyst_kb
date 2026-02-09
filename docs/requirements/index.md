@@ -65,6 +65,38 @@
 - [BABOK](../common-competencies/standards/babok.md)
 - [IEEE](../common-competencies/standards/ieee.md)
 
+## Карта раздела
+
+Чтобы быстрее ориентироваться в материале, используйте структуру раздела по блокам:
+
+- Границы и контекст:
+  [Определение границ системы](system-boundaries/index.md),
+  [Зона ответственности проекта](system-boundaries/responsibility-zone.md),
+  [Ограничения](system-boundaries/constraints.md).
+- Структура и уровни:
+  [Уровни требований](levels/index.md),
+  [Бизнес-требования](levels/business.md),
+  [Пользовательские требования](levels/user.md),
+  [Системные требования](levels/system.md).
+- Типы требований:
+  [Виды требований](types/index.md),
+  [Функциональные требования](types/functional.md),
+  [Нефункциональные требования](types/non-functional.md).
+- Работа с содержанием:
+  [Сбор требований](elicitation.md),
+  [Структурирование требований](structuring.md),
+  [Декомпозиция требований](decomposition.md),
+  [Критерии качества требований](quality.md),
+  [Валидация и верификация требований](validation.md),
+  [Подходы к спецификации требований](specification-approaches.md).
+- Управление жизненным циклом:
+  [Управление требованиями](management/index.md),
+  [Приоритизация требований](management/prioritization.md),
+  [Согласование требований](management/coordination.md),
+  [Управление изменениями требований](management/change-management.md),
+  [Трассировка требований](management/traceability.md),
+  [Поддержка актуальности требований](management/relevance.md).
+
 ## Сквозной процесс работы с требованиями
 
 1. Определить бизнес-цель и границы системы.
