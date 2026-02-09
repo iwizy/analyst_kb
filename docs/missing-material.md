@@ -12,8 +12,8 @@
 - Инструменты: 0
 - Общие компетенции: 0
 - Смежные навыки: 0
-- Софт-скилы: 20
-- Итого: 20
+- Софт-скилы: 0
+- Итого: 0
 
 ## Нотации и моделирование
 
@@ -49,23 +49,4 @@
 
 ## Софт-скилы
 
-- [Умение общаться](soft-skills/communication/communication.md)
-- [Участие в коммьюнити](soft-skills/communication/community.md)
-- [Ведение переписки](soft-skills/communication/correspondence.md)
-- [Эмоциональный интеллект](soft-skills/communication/emotional-intelligence.md)
-- [Фасилитация встреч](soft-skills/communication/facilitation.md)
-- [Коммуникативные навыки](soft-skills/communication/index.md)
-- [Грамотность](soft-skills/communication/literacy.md)
-- [Ведение переговоров](soft-skills/communication/negotiation.md)
-- [Проведение презентаций](soft-skills/communication/presentations.md)
-- [Управление ожиданиями заказчика](soft-skills/expectation-management.md)
-- [Адаптивность](soft-skills/qualities/adaptability.md)
-- [Аналитическое мышление](soft-skills/qualities/analytical-thinking.md)
-- [Критическое мышление](soft-skills/qualities/critical-thinking.md)
-- [Личностные качества](soft-skills/qualities/index.md)
-- [Обучаемость](soft-skills/qualities/learnability.md)
-- [Проактивность](soft-skills/qualities/proactivity.md)
-- [Ответственность](soft-skills/qualities/responsibility.md)
-- [Общительность](soft-skills/qualities/sociability.md)
-- [Работа в команде](soft-skills/teamwork.md)
-- [Тайм-менеджмент](soft-skills/time-management.md)
+Раздел заполнен.

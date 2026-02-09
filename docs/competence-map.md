@@ -268,25 +268,25 @@
 - [Управление проектами](related-skills/project-management.md) 🟢
 - [Промпт-инжиниринг](related-skills/prompt-engineering.md) 🟢
 
-## Софт скилы 🔴
+## Софт-скилы 🟢
 
-- [Коммуникативные навыки](soft-skills/communication/index.md) 🔴
-  - [Ведение переговоров](soft-skills/communication/negotiation.md) 🔴
-  - [Ведение переписки](soft-skills/communication/correspondence.md) 🔴
-  - [Умение общаться](soft-skills/communication/communication.md) 🔴
-  - [Проведение презентаций](soft-skills/communication/presentations.md) 🔴
-  - [Фасилитация встреч](soft-skills/communication/facilitation.md) 🔴
-  - [Эмоциональный интеллект](soft-skills/communication/emotional-intelligence.md) 🔴
-  - [Участие в коммьюнити](soft-skills/communication/community.md) 🔴
-  - [Грамотность](soft-skills/communication/literacy.md) 🔴
-- [Тайм-менеджмент](soft-skills/time-management.md) 🔴
-- [Управление ожиданиями заказчика](soft-skills/expectation-management.md) 🔴
-- [Работа в команде](soft-skills/teamwork.md) 🔴
-- [Качества](soft-skills/qualities/index.md) 🔴
-  - [Аналитическое мышление](soft-skills/qualities/analytical-thinking.md) 🔴
-  - [Адаптивность](soft-skills/qualities/adaptability.md) 🔴
-  - [Проактивность](soft-skills/qualities/proactivity.md) 🔴
-  - [Ответственность](soft-skills/qualities/responsibility.md) 🔴
-  - [Общительность](soft-skills/qualities/sociability.md) 🔴
-  - [Обучаемость](soft-skills/qualities/learnability.md) 🔴
-  - [Критическое мышление](soft-skills/qualities/critical-thinking.md) 🔴
+- [Коммуникативные навыки](soft-skills/communication/index.md) 🟢
+  - [Ведение переговоров](soft-skills/communication/negotiation.md) 🟢
+  - [Ведение переписки](soft-skills/communication/correspondence.md) 🟢
+  - [Умение общаться](soft-skills/communication/communication.md) 🟢
+  - [Проведение презентаций](soft-skills/communication/presentations.md) 🟢
+  - [Фасилитация встреч](soft-skills/communication/facilitation.md) 🟢
+  - [Эмоциональный интеллект](soft-skills/communication/emotional-intelligence.md) 🟢
+  - [Участие в коммьюнити](soft-skills/communication/community.md) 🟢
+  - [Грамотность](soft-skills/communication/literacy.md) 🟢
+- [Тайм-менеджмент](soft-skills/time-management.md) 🟢
+- [Управление ожиданиями заказчика](soft-skills/expectation-management.md) 🟢
+- [Работа в команде](soft-skills/teamwork.md) 🟢
+- [Личностные качества](soft-skills/qualities/index.md) 🟢
+  - [Аналитическое мышление](soft-skills/qualities/analytical-thinking.md) 🟢
+  - [Адаптивность](soft-skills/qualities/adaptability.md) 🟢
+  - [Проактивность](soft-skills/qualities/proactivity.md) 🟢
+  - [Ответственность](soft-skills/qualities/responsibility.md) 🟢
+  - [Общительность](soft-skills/qualities/sociability.md) 🟢
+  - [Обучаемость](soft-skills/qualities/learnability.md) 🟢
+  - [Критическое мышление](soft-skills/qualities/critical-thinking.md) 🟢
