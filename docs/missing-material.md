@@ -9,11 +9,11 @@
 - Проектирование и архитектура: 0
 - Процесс разработки: 0
 - Методологии разработки ПО: 0
-- Инструменты: 10
+- Инструменты: 0
 - Общие компетенции: 23
 - Смежные навыки: 16
 - Софт-скилы: 20
-- Итого: 69
+- Итого: 59
 
 ## Нотации и моделирование
 
@@ -37,16 +37,7 @@
 
 ## Инструменты
 
-- [Консоль браузера](tools/browser-console.md)
-- [Camunda Modeler](tools/camunda-modeler.md)
-- [Confluence](tools/confluence.md)
-- [Draw.io](tools/drawio.md)
-- [Figma](tools/figma.md)
-- [Jira](tools/jira.md)
-- [PlantUML](tools/plantuml.md)
-- [Postman](tools/postman.md)
-- [SOAP UI](tools/soap-ui.md)
-- [Swagger](tools/swagger.md)
+Раздел заполнен.
 
 ## Общие компетенции
 

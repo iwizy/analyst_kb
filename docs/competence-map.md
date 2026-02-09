@@ -210,18 +210,18 @@
   - [LeSS](methodologies/frameworks/less.md) 🟢
   - [PDCA](methodologies/frameworks/pdca.md) 🟢
 
-## Инструменты 🔴
+## Инструменты 🟢
 
-- [PlantUML](tools/plantuml.md) 🔴
-- [Camunda Modeler](tools/camunda-modeler.md) 🔴
-- [JIRA](tools/jira.md) 🔴
-- [Confluence](tools/confluence.md) 🔴
-- [Swagger](tools/swagger.md) 🔴
-- [Postman](tools/postman.md) 🔴
-- [SOAP UI](tools/soap-ui.md) 🔴
-- [Figma](tools/figma.md) 🔴
-- [Draw.io](tools/drawio.md) 🔴
-- [Консоль браузера](tools/browser-console.md) 🔴
+- [PlantUML](tools/plantuml.md) 🟢
+- [Camunda Modeler](tools/camunda-modeler.md) 🟢
+- [Jira](tools/jira.md) 🟢
+- [Confluence](tools/confluence.md) 🟢
+- [Swagger](tools/swagger.md) 🟢
+- [Postman](tools/postman.md) 🟢
+- [SOAP UI](tools/soap-ui.md) 🟢
+- [Figma](tools/figma.md) 🟢
+- [Draw.io](tools/drawio.md) 🟢
+- [Консоль браузера](tools/browser-console.md) 🟢
 
 ## Общие компетенции 🔴
 
