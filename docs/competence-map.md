@@ -223,31 +223,31 @@
 - [Draw.io](tools/drawio.md) 🟢
 - [Консоль браузера](tools/browser-console.md) 🟢
 
-## Общие компетенции 🔴
+## Общие компетенции 🟢
 
-- [Оценка задач и рисков](common-competencies/estimation-risks/index.md) 🔴
-  - [Оценка трудоёмкости](common-competencies/estimation-risks/effort-estimation.md) 🔴
-  - [Выявление рисков](common-competencies/estimation-risks/risk-identification.md) 🔴
-  - [Управление рисками](common-competencies/estimation-risks/risk-management.md) 🔴
-- [Стандарты и своды знаний](common-competencies/standards/index.md) 🔴
-  - [BABOK](common-competencies/standards/babok.md) 🔴
-  - [SEBOK](common-competencies/standards/sebok.md) 🔴
-  - [DAMA DMBOK](common-competencies/standards/dama-dmbok.md) 🔴
-  - [ITIL](common-competencies/standards/itil.md) 🔴
-  - [COBIT](common-competencies/standards/cobit.md) 🔴
-  - [CBAP](common-competencies/standards/cbap.md) 🔴
-  - [CPRE](common-competencies/standards/cpre.md) 🔴
-  - [ГОСТ 19](common-competencies/standards/gost-19.md) 🔴
-  - [ГОСТ 34](common-competencies/standards/gost-34.md) 🔴
-  - [PMBOK](common-competencies/standards/pmbok.md) 🔴
-  - [ISO 12207](common-competencies/standards/iso-12207.md) 🔴
-  - [ISO 15288](common-competencies/standards/iso-15288.md) 🔴
-  - [IEEE](common-competencies/standards/ieee.md) 🔴
-  - [ARIS](common-competencies/standards/aris.md) 🔴
-- [Техники](common-competencies/techniques/index.md) 🔴
-  - [SWOT](common-competencies/techniques/swot.md) 🔴
-  - [5 Why](common-competencies/techniques/five-why.md) 🔴
-  - [Mind Map](common-competencies/techniques/mind-map.md) 🔴
+- [Оценка задач и рисков](common-competencies/estimation-risks/index.md) 🟢
+  - [Оценка трудоемкости](common-competencies/estimation-risks/effort-estimation.md) 🟢
+  - [Выявление рисков](common-competencies/estimation-risks/risk-identification.md) 🟢
+  - [Управление рисками](common-competencies/estimation-risks/risk-management.md) 🟢
+- [Стандарты и своды знаний](common-competencies/standards/index.md) 🟢
+  - [BABOK](common-competencies/standards/babok.md) 🟢
+  - [SEBOK](common-competencies/standards/sebok.md) 🟢
+  - [DAMA DMBOK](common-competencies/standards/dama-dmbok.md) 🟢
+  - [ITIL](common-competencies/standards/itil.md) 🟢
+  - [COBIT](common-competencies/standards/cobit.md) 🟢
+  - [CBAP](common-competencies/standards/cbap.md) 🟢
+  - [CPRE](common-competencies/standards/cpre.md) 🟢
+  - [ГОСТ 19](common-competencies/standards/gost-19.md) 🟢
+  - [ГОСТ 34](common-competencies/standards/gost-34.md) 🟢
+  - [PMBOK](common-competencies/standards/pmbok.md) 🟢
+  - [ISO 12207](common-competencies/standards/iso-12207.md) 🟢
+  - [ISO 15288](common-competencies/standards/iso-15288.md) 🟢
+  - [IEEE](common-competencies/standards/ieee.md) 🟢
+  - [ARIS](common-competencies/standards/aris.md) 🟢
+- [Техники](common-competencies/techniques/index.md) 🟢
+  - [SWOT](common-competencies/techniques/swot.md) 🟢
+  - [5 Why](common-competencies/techniques/five-why.md) 🟢
+  - [Mind Map](common-competencies/techniques/mind-map.md) 🟢
 
 ## Смежные навыки 🔴
 

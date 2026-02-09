@@ -10,10 +10,10 @@
 - Процесс разработки: 0
 - Методологии разработки ПО: 0
 - Инструменты: 0
-- Общие компетенции: 23
+- Общие компетенции: 0
 - Смежные навыки: 16
 - Софт-скилы: 20
-- Итого: 59
+- Итого: 36
 
 ## Нотации и моделирование
 
@@ -41,29 +41,7 @@
 
 ## Общие компетенции
 
-- [Оценка трудоемкости](common-competencies/estimation-risks/effort-estimation.md)
-- [Оценка задач и рисков](common-competencies/estimation-risks/index.md)
-- [Выявление рисков](common-competencies/estimation-risks/risk-identification.md)
-- [Управление рисками](common-competencies/estimation-risks/risk-management.md)
-- [ARIS](common-competencies/standards/aris.md)
-- [BABOK](common-competencies/standards/babok.md)
-- [CBAP](common-competencies/standards/cbap.md)
-- [COBIT](common-competencies/standards/cobit.md)
-- [CPRE](common-competencies/standards/cpre.md)
-- [DAMA DMBOK](common-competencies/standards/dama-dmbok.md)
-- [ГОСТ 19](common-competencies/standards/gost-19.md)
-- [ГОСТ 34](common-competencies/standards/gost-34.md)
-- [IEEE](common-competencies/standards/ieee.md)
-- [Стандарты и своды знаний](common-competencies/standards/index.md)
-- [ISO 12207](common-competencies/standards/iso-12207.md)
-- [ISO 15288](common-competencies/standards/iso-15288.md)
-- [ITIL](common-competencies/standards/itil.md)
-- [PMBOK](common-competencies/standards/pmbok.md)
-- [SEBOK](common-competencies/standards/sebok.md)
-- [5 Why](common-competencies/techniques/five-why.md)
-- [Техники](common-competencies/techniques/index.md)
-- [Mind Map](common-competencies/techniques/mind-map.md)
-- [SWOT](common-competencies/techniques/swot.md)
+Раздел заполнен.
 
 ## Смежные навыки
 
