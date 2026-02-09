@@ -1,327 +1,202 @@
 # PlantUML
 
-PlantUML - язык описания диаграмм в текстовом формате. Для системного аналитика
-это рабочий инструмент, который помогает держать модели рядом с требованиями,
-быстро вносить изменения и обсуждать решения с командой в одном артефакте.
+PlantUML - текстовый язык для построения диаграмм. Для системного аналитика это
+удобный формат, чтобы хранить схемы рядом с требованиями, быстро обновлять их и
+прозрачно ревьюить изменения.
 
-## Зачем это системному аналитику
+## Краткая база
 
-- быстро моделировать сценарии взаимодействий и спорные точки процесса;
-- формализовывать структуру данных и связи между сущностями;
-- синхронизировать бизнес- и технические термины в одном представлении;
-- упрощать ревью изменений: текст диаграммы читается как обычный diff.
-
-## Базовые правила синтаксиса
-
-### Каркас любой диаграммы
+### Минимальная структура
 
 ```kroki-plantuml
 @startuml
-' комментарий
-actor "Пользователь" as User
-participant "API" as API
-User -> API : Запрос
-API --> User : Ответ
+actor User
+participant API
+User -> API : request
+API --> User : response
 @enduml
 ```
 
-### Ключевые элементы языка
+### Синтаксическая шпаргалка
 
-- объявления: `actor`, `participant`, `database`, `entity`, `component`, `node`;
-- связи: `->`, `-->`, подпись после `:`;
-- ветвления: `alt / else / end`, `opt / end`, `loop / end`, `par / end`;
-- заметки: `note right of`, `note left of`, `note over`;
-- форматирование: `title`, `legend`, `skinparam`, `<style>`.
+- блок диаграммы: `@start...` / `@end...`;
+- комментарий: `' текст`;
+- псевдоним элемента: `"Long Name" as LN`;
+- подпись связи: `A -> B : message`;
+- заметки: `note right of A: text`;
+- группировки: `package`, `rectangle`, `frame`;
+- ветвления и циклы: `alt/else/end`, `opt/end`, `loop/end`, `par/end`;
+- нумерация шагов: `autonumber`.
 
-### Универсальные рекомендации
+### Базовые принципы качества
 
-- одна диаграмма = один вопрос, который она объясняет;
-- стабильный уровень детализации внутри одной схемы;
-- термины в диаграмме должны совпадать с требованиями и контрактами;
-- обязательно показывайте альтернативные/ошибочные ветки в критичных сценариях.
+- одна диаграмма отвечает на один вопрос;
+- единая терминология с требованиями и контрактами;
+- читаемые имена без `service1/module2`;
+- критичные альтернативы и ошибки отражены явно.
 
-## Полный каталог диаграмм PlantUML
+## Галерея примеров по типам диаграмм
 
-Ниже перечислены все ключевые типы диаграмм, которые поддерживает PlantUML на
-практике для аналитической и инженерной документации.
+### UML
 
-### UML-диаграммы
-
-| Тип | Для чего использовать | Базовый старт |
-| --- | --- | --- |
-| Sequence | взаимодействия во времени, API и интеграции | `@startuml` |
-| Use Case | границы функциональности и роли пользователей | `@startuml` |
-| Class | модель классов, атрибутов, зависимостей | `@startuml` |
-| Object | снимок объектов и их связей в конкретный момент | `@startuml` |
-| Activity | поток шагов и условия переходов | `@startuml` |
-| Component | состав системы и связи между компонентами | `@startuml` |
-| Deployment | размещение артефактов по узлам инфраструктуры | `@startuml` |
-| State Machine | состояния объекта и переходы | `@startuml` |
-| Timing | временная шкала и изменение состояния сигналов | `@startuml` |
-
-### Не-UML диаграммы и нотации
-
-| Тип | Для чего использовать | Базовый старт |
-| --- | --- | --- |
-| ER (Information Engineering, crow's foot) | логическая модель таблиц, PK/FK, кардинальности | `@startuml` |
-| ER (Chen / EER) | концептуальная ER-модель (сущности, атрибуты, связи) | `@startchen` |
-| ArchiMate | enterprise-архитектура: бизнес, приложения, технология | `@startuml` |
-| Network (nwdiag) | сетевые сегменты и связи узлов | `@startnwdiag` |
-| Wireframe (SALT) | простые UI-макеты и формы | `@startsalt` |
-| SDL | событийные/сигнальные модели (Specification and Description Language) | `@startsdl` |
-| Ditaa | ASCII-эскизы блок-схем | `@startditaa` |
-| Gantt | сроки, зависимости, дорожные карты | `@startgantt` |
-| Chronology | временная линия событий | `@startchronology` |
-| MindMap | иерархия идей и декомпозиция тем | `@startmindmap` |
-| WBS | структура работ (Work Breakdown Structure) | `@startwbs` |
-| EBNF | описание грамматик и синтаксиса | `@startebnf` |
-| Regex | визуализация регулярных выражений | `@startregex` |
-| JSON data | визуализация структуры JSON | `@startjson` |
-| YAML data | визуализация структуры YAML | `@startyaml` |
-| Chart | графики (bar/line/area/scatter и др.) | `@startchart` |
-| Mathematics (AsciiMath/JLaTeXMath) | формулы и математические выражения в схемах | `@startuml` |
-
-### Дополнительно через библиотеки/расширения
-
-- C4-представления (Context/Container/Component/Code) через C4-библиотеки;
-- BPMN-подобные схемы через пользовательские библиотеки и макросы;
-- доменные шаблоны (например, security, cloud, enterprise) через include-наборы.
-
-## Sequence: базовый синтаксис и практическая шпаргалка
-
-Sequence показывает, кто, кому и в какой последовательности отправляет сообщения.
-
-### Участники
-
-- `actor` - внешний пользователь/роль;
-- `participant` - сервис, модуль, gateway;
-- `database` - БД/хранилище;
-- `queue` - брокер/очередь событий.
+#### Sequence
 
 ```kroki-plantuml
 @startuml
+autonumber
 actor User
 participant Web
 participant API
-database DB
-queue MQ
-
-User -> Web : submit form
+User -> Web : submit
 Web -> API : POST /orders
-API -> DB : insert order
-API -> MQ : publish OrderCreated
-API --> Web : 201 Created
-Web --> User : Заказ принят
+API --> Web : 201
+Web --> User : success
 @enduml
 ```
 
-### Вызовы, ответы, активация
-
-```kroki-plantuml
-@startuml
-autonumber
-actor Client
-participant Auth
-database Users
-
-Client -> Auth : POST /login
-activate Auth
-Auth -> Users : findByEmail()
-Users --> Auth : user
-Auth --> Client : 200 token
-deactivate Auth
-@enduml
-```
-
-Практика:
-
-- используйте `autonumber`, когда нужно ссылаться на шаги в требованиях;
-- `activate/deactivate` удобно для длинных цепочек с блокировками;
-- для ответов используйте `-->`, чтобы визуально отделять call и return.
-
-### Ветвления и ошибки
-
-```kroki-plantuml
-@startuml
-actor User
-participant API
-participant Risk
-
-User -> API : POST /loan/apply
-alt Валидация успешна
-  API -> Risk : check(application)
-  alt Риск допустим
-    API --> User : 201 APPROVED
-  else Риск высокий
-    API --> User : 422 REJECTED
-  end
-else Ошибка валидации
-  API --> User : 400 VALIDATION_ERROR
-end
-@enduml
-```
-
-### Полный практический пример: логин + MFA
-
-```kroki-plantuml
-@startuml
-autonumber
-actor "Пользователь" as User
-participant "Web App" as Web
-participant "Auth API" as Auth
-database "User DB" as UDB
-participant "MFA Service" as MFA
-
-User -> Web : Ввод логина/пароля
-Web -> Auth : POST /auth/login
-activate Auth
-Auth -> UDB : findUser(email)
-UDB --> Auth : user + password_hash
-
-alt Пароль корректный
-  Auth -> MFA : sendOtp(userId)
-  MFA --> Auth : otp_sent
-  Auth --> Web : 202 MFA_REQUIRED
-  Web --> User : Запрос OTP
-  User -> Web : Ввод OTP
-  Web -> Auth : POST /auth/mfa/verify
-  Auth -> MFA : verifyOtp(code)
-  alt OTP валиден
-    MFA --> Auth : ok
-    Auth --> Web : 200 access_token
-    Web --> User : Успешный вход
-  else OTP невалиден
-    MFA --> Auth : failed
-    Auth --> Web : 401 INVALID_OTP
-    Web --> User : Ошибка OTP
-  end
-else Пароль неверный
-  Auth --> Web : 401 INVALID_CREDENTIALS
-  Web --> User : Ошибка авторизации
-end
-
-deactivate Auth
-@enduml
-```
-
-### Частые ошибки в sequence
-
-- смешение бизнес-шагов и низкоуровневых сетевых деталей в одной схеме;
-- отсутствие негативных веток для критичных операций;
-- участники с абстрактными именами (`service1`, `moduleA`);
-- схема на 20+ участников вместо декомпозиции по сценариям.
-
-## ERD: базовый синтаксис и практическая шпаргалка
-
-Для рабочих моделей БД чаще используется IE-подход (`entity` + кардинальности).
-Для концептуального моделирования можно применять Chen-нотацию.
-
-### IE-стиль (логическая модель)
-
-```kroki-plantuml
-@startuml
-entity "customers" as customers {
-  *id : bigint <<PK>>
-  --
-  *email : varchar(255) <<UQ>>
-  full_name : varchar(255)
-  *created_at : timestamp
-}
-
-entity "orders" as orders {
-  *id : bigint <<PK>>
-  --
-  *customer_id : bigint <<FK>>
-  *status : varchar(32)
-  *created_at : timestamp
-}
-
-customers ||--o{ orders : places
-@enduml
-```
-
-### Кардинальности (минимум для чтения)
-
-- `|` - ровно один;
-- `o` - ноль (опционально);
-- `{` - много.
-
-Примеры:
-
-- `A ||--|| B` - 1:1;
-- `A ||--o{ B` - 1:0..*;
-- `A o|--|| B` - 0..1:1.
-
-### Полный практический пример ERD
+#### Use Case
 
 ```kroki-plantuml
 @startuml
 left to right direction
-hide circle
-skinparam linetype ortho
+actor Customer
+usecase "Place order" as UC1
+usecase "Track order" as UC2
+Customer --> UC1
+Customer --> UC2
+@enduml
+```
 
+#### Class
+
+```kroki-plantuml
+@startuml
+class Order {
+  +id
+  +status
+  +submit()
+}
+class PaymentService {
+  +authorize(order)
+}
+Order --> PaymentService
+@enduml
+```
+
+#### Object
+
+```kroki-plantuml
+@startuml
+object order1 {
+  id = 1001
+  status = NEW
+}
+object payment1 {
+  method = card
+}
+order1 --> payment1
+@enduml
+```
+
+#### Activity
+
+```kroki-plantuml
+@startuml
+start
+:Create request;
+if (Valid?) then (Yes)
+  :Process;
+else (No)
+  :Reject;
+endif
+stop
+@enduml
+```
+
+#### Component
+
+```kroki-plantuml
+@startuml
+component "Web" as Web
+component "API" as API
+database "DB" as DB
+Web --> API
+API --> DB
+@enduml
+```
+
+#### Deployment
+
+```kroki-plantuml
+@startuml
+node "K8s Cluster" {
+  node "Pod A" {
+    artifact "api.jar"
+  }
+}
+database "PostgreSQL" as DB
+"api.jar" --> DB
+@enduml
+```
+
+#### State Machine
+
+```kroki-plantuml
+@startuml
+[*] --> Draft
+Draft --> Approved : approve
+Approved --> Closed : close
+Closed --> [*]
+@enduml
+```
+
+#### Timing
+
+```kroki-plantuml
+@startuml
+robust "API" as API
+concise "Client" as C
+@0
+API is Idle
+C is Waiting
+@5
+API is Busy
+C is Waiting
+@10
+API is Idle
+C is Done
+@enduml
+```
+
+### Данные и архитектура
+
+#### ER (IE / crow's foot)
+
+```kroki-plantuml
+@startuml
 entity "customers" as customers {
   *id : bigint <<PK>>
   --
-  *email : varchar(255) <<UQ>>
-  full_name : varchar(255)
-  *created_at : timestamp
+  *email : varchar(255)
 }
-
-entity "products" as products {
-  *id : bigint <<PK>>
-  --
-  *sku : varchar(64) <<UQ>>
-  *name : varchar(255)
-  *price : numeric(12,2)
-}
-
 entity "orders" as orders {
   *id : bigint <<PK>>
   --
   *customer_id : bigint <<FK>>
-  *status : varchar(32)
-  *created_at : timestamp
 }
-
-entity "order_items" as order_items {
-  *id : bigint <<PK>>
-  --
-  *order_id : bigint <<FK>>
-  *product_id : bigint <<FK>>
-  *qty : integer
-  *unit_price : numeric(12,2)
-}
-
-entity "payments" as payments {
-  *id : bigint <<PK>>
-  --
-  *order_id : bigint <<FK>>
-  *status : varchar(32)
-  provider_txn_id : varchar(128)
-}
-
-customers ||--o{ orders : places
-orders ||--o{ order_items : contains
-products ||--o{ order_items : referenced_by
-orders ||--o{ payments : paid_by
+customers ||--o{ orders
 @enduml
 ```
 
-### Chen-стиль (концептуальный ER)
-
-Используется для концептуальной модели предметной области, когда важно
-обсудить сущности и бизнес-связи до физической структуры таблиц.
+#### ER (Chen)
 
 ```kroki-plantuml
 @startchen
 entity CUSTOMER {
   name
-  email
 }
 entity ORDER {
   number
-  created_at
 }
 relationship PLACES {
 }
@@ -330,35 +205,177 @@ PLACES -1- ORDER
 @endchen
 ```
 
-### Практика моделирования ERD для аналитика
+#### ArchiMate
 
-1. Начинайте с бизнес-сущностей и их жизненного цикла.
-1. Сразу фиксируйте обязательность данных и уникальные ограничения.
-1. Для каждой связи указывайте кардинальность и смысл зависимости.
-1. Проверяйте, что модель покрывает операции чтения, записи и отчетности.
-1. Выносите технические детали индексов и партицирования в отдельные материалы.
+```kroki-plantuml
+@startuml
+!include <archimate/Archimate>
+Business_Actor(customer, "Customer")
+Business_Process(onboarding, "Onboarding")
+Application_Component(app, "Onboarding App")
+Rel_Assignment(customer, onboarding)
+Rel_Serving(app, onboarding)
+@enduml
+```
 
-### Частые ошибки в ERD
+#### Network (nwdiag)
 
-- нет `PK/FK`, из-за чего теряется понимание связности;
-- отсутствуют кардинальности или они противоречат бизнес-правилам;
-- смешение концептуальной и физической модели в одном артефакте;
-- избыточная детализация полей на ранних стадиях анализа.
+```kroki-plantuml
+@startnwdiag
+nwdiag {
+  network dmz {
+    web01;
+    web02;
+  }
+  network internal {
+    app01;
+    db01;
+    app01 -- db01;
+  }
+}
+@endnwdiag
+```
 
-## Как сделать статью и диаграммы реально полезными в работе
+### Планирование и структура
 
-- привязывайте каждую диаграмму к конкретному требованию/истории;
-- держите версию диаграммы синхронной с контрактом API или моделью данных;
-- добавляйте краткий текст: "что показывает схема" и "какое решение из нее следует";
-- используйте диаграммы как вход в refinement и как материал для приемки.
+#### Gantt
 
-## Чек-лист качества диаграммы
+```kroki-plantuml
+@startgantt
+Project starts 2026-02-01
+[Analysis] lasts 5 days
+[Build] lasts 7 days
+[Build] starts at [Analysis]'s end
+@endgantt
+```
+
+#### MindMap
+
+```kroki-plantuml
+@startmindmap
+* Product
+** Requirements
+** Architecture
+** Release
+@endmindmap
+```
+
+#### WBS
+
+```kroki-plantuml
+@startwbs
+* Program
+** Analysis
+*** Interviews
+*** Models
+** Delivery
+*** Build
+*** Test
+@endwbs
+```
+
+### Текстовые и формальные нотации
+
+#### SALT (Wireframe)
+
+```kroki-plantuml
+@startsalt
+{
+  + Login form
+  User name | "john"
+  Password  | "****"
+  [Submit] [Cancel]
+}
+@endsalt
+```
+
+#### Ditaa
+
+```kroki-plantuml
+@startditaa
++--------+   +--------+
+| Client |-->| Server |
++--------+   +--------+
+@endditaa
+```
+
+#### EBNF
+
+```kroki-plantuml
+@startebnf
+expression = term , { ("+" | "-") , term } ;
+term = factor , { ("*" | "/") , factor } ;
+factor = number | "(" , expression , ")" ;
+@endebnf
+```
+
+#### Regex
+
+```kroki-plantuml
+@startregex
+^([A-Z]{3})-(\\d{4})$
+@endregex
+```
+
+### Структуры данных и графики
+
+#### JSON
+
+```kroki-plantuml
+@startjson
+{
+  "orderId": 1001,
+  "status": "NEW",
+  "items": ["A", "B"]
+}
+@endjson
+```
+
+#### YAML
+
+```kroki-plantuml
+@startyaml
+order:
+  id: 1001
+  status: NEW
+  items:
+    - A
+    - B
+@endyaml
+```
+
+#### Chart
+
+```kroki-plantuml
+@startchart
+bar
+"Q1" 10
+"Q2" 15
+"Q3" 7
+@endchart
+```
+
+## Практика использования в аналитике
+
+- прикладывайте диаграмму к конкретной user story/требованию;
+- фиксируйте версию схемы в том же изменении, где меняется логика;
+- держите отдельные схемы для бизнес-потока, интеграций и данных;
+- используйте диаграммы как обязательный артефакт на уточнении и приемке.
+
+## Частые ошибки
+
+- перегруженные схемы с несколькими уровнями абстракции;
+- устаревшие диаграммы после изменения API или модели данных;
+- отсутствие связки между схемой и конкретным требованием;
+- неявные условия ошибок и отказов в критичных сценариях.
+
+## Чек-лист перед публикацией
 
 - Диаграмма отвечает на конкретный вопрос.
-- Термины совпадают с глоссарием и требованиями.
-- Для `sequence` есть альтернативы/ошибки в критичных точках.
-- Для `ERD` указаны ключи и кардинальности.
-- Диаграмма читается без устных пояснений и не перегружена.
+- Имена и статусы совпадают с требованиями.
+- Схема читается без устных пояснений.
+- Альтернативные/ошибочные ветки отражены при необходимости.
+- Диаграмма актуальна к последним изменениям.
 
 ## Смежные материалы
 
