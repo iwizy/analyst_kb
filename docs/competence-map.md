@@ -9,92 +9,92 @@
 - `🟢` - тема заполнена базовым материалом и примерами.
 - `🔴` - тема в работе и требует дальнейшего наполнения.
 
-## Работа с требованиями 🔴
+## Работа с требованиями 🟢
 
-- [Определение границ системы](requirements/system-boundaries/index.md) 🔴
-  - [Зона ответственности проекта](requirements/system-boundaries/responsibility-zone.md) 🔴
-  - [Ограничения](requirements/system-boundaries/constraints.md) 🔴
-- [Уровни требований](requirements/levels/index.md) 🔴
-  - [Бизнес-требования](requirements/levels/business.md) 🔴
-  - [Пользовательские требования](requirements/levels/user.md) 🔴
-  - [Системные требования](requirements/levels/system.md) 🔴
-- [Виды требований](requirements/types/index.md) 🔴
-  - [Функциональные требования](requirements/types/functional.md) 🔴
-  - [Нефункциональные требования](requirements/types/non-functional.md) 🔴
-- [Сбор требований](requirements/elicitation.md) 🔴
-- [Валидация и верификация требований](requirements/validation.md) 🔴
-- [Подходы к спецификации требований](requirements/specification-approaches.md) 🔴
-- [Критерии качества требований](requirements/quality.md) 🔴
-- [Структурирование требований](requirements/structuring.md) 🔴
-- [Декомпозиция требований](requirements/decomposition.md) 🔴
-- [Управление требованиями](requirements/management/index.md) 🔴
-  - [Трассировка требований](requirements/management/traceability.md) 🔴
-  - [Поддержка актуальности требований](requirements/management/relevance.md) 🔴
-  - [Управление изменениями требований](requirements/management/change-management.md) 🔴
-  - [Согласование требований](requirements/management/coordination.md) 🔴
-  - [Приоритизация требований](requirements/management/prioritization.md) 🔴
-- [Выявление заинтересованных лиц (стейкхолдеров)](requirements/stakeholders.md) 🔴
+- [Определение границ системы](requirements/system-boundaries/index.md) 🟢
+  - [Зона ответственности проекта](requirements/system-boundaries/responsibility-zone.md) 🟢
+  - [Ограничения](requirements/system-boundaries/constraints.md) 🟢
+- [Уровни требований](requirements/levels/index.md) 🟢
+  - [Бизнес-требования](requirements/levels/business.md) 🟢
+  - [Пользовательские требования](requirements/levels/user.md) 🟢
+  - [Системные требования](requirements/levels/system.md) 🟢
+- [Виды требований](requirements/types/index.md) 🟢
+  - [Функциональные требования](requirements/types/functional.md) 🟢
+  - [Нефункциональные требования](requirements/types/non-functional.md) 🟢
+- [Сбор требований](requirements/elicitation.md) 🟢
+- [Валидация и верификация требований](requirements/validation.md) 🟢
+- [Подходы к спецификации требований](requirements/specification-approaches.md) 🟢
+- [Критерии качества требований](requirements/quality.md) 🟢
+- [Структурирование требований](requirements/structuring.md) 🟢
+- [Декомпозиция требований](requirements/decomposition.md) 🟢
+- [Управление требованиями](requirements/management/index.md) 🟢
+  - [Трассировка требований](requirements/management/traceability.md) 🟢
+  - [Поддержка актуальности требований](requirements/management/relevance.md) 🟢
+  - [Управление изменениями требований](requirements/management/change-management.md) 🟢
+  - [Согласование требований](requirements/management/coordination.md) 🟢
+  - [Приоритизация требований](requirements/management/prioritization.md) 🟢
+- [Выявление заинтересованных лиц (стейкхолдеров)](requirements/stakeholders.md) 🟢
 
-## Базы данных 🔴
+## Базы данных 🟢
 
-- [Типы БД](database/types/index.md) 🔴
-  - [Реляционные](database/types/relational.md) 🔴
-  - [NoSQL](database/types/nosql/index.md) 🔴
-    - [Документоориентированные](database/types/nosql/document.md) 🔴
-    - [Ключ-значение](database/types/nosql/key-value.md) 🔴
-    - [Колоночные](database/types/nosql/columnar.md) 🔴
-    - [Временной ряд](database/types/nosql/time-series.md) 🔴
-    - [Графовые](database/types/nosql/graph.md) 🔴
-    - [Поисковые](database/types/nosql/search.md) 🔴
-- [Распределённые реестры](database/distributed-ledgers/index.md) 🔴
-  - [Blockchain и смарт-контракты](database/distributed-ledgers/blockchain-and-smart-contracts.md) 🔴
-- [Проектирование модели данных](database/data-modeling.md) 🔴
-- [Нормализация и денормализация](database/normalization/index.md) 🔴
-  - [Нормальные формы](database/normalization/normal-forms.md) 🔴
-- [SQL](database/sql/index.md) 🔴
-  - [Селекты](database/sql/selects.md) 🔴
-  - [Агрегатные функции](database/sql/aggregate-functions.md) 🔴
-  - [Группировка и сортировка](database/sql/grouping-sorting.md) 🔴
-  - [Вложенные запросы](database/sql/subqueries.md) 🔴
-  - [Индексы](database/sql/indexes.md) 🔴
-  - [Хранимые процедуры и пользовательские функции](database/sql/stored-procedures-and-udf.md) 🔴
-  - [Оконные функции](database/sql/window-functions.md) 🔴
-- [Масштабирование БД](database/scaling/index.md) 🔴
-  - [Партицирование](database/scaling/partitioning.md) 🔴
-  - [Шардирование](database/scaling/sharding.md) 🔴
-- [Master Data Management (MDM)](database/mdm.md) 🔴
-- [Реплицирование данных](database/replication.md) 🔴
-- [Бэкапирование данных](database/backup.md) 🔴
+- [Типы БД](database/types/index.md) 🟢
+  - [Реляционные](database/types/relational.md) 🟢
+  - [NoSQL](database/types/nosql/index.md) 🟢
+    - [Документоориентированные](database/types/nosql/document.md) 🟢
+    - [Ключ-значение](database/types/nosql/key-value.md) 🟢
+    - [Колоночные](database/types/nosql/columnar.md) 🟢
+    - [Временной ряд](database/types/nosql/time-series.md) 🟢
+    - [Графовые](database/types/nosql/graph.md) 🟢
+    - [Поисковые](database/types/nosql/search.md) 🟢
+- [Распределённые реестры](database/distributed-ledgers/index.md) 🟢
+  - [Blockchain и смарт-контракты](database/distributed-ledgers/blockchain-and-smart-contracts.md) 🟢
+- [Проектирование модели данных](database/data-modeling.md) 🟢
+- [Нормализация и денормализация](database/normalization/index.md) 🟢
+  - [Нормальные формы](database/normalization/normal-forms.md) 🟢
+- [SQL](database/sql/index.md) 🟢
+  - [Селекты](database/sql/selects.md) 🟢
+  - [Агрегатные функции](database/sql/aggregate-functions.md) 🟢
+  - [Группировка и сортировка](database/sql/grouping-sorting.md) 🟢
+  - [Вложенные запросы](database/sql/subqueries.md) 🟢
+  - [Индексы](database/sql/indexes.md) 🟢
+  - [Хранимые процедуры и пользовательские функции](database/sql/stored-procedures-and-udf.md) 🟢
+  - [Оконные функции](database/sql/window-functions.md) 🟢
+- [Масштабирование БД](database/scaling/index.md) 🟢
+  - [Партицирование](database/scaling/partitioning.md) 🟢
+  - [Шардирование](database/scaling/sharding.md) 🟢
+- [Master Data Management (MDM)](database/mdm.md) 🟢
+- [Реплицирование данных](database/replication.md) 🟢
+- [Бэкапирование данных](database/backup.md) 🟢
 
-## Интеграции 🔴
+## Интеграции 🟢
 
-- [Проектирование API](integrations/api-design/index.md) 🔴
-  - [Сущности, атрибуты, контракты](integrations/api-design/entities-attributes-contracts.md) 🔴
-  - [Документирование API](integrations/api-design/api-documentation.md) 🔴
-  - [Форматы сериализации](integrations/api-design/serialization-formats/index.md) 🔴
-    - [JSON](integrations/api-design/serialization-formats/json.md) 🔴
-    - [XML / XSD](integrations/api-design/serialization-formats/xml-xsd.md) 🔴
-    - [YAML](integrations/api-design/serialization-formats/yaml.md) 🔴
-  - [Обратная совместимость](integrations/api-design/backward-compatibility.md) 🔴
-  - [Идемпотентность](integrations/api-design/idempotency.md) 🔴
-- [Способы интеграции](integrations/integration-methods/index.md) 🔴
-  - [API](integrations/integration-methods/api/index.md) 🔴
-    - [REST / HTTP(S)](integrations/integration-methods/api/rest-http.md) 🔴
-    - [SOAP](integrations/integration-methods/api/soap.md) 🔴
-    - [GraphQL](integrations/integration-methods/api/graphql.md) 🔴
-    - [gRPC](integrations/integration-methods/api/grpc.md) 🔴
-    - [JSON-RPC](integrations/integration-methods/api/json-rpc.md) 🔴
-    - [WebSockets](integrations/integration-methods/api/websockets.md) 🔴
-  - [Брокеры сообщений](integrations/integration-methods/message-brokers/index.md) 🔴
-    - [Kafka](integrations/integration-methods/message-brokers/kafka.md) 🔴
-    - [RabbitMQ](integrations/integration-methods/message-brokers/rabbitmq.md) 🔴
-  - [Общая БД](integrations/integration-methods/shared-database.md) 🔴
-  - [Обмен файлами](integrations/integration-methods/file-exchange.md) 🔴
-- [Сетевое взаимодействие](integrations/networking/index.md) 🔴
-  - [Модель OSI](integrations/networking/osi.md) 🔴
-  - [TCP/IP](integrations/networking/tcp-ip.md) 🔴
-  - [UDP](integrations/networking/udp.md) 🔴
-  - [Сокеты](integrations/networking/sockets.md) 🔴
+- [Проектирование API](integrations/api-design/index.md) 🟢
+  - [Сущности, атрибуты, контракты](integrations/api-design/entities-attributes-contracts.md) 🟢
+  - [Документирование API](integrations/api-design/api-documentation.md) 🟢
+  - [Форматы сериализации](integrations/api-design/serialization-formats/index.md) 🟢
+    - [JSON](integrations/api-design/serialization-formats/json.md) 🟢
+    - [XML / XSD](integrations/api-design/serialization-formats/xml-xsd.md) 🟢
+    - [YAML](integrations/api-design/serialization-formats/yaml.md) 🟢
+  - [Обратная совместимость](integrations/api-design/backward-compatibility.md) 🟢
+  - [Идемпотентность](integrations/api-design/idempotency.md) 🟢
+- [Способы интеграции](integrations/integration-methods/index.md) 🟢
+  - [API](integrations/integration-methods/api/index.md) 🟢
+    - [REST / HTTP(S)](integrations/integration-methods/api/rest-http.md) 🟢
+    - [SOAP](integrations/integration-methods/api/soap.md) 🟢
+    - [GraphQL](integrations/integration-methods/api/graphql.md) 🟢
+    - [gRPC](integrations/integration-methods/api/grpc.md) 🟢
+    - [JSON-RPC](integrations/integration-methods/api/json-rpc.md) 🟢
+    - [WebSockets](integrations/integration-methods/api/websockets.md) 🟢
+  - [Брокеры сообщений](integrations/integration-methods/message-brokers/index.md) 🟢
+    - [Kafka](integrations/integration-methods/message-brokers/kafka.md) 🟢
+    - [RabbitMQ](integrations/integration-methods/message-brokers/rabbitmq.md) 🟢
+  - [Общая БД](integrations/integration-methods/shared-database.md) 🟢
+  - [Обмен файлами](integrations/integration-methods/file-exchange.md) 🟢
+- [Сетевое взаимодействие](integrations/networking/index.md) 🟢
+  - [Модель OSI](integrations/networking/osi.md) 🟢
+  - [TCP/IP](integrations/networking/tcp-ip.md) 🟢
+  - [UDP](integrations/networking/udp.md) 🟢
+  - [Сокеты](integrations/networking/sockets.md) 🟢
 
 ## Нотации, диаграммы, моделирование 🟢
 
