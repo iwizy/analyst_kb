@@ -129,6 +129,7 @@ nav:
       - Типы баз данных:
           - Типы баз данных: database/types/index.md
           - Реляционные: database/types/relational.md
+          - NewSQL: database/types/newsql.md
           - NoSQL:
               - NoSQL: database/types/nosql/index.md
               - Документоориентированные: database/types/nosql/document.md
@@ -137,6 +138,7 @@ nav:
               - Временной ряд: database/types/nosql/time-series.md
               - Графовые: database/types/nosql/graph.md
               - Поисковые: database/types/nosql/search.md
+      - Консистентность и распределение: database/consistency-and-distribution.md
       - Распределенные реестры:
           - Распределенные реестры: database/distributed-ledgers/index.md
           - Blockchain и смарт-контракты: database/distributed-ledgers/blockchain-and-smart-contracts.md
@@ -157,7 +159,9 @@ nav:
           - Масштабирование БД: database/scaling/index.md
           - Партицирование: database/scaling/partitioning.md
           - Шардирование: database/scaling/sharding.md
+      - DWH и Data Lake: database/dwh-and-data-lake.md
       - Master Data Management (MDM): database/mdm.md
+      - Data Governance: database/data-governance.md
       - Реплицирование данных: database/replication.md
       - Бэкапирование данных: database/backup.md
 

@@ -48,6 +48,7 @@
 
 - [Типы БД](database/types/index.md) 🟢
   - [Реляционные](database/types/relational.md) 🟢
+  - [NewSQL](database/types/newsql.md) 🟢
   - [NoSQL](database/types/nosql/index.md) 🟢
     - [Документоориентированные](database/types/nosql/document.md) 🟢
     - [Ключ-значение](database/types/nosql/key-value.md) 🟢
@@ -55,6 +56,7 @@
     - [Временной ряд](database/types/nosql/time-series.md) 🟢
     - [Графовые](database/types/nosql/graph.md) 🟢
     - [Поисковые](database/types/nosql/search.md) 🟢
+- [Консистентность и распределение](database/consistency-and-distribution.md) 🟢
 - [Распределённые реестры](database/distributed-ledgers/index.md) 🟢
   - [Blockchain и смарт-контракты](database/distributed-ledgers/blockchain-and-smart-contracts.md) 🟢
 - [Проектирование модели данных](database/data-modeling.md) 🟢
@@ -71,7 +73,9 @@
 - [Масштабирование БД](database/scaling/index.md) 🟢
   - [Партицирование](database/scaling/partitioning.md) 🟢
   - [Шардирование](database/scaling/sharding.md) 🟢
+- [DWH и Data Lake](database/dwh-and-data-lake.md) 🟢
 - [Master Data Management (MDM)](database/mdm.md) 🟢
+- [Data Governance](database/data-governance.md) 🟢
 - [Реплицирование данных](database/replication.md) 🟢
 - [Бэкапирование данных](database/backup.md) 🟢
 

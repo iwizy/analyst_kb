@@ -1,114 +1,94 @@
 # Оконные функции
 
-Оконные функции в SQL позволяют выполнять вычисления по строкам в рамках набора данных, сохраняя все строки результата. Это мощный инструмент, который используется для аналитики, ранжирования, вычисления агрегатов и сравнения значений между строками. В отличие от агрегатных функций, оконные функции возвращают результат для каждой строки, не группируя их.
+Оконные функции выполняют вычисления по набору строк без схлопывания результата, в отличие от `GROUP BY`. Это ключевой инструмент аналитических SQL-запросов.
 
-## Основные особенности оконных функций
+## Базовый синтаксис
 
-Работают "поверх" набора данных:
-
-- Они вычисляют значения на основе текущего состояния строк, но не изменяют их количество.
-  Используют ключевое слово OVER:
-
-- Это обязательная часть синтаксиса, которая определяет, как обрабатываются строки (группы, сортировка и др.).
-  Могут быть использованы с PARTITION BY и ORDER BY:
-
-- PARTITION BY делит строки на группы, аналогично GROUP BY, но каждая строка остаётся в результате.
-
-- ORDER BY задаёт порядок обработки строк внутри каждой группы.
-  Поддерживают широкий спектр встроенных функций:
-
-- Агрегатные функции (SUM, AVG, MIN, MAX).
-
-- Функции для ранжирования (ROW_NUMBER, RANK, DENSE_RANK, NTILE).
-
-- Функции для доступа к соседним строкам (LAG, LEAD).
-
-## Синтаксис оконных функций
-
-```text
-<Оконная функция>() OVER ( [PARTITION BY <столбец1>, <столбец2>, ...] [ORDER BY <столбец1>, <столбец2>, ...] )
+```sql
+<window_function>() OVER (
+  [PARTITION BY ...]
+  [ORDER BY ...]
+  [ROWS/RANGE frame]
+)
 ```
 
-### Элементы
+## Популярные функции
 
-- \<Оконная функция>() — функция, например, SUM, ROW_NUMBER, RANK.
-- PARTITION BY — (необязательно) делит строки на группы.
-- ORDER BY — (необязательно) задаёт порядок обработки строк внутри групп.
+- `ROW_NUMBER` — уникальная нумерация строк;
+- `RANK`, `DENSE_RANK` — ранжирование;
+- `LAG`, `LEAD` — доступ к соседним строкам;
+- `SUM/AVG/... OVER` — накопительные и скользящие агрегаты.
 
-### Примеры оконных функций
+## Примеры
 
-#### ROW_NUMBER: Нумерация строк
+### Ранжирование по сумме заказов
 
-Функция ROW_NUMBER возвращает уникальный порядковый номер каждой строки внутри группы, определённой в PARTITION BY.
-
-Пример:
-
-```text
-SELECT department_id, employee_id, ROW_NUMBER() OVER (PARTITION BY department_id ORDER BY salary DESC) AS row_num FROM employees;
+```sql
+SELECT customer_id,
+       SUM(amount) AS revenue,
+       DENSE_RANK() OVER (ORDER BY SUM(amount) DESC) AS revenue_rank
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer_id;
 ```
 
-- Каждому сотруднику в отделе присваивается уникальный номер в порядке убывания зарплаты.
-  Результат:
+### Соседние значения (LAG)
 
-#### RANK и DENSE_RANK: Ранжирование
-
-- RANK присваивает ранги строкам и пропускает следующий ранг, если есть дубликаты.
-- DENSE_RANK присваивает последовательные ранги без пропусков.
-  Пример:
-
-```text
-SELECT department_id, employee_id, salary, RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rank, DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS dense_rank FROM employees;
+```sql
+SELECT created_at::date AS day,
+       SUM(amount) AS revenue,
+       LAG(SUM(amount)) OVER (ORDER BY created_at::date) AS prev_revenue
+FROM orders
+WHERE status = 'paid'
+GROUP BY day
+ORDER BY day;
 ```
 
-Результат:
+### Накопительный итог
 
-#### Агрегатные функции (SUM, AVG, MIN, MAX)
-
-Эти функции вычисляют агрегатное значение для группы строк, но не уменьшают их количество.
-
-Пример:
-
-```text
-SELECT department_id, employee_id, salary, SUM(salary) OVER (PARTITION BY department_id) AS total_salary, AVG(salary) OVER (PARTITION BY department_id) AS avg_salary FROM employees;
+```sql
+SELECT created_at::date AS day,
+       SUM(amount) AS day_revenue,
+       SUM(SUM(amount)) OVER (ORDER BY created_at::date) AS running_total
+FROM orders
+WHERE status = 'paid'
+GROUP BY day
+ORDER BY day;
 ```
 
-Результат:
+### Скользящее среднее 7 дней
 
-#### LAG и LEAD: Доступ к соседним строкам
-
-- LAG возвращает значение из предыдущей строки.
-- LEAD возвращает значение из следующей строки.
-  Пример:
-
-```text
-SELECT employee_id, salary, LAG(salary) OVER (ORDER BY salary) AS prev_salary, LEAD(salary) OVER (ORDER BY salary) AS next_salary FROM employees;
+```sql
+SELECT day,
+       revenue,
+       AVG(revenue) OVER (
+         ORDER BY day
+         ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+       ) AS ma7
+FROM daily_revenue;
 ```
 
-Результат:
+## Где особенно полезны
 
-#### NTILE: Разбиение на группы
+- дашборды и KPI-аналитика;
+- cohort/retention отчеты;
+- anomaly detection на временных рядах;
+- топы и ранжирование в BI.
 
-Функция NTILE делит строки на указанное количество равных групп.
+## Типичные ошибки
 
-Пример:
+- неверный frame (`ROWS` vs `RANGE`);
+- отсутствие `ORDER BY` в оконной функции, где он обязателен по смыслу;
+- смешение `GROUP BY` и окон без понимания уровня агрегации.
 
-```text
-SELECT employee_id, salary, NTILE(3) OVER (ORDER BY salary DESC) AS group_num FROM employees;
-```
+## Практические рекомендации
 
-Результат:
+- сначала фиксировать grain (уровень строки) результата;
+- для читаемости использовать CTE до оконных вычислений;
+- проверять, как окно влияет на память/сортировку в плане запроса;
+- сложные вычисления материализовать в витрины.
 
-### Когда использовать оконные функции
+## Смежные материалы
 
-Анализ данных и отчёты:
-
-- Нумерация строк (например, ROW_NUMBER).
-
-- Ранжирование сотрудников по зарплатам (RANK, DENSE_RANK).
-  Сравнение данных между строками:
-
-- Анализ разницы между значениями (LAG, LEAD).
-  Сочетание агрегатов и детализации:
-
-- Одновременный расчёт суммарных значений по группам (SUM, AVG) и отображение детальных данных.
-  Оконные функции делают SQL удобным для сложной аналитики. Они объединяют мощь агрегатов, детализацию данных и возможности анализа временных рядов или последовательностей.
+- [Агрегатные функции](aggregate-functions.md)
+- [Группировка и сортировка](grouping-sorting.md)

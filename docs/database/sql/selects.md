@@ -1,132 +1,94 @@
 # Селекты
 
-Селекты (SELECT) — это одна из основных команд SQL, которая используется для извлечения данных из базы данных. Она позволяет выбирать нужные столбцы и строки из таблицы, применять фильтрацию, сортировку, группировку и объединение данных. Рассмотрим основные аспекты использования SELECT с примерами.
+`SELECT` это базовый инструмент извлечения данных в SQL. Качество `SELECT`-запросов напрямую влияет на производительность, корректность аналитики и стабильность API.
 
-## Основной синтаксис SELECT
+## Базовый шаблон
 
-```text
-SELECT [столбцы] FROM [таблица] [WHERE условия] [GROUP BY группировка] [HAVING условия для группировки] [ORDER BY сортировка] [LIMIT ограничение];
+```sql
+SELECT <columns>
+FROM <table_or_cte>
+[JOIN ...]
+[WHERE ...]
+[GROUP BY ...]
+[HAVING ...]
+[ORDER BY ...]
+[LIMIT ... OFFSET ...];
 ```
 
-## Примеры использования
+## Практические паттерны
 
-### Выбор всех данных из таблицы
+### 1. Проекция только нужных колонок
 
-```text
-SELECT * FROM employees;
+```sql
+SELECT order_id, customer_id, amount
+FROM orders
+WHERE created_at >= now() - interval '30 days';
 ```
 
-Здесь * означает, что будут выбраны все столбцы таблицы employees.
+Почему: меньше данных читается и передается.
 
-### Выбор определённых столбцов
+### 2. Фильтрация в `WHERE`
 
-```text
-SELECT first_name, last_name, salary FROM employees;
+```sql
+SELECT customer_id, amount
+FROM orders
+WHERE status = 'paid'
+  AND amount > 1000;
 ```
 
-Этот запрос выберет только столбцы first_name, last_name и salary.
+### 3. Сортировка и ограничение
 
-### Фильтрация данных с помощью WHERE
-
-```text
-SELECT first_name, salary FROM employees WHERE salary > 50000;
+```sql
+SELECT order_id, created_at, amount
+FROM orders
+ORDER BY created_at DESC
+LIMIT 100;
 ```
 
-Запрос возвращает сотрудников, у которых зарплата больше 50,000.
+### 4. Соединения таблиц
 
-Можно комбинировать условия с помощью операторов:
-
-- AND (И)
-- OR (ИЛИ)
-- NOT (НЕ)
-  Пример с несколькими условиями:
-
-```text
-SELECT first_name, salary FROM employees WHERE salary > 50000 AND department_id = 10;
+```sql
+SELECT o.order_id, c.full_name, o.amount
+FROM orders o
+JOIN customers c ON c.customer_id = o.customer_id
+WHERE o.status = 'paid';
 ```
 
-### Сортировка данных с помощью ORDER BY
+### 5. Пагинация
 
-```text
-SELECT first_name, salary FROM employees ORDER BY salary DESC;
+```sql
+SELECT order_id, created_at
+FROM orders
+ORDER BY created_at DESC
+LIMIT 50 OFFSET 100;
 ```
 
-Запрос отсортирует сотрудников по убыванию зарплаты (DESC — по убыванию, ASC — по возрастанию).
+Для больших таблиц лучше keyset pagination:
 
-### Ограничение количества строк с LIMIT
-
-```text
-SELECT first_name, salary FROM employees ORDER BY salary DESC LIMIT 5;
+```sql
+SELECT order_id, created_at
+FROM orders
+WHERE (created_at, order_id) < ('2026-02-09 12:00:00+00', 120003)
+ORDER BY created_at DESC, order_id DESC
+LIMIT 50;
 ```
 
-Этот запрос вернёт 5 сотрудников с самой высокой зарплатой.
+## Типичные ошибки
 
-### Группировка данных с GROUP BY
+- `SELECT *` в продовых запросах;
+- отсутствие `ORDER BY` при `LIMIT`;
+- неявные cartesian join;
+- фильтрация по неиндексированным полям на больших таблицах.
 
-```text
-SELECT department_id, AVG(salary) AS avg_salary FROM employees GROUP BY department_id;
-```
+## Практические рекомендации
 
-Запрос возвращает среднюю зарплату (AVG(salary)) для каждого отдела (department_id).
+- писать `SELECT` от реального use-case, а не "на всякий случай";
+- проверять план выполнения через `EXPLAIN`;
+- для горячих запросов держать контракт колонок стабильным;
+- измерять p95/p99 запросов, а не только среднее время.
 
-### Условия для группировки с HAVING
+## Смежные материалы
 
-```text
-SELECT department_id, AVG(salary) AS avg_salary FROM employees GROUP BY department_id HAVING AVG(salary) > 60000;
-```
-
-HAVING применяется для фильтрации уже агрегированных данных. В данном случае запрос возвращает только те отделы, где средняя зарплата больше 60,000.
-
-### Объединение таблиц с JOIN
-
-```text
-SELECT e.first_name, e.last_name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;
-```
-
-Этот запрос объединяет таблицы employees и departments по столбцу department_id, выводя имена сотрудников и их отделы.
-
-### Использование подзапросов
-
-Подзапросы (subqueries) позволяют использовать результат одного запроса в другом:
-
-```text
-SELECT first_name, salary FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);
-```
-
-Запрос возвращает сотрудников, чья зарплата выше средней.
-
-### Работа с агрегатными функциями
-
-- COUNT() — подсчёт строк.
-- SUM() — сумма.
-- AVG() — среднее значение.
-- MIN() / MAX() — минимальное и максимальное значения.
-  Пример:
-
-```text
-SELECT COUNT(*) AS total_employees, MAX(salary) AS highest_salary FROM employees;
-```
-
-Этот запрос подсчитает количество сотрудников и найдет максимальную зарплату.
-
-### Преобразование данных с помощью функций
-
-SQL поддерживает встроенные функции для работы с текстом, числами и датами.
-
-Пример работы с текстом:
-
-```text
-SELECT UPPER(first_name) AS uppercase_name FROM employees;
-```
-
-### Объединение результатов с UNION
-
-```text
-SELECT first_name FROM employees WHERE department_id = 10 UNION SELECT first_name FROM employees WHERE department_id = 20;
-```
-
-Запрос объединяет имена сотрудников из отделов 10 и 20 (без дублирования строк).
-
-## Заключение
-
-Команда SELECT чрезвычайно мощная и гибкая. Она позволяет выполнять простые выборки, сложные фильтрации, группировки, объединения данных и многое другое. Для повышения эффективности работы важно понимать её возможности и уметь комбинировать различные операторы.
+- [Индексы](indexes.md)
+- [Группировка и сортировка](grouping-sorting.md)
+- [Вложенные запросы](subqueries.md)

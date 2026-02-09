@@ -1,95 +1,89 @@
 # Группировка и сортировка
 
-В SQL группировка и сортировка являются важными инструментами для анализа и организации данных. Они используются для управления порядком вывода строк и для объединения данных по определённым критериям. Рассмотрим их подробнее:
+`GROUP BY` и `ORDER BY` используются в аналитических и отчетных запросах для сводной статистики и ранжирования результатов.
 
-## Группировка (GROUP BY)
+## GROUP BY
 
-Группировка позволяет объединять строки с одинаковыми значениями в одну группу, чтобы применять к ним агрегатные функции, такие как SUM(), AVG(), COUNT(), MAX(), MIN().
+`GROUP BY` объединяет строки в группы и позволяет применять агрегатные функции.
 
-### Синтаксис
-
-```text
-SELECT столбец1, столбец2, агрегатная_функция(столбец3) FROM таблица WHERE условие GROUP BY столбец1, столбец2 HAVING условие_на_группу
+```sql
+SELECT customer_id, SUM(amount) AS total_amount
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer_id;
 ```
 
-### Этапы работы
+## HAVING
 
-- WHERE — фильтрует строки перед группировкой.
-- GROUP BY — объединяет строки в группы по указанным столбцам.
-- АГРЕГАТНЫЕ ФУНКЦИИ — выполняют вычисления внутри каждой группы.
-- HAVING — фильтрует группы (аналогично WHERE, но после группировки).
+`HAVING` фильтрует уже агрегированные группы.
 
-### Пример
-
-Предположим, у вас есть таблица sales с колонками category, product и revenue. Вы хотите узнать общую выручку по категориям:
-
-```text
-SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category;
+```sql
+SELECT customer_id, SUM(amount) AS total_amount
+FROM orders
+GROUP BY customer_id
+HAVING SUM(amount) > 10000;
 ```
 
-### HAVING для фильтрации групп
+## ORDER BY
 
-Например, вывести только те категории, где выручка больше 1000:
+`ORDER BY` задает порядок строк.
 
-```text
-SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category HAVING SUM(revenue) > 1000;
+```sql
+SELECT order_id, amount
+FROM orders
+ORDER BY amount DESC, order_id ASC;
 ```
 
-## Сортировка (ORDER BY)
+## Комбинация GROUP BY + ORDER BY
 
-Сортировка используется для упорядочивания строк результата запроса на основе одного или нескольких столбцов.
-
-### Синтаксис
-
-```text
-SELECT столбец1, столбец2 FROM таблица WHERE условие ORDER BY столбец1 [ASC|DESC], столбец2 [ASC|DESC];
+```sql
+SELECT date_trunc('day', created_at) AS day,
+       COUNT(*) AS orders_cnt,
+       SUM(amount) AS revenue
+FROM orders
+WHERE status = 'paid'
+GROUP BY day
+ORDER BY day;
 ```
 
-- ASC — сортировка по возрастанию (по умолчанию).
-- DESC — сортировка по убыванию.
+## Частые сценарии
 
-### Пример
+### Топ клиентов
 
-Сортировка по одной колонке:
-
-```text
-SELECT product, revenue FROM sales ORDER BY revenue DESC;
+```sql
+SELECT customer_id, SUM(amount) AS total_amount
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer_id
+ORDER BY total_amount DESC
+LIMIT 10;
 ```
 
-Сортировка по нескольким колонкам:
+### Отчет по категориям
 
-```text
-SELECT category, product, revenue FROM sales ORDER BY category ASC, revenue DESC;
+```sql
+SELECT category, COUNT(*) AS products_cnt
+FROM products
+GROUP BY category
+ORDER BY products_cnt DESC;
 ```
 
-## Комбинирование GROUP BY и ORDER BY
+## Типичные ошибки
 
-Вы можете использовать группировку и сортировку в одном запросе. Например, если вы хотите сначала сгруппировать данные, а затем упорядочить группы по итоговым значениям:
+- использовать `HAVING` вместо `WHERE` без необходимости;
+- включать в `SELECT` поля, которых нет в `GROUP BY` и агрегатах;
+- сортировать большие выборки без нужных индексов;
+- ожидать deterministic-порядок без `ORDER BY`.
 
-### Пример
+## Практические рекомендации
 
-```text
-SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category ORDER BY total_revenue DESC;
-```
+- фильтровать как можно раньше (`WHERE` до `GROUP BY`);
+- проверять cardinality групп для оценки памяти/времени;
+- использовать материализованные витрины для тяжелых отчетов;
+- для часто используемых сводок готовить pre-aggregation.
 
-## Особенности и ограничения
+## Смежные материалы
 
-GROUP BY должен включать все столбцы, которые не используются в агрегатных функциях.
-
-```text
-SELECT category, product, SUM(revenue) FROM sales GROUP BY category, product;
-```
-
-ORDER BY может ссылаться на псевдонимы столбцов или номера их позиций:
-
-```text
-SELECT category, SUM(revenue) AS total_revenue FROM sales GROUP BY category ORDER BY total_revenue DESC;
-```
-
-HAVING нельзя использовать без GROUP BY, если нет агрегатной функции.
-
-## Заключение
-
-- Используйте GROUP BY для объединения строк в группы и применения к ним агрегатных функций.
-- Применяйте ORDER BY для сортировки результатов.
-- Комбинирование этих инструментов даёт возможность создавать сложные запросы для анализа данных.
+- [Агрегатные функции](aggregate-functions.md)
+- [Оконные функции](window-functions.md)
+- [Индексы](indexes.md)

@@ -1,175 +1,91 @@
 # Агрегатные функции
 
-Агрегатные функции в SQL — это специальные функции, которые выполняют операции над набором строк в таблице и возвращают одно обобщенное значение. Они широко используются для анализа данных и получения сводной информации, например, подсчета количества записей, нахождения суммы или среднего значения, а также поиска максимальных или минимальных значений.
+Агрегатные функции вычисляют сводные значения по набору строк.
 
-Рассмотрим основные агрегатные функции более подробно, с примерами их применения.
+## Базовые функции
 
-## COUNT — Подсчет строк
+- `COUNT` — количество строк/значений;
+- `SUM` — сумма;
+- `AVG` — среднее;
+- `MIN` / `MAX` — минимум/максимум.
 
-Функция COUNT используется для подсчета количества строк в таблице или значений в конкретном столбце. Она полезна для определения размера набора данных.
+## Примеры
 
-### Примеры
+### COUNT
 
-- Общее количество записей в таблице:
-
-```text
-SELECT COUNT(*) AS total_employees FROM employees;
+```sql
+SELECT COUNT(*) AS total_orders
+FROM orders;
 ```
 
-Здесь COUNT(\*) подсчитывает все строки в таблице employees, включая строки с NULL.
-
-- Подсчет строк с условием:
-
-```text
-SELECT COUNT(*) AS sales_employees FROM employees WHERE department = 'Sales';
+```sql
+SELECT COUNT(amount) AS amount_non_null
+FROM orders;
 ```
 
-Этот запрос подсчитывает количество сотрудников, работающих в отделе Sales.
+### SUM/AVG
 
-- Подсчет значений в конкретном столбце:
-
-```text
-SELECT COUNT(salary) AS salary_count FROM employees;
+```sql
+SELECT SUM(amount) AS total_revenue,
+       AVG(amount) AS avg_order
+FROM orders
+WHERE status = 'paid';
 ```
 
-COUNT(salary) подсчитывает только строки, где столбец salary не равен NULL.
+### MIN/MAX
 
-## SUM — Суммирование значений
-
-Функция SUM возвращает сумму значений в указанном числовом столбце. Она часто применяется для подсчета общих затрат, доходов и других числовых данных.
-
-### Примеры
-
-- Общая сумма зарплат сотрудников:
-
-```text
-SELECT SUM(salary) AS total_salary FROM employees;
+```sql
+SELECT MIN(amount) AS min_order,
+       MAX(amount) AS max_order
+FROM orders;
 ```
 
-Этот запрос вычисляет общую сумму всех зарплат.
+## Агрегация с группировкой
 
-- Сумма зарплат с фильтром:
-
-```text
-SELECT SUM(salary) AS total_it_salary FROM employees WHERE department = 'IT';
+```sql
+SELECT customer_id,
+       COUNT(*) AS orders_cnt,
+       SUM(amount) AS revenue
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer_id;
 ```
 
-Этот запрос подсчитывает сумму зарплат только тех сотрудников, которые работают в отделе IT.
+## FILTER (PostgreSQL)
 
-## AVG — Среднее значение
-
-Функция AVG вычисляет среднее арифметическое для числового столбца. Она полезна для анализа данных, таких как средняя зарплата, средняя цена или производительность.
-
-### Примеры
-
-- Средняя зарплата всех сотрудников:
-
-```text
-SELECT AVG(salary) AS average_salary FROM employees;
+```sql
+SELECT
+  COUNT(*) FILTER (WHERE status = 'paid')   AS paid_cnt,
+  COUNT(*) FILTER (WHERE status = 'refund') AS refund_cnt
+FROM orders;
 ```
 
-Функция суммирует все значения столбца salary и делит их на количество строк.
+## DISTINCT внутри агрегатов
 
-- Средняя зарплата в разрезе отделов:
-
-```text
-SELECT department, AVG(salary) AS average_salary FROM employees GROUP BY department;
+```sql
+SELECT COUNT(DISTINCT customer_id) AS unique_customers
+FROM orders;
 ```
 
-Этот запрос группирует сотрудников по отделам и вычисляет среднюю зарплату для каждого отдела.
+## NULL и агрегаты
 
-## MAX — Максимальное значение
+- `COUNT(*)` считает все строки;
+- `COUNT(column)` игнорирует `NULL`;
+- `SUM/AVG/MIN/MAX` игнорируют `NULL`.
 
-Функция MAX находит наибольшее значение в указанном столбце.
+## Типичные ошибки
 
-### Примеры
+- смешивать агрегаты и неагрегированные поля без `GROUP BY`;
+- использовать `COUNT(*)` вместо `COUNT(DISTINCT ...)` в задачах уникальности;
+- не учитывать влияние `NULL` на результат.
 
-- Максимальная зарплата среди всех сотрудников:
+## Практические рекомендации
 
-```text
-SELECT MAX(salary) AS max_salary FROM employees;
-```
+- явно задавать бизнес-правила фильтрации (`status`, даты, отмены);
+- для больших отчетов использовать партиционирование/витрины;
+- сравнивать агрегаты с контрольными метриками (data quality).
 
-- Максимальная зарплата по каждому отделу:
+## Смежные материалы
 
-```text
-SELECT department, MAX(salary) AS max_salary FROM employees GROUP BY department;
-```
-
-Запрос возвращает максимальную зарплату для каждого отдела.
-
-## MIN — Минимальное значение
-
-Функция MIN находит наименьшее значение в столбце.
-
-### Примеры
-
-- Минимальная зарплата среди всех сотрудников:
-
-```text
-SELECT MIN(salary) AS min_salary FROM employees;
-```
-
-- Минимальная зарплата по каждому отделу:
-
-```text
-SELECT department, MIN(salary) AS min_salary FROM employees GROUP BY department;
-```
-
-Этот запрос возвращает минимальную зарплату в каждом отделе.
-
-## Использование GROUP BY с агрегатными функциями
-
-Для группировки данных и применения агрегатных функций используется оператор GROUP BY. Он группирует строки таблицы по значениям в одном или нескольких столбцах.
-
-### Примеры
-
-- Количество сотрудников по отделам:
-
-```text
-SELECT department, COUNT(*) AS employee_count FROM employees GROUP BY department;
-```
-
-- Общая зарплата и максимальная зарплата по отделам:
-
-```text
-SELECT department, SUM(salary) AS total_salary, MAX(salary) AS max_salary FROM employees GROUP BY department;
-```
-
-Этот запрос группирует данные по отделам и возвращает общую сумму и максимальную зарплату для каждого отдела.
-
-## Использование HAVING для фильтрации групп
-
-Оператор HAVING используется для фильтрации данных после группировки (аналогично WHERE, но для агрегированных данных).
-
-### Примеры
-
-- Отделы с общей зарплатой более 100,000:
-
-```text
-SELECT department, SUM(salary) AS total_salary FROM employees GROUP BY department HAVING SUM(salary) > 100000;
-```
-
-- Средняя зарплата в отделах с числом сотрудников более 10:
-
-```text
-SELECT department, AVG(salary) AS average_salary FROM employees GROUP BY department HAVING COUNT(*) > 10;
-```
-
-## Комбинирование нескольких агрегатных функций
-
-Вы можете использовать несколько агрегатных функций в одном запросе.
-
-### Пример
-
-- Минимальная, максимальная и средняя зарплата:
-
-```text
-SELECT MIN(salary) AS min_salary, MAX(salary) AS max_salary, AVG(salary) AS avg_salary FROM employees;
-```
-
-## Особенности агрегатных функций
-
-- Игнорирование NULL: Большинство агрегатных функций (например, SUM, AVG, MAX, MIN) игнорируют строки с NULL в целевом столбце. Однако COUNT(\*) учитывает все строки, включая те, где столбцы содержат NULL.
-- Совместное использование с фильтрацией: Для предварительной фильтрации данных используется оператор WHERE, а для фильтрации результатов группировки — HAVING.
-  Эти примеры дают вам полное понимание того, как работать с агрегатными функциями SQL и анализировать данные.
+- [Группировка и сортировка](grouping-sorting.md)
+- [Оконные функции](window-functions.md)
