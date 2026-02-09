@@ -1,52 +1,52 @@
 # Основы CI/CD
 
-CI/CD - практика непрерывной интеграции и непрерывной поставки, которая
-сокращает время от изменения кода до безопасного релиза.
+CI/CD обеспечивает короткий и предсказуемый путь от изменения в репозитории до безопасного релиза.
 
-## Что включает CI
+## CI (Continuous Integration)
 
-- частые интеграции изменений в общую ветку;
-- автоматическую сборку и запуск тестов;
-- быструю обратную связь о качестве изменений.
+- частые merge в mainline;
+- автоматическая сборка;
+- unit/integration тесты;
+- статический анализ и security scan.
 
-## Что включает CD
+## CD (Continuous Delivery/Deployment)
 
-- автоматическую подготовку релизного артефакта;
-- контролируемое развертывание в средах;
-- возможность безопасного отката.
+- автоматическая доставка в staging/prod;
+- canary/blue-green стратегии;
+- rollback и feature flags;
+- post-deploy smoke checks.
 
-## Пример пайплайна
+## Пример pipeline
 
 ```kroki-plantuml
 @startuml
 start
-:Commit / Merge;
-:Сборка;
-:Unit-тесты;
-if (Проверки успешны?) then (Да)
-  :Интеграционные тесты;
-  :Deploy в staging;
-  if (Критерии релиза выполнены?) then (Да)
-    :Deploy в production;
+:Commit/PR;
+:Build + unit tests;
+if (OK?) then (Да)
+  :Integration + contract tests;
+  if (OK?) then (Да)
+    :Deploy staging;
+    :Smoke tests;
+    if (Release approved?) then (Да)
+      :Deploy production;
+      :Monitor and verify;
+    else (Нет)
+      :Hold release;
+    endif
   else (Нет)
-    :Вернуть в backlog;
+    :Fix defects;
   endif
 else (Нет)
-  :Исправить дефекты;
+  :Fix build/tests;
 endif
 stop
 @enduml
 ```
 
-## Метрики зрелости CI/CD
+## Quality gates
 
-- lead time for changes;
-- deployment frequency;
-- change failure rate;
-- mean time to recovery (MTTR).
-
-## Чек-лист качества
-
-- Pipeline воспроизводим и версионируем.
-- Quality gates определены до релиза.
-- Есть автоматизированный rollback или feature toggle-стратегия.
+- тестовое покрытие критичного кода;
+- без блокирующих security findings;
+- успешные контрактные тесты;
+- соответствие DoD.

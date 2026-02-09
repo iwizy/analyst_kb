@@ -237,11 +237,13 @@ nav:
       - Типовые алгоритмы:
           - Типовые алгоритмы: algorithms/typical/index.md
           - Алгоритмы сортировки: algorithms/typical/sorting.md
+          - Алгоритмы поиска: algorithms/typical/searching.md
           - Теория графов и бинарные деревья: algorithms/typical/graphs-and-binary-trees.md
           - Рекурсия: algorithms/typical/recursion.md
           - Циклы: algorithms/typical/loops.md
       - Области использования алгоритмов и структур данных: algorithms/usage-areas.md
       - Сложность алгоритмов и O-нотация: algorithms/complexity-big-o.md
+      - Задачи для самопроверки: algorithms/exercises.md
 
   - Проектирование и архитектура:
       - Введение: architecture/index.md
@@ -259,10 +261,15 @@ nav:
               - MVC, MVP, MVVM: architecture/systems-architecture/architecture-types/mvc-mvp-mvvm.md
               - Peer-to-peer: architecture/systems-architecture/architecture-types/p2p.md
           - Архитектурные паттерны и антипаттерны: architecture/systems-architecture/patterns-antipatterns.md
+          - GoF-паттерны: architecture/systems-architecture/gof-patterns.md
+          - Hexagonal Architecture: architecture/systems-architecture/hexagonal-architecture.md
+          - Event Sourcing и CQRS: architecture/systems-architecture/event-sourcing-cqrs.md
           - Синхронное и асинхронное взаимодействие: architecture/systems-architecture/sync-async.md
           - Кэширование: architecture/systems-architecture/caching.md
           - Оркестрация и хореография: architecture/systems-architecture/orchestration-choreography.md
           - Масштабирование сервисов: architecture/systems-architecture/service-scaling.md
+          - Отказоустойчивость: architecture/systems-architecture/resilience.md
+          - API Gateway и Service Mesh: architecture/systems-architecture/api-gateway-service-mesh.md
           - Контейнеризация: architecture/systems-architecture/containerization.md
           - Мониторинг и поддержка: architecture/systems-architecture/monitoring-support.md
           - Облачные вычисления: architecture/systems-architecture/cloud-computing.md
@@ -297,6 +304,9 @@ nav:
 
   - Процесс разработки:
       - Введение: development-process/index.md
+      - Agile-процессы и практики: development-process/agile-processes.md
+      - Гибридные модели: development-process/hybrid-models.md
+      - Качество, документация и риски: development-process/quality-documentation-risks.md
       - Жизненный цикл программного продукта:
           - Жизненный цикл ПО: development-process/product-lifecycle/index.md
           - Этапы жизненного цикла ПО: development-process/product-lifecycle/stages.md
@@ -321,6 +331,8 @@ nav:
 
   - Методологии разработки ПО:
       - Введение: methodologies/index.md
+      - Сравнение методологий: methodologies/comparison.md
+      - Гибридные подходы: methodologies/hybrid-approaches.md
       - Waterfall:
           - Waterfall: methodologies/waterfall/index.md
           - V-образная: methodologies/waterfall/v-model.md
@@ -330,6 +342,9 @@ nav:
       - Методологии и фреймворки:
           - Методологии и фреймворки: methodologies/frameworks/index.md
           - Scrum: methodologies/frameworks/scrum.md
+          - FDD: methodologies/frameworks/fdd.md
+          - DDD: methodologies/frameworks/ddd.md
+          - SAFe: methodologies/frameworks/safe.md
           - Lean: methodologies/frameworks/lean.md
           - XP: methodologies/frameworks/xp.md
           - RUP: methodologies/frameworks/rup.md
@@ -339,6 +354,11 @@ nav:
 
   - Инструменты:
       - Введение: tools/index.md
+      - Инструменты моделирования: tools/modeling-tools.md
+      - Инструменты управления требованиями: tools/requirements-tools.md
+      - Инструменты API: tools/api-tools.md
+      - Инструменты работы с БД: tools/database-tools.md
+      - Инструменты интеграций: tools/integration-tools.md
       - PlantUML: tools/plantuml.md
       - Camunda Modeler: tools/camunda-modeler.md
       - Jira: tools/jira.md
@@ -352,11 +372,15 @@ nav:
 
   - Общие компетенции:
       - Введение: common-competencies/index.md
+      - Планирование и управление временем: common-competencies/planning-time-management.md
+      - Управление стейкхолдерами: common-competencies/stakeholder-management.md
+      - Принятие решений на основе данных: common-competencies/data-driven-decisions.md
       - Оценка задач и рисков:
           - Оценка задач и рисков: common-competencies/estimation-risks/index.md
           - Оценка трудоемкости: common-competencies/estimation-risks/effort-estimation.md
           - Выявление рисков: common-competencies/estimation-risks/risk-identification.md
           - Управление рисками: common-competencies/estimation-risks/risk-management.md
+          - Финансовая оценка (ROI/NPV): common-competencies/estimation-risks/financial-evaluation.md
       - Стандарты и своды знаний:
           - Стандарты и своды знаний: common-competencies/standards/index.md
           - BABOK: common-competencies/standards/babok.md
@@ -381,8 +405,15 @@ nav:
 
   - Смежные навыки:
       - Введение: related-skills/index.md
+      - UX/UI основы: related-skills/ux-ui-basics.md
+      - Основы тестирования: related-skills/testing-fundamentals.md
+      - Основы безопасности: related-skills/security-basics.md
+      - Основы машинного обучения: related-skills/ml-basics.md
       - Анализ данных:
           - Анализ данных: related-skills/data-analysis/index.md
+          - SQL для аналитиков: related-skills/data-analysis/sql-for-analysts.md
+          - BI и визуализация: related-skills/data-analysis/bi-and-visualization.md
+          - Статистика и A/B-тесты: related-skills/data-analysis/statistics-and-ab-tests.md
           - DWH: related-skills/data-analysis/dwh.md
           - OLTP: related-skills/data-analysis/oltp.md
           - OLAP: related-skills/data-analysis/olap.md
@@ -403,6 +434,8 @@ nav:
 
   - Софт-скилы:
       - Введение: soft-skills/index.md
+      - Управление конфликтами: soft-skills/conflict-management.md
+      - Стресс-менеджмент: soft-skills/stress-management.md
       - Коммуникативные навыки:
           - Коммуникативные навыки: soft-skills/communication/index.md
           - Ведение переговоров: soft-skills/communication/negotiation.md

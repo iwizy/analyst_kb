@@ -50,3 +50,9 @@
 - [PMBOK](../common-competencies/standards/pmbok.md)
 - [Оценка трудоемкости](../common-competencies/estimation-risks/effort-estimation.md)
 - [Управление рисками](../common-competencies/estimation-risks/risk-management.md)
+
+## Практическое дополнение
+
+- Примените материал на одном реальном кейсе и сформулируйте измеримый критерий эффекта.
+- Зафиксируйте принятые допущения и ограничения, чтобы решение можно было переоценить при изменении контекста.
+- Добавьте выводы в рабочие шаблоны команды (requirements, roadmap, dashboard, risk register).

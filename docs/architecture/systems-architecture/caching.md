@@ -1,39 +1,25 @@
 # Кэширование
 
-Кэширование снижает latency и нагрузку на backend, но требует аккуратной работы
-с актуальностью данных.
+Кэширование уменьшает задержки и нагрузку на backend, но требует явной политики актуальности данных.
 
-## Основные стратегии
+## Стратегии
 
-- Cache-aside;
-- Read-through / Write-through;
-- Write-back;
-- TTL + invalidation по событию.
+| Стратегия | Где применять | Риск |
+| --- | --- | --- |
+| Cache-aside | чтение из БД, кэш при miss | stale data при плохой инвалидации |
+| Read-through | кэш как точка чтения | зависимость от cache-layer |
+| Write-through | синхронная запись в кэш и БД | рост latency записи |
+| Write-back | отложенная запись в БД | риск потери данных при сбое |
 
-## Пример слоя кэширования
+## Что нужно зафиксировать в требованиях
 
-```kroki-plantuml
-@startuml
-actor User
-participant API
-database Redis
-database DB
+- TTL по типам данных;
+- политика инвалидации (по времени/событию);
+- допустимость устаревших данных;
+- fallback при недоступности кэша.
 
-User --> API : GET /profile
-API --> Redis : read key
-alt cache hit
-  Redis --> API : data
-else cache miss
-  API --> DB : query
-  DB --> API : data
-  API --> Redis : set key (TTL)
-end
-API --> User : response
-@enduml
-```
+## Типичные ошибки
 
-## Чек-лист качества
-
-- Понятны правила инвалидации.
-- Cache miss не ломает SLA критично.
-- Мониторятся hit ratio и stale data incidents.
+- кэширование без метрик hit ratio;
+- единый TTL для всех сущностей;
+- отсутствие прогрева кэша на критичных сценариях.

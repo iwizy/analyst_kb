@@ -68,3 +68,9 @@ project = CORE and labels = integration and updated >= -7d
 - [Процесс разработки](../development-process/index.md)
 - [Приоритизация требований](../requirements/management/prioritization.md)
 - [Управление изменениями](../requirements/management/change-management.md)
+
+## Практическое дополнение
+
+- Определите owner инструмента в команде и минимальный стандарт использования.
+- Зафиксируйте шаблон артефакта, который создается в инструменте, и связь с backlog.
+- Введите ежемесячную ревизию актуальности артефактов, чтобы не накапливать устаревший контент.

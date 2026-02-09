@@ -40,3 +40,9 @@ ITIL - библиотека лучших практик IT Service Management (I
 - [Мониторинг и логирование](../../development-process/feature-support/monitoring-logging.md)
 - [Разбор инцидентов](../../development-process/feature-support/incident-analysis.md)
 - [Основы SRE](../../development-process/feature-support/sre-basics.md)
+
+## Практическое дополнение
+
+1. Выберите один текущий проект и примените подход/стандарт на ограниченном scope.
+1. Зафиксируйте артефакт до и после применения, сравнив качество и скорость принятия решений.
+1. Включите проверку применения в регулярный review команды.
