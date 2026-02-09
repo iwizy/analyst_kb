@@ -119,15 +119,15 @@
   - [COBIT](notations/maturity-models/cobit.md) 🟢
   - [ACMM](notations/maturity-models/acmm.md) 🟢
 
-## Алгоритмы 🔴
+## Алгоритмы 🟢
 
-- [Типовые алгоритмы](algorithms/typical/index.md) 🔴
-  - [Алгоритмы сортировки](algorithms/typical/sorting.md) 🔴
-  - [Теория графов и бинарные деревья](algorithms/typical/graphs-and-binary-trees.md) 🔴
-  - [Рекурсии](algorithms/typical/recursion.md) 🔴
-  - [Циклы](algorithms/typical/loops.md) 🔴
-- [Области использования типовых алгоритмов и структур данных](algorithms/usage-areas.md) 🔴
-- [Скорость и сложность алгоритмов. O-нотация](algorithms/complexity-big-o.md) 🔴
+- [Типовые алгоритмы](algorithms/typical/index.md) 🟢
+  - [Алгоритмы сортировки](algorithms/typical/sorting.md) 🟢
+  - [Теория графов и бинарные деревья](algorithms/typical/graphs-and-binary-trees.md) 🟢
+  - [Рекурсия](algorithms/typical/recursion.md) 🟢
+  - [Циклы](algorithms/typical/loops.md) 🟢
+- [Области использования алгоритмов и структур данных](algorithms/usage-areas.md) 🟢
+- [Сложность алгоритмов и O-нотация](algorithms/complexity-big-o.md) 🟢
 
 ## Проектирование и архитектура 🔴
 
