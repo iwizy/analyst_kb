@@ -249,24 +249,24 @@
   - [5 Why](common-competencies/techniques/five-why.md) 🟢
   - [Mind Map](common-competencies/techniques/mind-map.md) 🟢
 
-## Смежные навыки 🔴
+## Смежные навыки 🟢
 
-- [Анализ данных](related-skills/data-analysis/index.md) 🔴
-  - [DWH](related-skills/data-analysis/dwh.md) 🔴
-  - [OLTP](related-skills/data-analysis/oltp.md) 🔴
-  - [OLAP](related-skills/data-analysis/olap.md) 🔴
-  - [ETL / ELT](related-skills/data-analysis/etl-elt.md) 🔴
-  - [Data Science](related-skills/data-analysis/data-science.md) 🔴
-  - [Инструменты](tools/index.md) 🔴
-    - [Tableau](related-skills/data-analysis/tools/tableau.md) 🔴
-    - [QlikView](related-skills/data-analysis/tools/qlikview.md) 🔴
-    - [Power BI](related-skills/data-analysis/tools/power-bi.md) 🔴
-- [Управление продуктом](related-skills/product-management.md) 🔴
-- [Экономика и финансы](related-skills/economics-finance/index.md) 🔴
-  - [TCO](related-skills/economics-finance/tco.md) 🔴
-  - [ROI, NPV, IRR](related-skills/economics-finance/roi-npv-irr.md) 🔴
-- [Управление проектами](related-skills/project-management.md) 🔴
-- [Промпт-инжиниринг](related-skills/prompt-engineering.md) 🔴
+- [Анализ данных](related-skills/data-analysis/index.md) 🟢
+  - [DWH](related-skills/data-analysis/dwh.md) 🟢
+  - [OLTP](related-skills/data-analysis/oltp.md) 🟢
+  - [OLAP](related-skills/data-analysis/olap.md) 🟢
+  - [ETL / ELT](related-skills/data-analysis/etl-elt.md) 🟢
+  - [Data Science](related-skills/data-analysis/data-science.md) 🟢
+  - [Инструменты анализа данных](related-skills/data-analysis/tools/index.md) 🟢
+    - [Tableau](related-skills/data-analysis/tools/tableau.md) 🟢
+    - [QlikView](related-skills/data-analysis/tools/qlikview.md) 🟢
+    - [Power BI](related-skills/data-analysis/tools/power-bi.md) 🟢
+- [Управление продуктом](related-skills/product-management.md) 🟢
+- [Экономика и финансы](related-skills/economics-finance/index.md) 🟢
+  - [TCO](related-skills/economics-finance/tco.md) 🟢
+  - [ROI, NPV, IRR](related-skills/economics-finance/roi-npv-irr.md) 🟢
+- [Управление проектами](related-skills/project-management.md) 🟢
+- [Промпт-инжиниринг](related-skills/prompt-engineering.md) 🟢
 
 ## Софт скилы 🔴
 

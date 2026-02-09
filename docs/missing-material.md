@@ -11,9 +11,9 @@
 - Методологии разработки ПО: 0
 - Инструменты: 0
 - Общие компетенции: 0
-- Смежные навыки: 16
+- Смежные навыки: 0
 - Софт-скилы: 20
-- Итого: 36
+- Итого: 20
 
 ## Нотации и моделирование
 
@@ -45,22 +45,7 @@
 
 ## Смежные навыки
 
-- [Data Science](related-skills/data-analysis/data-science.md)
-- [DWH](related-skills/data-analysis/dwh.md)
-- [ETL/ELT](related-skills/data-analysis/etl-elt.md)
-- [Анализ данных](related-skills/data-analysis/index.md)
-- [OLAP](related-skills/data-analysis/olap.md)
-- [OLTP](related-skills/data-analysis/oltp.md)
-- [Инструменты анализа данных](related-skills/data-analysis/tools/index.md)
-- [Power BI](related-skills/data-analysis/tools/power-bi.md)
-- [QlikView](related-skills/data-analysis/tools/qlikview.md)
-- [Tableau](related-skills/data-analysis/tools/tableau.md)
-- [Экономика и финансы](related-skills/economics-finance/index.md)
-- [ROI, NPV, IRR](related-skills/economics-finance/roi-npv-irr.md)
-- [TCO](related-skills/economics-finance/tco.md)
-- [Управление продуктом](related-skills/product-management.md)
-- [Управление проектами](related-skills/project-management.md)
-- [Промпт-инжиниринг](related-skills/prompt-engineering.md)
+Раздел заполнен.
 
 ## Софт-скилы
 
