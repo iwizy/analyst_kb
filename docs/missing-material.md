@@ -7,13 +7,13 @@
 - Нотации и моделирование: 0
 - Алгоритмы: 0
 - Проектирование и архитектура: 0
-- Процесс разработки: 17
+- Процесс разработки: 0
 - Методологии разработки ПО: 0
 - Инструменты: 10
 - Общие компетенции: 23
 - Смежные навыки: 16
 - Софт-скилы: 20
-- Итого: 86
+- Итого: 69
 
 ## Нотации и моделирование
 
@@ -29,23 +29,7 @@
 
 ## Процесс разработки
 
-- [Разбор инцидентов](development-process/feature-support/incident-analysis.md)
-- [Сопровождение функциональности](development-process/feature-support/index.md)
-- [Мониторинг и логирование](development-process/feature-support/monitoring-logging.md)
-- [Основы SRE](development-process/feature-support/sre-basics.md)
-- [Основы CI/CD](development-process/product-lifecycle/cicd-basics.md)
-- [Основы DevOps](development-process/product-lifecycle/devops-basics.md)
-- [Git](development-process/product-lifecycle/git.md)
-- [Жизненный цикл программного продукта](development-process/product-lifecycle/index.md)
-- [Этапы жизненного цикла ПО](development-process/product-lifecycle/stages.md)
-- [Чтение кода](development-process/programming-basics/code-reading.md)
-- [Написание кода](development-process/programming-basics/coding.md)
-- [Основы программирования](development-process/programming-basics/index.md)
-- [ООП](development-process/programming-basics/oop.md)
-- [Приемка функциональности](development-process/testing/acceptance-testing.md)
-- [Тестирование](development-process/testing/index.md)
-- [Ручное тестирование](development-process/testing/manual-testing.md)
-- [Тест-кейсы](development-process/testing/test-cases.md)
+Раздел заполнен.
 
 ## Методологии разработки ПО
 

@@ -174,25 +174,25 @@
   - [Электронная подпись](architecture/information-security/digital-signature.md) 🟢
   - [Основные уязвимости веб-сервисов и приложений](architecture/information-security/common-web-vulnerabilities.md) 🟢
 
-## Процесс разработки 🔴
+## Процесс разработки 🟢
 
-- [Жизненный цикл программного продукта](development-process/product-lifecycle/index.md) 🔴
-  - [Этапы жизненного цикла ПО](development-process/product-lifecycle/stages.md) 🔴
-  - [Основы DevOps](development-process/product-lifecycle/devops-basics.md) 🔴
-  - [Основы CI/CD](development-process/product-lifecycle/cicd-basics.md) 🔴
-  - [Git](development-process/product-lifecycle/git.md) 🔴
-- [Сопровождение функциональности](development-process/feature-support/index.md) 🔴
-  - [Мониторинг и логирование](development-process/feature-support/monitoring-logging.md) 🔴
-  - [Разбор инцидентов](development-process/feature-support/incident-analysis.md) 🔴
-  - [Основы SRE](development-process/feature-support/sre-basics.md) 🔴
-- [Основы программирования](development-process/programming-basics/index.md) 🔴
-  - [ООП](development-process/programming-basics/oop.md) 🔴
-  - [Чтение кода](development-process/programming-basics/code-reading.md) 🔴
-  - [Написание кода](development-process/programming-basics/coding.md) 🔴
-- [Тестирование](development-process/testing/index.md) 🔴
-  - [Приёмка функциональности](development-process/testing/acceptance-testing.md) 🔴
-  - [Тест-кейсы](development-process/testing/test-cases.md) 🔴
-  - [Ручное тестирование](development-process/testing/manual-testing.md) 🔴
+- [Жизненный цикл программного продукта](development-process/product-lifecycle/index.md) 🟢
+  - [Этапы жизненного цикла ПО](development-process/product-lifecycle/stages.md) 🟢
+  - [Основы DevOps](development-process/product-lifecycle/devops-basics.md) 🟢
+  - [Основы CI/CD](development-process/product-lifecycle/cicd-basics.md) 🟢
+  - [Git](development-process/product-lifecycle/git.md) 🟢
+- [Сопровождение функциональности](development-process/feature-support/index.md) 🟢
+  - [Мониторинг и логирование](development-process/feature-support/monitoring-logging.md) 🟢
+  - [Разбор инцидентов](development-process/feature-support/incident-analysis.md) 🟢
+  - [Основы SRE](development-process/feature-support/sre-basics.md) 🟢
+- [Основы программирования](development-process/programming-basics/index.md) 🟢
+  - [ООП](development-process/programming-basics/oop.md) 🟢
+  - [Чтение кода](development-process/programming-basics/code-reading.md) 🟢
+  - [Написание кода](development-process/programming-basics/coding.md) 🟢
+- [Тестирование](development-process/testing/index.md) 🟢
+  - [Приемка функциональности](development-process/testing/acceptance-testing.md) 🟢
+  - [Тест-кейсы](development-process/testing/test-cases.md) 🟢
+  - [Ручное тестирование](development-process/testing/manual-testing.md) 🟢
 
 ## Методологии разработки ПО 🟢
 
