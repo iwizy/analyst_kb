@@ -37,7 +37,7 @@ Content-Type: application/json
 
 ## Диаграмма потока
 
-```plantuml
+```kroki-plantuml
 @startuml
 actor Client
 participant API

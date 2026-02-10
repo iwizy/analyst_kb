@@ -119,7 +119,7 @@
 
 ### Иллюстрация: контекст-диаграмма
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 actor "Клиент" as Client
@@ -373,6 +373,22 @@ UC1 --> WMS : Резерв товара
 - <https://www.iiba.org/standards-and-resources/babok/>
 - <https://standards.ieee.org/standard/830-1998.html>
 - <https://www.iso.org/standard/72089.html>
+- <https://www.nasa.gov/reference/appendix-c-how-to-write-a-good-requirement/>
+
+## 10. Рекомендации для дальнейшего изучения
+
+### Книги
+
+- Karl Wiegers, Joy Beatty. *Software Requirements*.
+- Suzanne Robertson, James Robertson. *Mastering the Requirements Process*.
+- Alistair Cockburn. *Writing Effective Use Cases*.
+- Mike Cohn. *User Stories Applied*.
+
+### Курсы
+
+- IIBA ECBA/CCBA подготовка (BABOK-based).
+- Coursera/Udemy курсы по Requirements Engineering и Business Analysis.
+- Курсы по Product Discovery и BDD для практики работы в Agile.
 
 ## Переход к детализации
 
@@ -387,3 +403,10 @@ UC1 --> WMS : Резерв товара
 ## Итог
 
 Сильная работа с требованиями это управляемая система: четкие границы, прозрачные шаблоны, проверяемые критерии, регулярная валидация и дисциплина изменений. Такой подход снижает стоимость переделок и повышает предсказуемость поставки.
+
+## Контрольные вопросы по разделу
+
+1. Где в проекте зафиксированы границы системы и out-of-scope?
+1. Для каждого high-impact требования есть источник, владелец, AC и связь с тестами?
+1. Какой метод приоритизации выбран и почему он подходит вашему контексту?
+1. Как команда управляет CR, baseline и актуальностью требований?

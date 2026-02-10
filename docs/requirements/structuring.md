@@ -18,6 +18,9 @@
 
 ## Рабочая модель структуры
 
+Цепочка верхнего уровня:
+`business goals -> BR -> UR -> SR -> acceptance criteria`.
+
 1. Бизнес-цели и KPI.
 1. Бизнес-требования (BR).
 1. Пользовательские требования/сценарии (UR).
@@ -46,6 +49,26 @@ BG-RET-001: Сократить время обработки возврата н
 | Feature | Возвраты |
 | Sub-feature | Частичный возврат |
 | Requirement | FR-RET-012, NFR-RET-004 |
+
+### Слои компонентов (C4 Level 2, пример)
+
+```kroki-plantuml
+@startuml
+left to right direction
+package "Система возвратов (C4 Level 2)" {
+  rectangle "UI Component" as UI
+  rectangle "Refund Service" as RS
+  rectangle "Rules Engine" as RE
+  rectangle "Billing Adapter" as BA
+  rectangle "Audit Component" as AU
+}
+
+UI --> RS
+RS --> RE
+RS --> BA
+RS --> AU
+@enduml
+```
 
 ## Группировка требований
 

@@ -26,7 +26,7 @@ MDM это управление мастер-данными (клиенты, п�
 
 ## Поток Golden Record
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 rectangle "CRM" as CRM

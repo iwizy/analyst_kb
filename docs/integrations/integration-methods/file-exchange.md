@@ -10,10 +10,10 @@
 
 ## Типовой поток
 
-```plantuml
+```kroki-plantuml
 @startuml
 participant Source
-folder "SFTP / Object Storage" as Storage
+participant "SFTP / Object Storage" as Storage
 participant Consumer
 
 Source -> Storage: upload file + checksum

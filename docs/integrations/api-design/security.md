@@ -41,7 +41,7 @@ mTLS обеспечивает mutual authentication по сертификата�
 
 ## Поток OAuth2 (client credentials)
 
-```plantuml
+```kroki-plantuml
 @startuml
 participant Client
 participant Auth as "Authorization Server"

@@ -10,7 +10,7 @@
 
 ## Базовый поток TCP-сокетов
 
-```plantuml
+```kroki-plantuml
 @startuml
 participant Client
 participant Server

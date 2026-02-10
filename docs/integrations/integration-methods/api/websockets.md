@@ -11,7 +11,7 @@ WebSockets обеспечивают двунаправленный канал с
 
 ## Базовый поток
 
-```plantuml
+```kroki-plantuml
 @startuml
 actor Client
 participant Server

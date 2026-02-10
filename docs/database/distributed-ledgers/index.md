@@ -36,7 +36,7 @@
 
 ## Типовой поток транзакции
 
-```plantuml
+```kroki-plantuml
 @startuml
 participant Client
 participant Peer as "Validator Node"

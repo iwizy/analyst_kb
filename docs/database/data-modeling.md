@@ -17,7 +17,7 @@
 
 ## ER-моделирование
 
-```plantuml
+```kroki-plantuml
 @startuml
 entity Customer {
   *customer_id : bigint
@@ -51,7 +51,7 @@ Order ||--o{ OrderItem
 
 ### Star schema
 
-```plantuml
+```kroki-plantuml
 @startuml
 entity FactSales
 entity DimDate
@@ -70,7 +70,7 @@ FactSales }o--|| DimCustomer
 
 ### Snowflake schema
 
-```plantuml
+```kroki-plantuml
 @startuml
 entity FactSales
 entity DimProduct

@@ -13,7 +13,7 @@
 
 ## Карта раздела
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 rectangle "Выбор типа БД" as T

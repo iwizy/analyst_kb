@@ -30,7 +30,7 @@
 
 ### Оркестрация SAGA
 
-```plantuml
+```kroki-plantuml
 @startuml
 participant Order
 participant Orchestrator

@@ -13,7 +13,7 @@ RabbitMQ это брокер сообщений на базе AMQP с гибко
 
 ## Поток
 
-```plantuml
+```kroki-plantuml
 @startuml
 participant Producer
 participant Exchange

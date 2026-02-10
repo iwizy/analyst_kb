@@ -33,7 +33,7 @@
 
 В условиях сетевого разделения (Partition tolerance) невозможно одновременно гарантировать и строгую консистентность (Consistency), и полную доступность (Availability).
 
-```plantuml
+```kroki-plantuml
 @startuml
 skinparam linetype ortho
 circle "Consistency" as C

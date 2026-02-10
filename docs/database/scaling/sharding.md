@@ -23,16 +23,16 @@ shard = hash(customer_id) % N
 
 ## Диаграмма
 
-```plantuml
+```kroki-plantuml
 @startuml
 node Router
 database Shard1
 database Shard2
 database Shard3
 
-Router --> Shard1 : key % 3 = 0
-Router --> Shard2 : key % 3 = 1
-Router --> Shard3 : key % 3 = 2
+Router --> Shard1 : key mod 3 = 0
+Router --> Shard2 : key mod 3 = 1
+Router --> Shard3 : key mod 3 = 2
 @enduml
 ```
 

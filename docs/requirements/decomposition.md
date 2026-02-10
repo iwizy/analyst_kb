@@ -166,7 +166,7 @@ WHY: какую бизнес-цель достигаем?
 
 ## Визуальный шаблон декомпозиции
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 rectangle "WHY\nБизнес-цель" as WHY
@@ -177,6 +177,34 @@ rectangle "VERIFY\nAC/Tests" as VER
 WHY --> WHAT
 WHAT --> HOW
 HOW --> VER
+@enduml
+```
+
+## Decision Tree (шаблон)
+
+```kroki-plantuml
+@startuml
+start
+:Требование готово к оценке?;
+if (Да) then (Да)
+  :Есть измеримые AC?;
+  if (Да) then (Да)
+    :Есть связи с BR/UR/SR и тестами?;
+    if (Да) then (Да)
+      :Передать в реализацию;
+      stop
+    else (Нет)
+      :Доработать трассировку;
+      stop
+    endif
+  else (Нет)
+    :Уточнить критерии приемки;
+    stop
+  endif
+else (Нет)
+  :Продолжить декомпозицию;
+  stop
+endif
 @enduml
 ```
 

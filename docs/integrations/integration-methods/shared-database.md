@@ -17,7 +17,7 @@
 
 ## Диаграмма
 
-```plantuml
+```kroki-plantuml
 @startuml
 rectangle "Service A" as A
 rectangle "Service B" as B

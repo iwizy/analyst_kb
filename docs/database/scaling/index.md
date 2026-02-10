@@ -12,7 +12,7 @@
 
 ## Схема принятия решений
 
-```plantuml
+```kroki-plantuml
 @startuml
 start
 :Рост нагрузки?;

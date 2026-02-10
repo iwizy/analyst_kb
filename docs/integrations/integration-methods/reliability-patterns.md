@@ -35,7 +35,7 @@
 
 ## Поток с retry + breaker
 
-```plantuml
+```kroki-plantuml
 @startuml
 actor Client
 participant ServiceA

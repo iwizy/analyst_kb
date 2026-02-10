@@ -33,7 +33,7 @@
 
 ## Карта архитектурного проектирования
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 rectangle "Business Goals" as G

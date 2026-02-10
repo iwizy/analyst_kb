@@ -26,7 +26,7 @@ API Gateway и Service Mesh решают разные уровни задач: n
 
 ## Схема
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 actor Client

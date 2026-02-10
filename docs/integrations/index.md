@@ -15,7 +15,7 @@
 
 ## Карта решений
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 rectangle "Контракт\nAPI Design" as A

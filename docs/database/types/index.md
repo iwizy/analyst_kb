@@ -18,7 +18,7 @@
 
 ## Визуальная схема выбора
 
-```plantuml
+```kroki-plantuml
 @startuml
 start
 :Нужна строгая транзакционность?;

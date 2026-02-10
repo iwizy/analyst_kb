@@ -53,7 +53,7 @@ Data Lake это хранилище сырых и полуструктуриро
 
 ## Архитектурная схема
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 rectangle "Источники\nApps, ERP, CRM, Events" as SRC

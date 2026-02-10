@@ -33,7 +33,7 @@ BG -> BR -> UR/SR -> Features -> Tasks -> Tests -> Code/Build
 
 Расширенный вариант:
 
-```plantuml
+```kroki-plantuml
 @startuml
 left to right direction
 rectangle "Business Goals" as BG

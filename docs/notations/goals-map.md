@@ -28,14 +28,14 @@
 
 ```kroki-plantuml
 @startwbs
-* Цель: Сократить time-to-market на 30% за 2 квартала
+* Цель: Сократить time-to-market на 30 процентов за 2 квартала
 ** Подцель: Ускорить цикл согласования
 *** KPI: lead time <= 3 дня
 *** Инициативы
 **** Единый шаблон требований
 **** SLA на согласование
 ** Подцель: Стабилизировать поставку
-*** KPI: change failure rate < 10%
+*** KPI: change failure rate ниже 10 процентов
 *** Инициативы
 **** Автотесты smoke/regression
 **** Canary rollout

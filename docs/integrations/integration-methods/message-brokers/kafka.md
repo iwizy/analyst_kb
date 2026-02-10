@@ -13,7 +13,7 @@ Kafka это распределенный commit log для событийных
 
 ## Поток обработки
 
-```plantuml
+```kroki-plantuml
 @startuml
 participant Producer
 database Kafka as "Kafka Topic"
