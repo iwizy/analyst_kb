@@ -1,102 +1,180 @@
-# Графы, деревья и хеш-таблицы
+# Графы и деревья
 
-Эти структуры данных покрывают типовые прикладные задачи: маршруты, зависимости, иерархии и быстрый доступ по ключу.
+Графовые и древовидные алгоритмы критичны для маршрутизации, зависимостей, планирования и анализа сетей.
 
-## Графы: BFS, DFS, кратчайшие пути
+## Уровни сложности
 
-### Что решают
+### Базовый
 
-- `BFS`: поиск в ширину, минимальное число ребер до цели в невзвешенном графе.
-- `DFS`: поиск в глубину, обход зависимостей, поиск циклов.
-- `Dijkstra`: кратчайший путь в графе с неотрицательными весами.
+- понимать граф как `V` вершин и `E` ребер;
+- применять BFS/DFS;
+- различать представления графа.
 
-### Псевдокод BFS
+### Средний
+
+- решать shortest path задачи (Dijkstra, Bellman-Ford);
+- строить MST (Prim, Kruskal);
+- выполнять topological sort для DAG.
+
+### Продвинутый
+
+- применять A* и max-flow;
+- выбирать алгоритм под тип весов и ограничения;
+- связывать графовые модели с бизнес-процессами.
+
+## Представления графа
+
+| Представление | Память | Поиск ребра | Где удобно |
+| --- | --- | --- | --- |
+| Матрица смежности | O(V^2) | O(1) | плотные графы |
+| Список смежности | O(V + E) | O(deg(v)) | разреженные графы |
+
+## BFS и DFS
+
+### BFS (поиск в ширину)
 
 ```text
-BFS(graph, start):
-  queue = [start]
-  visited = {start}
+bfs(graph, s):
+  mark s visited
+  queue = [s]
   while queue not empty:
-    v = dequeue(queue)
-    process(v)
-    for each u in neighbors(v):
-      if u not in visited:
-        visited.add(u)
-        enqueue(queue, u)
+    v = pop_front(queue)
+    for u in adj[v]:
+      if not visited[u]:
+        visited[u] = true
+        parent[u] = v
+        push_back(queue, u)
 ```
 
-### Псевдокод DFS
+### DFS (поиск в глубину)
 
 ```text
-DFS(graph, v, visited):
-  visited.add(v)
-  process(v)
-  for each u in neighbors(v):
-    if u not in visited:
-      DFS(graph, u, visited)
+dfs(v):
+  visited[v] = true
+  for u in adj[v]:
+    if not visited[u]:
+      dfs(u)
 ```
 
-### Псевдокод Dijkstra
+- Сложность обоих: `O(V + E)`.
+
+## Кратчайшие пути
+
+### Dijkstra
+
+- Условия: веса ребер неотрицательные.
+- Сложность: `O((V + E) log V)` с priority queue.
 
 ```text
-Dijkstra(graph, source):
-  dist[source] = 0
-  all other dist = INF
-  pq = min-priority-queue(source)
+dijkstra(s):
+  dist[*] = INF; dist[s] = 0
+  pq.push((0,s))
   while pq not empty:
-    v = extract-min(pq)
-    for each edge (v, u, w):
+    (d,v) = pq.pop_min()
+    if d != dist[v]: continue
+    for (u,w) in adj[v]:
       if dist[v] + w < dist[u]:
         dist[u] = dist[v] + w
-        decrease-key(pq, u, dist[u])
-  return dist
+        pq.push((dist[u], u))
 ```
 
-### Бизнес-пример
+### Bellman-Ford
 
-Логистика: узлы - склады/пункты доставки, ребра - дороги с весом `время`. Dijkstra находит минимальное время маршрута до клиента.
+- Поддерживает отрицательные веса.
+- Сложность: `O(VE)`.
+- Дополнительно: обнаруживает отрицательные циклы.
 
-## Деревья: AVL и B-tree
+### A*
 
-| Структура | Где применяют | Плюсы | Ограничения |
-| --- | --- | --- | --- |
-| AVL-дерево | in-memory индексы, частые чтения | строго сбалансировано, `O(log n)` | больше вращений при вставке/удалении |
-| B-tree | индексы БД и файловых систем | оптимально для диска/страниц, мало обращений к storage | сложнее реализация |
+- `f(n) = g(n) + h(n)` где `h` — эвристика.
+- Эффективен, если эвристика допустима и информативна.
 
-### Псевдокод идеи вставки в AVL
+## MST: Prim и Kruskal
+
+| Алгоритм | Идея | Сложность |
+| --- | --- | --- |
+| Prim | наращивает дерево от вершины | O(E log V) |
+| Kruskal | сортирует ребра + DSU | O(E log E) |
 
 ```text
-insertAVL(node, key):
-  insert as in BST
-  update height(node)
-  balance = height(left) - height(right)
-  if balance out of range:
-    perform rotations (LL, RR, LR, RL)
-  return new root
+kruskal(edges):
+  sort edges by weight
+  make_set(v) for all v
+  mst = []
+  for (u,v,w) in edges:
+    if find(u) != find(v):
+      union(u,v)
+      mst.add((u,v,w))
 ```
 
-## Хеш-таблицы
+## DAG: топологическая сортировка и критический путь
 
-Хеш-таблица хранит пары `key -> value` и дает в среднем `O(1)` для `put/get/delete`.
+- Topological sort: линейный порядок вершин DAG.
+- Применение: dependency management, build pipelines.
+- PERT/CPM: расчет critical path для оценки сроков проекта.
 
-### Что важно в проектировании
+## Максимальный поток
 
-- выбор хеш-функции;
-- стратегия коллизий (цепочки, открытая адресация);
-- контроль `load factor` и рехеширование.
+| Алгоритм | Идея | Сложность |
+| --- | --- | --- |
+| Edmonds-Karp | BFS в residual graph | O(VE^2) |
+| Dinic | level graph + blocking flow | O(V^2E) (общий случай) |
 
-### Бизнес-пример
+## Деревья для поиска
 
-Антифрод: быстрый lookup "карта/устройство/клиент" для проверки лимитов в real-time.
+- AVL/RB-tree: сбалансированные `O(log n)` операции.
+- B-tree: оптимален для дисковых индексов.
+- Связь с БД: индексы и планы запросов в [разделе БД](../../database/sql/indexes.md).
+
+## Диаграмма: выбор графового алгоритма
+
+```kroki-plantuml
+@startuml
+start
+if (Нужен shortest path?) then (yes)
+  if (Есть отрицательные веса?) then (yes)
+    :Bellman-Ford;
+  else (no)
+    if (Есть хорошая эвристика?) then (yes)
+      :A*;
+    else (no)
+      :Dijkstra;
+    endif
+  endif
+else (no)
+  if (Нужен остов?) then (yes)
+    :Prim or Kruskal;
+  else (no)
+    :BFS/DFS/Topo/Flow;
+  endif
+endif
+stop
+@enduml
+```
 
 ## Типичные ошибки
 
-- выбирать DFS вместо BFS, когда нужен путь с минимальным числом шагов;
-- игнорировать веса ребер и использовать BFS для weighted graph;
-- строить хеш-таблицу без контроля коллизий.
+- применение Dijkstra при отрицательных весах;
+- неверный выбор представления графа;
+- забытая проверка на циклы в DAG;
+- отсутствие проверки корректности эвристики в A*.
 
-## Самопроверка
+## Контрольные вопросы
 
-1. Почему BFS подходит для поиска "минимум пересадок"?
-1. Когда Dijkstra неприменим и нужен Bellman-Ford?
-1. Почему B-tree эффективнее AVL для индексов СУБД на диске?
+1. Почему BFS находит кратчайший путь в невзвешенном графе?
+2. Когда Kruskal лучше Prim и наоборот?
+3. Как определить, что граф ацикличен?
+4. В каких задачах нужен max-flow вместо shortest path?
+
+## Задачи для самопроверки
+
+1. Реализуйте BFS и DFS для одного графа и сравните порядок обхода.
+2. Для графа дорог выберите Dijkstra или A* и обоснуйте.
+3. Найдите MST для заданного набора ребер двумя методами.
+4. Постройте топологический порядок задач релизного пайплайна.
+
+## Источники и дальнейшее изучение
+
+- CLRS, главы 22-26.
+- Tarjan, графовые алгоритмы.
+- A* original paper (Hart, Nilsson, Raphael).

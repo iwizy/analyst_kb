@@ -234,16 +234,29 @@ nav:
 
   - Алгоритмы:
       - Введение: algorithms/index.md
-      - Типовые алгоритмы:
-          - Типовые алгоритмы: algorithms/typical/index.md
+      - Основы:
+          - Сложность и O-нотация: algorithms/complexity-big-o.md
+          - Структуры данных: algorithms/data-structures.md
+          - Рекурсия и итерация: algorithms/typical/recursion.md
+          - Циклы и итеративные шаблоны: algorithms/typical/loops.md
+      - Классические алгоритмы:
+          - Карта типовых алгоритмов: algorithms/typical/index.md
           - Алгоритмы сортировки: algorithms/typical/sorting.md
           - Алгоритмы поиска: algorithms/typical/searching.md
-          - Теория графов и бинарные деревья: algorithms/typical/graphs-and-binary-trees.md
-          - Рекурсия: algorithms/typical/recursion.md
-          - Циклы: algorithms/typical/loops.md
-      - Области использования алгоритмов и структур данных: algorithms/usage-areas.md
-      - Сложность алгоритмов и O-нотация: algorithms/complexity-big-o.md
-      - Задачи для самопроверки: algorithms/exercises.md
+          - Графы и деревья: algorithms/typical/graphs-and-binary-trees.md
+          - Динамическое программирование: algorithms/dynamic-programming.md
+          - Жадные алгоритмы: algorithms/greedy.md
+          - Разделяй и властвуй: algorithms/divide-and-conquer.md
+      - Системный контекст:
+          - Анализ и выбор алгоритмов: algorithms/analysis-and-selection.md
+          - Области применения алгоритмов и структур данных: algorithms/usage-areas.md
+          - Параллельные и распределенные алгоритмы: algorithms/parallel-distributed-basics.md
+      - Продвинутые темы:
+          - Теория чисел: algorithms/advanced/number-theory.md
+          - Комбинаторика и backtracking: algorithms/advanced/combinatorial.md
+          - Строковые структуры: algorithms/advanced/string-structures.md
+          - Геометрические алгоритмы: algorithms/advanced/computational-geometry.md
+      - Практика и самопроверка: algorithms/exercises.md
 
   - Проектирование и архитектура:
       - Введение: architecture/index.md
