@@ -1,61 +1,63 @@
 # Архитектура информационных систем
 
-Подраздел описывает, как проектировать архитектуру под реальные бизнес-ограничения: скорость поставки, надежность, стоимость владения, требования к интеграциям.
+Подраздел фокусируется на практических решениях: стиль архитектуры, паттерны взаимодействия, масштабирование, надежность и эксплуатационная модель.
 
-## Основные темы
+## Уровни сложности
 
-- архитектурные стили: монолит, модульный монолит, микросервисы, multilayer, SOA, микрофронтенды, P2P;
-- синхронные и асинхронные взаимодействия;
-- паттерны проектирования и архитектурные паттерны;
-- DDD, hexagonal architecture, CQRS, event sourcing;
-- масштабирование и отказоустойчивость;
-- API gateway и service mesh.
+### Базовый уровень
 
-## C4: контекст и контейнеры (пример e-commerce)
+- выбрать архитектурный стиль под контекст;
+- понимать базовые паттерны взаимодействия;
+- читать C4-диаграммы и базовые UML-схемы.
+
+### Средний уровень
+
+- проектировать сервисные границы и data ownership;
+- выбирать sync/async, cache и resilience-паттерны;
+- оформлять решения в ADR и review-процессе.
+
+### Продвинутый уровень
+
+- выстраивать целевую архитектуру на 2-3 года;
+- проводить миграции без больших остановок;
+- управлять зрелостью архитектуры на уровне организации.
+
+## Навигация по темам
+
+1. Архитектурные стили: от монолита до event-driven/serverless.
+2. Принципы и паттерны: SOLID, GoF, DDD, hexagonal, CQRS/ES.
+3. Взаимодействие: sync/async, оркестрация/хореография, API gateway/mesh.
+4. Эксплуатация: кэширование, масштабирование, надежность.
+5. Документирование: C4, Archimate, UML, ADR.
+6. Оценка: зрелость архитектуры и архитектурные ревью.
+
+## Схема принятия архитектурного решения
 
 ```kroki-plantuml
 @startuml
-left to right direction
-actor "Покупатель" as Customer
-rectangle "Платформа заказов" as Platform
-rectangle "Платежный провайдер" as Payment
-rectangle "Логистика" as Logistics
-rectangle "CRM" as CRM
-
-Customer --> Platform : оформляет заказ
-Platform --> Payment : авторизация оплаты
-Platform --> Logistics : создание доставки
-Platform --> CRM : обновление профиля
+start
+:Определить FR/NFR и ограничения;
+:Выбрать архитектурный стиль;
+:Сформировать паттерны взаимодействия;
+:Проверить риски надежности и масштабирования;
+:Зафиксировать ADR и диаграммы;
+:Провести архитектурное ревью;
+stop
 @enduml
 ```
 
-```kroki-plantuml
-@startuml
-left to right direction
-node "Web/Mobile" as UI
-node "API Gateway" as GW
-node "Order Service" as Order
-node "Catalog Service" as Catalog
-node "Payment Service" as Pay
-queue "Kafka" as Kafka
-database "PostgreSQL" as DB
+## Кросс-связи
 
-UI --> GW
-GW --> Order
-GW --> Catalog
-GW --> Pay
-Order --> DB
-Order --> Kafka
-Kafka --> Pay
-@enduml
-```
+- [Интеграции](../../integrations/index.md): паттерны обмена, идемпотентность, rate limits.
+- [Базы данных](../../database/index.md): выбор хранилищ, шардирование, консистентность.
+- [Требования](../../requirements/index.md): трассировка архитектурных решений к NFR.
+- [Нотации](../../notations/index.md): C4, UML, Archimate.
 
 ## Переход к подразделам
 
 - [Виды архитектур](architecture-types/index.md)
 - [Архитектурные паттерны и антипаттерны](patterns-antipatterns.md)
-- [GoF-паттерны в системном проектировании](gof-patterns.md)
-- [DDD и границы доменов](../design-approaches/oop-design/ddd.md)
+- [GoF-паттерны](gof-patterns.md)
 - [Hexagonal Architecture](hexagonal-architecture.md)
 - [Event Sourcing и CQRS](event-sourcing-cqrs.md)
 - [Синхронное и асинхронное взаимодействие](sync-async.md)
@@ -64,6 +66,27 @@ Kafka --> Pay
 - [Масштабирование сервисов](service-scaling.md)
 - [Отказоустойчивость](resilience.md)
 - [API Gateway и Service Mesh](api-gateway-service-mesh.md)
-- [Контейнеризация](containerization.md)
-- [Мониторинг и поддержка](monitoring-support.md)
-- [Облачные вычисления](cloud-computing.md)
+- [Документирование и визуализация архитектуры](documentation-visualization.md)
+- [Зрелость и архитектурные ревью](maturity-reviews.md)
+- [Практические кейсы и миграции](practical-cases.md)
+
+## Контрольные вопросы
+
+1. Какие NFR определяют архитектуру сильнее всего?
+2. Где в текущем дизайне риск архитектурного bottleneck?
+3. Какие решения необратимы и требуют ADR?
+4. Какие темы нужно углубить в ближайшем релизном цикле?
+
+## Чек-лист самопроверки
+
+- определен целевой архитектурный стиль;
+- выбраны и обоснованы ключевые паттерны;
+- предусмотрены масштабирование и отказоустойчивость;
+- оформлены диаграммы и ADR;
+- проведено архитектурное ревью.
+
+## Стандарты и источники
+
+- ISO/IEC/IEEE 42010.
+- TOGAF standard: <https://www.opengroup.org/togaf>
+- C4 model: <https://c4model.com/>

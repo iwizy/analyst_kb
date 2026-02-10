@@ -273,6 +273,7 @@ nav:
               - Микрофронтенды: architecture/systems-architecture/architecture-types/microfrontends.md
               - MVC, MVP, MVVM: architecture/systems-architecture/architecture-types/mvc-mvp-mvvm.md
               - Peer-to-peer: architecture/systems-architecture/architecture-types/p2p.md
+              - Event-Driven и Serverless: architecture/systems-architecture/architecture-types/event-driven-serverless.md
           - Архитектурные паттерны и антипаттерны: architecture/systems-architecture/patterns-antipatterns.md
           - GoF-паттерны: architecture/systems-architecture/gof-patterns.md
           - Hexagonal Architecture: architecture/systems-architecture/hexagonal-architecture.md
@@ -283,6 +284,9 @@ nav:
           - Масштабирование сервисов: architecture/systems-architecture/service-scaling.md
           - Отказоустойчивость: architecture/systems-architecture/resilience.md
           - API Gateway и Service Mesh: architecture/systems-architecture/api-gateway-service-mesh.md
+          - Документирование и визуализация архитектуры: architecture/systems-architecture/documentation-visualization.md
+          - Зрелость и архитектурные ревью: architecture/systems-architecture/maturity-reviews.md
+          - Практические кейсы и миграции: architecture/systems-architecture/practical-cases.md
           - Контейнеризация: architecture/systems-architecture/containerization.md
           - Мониторинг и поддержка: architecture/systems-architecture/monitoring-support.md
           - Облачные вычисления: architecture/systems-architecture/cloud-computing.md

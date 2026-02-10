@@ -1,43 +1,100 @@
 # Hexagonal Architecture
 
-Hexagonal (Ports and Adapters) отделяет доменную логику от инфраструктуры. Домен не зависит от БД, HTTP, брокеров и других внешних технологий.
+Hexagonal (Ports and Adapters) изолирует домен от инфраструктуры, позволяя менять БД, транспорт и внешние интеграции без изменения бизнес-ядра.
 
-## Цель
+## Уровни сложности
 
-- сделать бизнес-логику тестируемой и переносимой;
-- снизить связность с фреймворками и инфраструктурой;
-- упростить замену внешних адаптеров.
+### Базовый уровень
+
+- понимать порты и адаптеры;
+- отделять домен от фреймворков;
+- проектировать входные и выходные контракты.
+
+### Средний уровень
+
+- строить application/use-case слой;
+- разделять inbound и outbound adapters;
+- внедрять dependency inversion на границах.
+
+### Продвинутый уровень
+
+- комбинировать hexagonal с DDD и event-driven;
+- внедрять Clean/Onion вариации;
+- масштабировать архитектуру на несколько команд.
 
 ## Базовая модель
-
-- `Domain Core`: правила предметной области.
-- `Ports`: контракты входа/выхода.
-- `Adapters`: реализация портов (REST, DB, MQ, UI).
 
 ```kroki-plantuml
 @startuml
 left to right direction
-rectangle "Input Adapter\nREST Controller" as In
-rectangle "Application Port" as PortIn
-rectangle "Domain Core" as Domain
-rectangle "Output Port" as PortOut
-rectangle "Output Adapter\nPostgreSQL Repository" as Out
-
-In --> PortIn
-PortIn --> Domain
-Domain --> PortOut
-PortOut --> Out
+rectangle "Inbound Adapter\nREST/gRPC" as IN
+rectangle "Input Port\nUseCase" as IP
+rectangle "Domain Core" as D
+rectangle "Output Port" as OP
+rectangle "Outbound Adapter\nPostgreSQL/Kafka" as OUT
+IN --> IP
+IP --> D
+D --> OP
+OP --> OUT
 @enduml
 ```
 
+## Сравнение с Clean/Onion
+
+| Подход | Общая идея | Особенность |
+| --- | --- | --- |
+| Hexagonal | порты и адаптеры | акцент на внешних интерфейсах |
+| Clean | зависимости внутрь | строгие concentric layers |
+| Onion | домен в центре | доменная модель как ядро системы |
+
+## Преимущества
+
+- высокая testability домена;
+- заменяемость инфраструктуры;
+- контроль зависимости от фреймворков.
+
+## Недостатки
+
+- дополнительная абстракция для простых CRUD;
+- риск чрезмерной формализации портов;
+- требует дисциплины в командной разработке.
+
 ## Когда применять
 
-- сложный домен и высокая цена регрессии;
-- долгоживущие системы с эволюцией интеграций;
-- потребность в высоком покрытии автотестами бизнес-правил.
+- сложная доменная логика;
+- ожидаемая смена внешних систем/БД/транспорта;
+- долгоживущий продукт с высоким change rate.
 
-## Типичные ошибки
+## Антипаттерны
 
-- перенос всей логики в adapters;
-- слишком много абстракций для простых CRUD-сервисов;
-- неявные границы между application и domain слоями.
+- бизнес-логика в adapters;
+- домен знает ORM/HTTP/Kafka API;
+- generic ports без бизнес-смысла.
+
+## Практические рекомендации
+
+1. Порт отражает use-case, а не технический CRUD.
+2. Domain Core не импортирует инфраструктурные пакеты.
+3. Для каждого внешнего провайдера — отдельный adapter.
+4. Сверяйтесь с [DDD](../design-approaches/oop-design/ddd.md).
+
+## Контрольные вопросы
+
+1. Какие зависимости должны быть направлены внутрь?
+2. Где в проекте нарушается граница домена?
+3. Какие adapters можно заменить без изменения domain core?
+4. Не стала ли архитектура избыточной для текущей сложности домена?
+
+## Чек-лист самопроверки
+
+- порты отражают доменные use-cases;
+- adapters не содержат бизнес-правил;
+- domain core независим от framework;
+- тесты покрывают домен без инфраструктуры;
+- решение соотнесено с NFR и стоимостью сопровождения.
+
+## Стандарты и источники
+
+- Cockburn, Hexagonal Architecture papers.
+- Clean Architecture (R. Martin).
+- Onion architecture references.

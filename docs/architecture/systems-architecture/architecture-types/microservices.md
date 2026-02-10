@@ -1,57 +1,116 @@
 # Микросервисная архитектура
 
-Микросервисный стиль делит систему на автономные сервисы с независимой поставкой и масштабированием. Он дает гибкость, но требует зрелого engineering и operations.
+Микросервисы разделяют систему на автономные сервисы по business capabilities с независимым деплоем и масштабированием.
 
-## Когда выбирать
+## Уровни сложности
 
-- несколько команд с независимыми доменами;
-- разные части продукта имеют разный профиль нагрузки;
-- есть зрелые CI/CD, observability и практика инцидент-менеджмента.
+### Базовый уровень
 
-## Плюсы
+- понимать service boundaries и ownership;
+- использовать API-контракты и события;
+- обеспечивать независимый релиз сервисов.
 
-- независимые релизы сервисов;
-- изоляция отказов;
-- независимое масштабирование по доменам.
+### Средний уровень
 
-## Минусы
+- выбирать sync vs async коммуникацию;
+- проектировать data ownership (database per service);
+- внедрять observability и contract testing.
 
-- distributed complexity: сеть, ретраи, таймауты, консистентность;
-- сложнее тестирование end-to-end;
-- рост стоимости эксплуатации и платформенной команды.
+### Продвинутый уровень
 
-## Пример (C4 Container)
+- управлять consistency при network partitions;
+- строить platform engineering (gateway, mesh, telemetry);
+- эволюционировать архитектуру без distributed monolith.
+
+## Структура
 
 ```kroki-plantuml
 @startuml
 left to right direction
 node "API Gateway" as GW
-node "Order Service" as Order
-node "Inventory Service" as Inv
-node "Payment Service" as Pay
-queue "Kafka" as Kafka
+node "Order Service" as ORD
+node "Payment Service" as PAY
+node "Inventory Service" as INV
+queue "Kafka/Pulsar" as BUS
 database "Order DB" as ODB
+database "Payment DB" as PDB
 database "Inventory DB" as IDB
-
-GW --> Order
-GW --> Inv
-GW --> Pay
-Order --> ODB
-Inv --> IDB
-Order --> Kafka : OrderCreated
-Kafka --> Inv : reserve stock
-Kafka --> Pay : request payment
+GW --> ORD
+GW --> PAY
+GW --> INV
+ORD --> ODB
+PAY --> PDB
+INV --> IDB
+ORD --> BUS : OrderPlaced
+BUS --> PAY : PaymentRequested
+BUS --> INV : StockReserved
 @enduml
 ```
 
-## Типичные ошибки
+## Преимущества
 
-- distributed monolith из-за синхронных цепочек между всеми сервисами;
-- shared database для «быстрой» интеграции;
-- отсутствие контрактного тестирования и versioning policy.
+- независимые релизы и масштабирование;
+- изоляция ошибок по доменам;
+- автономность команд.
 
-## Чек-лист
+## Недостатки
 
-- границы сервисов соответствуют bounded context;
-- для каждого вызова заданы timeout/retry/idempotency;
-- сквозные метрики и трассировка работают end-to-end.
+- distributed complexity (latency, timeouts, retries);
+- сложнее тестирование e2e;
+- рост платформенной стоимости.
+
+## Когда применять
+
+- продукт и домены стабильно растут;
+- несколько команд с независимым backlog;
+- есть зрелые CI/CD, SRE, observability.
+
+## Антипаттерны
+
+- distributed monolith (жесткие sync-цепочки);
+- shared database across services;
+- игнорирование idempotency и versioning.
+
+## Инструментальные trade-off
+
+| Выбор | Когда лучше | Ограничения |
+| --- | --- | --- |
+| Spring Boot | зрелая экосистема enterprise | тяжелее старт и память |
+| Quarkus | быстрый cold start, cloud-native | меньше зрелых enterprise интеграций |
+| REST | универсальность и простота | overhead payload и latency |
+| gRPC | эффективный service-to-service | сложнее для внешних клиентов |
+| Kafka | высоконагруженный streaming backbone | выше операционная сложность |
+| Pulsar | multi-tenant и geo-replication | экосистема уже, чем Kafka |
+
+| Выбор БД | Когда лучше | Ограничения |
+| --- | --- | --- |
+| PostgreSQL | транзакционность, сложные запросы, строгая консистентность | вертикальные пределы и сложность глобального масштаба |
+| Cassandra | massive write, geo-distribution, высокая доступность | сложные ad-hoc запросы и eventual consistency модель |
+
+## Практические рекомендации
+
+1. Декомпозируйте по business capability, не по слоям.
+2. У каждого сервиса — свой data owner.
+3. Введите контрактные тесты и compatibility policy.
+4. Обеспечьте tracing, метрики, лог-корреляцию.
+
+## Контрольные вопросы
+
+1. Границы сервисов соответствуют bounded contexts?
+2. Где в цепочке вызовов самый высокий риск деградации?
+3. Как обеспечивается консистентность между сервисами?
+4. Какие сервисы готовы к независимому масштабированию?
+
+## Чек-лист самопроверки
+
+- сервисы имеют явный ownership;
+- выбран паттерн взаимодействия sync/async;
+- реализованы timeout/retry/circuit breaker;
+- data ownership и контракты зафиксированы;
+- observability покрывает критичные сценарии.
+
+## Стандарты и источники
+
+- Sam Newman, *Building Microservices*.
+- Microservices.io patterns: <https://microservices.io/>
+- CNCF cloud-native references.

@@ -1,31 +1,94 @@
-# Отказоустойчивость
+# Отказоустойчивость и надежность
 
-Отказоустойчивость определяет способность системы продолжать работу при частичных сбоях.
+Надежность — это способность системы сохранять бизнес-функции при частичных сбоях и быстро восстанавливаться.
 
-## Ключевые практики
+## Уровни сложности
 
-- graceful degradation;
-- retry + backoff + jitter;
-- circuit breaker;
-- bulkhead;
-- timeout budgets;
-- идемпотентность и deduplication.
+### Базовый уровень
 
-## SRE-метрики
+- понимать retry, timeout, circuit breaker;
+- проектировать health checks;
+- добавлять graceful degradation.
 
-| Метрика | Что показывает |
+### Средний уровень
+
+- комбинировать resilience-паттерны;
+- внедрять canary и blue/green;
+- управлять error budget и SLO.
+
+### Продвинутый уровень
+
+- строить multi-region отказоустойчивость;
+- внедрять chaos engineering;
+- управлять надежностью на уровне платформы.
+
+## Паттерны надежности
+
+| Паттерн | Что решает | Риски неправильной настройки |
+| --- | --- | --- |
+| Timeout | ограничивает время ожидания | слишком короткий/длинный timeout |
+| Retry + backoff + jitter | сглаживает transient ошибки | retry storm |
+| Circuit Breaker | защищает от каскадных отказов | неверные пороги |
+| Bulkhead | изолирует ресурсы | сложность capacity планирования |
+| Rate limiting | защищает систему | ложные отказы без адаптивности |
+| Health checks | раннее выявление проблем | noisy probes |
+| Graceful degradation | сохраняет core-функционал | неконсистентный UX |
+| Canary / Blue-Green | безопасный rollout | сложный rollback |
+
+## Инструменты
+
+- Resilience4j / Polly / (legacy) Hystrix;
+- Envoy, Linkerd, Istio policies;
+- Kubernetes liveness/readiness/startup probes.
+
+## Эволюция надежности
+
+| Этап | Характеристика |
 | --- | --- |
-| Availability | доля времени доступности |
-| MTTR | среднее время восстановления |
-| Error budget | допустимый уровень ошибок |
-| Incident rate | частота инцидентов |
+| Single node | минимальная устойчивость, простой ops |
+| Cluster | failover внутри региона |
+| Multi-region | региональная устойчивость и DR |
+| Multi-cloud | максимум устойчивости, высокая сложность |
 
-## Пример деградации
+## Пример SLA уровней
 
-При недоступности рекомендаций checkout продолжает работать, а блок рекомендаций отключается без ошибки для пользователя.
+- `99.9%`: один регион + быстрый rollback.
+- `99.95%`: multi-AZ и автоматизированный failover.
+- `99.99%`: multi-region active/active, строгий runbook.
+
+## Практические рекомендации
+
+1. Сначала определите SLO и error budget.
+2. Настройте timeout и retry по dependency-profile.
+3. Добавьте graceful degradation для non-critical features.
+4. Регулярно проводите game day/chaos проверки.
 
 ## Типичные ошибки
 
-- отсутствие сценариев деградации в требованиях;
-- ретраи без ограничения и jitter;
-- нет runbook и тренировок аварийных сценариев.
+- retry без jitter и верхнего лимита;
+- отсутствие read/write timeout budgets;
+- нет runbook и failover drills;
+- отсутствие метрик по breaker/open state.
+
+Кросс-ссылка: [Паттерны надежности в интеграциях](../../integrations/integration-methods/reliability-patterns.md).
+
+## Контрольные вопросы
+
+1. Какие сервисы критичны для core user journey?
+2. Какой уровень SLA нужен бизнесу и почему?
+3. Как система деградирует при падении внешнего провайдера?
+4. Когда последний раз проверялся DR-сценарий на практике?
+
+## Чек-лист самопроверки
+
+- определены SLO и error budgets;
+- реализованы timeout/retry/circuit/bulkhead;
+- есть canary/blue-green rollout;
+- есть мониторинг и runbooks;
+- проведены chaos/failover тренировки.
+
+## Стандарты и источники
+
+- Google SRE book/workbook.
+- Resilience4j docs.
+- Kubernetes reliability best practices.
