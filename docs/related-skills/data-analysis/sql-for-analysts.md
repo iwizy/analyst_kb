@@ -1,42 +1,136 @@
 # SQL для аналитиков
 
-SQL - базовый инструмент для извлечения и проверки данных.
+SQL для аналитика это основной язык проверки гипотез, верификации требований и построения метрик.
 
-## Что должен уметь аналитик
+## Уровни сложности
 
-- `SELECT`, `JOIN`, `GROUP BY`, `HAVING`;
-- оконные функции (`ROW_NUMBER`, `SUM OVER`, `LAG/LEAD`);
+### Базовый уровень
+
+- `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`;
+- `GROUP BY`, `HAVING`;
+- `INNER/LEFT JOIN`.
+
+### Средний уровень
+
 - CTE и подзапросы;
-- базовая оптимизация запросов по плану выполнения.
+- оконные функции (`ROW_NUMBER`, `LAG`, `SUM OVER`);
+- сегментация и когорты.
 
-## Пример
+### Продвинутый уровень
+
+- оптимизация запросов через `EXPLAIN`;
+- контроль качества данных SQL-проверками;
+- подготовка воспроизводимых аналитических наборов.
+
+## Практические задачи аналитика
+
+| Задача | SQL-паттерн |
+| --- | --- |
+| Агрегация по периодам | `date_trunc` + `group by` |
+| Сегментация клиентов | `case when` + группировка |
+| Когортный анализ | первая активность + период сдвига |
+| Поиск аномалий | оконные функции + сравнение с baseline |
+
+## Пример 1: сегментация клиентов по выручке
+
+```sql
+select
+  customer_id,
+  sum(amount) as revenue,
+  case
+    when sum(amount) >= 100000 then 'vip'
+    when sum(amount) >= 20000 then 'mid'
+    else 'base'
+  end as segment
+from orders
+where order_date >= date_trunc('year', current_date)
+group by customer_id;
+```
+
+## Пример 2: когорты по месяцу первой покупки
+
+```sql
+with first_order as (
+  select customer_id, min(date_trunc('month', order_date)) as cohort_month
+  from orders
+  group by customer_id
+), activity as (
+  select
+    o.customer_id,
+    date_trunc('month', o.order_date) as activity_month,
+    f.cohort_month
+  from orders o
+  join first_order f on f.customer_id = o.customer_id
+)
+select
+  cohort_month,
+  activity_month,
+  count(distinct customer_id) as active_users
+from activity
+group by cohort_month, activity_month
+order by cohort_month, activity_month;
+```
+
+## Пример 3: скользящая средняя для операционной метрики
 
 ```sql
 with daily as (
   select
     date(created_at) as dt,
-    count(*) as orders_cnt,
-    sum(amount) as revenue
-  from orders
+    count(*) as tickets
+  from support_tickets
   where created_at >= current_date - interval '30 day'
   group by date(created_at)
 )
 select
   dt,
-  orders_cnt,
-  revenue,
-  avg(revenue) over (order by dt rows between 6 preceding and current row) as revenue_ma7
+  tickets,
+  avg(tickets) over (
+    order by dt
+    rows between 6 preceding and current row
+  ) as ma7
 from daily
 order by dt;
 ```
 
-## Практические советы
+## Инструменты
 
-- всегда ограничивайте выборку по времени;
-- проверяйте дубликаты и `null`;
-- фиксируйте версии запросов для отчетов.
+- Metabase: быстрые SQL-вопросы и дашборды.
+- Apache Superset: гибкая BI-визуализация и SQL Lab.
+- DataGrip/DBeaver: удобная работа с запросами и схемой.
 
-## Для дальнейшего изучения
+## Типовые ошибки
 
-- PostgreSQL docs: <https://www.postgresql.org/docs/>
-- SQL tutorial (Mode): <https://mode.com/sql-tutorial/>
+- выборка без ограничений по времени;
+- смешение UTC и локального времени;
+- `LEFT JOIN`, который фактически превращается в `INNER` из-за фильтра;
+- отсутствие валидации дубликатов и `NULL`.
+
+## Кросс-ссылки
+
+- [SQL в разделе БД](../../database/sql/index.md)
+- [BI и визуализация](bi-and-visualization.md)
+- [Статистика и A/B-тесты](statistics-and-ab-tests.md)
+
+## Чек-лист самопроверки
+
+- запрос воспроизводим и имеет явный период;
+- формула метрики согласована с бизнесом;
+- проверены дубликаты, пропуски и timezone;
+- зафиксирована версия запроса для отчета.
+
+## Контрольные вопросы
+
+1. Почему `COUNT(*)` и `COUNT(DISTINCT ...)` дают разный ответ?
+2. Когда нужна оконная функция вместо группировки?
+3. Какие признаки укажут, что результат искажен из-за `JOIN`?
+
+## Источники
+
+- PostgreSQL documentation: <https://www.postgresql.org/docs/>
+- Mode SQL tutorial: <https://mode.com/sql-tutorial/>
+- SQL for Data Analysis (O'Reilly).
+
+## Дата обновления
+
+Февраль 2026.

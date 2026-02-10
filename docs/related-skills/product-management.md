@@ -1,34 +1,107 @@
 # Управление продуктом
 
-Понимание product-management позволяет аналитику формулировать требования через ценность и результат.
+Product management помогает аналитику связывать требования с ценностью, а не только с реализацией.
 
-## Ключевые элементы
+## Уровни сложности
 
-- Product Vision: зачем существует продукт;
-- Product Strategy: как достигаем vision;
-- Roadmap: последовательность инициатив;
-- Backlog: приоритизированные задачи;
-- Метрики: как измеряем успех.
+### Базовый уровень
 
-## Практика аналитика в продуктовом контуре
+- понимать `vision -> strategy -> roadmap -> backlog`;
+- формулировать проблему и гипотезу;
+- определять метрику успеха инициативы.
 
-1. Связывать каждое требование с продуктовой целью.
-1. Формулировать гипотезы и критерии успеха.
-1. Поддерживать прозрачную декомпозицию `vision -> goals -> initiatives -> backlog`.
-1. Участвовать в discovery и post-release анализе.
+### Средний уровень
 
-## Мини-шаблон инициативы
+- участвовать в discovery и приоритизации;
+- связывать user stories с North Star и funnel-метриками;
+- готовить mini business case по инициативе.
 
-| Поле | Пример |
+### Продвинутый уровень
+
+- вести discovery-to-delivery цикл;
+- управлять зависимостями между командами и доменами;
+- использовать портфельный подход к инициативам.
+
+## Каркас продуктового управления
+
+| Элемент | Что фиксируем | Типичный артефакт |
+| --- | --- | --- |
+| Vision | зачем существует продукт | vision statement |
+| Strategy | как достигаем vision | strategy map |
+| Roadmap | что делаем по кварталам | roadmap |
+| Backlog | чем занимаемся в ближайших итерациях | epic/story backlog |
+| Metrics | как измеряем результат | KPI/OKR dashboard |
+
+## Метрики и использование
+
+| Метрика | Для чего | Инструмент |
+| --- | --- | --- |
+| North Star | долгосрочная ценность | BI dashboard |
+| Conversion | эффективность воронки | product analytics |
+| Retention | удержание | cohorts |
+| NPS | удовлетворенность | survey tools |
+
+## Цикл Discovery -> Define -> Deliver -> Learn
+
+1. Discovery: интервью, problem framing, UX research.
+2. Define: JTBD/personas, scope, критерии успеха.
+3. Deliver: MVP, delivery plan, управление зависимостями.
+4. Learn: анализ данных, обратная связь, корректировка roadmap.
+
+## Шаблон мини-инициативы
+
+| Поле | Описание |
 | --- | --- |
-| Цель | увеличить повторные покупки на 8% |
-| Гипотеза | персональные рекомендации повышают retention |
-| Метрика | repeat purchase rate |
-| Срок проверки | 6 недель |
-| Риски | качество рекомендаций, latency API |
+| Цель | какой бизнес-результат нужен |
+| Problem Statement | какую проблему решаем |
+| Hypothesis | почему решение должно сработать |
+| Expected Outcome | ожидаемый эффект |
+| Success Metrics | как измерим успех |
+| Timeline | сроки проверки |
+| Risks & Assumptions | ключевые допущения и риски |
+| Dependencies | внешние зависимости |
 
-## Для дальнейшего изучения
+Пример:
 
-- Inspired (Marty Cagan)
-- Lean Product Playbook (Dan Olsen)
-- Product School resources: <https://productschool.com/resources>
+- Цель: увеличить repeat purchase rate на 8%.
+- Гипотеза: персональные рекомендации в корзине повышают повторные покупки.
+- Success metric: repeat purchase rate 30-day.
+- Срок: 6 недель, 2 спринта разработки + 2 недели наблюдения.
+
+## Типичные ошибки
+
+- backlog без связи с продуктовыми целями;
+- фокус на output (количество фич), а не outcome;
+- релиз без плана измерения эффекта;
+- отсутствие rollback-гипотезы при негативном результате.
+
+## Кросс-ссылки
+
+- [Приоритизация требований](../requirements/management/prioritization.md)
+- [Data-driven решения](../common-competencies/data-driven-decisions.md)
+- [Agile-процессы](../development-process/agile-processes.md)
+
+## Чек-лист самопроверки
+
+- каждая инициатива связана с KPI;
+- гипотеза проверяема и ограничена по времени;
+- понятны риски, допущения и зависимости;
+- после релиза проводится оценка фактического эффекта.
+
+## Контрольные вопросы
+
+1. Чем vision отличается от roadmap?
+2. Почему метрика успеха должна определяться до начала реализации?
+3. Какие признаки указывают, что backlog потерял связь с ценностью?
+
+## Источники
+
+- Inspired (Marty Cagan).
+- Escaping the Build Trap (Melissa Perri).
+- Continuous Discovery Habits (Teresa Torres).
+- Product School: <https://productschool.com/resources>
+- Mind the Product: <https://www.mindtheproduct.com/>
+
+## Дата обновления
+
+Февраль 2026.
