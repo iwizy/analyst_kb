@@ -1,8 +1,5 @@
 # Основы тестирования
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Системный аналитик влияет на качество через тестируемые требования, корректные критерии приемки и трассировку до тест-кейсов.
 
 ## Уровни сложности
@@ -16,20 +13,20 @@
 ### Средний уровень
 
 - строить traceability `requirement -> test case`;
-- участвовать в тест-дизайне с QA;
-- готовить UAT-сценарии для бизнеса.
+- участвовать в тест-дизайне с [QA](../glossary.md#abbr-067);
+- готовить [UAT](../glossary.md#abbr-089)-сценарии для бизнеса.
 
 ### Продвинутый уровень
 
 - внедрять quality gates и risk-based testing;
-- поддерживать BDD/ATDD-практики;
+- поддерживать [BDD](../glossary.md#abbr-007)/ATDD-практики;
 - контролировать регрессии на уровне процесса.
 
 ## Роль аналитика в тестировании
 
 | Этап | Вклад аналитика |
 | --- | --- |
-| Подготовка | уточнение scope и AC, описание рисков |
+| Подготовка | уточнение scope и [AC](../glossary.md#abbr-002), описание рисков |
 | Дизайн тестов | edge cases, бизнес-правила, ограничения |
 | Выполнение | поддержка QA по неоднозначным сценариям |
 | Приемка | UAT, фиксация отклонений и решений |
@@ -39,10 +36,10 @@
 | Категория | Что проверяет | Частые ошибки |
 | --- | --- | --- |
 | Unit | корректность модуля | ожидание, что unit заменит интеграцию |
-| Integration | взаимодействие сервисов/БД/API | неучтенные контракты и таймауты |
+| Integration | взаимодействие сервисов/БД/[API](../glossary.md#abbr-005) | неучтенные контракты и таймауты |
 | System | поведение всей системы | тесты без реалистичных данных |
 | Acceptance | соответствие бизнес-ожиданиям | AC не измеримы |
-| Performance | SLA под нагрузкой | отсутствие realistic profile |
+| Performance | [SLA](../glossary.md#abbr-079) под нагрузкой | отсутствие realistic profile |
 | Security | угрозы и уязвимости | скан без threat model |
 
 ## Шаблоны артефактов
@@ -84,7 +81,7 @@
 Инструменты:
 
 - Unit: JUnit, pytest;
-- UI/API: Selenium, Playwright, Postman/Newman;
+- [UI](../glossary.md#abbr-091)/API: Selenium, Playwright, Postman/Newman;
 - BDD: Cucumber, Behave.
 
 ## Типичные ошибки
@@ -97,8 +94,8 @@
 ## Кросс-ссылки
 
 - [Тестирование в процессе разработки](../development-process/testing/index.md)
-- [Валидация требований](../requirements/validation.md)
-- [Трассировка](../requirements/management/traceability.md)## Источники
+- [[Валидация](../glossary.md#term-013) требований](../requirements/validation.md)
+- [[Трассировка](../glossary.md#term-069)](../requirements/management/traceability.md)## Источники
 
 - ISTQB Foundation: <https://www.istqb.org/>
 - Google Testing Blog: <https://testing.googleblog.com/>

@@ -1,7 +1,4 @@
-# SAFe (Scaled Agile Framework)
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# [SAFe](../../glossary.md#abbr-077) (Scaled Agile Framework)
 
 SAFe - фреймворк масштабирования Agile на уровне программы и портфеля. Полезен, когда нужно синхронизировать множество команд и сохранять управляемость зависимостей.
 
@@ -98,4 +95,4 @@ stop
 - слишком много локальной оптимизации команд;
 - отсутствие связи между portfolio-целями и sprint delivery.## Источники
 
-- SAFe 6.0: <https://scaledagileframework.com/>
+- [SAFe](../../glossary.md#abbr-077) 6.0: <https://scaledagileframework.com/>

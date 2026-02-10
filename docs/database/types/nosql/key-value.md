@@ -1,8 +1,4 @@
 # Key-Value базы данных
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
-
-
 Key-value БД предназначены для ultra-fast доступа по ключу и часто используются как кэш, session store и low-latency state storage.
 
 ## Уровни сложности
@@ -27,7 +23,7 @@ Key-value БД предназначены для ultra-fast доступа по 
 | --- | --- |
 | Сессии пользователей | `session:{userId}` |
 | Кэш карточек товара | `product:{sku}` |
-| Ограничение rate limits | `ratelimit:{apiKey}:{minute}` |
+| [Ограничение](../../../glossary.md#term-050) rate limits | `ratelimit:{apiKey}:{minute}` |
 | Feature flags | `flag:{service}:{feature}` |
 
 ## Примеры данных и операций
@@ -39,7 +35,7 @@ INCR ratelimit:client-77:2026-02-10T10:25
 EXPIRE ratelimit:client-77:2026-02-10T10:25 60
 ```
 
-## Консистентность и целостность
+## [Консистентность](../../../glossary.md#term-040) и целостность
 
 - большинство KV систем оптимизированы под AP/low latency;
 - read-after-write зависит от топологии и клиента;
@@ -53,12 +49,12 @@ EXPIRE ratelimit:client-77:2026-02-10T10:25 60
 
 ## Безопасность
 
-- TLS и auth token/ACL;
+- [TLS](../../../glossary.md#abbr-088) и auth token/ACL;
 - запрет публичных endpoint без private network;
 - шифрование снапшотов/персистентного слоя;
 - аудит administrative команд.
 
-## Миграция из SQL
+## [Миграция](../../../glossary.md#term-045) из [SQL](../../../glossary.md#abbr-084)
 
 1. Выделить набор "горячих" ключевых чтений.
 2. Сформировать key schema и TTL policy.
@@ -77,7 +73,7 @@ EXPIRE ratelimit:client-77:2026-02-10T10:25 60
 1. Фиксируйте key convention и namespace policy.
 2. Для каждого набора ключей задавайте TTL и owner.
 3. Мониторьте cache hit ratio, eviction rate, hot keys.
-4. Для критичных операций храните источник истины в OLTP БД.
+4. Для критичных операций храните источник истины в [OLTP](../../../glossary.md#abbr-060) БД.
 ## Стандарты и источники
 
 - Redis docs: <https://redis.io/docs/>

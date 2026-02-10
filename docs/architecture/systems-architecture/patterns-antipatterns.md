@@ -1,6 +1,4 @@
 # Арх
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
 итектурные паттерны, принципы и антипаттерны
 
 Паттерны и принципы помогают принимать повторяемые архитектурные решения, снижать связность и ускорять эволюцию системы.
@@ -15,7 +13,7 @@
 
 ### Средний уровень
 
-- выбирать паттерны под конкретные NFR;
+- выбирать паттерны под конкретные [NFR](../../glossary.md#abbr-053);
 - обосновывать применение и стоимость поддержки;
 - связывать паттерны с архитектурным стилем.
 
@@ -29,7 +27,7 @@
 
 | Принцип | Суть | Типичное нарушение | Исправление |
 | --- | --- | --- | --- |
-| SRP | один модуль — одна ответственность | сервис с бизнес-логикой + SQL + HTTP | разделить на use-case, repo, adapter |
+| SRP | один модуль — одна ответственность | сервис с бизнес-логикой + [SQL](../../glossary.md#abbr-084) + [HTTP](../../glossary.md#abbr-038) | разделить на use-case, repo, adapter |
 | OCP | расширение без изменения ядра | if/else по типам провайдера | Strategy/Factory + интерфейс |
 | LSP | наследник подставляем вместо базового | наследник меняет контракт исключений | пересмотреть иерархию/контракт |
 | ISP | узкие интерфейсы по задачам | один «толстый» interface на всё | разделить interface по ролям |
@@ -40,15 +38,15 @@
 
 ## Ключевые архитектурные паттерны
 
-| Паттерн | Что решает | Где раскрыто |
+| [Паттерн](../../glossary.md#term-052) | Что решает | Где раскрыто |
 | --- | --- | --- |
 | Hexagonal | изоляция домена от инфраструктуры | [Hexagonal Architecture](hexagonal-architecture.md) |
-| CQRS | разделение read/write моделей | [Event Sourcing и CQRS](event-sourcing-cqrs.md) |
+| [CQRS](../../glossary.md#abbr-020) | разделение read/write моделей | [Event Sourcing и CQRS](event-sourcing-cqrs.md) |
 | Event Sourcing | полная история изменений | [Event Sourcing и CQRS](event-sourcing-cqrs.md) |
 | Clean/Onion | направленные зависимости внутрь домена | [Hexagonal Architecture](hexagonal-architecture.md) |
-| DDD | архитектура вокруг предметной области | [DDD](../design-approaches/oop-design/ddd.md) |
+| [DDD](../../glossary.md#abbr-024) | архитектура вокруг предметной области | [DDD](../design-approaches/oop-design/ddd.md) |
 | Saga | согласованность распределенных транзакций | [Интеграции](../../integrations/integration-methods/patterns.md) |
-| API Gateway / Mesh | управление north-south и east-west трафиком | [API Gateway и Service Mesh](api-gateway-service-mesh.md) |
+| [API](../../glossary.md#abbr-005) Gateway / Mesh | управление north-south и east-west трафиком | [API Gateway и Service Mesh](api-gateway-service-mesh.md) |
 
 ## Частые антипаттерны
 
@@ -65,7 +63,7 @@
 1. Зафиксируйте проблему и NFR-драйвер.
 2. Выберите 1-2 паттерна-кандидата.
 3. Оцените стоимость внедрения и операций.
-4. Зафиксируйте решение в ADR.
+4. Зафиксируйте решение в [ADR](../../glossary.md#abbr-003).
 5. Проверьте метриками после внедрения.
 ## Стандарты и источники
 

@@ -1,9 +1,6 @@
 # Инструменты работы с БД
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
-Раздел описывает инструменты аналитика и DBA для проектирования схем, миграций, диагностики запросов и эксплуатации SQL/NoSQL платформ.
+Раздел описывает инструменты аналитика и DBA для проектирования схем, миграций, диагностики запросов и эксплуатации [SQL](../glossary.md#abbr-084)/NoSQL платформ.
 
 ## Уровни сложности
 
@@ -21,7 +18,7 @@
 
 ### Продвинутый уровень
 
-- интегрировать database workflow в CI/CD;
+- интегрировать database workflow в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017);
 - контролировать schema drift и rollback;
 - выстраивать мониторинг и DR-процедуры.
 
@@ -29,7 +26,7 @@
 
 | Категория | Инструменты | Назначение |
 | --- | --- | --- |
-| SQL IDE/clients | DataGrip, DBeaver, pgAdmin, SSMS | запросы, диагностика, администрирование |
+| SQL [IDE](../glossary.md#abbr-040)/clients | DataGrip, DBeaver, pgAdmin, SSMS | запросы, диагностика, администрирование |
 | NoSQL clients | Mongo Compass, Studio 3T, Robo 3T, Cassandra Query Tool | анализ коллекций/документов/таблиц |
 | NewSQL clients | CockroachDB SQL client, Yugabyte/YSQL tooling | distributed SQL диагностика |
 | Schema modeling | dbdiagram.io, SQLDBM | документирование и проектирование схем |
@@ -89,18 +86,18 @@
 - воспроизводить окружение через versioned `docker compose`;
 - использовать seed scripts и миграции при старте.
 
-## Интеграция с CI/CD
+## [Интеграция](../glossary.md#term-033) с [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017)
 
 - шаг миграций до application deploy;
 - проверки schema drift;
 - rollback strategy и verification tests;
 - публикация migration report.
 
-## Зависимость от архитектурного стиля
+## [Зависимость](../glossary.md#term-027) от архитектурного стиля
 
-- Монолит: акцент на quality SQL, миграционный контур и query tuning.
+- Монолит: акцент на quality [SQL](../glossary.md#abbr-084), миграционный контур и query tuning.
 - Микросервисы: акцент на schema ownership по сервисам и backward-compatible migrations.
-- Event-driven: акцент на CDC, schema evolution и согласованность read models.
+- Event-driven: акцент на [CDC](../glossary.md#abbr-014), schema evolution и согласованность read models.
 
 ## Связь с требованиями и SDLC
 
@@ -113,7 +110,7 @@
 ## Кросс-ссылки
 
 - [Базы данных](../database/index.md)
-- [Нормализация и денормализация](../database/normalization/index.md)
+- [[Нормализация](../glossary.md#term-048) и денормализация](../database/normalization/index.md)
 - [Процесс разработки: DevOps](../development-process/product-lifecycle/devops-basics.md)
 - [Интеграции: Общая БД](../integrations/integration-methods/shared-database.md)
 

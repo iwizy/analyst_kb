@@ -1,6 +1,4 @@
 # Многослойная арх
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
 итектура
 
 Layered architecture разделяет систему на слои с четкой ответственностью: presentation, application/business, persistence/integration.
@@ -21,7 +19,7 @@ Layered architecture разделяет систему на слои с четк
 
 ### Продвинутый уровень
 
-- комбинировать layered с DDD/hexagonal;
+- комбинировать layered с [DDD](../../../glossary.md#abbr-024)/hexagonal;
 - оптимизировать cross-layer performance bottleneck;
 - предотвращать архитектурную эрозию.
 
@@ -60,7 +58,7 @@ L2 --> L4
 
 ## Антипаттерны
 
-- нарушение слоев (UI напрямую в DB);
+- нарушение слоев ([UI](../../../glossary.md#abbr-091) напрямую в DB);
 - «толстый» application слой без доменных правил;
 - слойность ради слойности без ценности.
 

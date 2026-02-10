@@ -1,9 +1,6 @@
-# Обратная совместимость
+# [Обратная совместимость](../../glossary.md#term-049)
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
-Обратная совместимость снижает операционный риск и стоимость интеграции: клиентам не нужно срочно переписывать код после каждого релиза API.
+Обратная совместимость снижает операционный риск и стоимость интеграции: клиентам не нужно срочно переписывать код после каждого релиза [API](../../glossary.md#abbr-005).
 
 ## Уровни сложности
 
@@ -23,7 +20,7 @@
 
 - управлять миграциями через canary/blue-green;
 - применять graceful degradation и fallback;
-- контролировать совместимость SDK, UI и партнерских клиентов.
+- контролировать совместимость SDK, [UI](../../glossary.md#abbr-091) и партнерских клиентов.
 
 ## Классификация изменений
 
@@ -83,5 +80,5 @@ stop
 ## Стандарты и источники
 
 - OpenAPI backward compatibility practices: <https://learn.openapis.org/specification/servers.html>
-- RFC 9110 HTTP Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
-- Google API Improvement Proposals: <https://google.aip.dev/>
+- [RFC](../../glossary.md#abbr-072) 9110 [HTTP](../../glossary.md#abbr-038) Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
+- Google [API](../../glossary.md#abbr-005) Improvement Proposals: <https://google.aip.dev/>

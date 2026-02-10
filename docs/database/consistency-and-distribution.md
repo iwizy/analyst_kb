@@ -1,9 +1,6 @@
-# Консистентность и распределение
+# [Консистентность](../glossary.md#term-040) и распределение
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
-Раздел объясняет, как выбирать и документировать компромиссы в распределенных базах данных: от ACID/BASE до CAP/PACELC, репликации и конфликтов.
+Раздел объясняет, как выбирать и документировать компромиссы в распределенных базах данных: от ACID/BASE до [CAP](../glossary.md#abbr-013)/[PACELC](../glossary.md#abbr-061), репликации и конфликтов.
 
 ## Уровни сложности
 
@@ -109,12 +106,12 @@ A -- L : PACELC
 
 - Saga orchestration/choreography;
 - outbox/inbox pattern для надежной доставки событий;
-- идемпотентные API и deduplication keys;
+- идемпотентные [API](../glossary.md#abbr-005) и deduplication keys;
 - reconciliation jobs и audit trails.
 
 ## Типовые ошибки
 
-- считать CAP выбором "на всю систему", а не на конкретный поток;
+- считать [CAP](../glossary.md#abbr-013) выбором "на всю систему", а не на конкретный поток;
 - не фиксировать consistency requirements в требованиях;
 - использовать eventual consistency в финансовом инварианте;
 - не тестировать partition и региональные сбои.
@@ -128,7 +125,7 @@ A -- L : PACELC
 ## Стандарты и источники
 
 - CAP paper: <https://dl.acm.org/doi/10.1145/564585.564601>
-- PACELC paper: <https://ieeexplore.ieee.org/document/6133253>
+- [PACELC](../glossary.md#abbr-061) paper: <https://ieeexplore.ieee.org/document/6133253>
 - Designing Data-Intensive Applications (Kleppmann): <https://dataintensive.net/>
 - PostgreSQL transaction isolation: <https://www.postgresql.org/docs/current/transaction-iso.html>
 - Jepsen analyses: <https://jepsen.io/analyses>

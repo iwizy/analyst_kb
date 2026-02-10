@@ -1,8 +1,4 @@
 # Реляционные базы данных
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
-
 Реляционные СУБД остаются базовым выбором для критичных транзакционных систем: финансы, заказы, учет, регуляторные контуры.
 
 ## Уровни сложности
@@ -10,7 +6,7 @@
 ### Базовый
 
 - таблицы, ключи, ограничения, ACID;
-- базовые CRUD и SQL-запросы.
+- базовые [CRUD](../../glossary.md#abbr-021) и [SQL](../../glossary.md#abbr-084)-запросы.
 
 ### Средний
 
@@ -19,7 +15,7 @@
 
 ### Продвинутый
 
-- partitioning, online-migrations, CI/CD базы, observability, backup/restore drills.
+- partitioning, online-migrations, [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017) базы, observability, backup/restore drills.
 
 ## Где реляционные СУБД подходят лучше всего
 
@@ -107,7 +103,7 @@ LIMIT 20;
 - seq scan по крупным таблицам;
 - expensive query fingerprints из `pg_stat_statements`.
 
-## Миграции схемы и CI/CD для БД
+## Миграции схемы и [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017) для БД
 
 Рекомендуемый процесс:
 
@@ -126,13 +122,13 @@ LIMIT 20;
 
 - ежедневный full backup + WAL/binlog archive;
 - регулярный restore-тест в отдельный контур;
-- явные цели `RPO` и `RTO` по системам.
+- явные цели `[RPO](../../glossary.md#abbr-074)` и `[RTO](../../glossary.md#abbr-076)` по системам.
 
 ## Типовые ошибки
 
 - слишком ранняя денормализация без измерений;
 - missing indexes на внешних ключах и частых фильтрах;
-- длинные транзакции, блокирующие OLTP;
+- длинные транзакции, блокирующие [OLTP](../../glossary.md#abbr-060);
 - миграции без теста rollback/roll-forward.
 
 ## Практические рекомендации
@@ -145,6 +141,6 @@ LIMIT 20;
 
 - PostgreSQL docs: <https://www.postgresql.org/docs/>
 - MySQL docs: <https://dev.mysql.com/doc/>
-- ISO/IEC 9075 SQL: <https://www.iso.org/standard/76583.html>
+- [ISO](../../glossary.md#abbr-043)/IEC 9075 [SQL](../../glossary.md#abbr-084): <https://www.iso.org/standard/76583.html>
 - Transaction isolation (PostgreSQL): <https://www.postgresql.org/docs/current/transaction-iso.html>
 - pg_stat_statements: <https://www.postgresql.org/docs/current/pgstatstatements.html>

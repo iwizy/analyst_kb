@@ -1,8 +1,4 @@
 # Базы данных
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
-
 Раздел описывает практический подход к выбору, проектированию и эксплуатации баз данных для системного аналитика и архитектора.
 
 ## Уровни сложности
@@ -10,20 +6,20 @@
 ### Базовый уровень
 
 - понять отличия реляционных, NoSQL, NewSQL и реестров;
-- научиться выбирать БД по нагрузке, консистентности и SLA;
+- научиться выбирать БД по нагрузке, консистентности и [SLA](../glossary.md#abbr-079);
 - освоить базовые подходы к схеме, индексам, репликации и backup.
 
 ### Средний уровень
 
 - проектировать модель данных под домен и тип запросов;
-- балансировать ACID/BASE/CAP/PACELC под бизнес-риски;
+- балансировать ACID/BASE/[CAP](../glossary.md#abbr-013)/[PACELC](../glossary.md#abbr-061) под бизнес-риски;
 - строить комбинированные архитектуры (primary store + специализированные хранилища).
 
 ### Продвинутый уровень
 
 - проектировать multi-region и масштабируемые кластеры;
-- выстраивать DWH/Lakehouse/MDM/Data Governance на уровне платформы;
-- управлять отказоустойчивостью, CDC, disaster recovery и стоимостью владения.
+- выстраивать [DWH](../glossary.md#abbr-029)/Lakehouse/[MDM](../glossary.md#abbr-049)/Data Governance на уровне платформы;
+- управлять отказоустойчивостью, [CDC](../glossary.md#abbr-014), disaster recovery и стоимостью владения.
 
 ## Карта тем раздела
 
@@ -52,20 +48,20 @@ P --> O
 | Параметр | Что измерять | Почему важно |
 | --- | --- | --- |
 | Объем данных | текущий объем, годовой прирост, горячие данные | влияет на хранение, партиционирование и стоимость |
-| Нагрузка | RPS read/write, peak multiplier | определяет архитектуру и тип индексов |
-| Профиль запросов | read/write ratio, сложность join/aggregation | влияет на выбор SQL vs NoSQL и доп. витрин |
-| Требования к консистентности | strong, causal, eventual | определяет CAP/PACELC компромисс |
-| SLA/SLO | latency p95, availability, RTO/RPO | влияет на топологию, репликацию, backup |
+| [Нагрузка](../glossary.md#term-046) | [RPS](../glossary.md#abbr-075) read/write, peak multiplier | определяет архитектуру и тип индексов |
+| Профиль запросов | read/write ratio, сложность join/aggregation | влияет на выбор [SQL](../glossary.md#abbr-084) vs NoSQL и доп. витрин |
+| Требования к консистентности | strong, causal, eventual | определяет [CAP](../glossary.md#abbr-013)/[PACELC](../glossary.md#abbr-061) компромисс |
+| [SLA](../glossary.md#abbr-079)/[SLO](../glossary.md#abbr-081) | latency p95, availability, [RTO](../glossary.md#abbr-076)/[RPO](../glossary.md#abbr-074) | влияет на топологию, репликацию, backup |
 | Регуляторика | хранение ПДн, аудит, сроки retention | задает ограничения по платформе и процессам |
 
 ## Пример оценки нагрузки
 
-| Метрика | Значение (пример e-commerce) | Интерпретация |
+| [Метрика](../glossary.md#term-044) | Значение (пример e-commerce) | Интерпретация |
 | --- | --- | --- |
 | Data size | 3.2 TB | нужен tiered storage и partition strategy |
 | Growth | 180 GB/месяц | через 12 месяцев +2 TB, нужен capacity plan |
 | Peak RPS | 4 500 read / 900 write | read-heavy, возможны read replicas + cache |
-| Read/Write ratio | 5:1 | primary OLTP + реплики/поиск |
+| Read/Write ratio | 5:1 | primary [OLTP](../glossary.md#abbr-060) + реплики/поиск |
 | P95 latency target | <= 120 ms (каталог), <= 300 ms (чекаут) | разные SLA для read и tx сценариев |
 | Availability | 99.95 | требует HA и отработанный failover runbook |
 
@@ -87,7 +83,7 @@ P --> O
 
 - `PostgreSQL` как primary store для заказов, оплат, складских резервов.
 - `MongoDB` или search-индекс как специализированный слой каталога.
-- CDC из PostgreSQL в аналитический контур.
+- [CDC](../glossary.md#abbr-014) из PostgreSQL в аналитический контур.
 
 ### Упрощенный граф профиля нагрузки
 
@@ -98,7 +94,7 @@ P --> O
 
 ## Комбинированные архитектуры
 
-| Паттерн | Когда применять | Пример |
+| [Паттерн](../glossary.md#term-052) | Когда применять | Пример |
 | --- | --- | --- |
 | Primary + Cache | высокий read RPS и hot keys | PostgreSQL + Redis |
 | Primary + Search | полнотекст и фасетная фильтрация | PostgreSQL + OpenSearch |
@@ -116,12 +112,12 @@ P --> O
 ## Практические рекомендации
 
 1. Сначала фиксируйте доменные инварианты, затем выбирайте модель хранения.
-2. Для критичных решений делайте ADR с измеримыми критериями.
+2. Для критичных решений делайте [ADR](../glossary.md#abbr-003) с измеримыми критериями.
 3. Валидируйте выбор через PoC: latency, throughput, отказ и восстановление.
 4. Планируйте migration path и observability до запуска в production.
 ## Стандарты и первоисточники
 
-- ISO/IEC 9075 SQL: <https://www.iso.org/standard/76583.html>
+- [ISO](../glossary.md#abbr-043)/IEC 9075 SQL: <https://www.iso.org/standard/76583.html>
 - CAP theorem paper (Gilbert, Lynch): <https://dl.acm.org/doi/10.1145/564585.564601>
 - PACELC (Abadi): <https://ieeexplore.ieee.org/document/6133253>
 - Google Spanner paper: <https://research.google/pubs/pub39966/>

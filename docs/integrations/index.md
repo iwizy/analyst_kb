@@ -1,8 +1,5 @@
 # Интеграции
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Раздел дает практический фреймворк для проектирования, внедрения и сопровождения интеграций: от выбора типа взаимодействия до надежности, наблюдаемости и соответствия регуляторике.
 
 ## Уровни сложности
@@ -10,8 +7,8 @@
 ### Базовый уровень
 
 - различать синхронные и асинхронные интеграции;
-- выбирать базовый API-стиль под задачу;
-- понимать минимальные требования к безопасности, ошибкам и SLA.
+- выбирать базовый [API](../glossary.md#abbr-005)-стиль под задачу;
+- понимать минимальные требования к безопасности, ошибкам и [SLA](../glossary.md#abbr-079).
 
 ### Средний уровень
 
@@ -48,8 +45,8 @@ I --> O
 ## Быстрый алгоритм выбора подхода
 
 1. Зафиксируйте бизнес-сценарий и критичность операции.
-2. Определите целевой SLA/SLO: latency, availability, RTO/RPO.
-3. Оцените профиль нагрузки: RPS, burst, read/write ratio, объем сообщений.
+2. Определите целевой [SLA](../glossary.md#abbr-079)/[SLO](../glossary.md#abbr-081): latency, availability, [RTO](../glossary.md#abbr-076)/[RPO](../glossary.md#abbr-074).
+3. Оцените профиль нагрузки: [RPS](../glossary.md#abbr-075), burst, read/write ratio, объем сообщений.
 4. Сформулируйте требования к консистентности: strict, bounded staleness, eventual.
 5. Определите доверенную модель: внешний клиент, партнер, внутренний сервис.
 6. Выберите паттерн взаимодействия: request/response, pub/sub, batch file, stream.
@@ -57,7 +54,7 @@ I --> O
 
 ## Матрица выбора типа интеграции
 
-| Критерий | Синхронный API | Асинхронные события | Файловый обмен |
+| Критерий | Синхронный [API](../glossary.md#abbr-005) | Асинхронные события | Файловый обмен |
 | --- | --- | --- | --- |
 | Latency | миллисекунды-секунды | секунды-минуты | минуты-часы |
 | Согласованность | выше, но жестче связность | eventual consistency | обычно пакетная |
@@ -67,23 +64,23 @@ I --> O
 
 ## Примеры по доменам
 
-| Домен | B2C | B2B | Межсервисное взаимодействие |
+| [Домен](../glossary.md#term-023) | B2C | B2B | Межсервисное взаимодействие |
 | --- | --- | --- | --- |
-| Fintech | мобильные платежи через REST + OAuth2 | ISO 20022 batch + SFTP/AS2 | antifraud events + scoring через Kafka |
+| Fintech | мобильные платежи через [REST](../glossary.md#abbr-071) + OAuth2 | [ISO](../glossary.md#abbr-043) 20022 batch + SFTP/AS2 | antifraud events + scoring через Kafka |
 | E-commerce | каталог и корзина через REST/GraphQL | поставщики через EDI/файлы | заказ-склад-доставка через Saga |
-| Gov | портал услуг через API gateway | межведомственный обмен по SOAP/SMEV | события статусов заявлений через брокер |
-| Media | контент API + CDN | лицензирование с партнерами по контрактам | stream событий просмотров в DWH |
+| Gov | портал услуг через API gateway | межведомственный обмен по [SOAP](../glossary.md#abbr-083)/SMEV | события статусов заявлений через брокер |
+| Media | контент API + CDN | лицензирование с партнерами по контрактам | stream событий просмотров в [DWH](../glossary.md#abbr-029) |
 
 ## Ключевые метрики интеграций
 
-| Метрика | Что показывает | Целевой контроль |
+| [Метрика](../glossary.md#term-044) | Что показывает | Целевой контроль |
 | --- | --- | --- |
 | p95 latency | пользовательский опыт и SLA | контроль по endpoint и операции |
 | Throughput | пропускная способность | контроль пиков и деградаций |
 | Error rate | стабильность и корректность | алерты на рост 4xx/5xx |
 | Retry success rate | эффективность восстановления | не ниже порога по критичным операциям |
 | DLQ size/age | накопление проблемных сообщений | ограничение времени в DLQ |
-| Contract drift | риск расхождения с документацией | проверка в CI/CD |
+| Contract drift | риск расхождения с документацией | проверка в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017) |
 
 ## Переход к подразделам
 
@@ -92,9 +89,9 @@ I --> O
 - [Сетевое взаимодействие](networking/index.md)
 ## Стандарты и источники
 
-- RFC 9110 HTTP Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
+- [RFC](../glossary.md#abbr-072) 9110 [HTTP](../glossary.md#abbr-038) Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
 - RFC 9457 Problem Details for HTTP APIs: <https://www.rfc-editor.org/rfc/rfc9457>
-- OAuth 2.1 draft: <https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/>
+- [OAuth](../glossary.md#abbr-056) 2.1 draft: <https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/>
 - OpenAPI Specification: <https://spec.openapis.org/oas/latest.html>
 - AsyncAPI Specification: <https://www.asyncapi.com/docs/reference/specification/latest>
 - Enterprise Integration Patterns: <https://www.enterpriseintegrationpatterns.com/>

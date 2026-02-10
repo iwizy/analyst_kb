@@ -1,8 +1,5 @@
 # Hexagonal Architecture
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Hexagonal (Ports and Adapters) изолирует домен от инфраструктуры, позволяя менять БД, транспорт и внешние интеграции без изменения бизнес-ядра.
 
 ## Уровни сложности
@@ -21,7 +18,7 @@ Hexagonal (Ports and Adapters) изолирует домен от инфраст
 
 ### Продвинутый уровень
 
-- комбинировать hexagonal с DDD и event-driven;
+- комбинировать hexagonal с [DDD](../../glossary.md#abbr-024) и event-driven;
 - внедрять Clean/Onion вариации;
 - масштабировать архитектуру на несколько команд.
 
@@ -58,7 +55,7 @@ OP --> OUT
 
 ## Недостатки
 
-- дополнительная абстракция для простых CRUD;
+- дополнительная абстракция для простых [CRUD](../../glossary.md#abbr-021);
 - риск чрезмерной формализации портов;
 - требует дисциплины в командной разработке.
 
@@ -71,7 +68,7 @@ OP --> OUT
 ## Антипаттерны
 
 - бизнес-логика в adapters;
-- домен знает ORM/HTTP/Kafka API;
+- домен знает ORM/[HTTP](../../glossary.md#abbr-038)/Kafka [API](../../glossary.md#abbr-005);
 - generic ports без бизнес-смысла.
 
 ## Практические рекомендации
@@ -79,7 +76,7 @@ OP --> OUT
 1. Порт отражает use-case, а не технический CRUD.
 2. Domain Core не импортирует инфраструктурные пакеты.
 3. Для каждого внешнего провайдера — отдельный adapter.
-4. Сверяйтесь с [DDD](../design-approaches/oop-design/ddd.md).
+4. Сверяйтесь с [[DDD](../../glossary.md#abbr-024)](../design-approaches/oop-design/ddd.md).
 ## Стандарты и источники
 
 - Cockburn, Hexagonal Architecture papers.

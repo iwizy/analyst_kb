@@ -1,8 +1,5 @@
 # TCP/IP
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 TCP/IP — основной стек для большинства интеграций. Понимание его поведения помогает правильно настраивать таймауты, ретраи и балансировку.
 
 ## Уровни сложности
@@ -11,12 +8,12 @@ TCP/IP — основной стек для большинства интегр�
 
 - понимать роли уровней TCP/IP;
 - знать TCP handshake и базовые состояния соединения;
-- связывать RTT и timeout API.
+- связывать RTT и timeout [API](../../glossary.md#abbr-005).
 
 ### Средний уровень
 
 - учитывать congestion control и keepalive;
-- понимать влияние HTTP/2 и HTTP/3 на latency;
+- понимать влияние [HTTP](../../glossary.md#abbr-038)/2 и HTTP/3 на latency;
 - проектировать connection pooling.
 
 ### Продвинутый уровень
@@ -29,7 +26,7 @@ TCP/IP — основной стек для большинства интегр�
 
 | Уровень | Назначение |
 | --- | --- |
-| Application | HTTP, gRPC, DNS, SMTP |
+| Application | HTTP, [gRPC](../../glossary.md#abbr-036), DNS, SMTP |
 | Transport | TCP/UDP |
 | Internet | IP, ICMP, routing |
 | Link | Ethernet, Wi-Fi |
@@ -53,9 +50,9 @@ Client <-> Server: Data transfer
 | --- | --- |
 | TCP keepalive | выявляйте "мертвые" соединения |
 | Congestion control | учитывайте CUBIC/BBR при throughput тестах |
-| Head-of-line blocking | для HTTP/1.1 выше, HTTP/2 снижает |
+| Head-of-line blocking | для [HTTP](../../glossary.md#abbr-038)/1.1 выше, HTTP/2 снижает |
 | Connection pooling | уменьшает стоимость handshakes |
-| TLS reuse | снижает latency повторных вызовов |
+| [TLS](../../glossary.md#abbr-088) reuse | снижает latency повторных вызовов |
 
 ## HTTP/2 и HTTP/3
 
@@ -70,7 +67,7 @@ Client <-> Server: Data transfer
 - gateway/service metrics для связи сетевых и прикладных ошибок.
 ## Стандарты и источники
 
-- RFC 9293 TCP: <https://www.rfc-editor.org/rfc/rfc9293>
+- [RFC](../../glossary.md#abbr-072) 9293 TCP: <https://www.rfc-editor.org/rfc/rfc9293>
 - RFC 793 (исторически): <https://www.rfc-editor.org/rfc/rfc793>
 - RFC 7540 HTTP/2: <https://www.rfc-editor.org/rfc/rfc7540>
 - RFC 9114 HTTP/3: <https://www.rfc-editor.org/rfc/rfc9114>

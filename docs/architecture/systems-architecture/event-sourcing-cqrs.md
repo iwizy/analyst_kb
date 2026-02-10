@@ -1,7 +1,4 @@
-# Event Sourcing и CQRS
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# Event Sourcing и [CQRS](../../glossary.md#abbr-020)
 
 CQRS и Event Sourcing — enterprise-паттерны для доменов с высоким требованием к auditability, масштабируемому чтению и сложной доменной логике.
 
@@ -29,7 +26,7 @@ CQRS и Event Sourcing — enterprise-паттерны для доменов с 
 
 - `Command side`: команды, инварианты, запись.
 - `Query side`: оптимизированные read-модели.
-- Выгода: масштабирование чтения, независимая эволюция read API.
+- Выгода: масштабирование чтения, независимая эволюция read [API](../../glossary.md#abbr-005).
 
 ## Event Sourcing
 
@@ -79,7 +76,7 @@ Q --> RM
 
 ## Когда не применять
 
-- простой CRUD без сложных инвариантов;
+- простой [CRUD](../../glossary.md#abbr-021) без сложных инвариантов;
 - маленькая команда без опыта event-driven;
 - отсутствие требований к истории и replay.
 
@@ -91,6 +88,6 @@ Q --> RM
 4. Мониторьте projection lag и dead-letter.
 ## Стандарты и источники
 
-- Fowler, CQRS/Event Sourcing articles.
+- Fowler, [CQRS](../../glossary.md#abbr-020)/Event Sourcing articles.
 - Greg Young talks/papers on Event Sourcing.
-- Vaughn Vernon, DDD and event patterns.
+- Vaughn Vernon, [DDD](../../glossary.md#abbr-024) and event patterns.

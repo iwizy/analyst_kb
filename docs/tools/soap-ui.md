@@ -1,9 +1,6 @@
-# SOAP UI
+# [SOAP](../glossary.md#abbr-083) [UI](../glossary.md#abbr-091)
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
-SOAP UI - инструмент для тестирования SOAP и REST сервисов. Для системного
+SOAP UI - инструмент для тестирования SOAP и [REST](../glossary.md#abbr-071) сервисов. Для системного
 аналитика он полезен при проверке контрактов, интеграционных сценариев и
 граничных условий в системах с тяжелым enterprise-контуром.
 
@@ -68,7 +65,7 @@ SOAP UI - инструмент для тестирования SOAP и REST се
 
 - [Swagger](swagger.md)
 - [Postman](postman.md)
-- [SOAP](../integrations/integration-methods/api/soap.md)
+- [[SOAP](../glossary.md#abbr-083)](../integrations/integration-methods/api/soap.md)
 - [XML/XSD](../integrations/api-design/serialization-formats/xml-xsd.md)
 
 ## Практическое дополнение

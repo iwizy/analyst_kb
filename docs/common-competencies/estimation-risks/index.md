@@ -1,8 +1,5 @@
 # Оценка задач и рисков
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Оценка и риски должны работать как единый контур: оценка без рисков создает ложную точность, а риск без оценки не влияет на план и бюджет.
 
 ## Уровни сложности
@@ -53,6 +50,6 @@ stop
 - [Процесс разработки: Этапы SDLC](../../development-process/product-lifecycle/stages.md)
 - [Методологии: Сравнение](../../methodologies/comparison.md)## Источники
 
-- PMBOK Guide (estimation and risk).
+- [PMBOK](../../glossary.md#abbr-064) Guide (estimation and risk).
 - Scrum Guide.
-- ISO 31000:2018.
+- [ISO](../../glossary.md#abbr-043) 31000:2018.

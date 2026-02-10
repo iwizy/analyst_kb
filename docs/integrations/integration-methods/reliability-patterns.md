@@ -1,8 +1,5 @@
 # Паттерны надежности
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Паттерны надежности позволяют выдерживать сбои downstream-сервисов без каскадных отказов всей системы.
 
 ## Уровни сложности
@@ -27,7 +24,7 @@
 
 ## Каталог паттернов
 
-| Паттерн | Назначение | Ключевые параметры |
+| [Паттерн](../../glossary.md#term-052) | Назначение | Ключевые параметры |
 | --- | --- | --- |
 | Retry | повтор на transient error | maxAttempts, backoff, jitter |
 | Timeout | ограничение ожидания | timeoutMs |
@@ -92,13 +89,13 @@ await Policy.WrapAsync(retry, breaker).ExecuteAsync(CallApi);
 
 ## Метрики observability
 
-| Метрика | Для чего |
+| [Метрика](../../glossary.md#term-044) | Для чего |
 | --- | --- |
 | retry success rate | эффективность повторов |
 | breaker open time | длительность деградации |
 | timeout ratio | сигнал перегрузки/сети |
 | DLQ backlog age | накопление необработанных сообщений |
-| error budget burn rate | скорость "сжигания" SLO бюджета |
+| error budget burn rate | скорость "сжигания" [SLO](../../glossary.md#abbr-081) бюджета |
 
 ## Типичные ошибки
 

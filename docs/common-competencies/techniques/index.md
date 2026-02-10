@@ -1,6 +1,4 @@
 # Тех
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
 ники и инструменты анализа
 
 Техники анализа помогают структурировать проблему, сформировать гипотезы, согласовать решения и превратить выводы в управляемые действия.
@@ -27,7 +25,7 @@
 
 ## Карта техник
 
-- [SWOT](swot.md)
+- [[SWOT](../../glossary.md#abbr-086)](swot.md)
 - [5 Why](five-why.md)
 - [Mind Map](mind-map.md)
 - [Value Stream Mapping](value-stream-mapping.md)
@@ -44,7 +42,7 @@
 | --- | --- |
 | Стратегический анализ | SWOT, PESTLE, Impact Mapping |
 | Поиск первопричин | 5 Why, Fishbone |
-| Декомпозиция требований | Mind Map, Story Mapping, Affinity |
+| [Декомпозиция](../../glossary.md#term-019) требований | Mind Map, Story Mapping, Affinity |
 | Оптимизация потока | Value Stream Mapping |
 | Приоритизация | MoSCoW, Kano |
 

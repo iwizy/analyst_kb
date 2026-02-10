@@ -1,8 +1,5 @@
 # Методологии разработки ПО
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Раздел помогает выбрать и адаптировать методологию под контекст проекта: требования, риски, регуляторику, скорость поставки и зрелость команды.
 
 ## Уровни сложности
@@ -109,8 +106,8 @@ stop
 - копирование фреймворка без адаптации к контексту команды;
 - отсутствие метрик для проверки эффективности процесса.## Источники
 
-- PMBOK Guide: <https://www.pmi.org/pmbok-guide-standards>
+- [PMBOK](../glossary.md#abbr-064) Guide: <https://www.pmi.org/pmbok-guide-standards>
 - Scrum Guide: <https://scrumguides.org/>
 - Kanban Guide: <https://kanbanguides.org/>
-- SAFe 6.0: <https://scaledagileframework.com/>
+- [SAFe](../glossary.md#abbr-077) 6.0: <https://scaledagileframework.com/>
 - IBM Rational Unified Process: <https://www.ibm.com/docs/en/rational-soft-arch>

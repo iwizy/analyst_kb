@@ -1,9 +1,6 @@
 # Camunda Modeler
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
-Camunda Modeler - инструмент для моделирования BPMN/DMN и подготовки
+Camunda Modeler - инструмент для моделирования [BPMN](../glossary.md#abbr-009)/DMN и подготовки
 исполняемых процессов. Для системного аналитика это способ формализовать
 процессы, точки принятия решений и интеграционные вызовы.
 
@@ -62,8 +59,8 @@ Camunda Modeler - инструмент для моделирования BPMN/DM
 ## Смежные материалы
 
 - [BPMN](../notations/bpmn.md)
-- [Декомпозиция задач](../architecture/task-decomposition.md)
-- [Оркестрация и хореография](../architecture/systems-architecture/orchestration-choreography.md)
+- [[Декомпозиция](../glossary.md#term-019) задач](../architecture/task-decomposition.md)
+- [[Оркестрация](../glossary.md#term-051) и хореография](../architecture/systems-architecture/orchestration-choreography.md)
 - [Управление изменениями](../requirements/management/change-management.md)
 
 ## Практическое дополнение

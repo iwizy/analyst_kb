@@ -1,8 +1,5 @@
 # Blockchain и смарт-контракты
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Смарт-контракты автоматизируют исполнение бизнес-правил в распределенном реестре. Ключевой риск — неизменяемость и цена ошибки в коде.
 
 ## Уровни сложности
@@ -63,7 +60,7 @@ function CreateAsset(ctx, assetId, owner, value)
 | Access control flaw | критичные функции доступны не тем ролям | role-based modifiers, least privilege |
 | Oracle manipulation | внешние данные подменены/задержаны | trusted oracle, multi-source verification |
 
-## Интеграция с корпоративным контуром
+## [Интеграция](../../glossary.md#term-033) с корпоративным контуром
 
 ```kroki-plantuml
 @startuml

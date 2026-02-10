@@ -1,9 +1,6 @@
 # Способы интеграции
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
-Подраздел описывает интеграции по каналам взаимодействия: синхронные API, асинхронные события, брокеры сообщений, файловый обмен и shared data patterns.
+Подраздел описывает интеграции по каналам взаимодействия: синхронные [API](../../glossary.md#abbr-005), асинхронные события, брокеры сообщений, файловый обмен и shared data patterns.
 
 ## Уровни сложности
 
@@ -15,7 +12,7 @@
 
 ### Средний уровень
 
-- применять Saga, CQRS и outbox;
+- применять Saga, [CQRS](../../glossary.md#abbr-020) и outbox;
 - сочетать API и события в одном домене;
 - проектировать retry, DLQ и idempotency.
 
@@ -27,7 +24,7 @@
 
 ## Сравнение подходов
 
-| Подход | Latency | Консистентность | Типовые сценарии |
+| Подход | Latency | [Консистентность](../../glossary.md#term-040) | Типовые сценарии |
 | --- | --- | --- | --- |
 | API request/response | низкая | выше, но сильная связность | валидация лимита, checkout |
 | Messaging pub/sub | средняя | eventual | уведомления, интеграция доменов |
@@ -54,4 +51,4 @@
 
 - Enterprise Integration Patterns: <https://www.enterpriseintegrationpatterns.com/>
 - AsyncAPI: <https://www.asyncapi.com/docs/reference/specification/latest>
-- RFC 9110 HTTP Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
+- [RFC](../../glossary.md#abbr-072) 9110 [HTTP](../../glossary.md#abbr-038) Semantics: <https://www.rfc-editor.org/rfc/rfc9110>

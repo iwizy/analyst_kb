@@ -1,7 +1,4 @@
-# ERD
-
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
+# [ERD](../glossary.md#abbr-032)
 
 ERD (Entity Relationship Diagram) описывает структуру данных: сущности, атрибуты, ключи и связи между ними.
 
@@ -22,7 +19,7 @@ ERD (Entity Relationship Diagram) описывает структуру данн
 ### Продвинутый уровень
 
 - проектировать денормализацию под аналитические и high-load сценарии;
-- связывать ERD с DDD bounded contexts;
+- связывать ERD с [DDD](../glossary.md#abbr-024) bounded contexts;
 - управлять миграциями схемы и эволюцией данных.
 
 ## Элементы ERD
@@ -92,10 +89,10 @@ entity "order_report" as R {
 
 | Подход | Плюсы | Минусы | Когда выбирать |
 | --- | --- | --- | --- |
-| Нормализованная | целостность, меньше дублирования | больше join | OLTP, транзакционные системы |
-| Денормализованная | быстрее чтение, проще отчеты | дубли и сложнее обновления | OLAP, витрины, high-read сценарии |
+| Нормализованная | целостность, меньше дублирования | больше join | [OLTP](../glossary.md#abbr-060), транзакционные системы |
+| Денормализованная | быстрее чтение, проще отчеты | дубли и сложнее обновления | [OLAP](../glossary.md#abbr-059), витрины, high-read сценарии |
 
-## Плюсы и минусы ERD
+## Плюсы и минусы [ERD](../glossary.md#abbr-032)
 
 | Плюсы | Минусы |
 | --- | --- |
@@ -129,15 +126,15 @@ entity "order_report" as R {
 ## Связь с другими разделами
 
 - [Проектирование модели данных](../database/data-modeling.md)
-- [Нормализация](../database/normalization/normal-forms.md)
+- [[Нормализация](../glossary.md#term-048)](../database/normalization/normal-forms.md)
 - [Типы БД](../database/types/index.md)
 
 ## Инструменты и форматы
 
 - draw.io, dbdiagram.io, DataGrip, Enterprise Architect;
-- экспорт: SVG/PNG/PDF, SQL DDL, XMI.
+- экспорт: SVG/PNG/PDF, [SQL](../glossary.md#abbr-084) DDL, XMI.
 ## Стандарты и источники
 
 - Chen ER model paper: <https://dl.acm.org/doi/10.1145/320434.320440>
-- ISO/IEC 9075 SQL: <https://www.iso.org/standard/76583.html>
-- Kimball & Ross DWH Toolkit: <https://www.wiley.com/en-us/The+Data+Warehouse+Toolkit%2C+3rd+Edition-p-9781118530801>
+- [ISO](../glossary.md#abbr-043)/IEC 9075 SQL: <https://www.iso.org/standard/76583.html>
+- Kimball & Ross [DWH](../glossary.md#abbr-029) Toolkit: <https://www.wiley.com/en-us/The+Data+Warehouse+Toolkit%2C+3rd+Edition-p-9781118530801>

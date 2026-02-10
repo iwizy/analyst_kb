@@ -1,23 +1,20 @@
 # Основы программирования для аналитика
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Подраздел дает системному аналитику прикладочную техническую базу: как читать реализацию, формулировать реализуемые требования и снижать число дефектов на стыке анализа и разработки.
 
 ## Уровни сложности
 
 ### Базовый уровень
 
-- понимать базовый синтаксис Python, Java, JavaScript и SQL;
+- понимать базовый синтаксис Python, Java, JavaScript и [SQL](../../glossary.md#abbr-084);
 - различать переменные, функции, условия, циклы, коллекции;
 - читать простой код и соотносить его с требованиями.
 
 ### Средний уровень
 
-- понимать структуру приложения: слои, модули, API, репозитории;
+- понимать структуру приложения: слои, модули, [API](../../glossary.md#abbr-005), репозитории;
 - распознавать типовые паттерны и anti-patterns;
-- готовить технически корректные user stories и AC.
+- готовить технически корректные user stories и [AC](../../glossary.md#abbr-002).
 
 ### Продвинутый уровень
 
@@ -37,7 +34,7 @@
 
 ## Пример связи требований и кода
 
-Требование: "Система должна отклонять платежи с истекшим токеном".
+[Требование](../../glossary.md#term-071): "Система должна отклонять платежи с истекшим токеном".
 
 ```python
 from datetime import datetime, timezone
@@ -67,4 +64,4 @@ def validate_token(expire_at_utc: datetime) -> bool:
 - Python docs: <https://docs.python.org/3/tutorial/>
 - Java docs: <https://docs.oracle.com/en/java/>
 - JavaScript MDN: <https://developer.mozilla.org/en-US/docs/Web/JavaScript>
-- SQL standard overview (ISO/IEC 9075 summary): <https://www.iso.org/standard/76583.html>
+- [SQL](../../glossary.md#abbr-084) standard overview ([ISO](../../glossary.md#abbr-043)/IEC 9075 summary): <https://www.iso.org/standard/76583.html>

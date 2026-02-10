@@ -1,7 +1,4 @@
-# DDD
-
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
+# [DDD](../../../glossary.md#abbr-024)
 
 Domain-Driven Design (DDD) строит архитектуру вокруг предметной области и языка бизнеса, а не вокруг технологий.
 
@@ -76,14 +73,14 @@ class OrderAggregate {
 
 - один "глобальный" домен без bounded contexts;
 - путаница domain event и integration event;
-- repository как generic CRUD без бизнес-смысла.
+- repository как generic [CRUD](../../../glossary.md#abbr-021) без бизнес-смысла.
 
 ## Практические рекомендации
 
 1. Начните с event storming ключевого процесса.
 2. Определите context ownership и interfaces.
 3. Зафиксируйте инварианты aggregate.
-4. Синхронизируйте DDD с [архитектурными стилями](../../systems-architecture/architecture-types/index.md).
+4. Синхронизируйте [DDD](../../../glossary.md#abbr-024) с [архитектурными стилями](../../systems-architecture/architecture-types/index.md).
 ## Стандарты и источники
 
 - Evans, *Domain-Driven Design*.

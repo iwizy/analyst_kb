@@ -1,8 +1,5 @@
 # Качество, документация и управление рисками
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Раздел описывает минимальный управленческий контур, без которого процесс разработки теряет предсказуемость и устойчивость.
 
 ## Уровни сложности
@@ -21,22 +18,22 @@
 
 ### Продвинутый уровень
 
-- связывать качество, документацию и риски с DORA/SLO-метриками;
+- связывать качество, документацию и риски с DORA/[SLO](../glossary.md#abbr-081)-метриками;
 - автоматизировать проверки качества и compliance;
-- проводить процессные улучшения на основе postmortem и RCA.
+- проводить процессные улучшения на основе postmortem и [RCA](../glossary.md#abbr-070).
 
 ## Управление качеством
 
 | Направление | Практики | Артефакты |
 | --- | --- | --- |
-| Функциональное качество | unit/integration/system/UAT | test plan, test report |
+| Функциональное качество | unit/integration/system/[UAT](../glossary.md#abbr-089) | test plan, test report |
 | Техническое качество | code review, static analysis, architecture review | review log, tech debt register |
-| Производительность | load/stress/soak tests | perf report, capacity recommendations |
+| [Производительность](../glossary.md#term-053) | load/stress/soak tests | perf report, capacity recommendations |
 | Безопасность | SAST/DAST, dependency scan, pentest | security findings backlog |
 
 ### Quality gates перед релизом
 
-- выполнены AC и DoD;
+- выполнены [AC](../glossary.md#abbr-002) и [DoD](../glossary.md#abbr-026);
 - критичные дефекты закрыты или согласован workaround;
 - пройдены обязательные security/performance проверки;
 - актуализированы runbook и rollback plan;
@@ -48,16 +45,16 @@
 
 - docs-as-code (Markdown + Git + review);
 - wiki/Confluence для процессных и организационных знаний;
-- ADR для архитектурных и процессных решений;
+- [ADR](../glossary.md#abbr-003) для архитектурных и процессных решений;
 - release notes и change log для эксплуатационного контура.
 
 ### Минимальный набор документов
 
 | Артефакт | Назначение | Владелец |
 | --- | --- | --- |
-| BRD/SRS или backlog-спецификация | формализует требования | BA/SA + PO |
+| [BRD](../glossary.md#abbr-010)/[SRS](../glossary.md#abbr-085) или backlog-спецификация | формализует требования | BA/SA + [PO](../glossary.md#abbr-065) |
 | ADR | фиксирует архитектурные решения | архитектор + SA |
-| Test plan/report | подтверждает качество | QA |
+| Test plan/report | подтверждает качество | [QA](../glossary.md#abbr-067) |
 | Runbook | описывает эксплуатационные действия | DevOps/SRE |
 | Risk register | управляет неопределенностью | PM/SA |
 
@@ -86,11 +83,11 @@
 
 | Риск | Вероятность | Влияние | Приоритет | Мера |
 | --- | --- | --- | --- | --- |
-| Задержка внешнего API | Высокая | Высокое | Критичный | контрактные тесты + fallback |
+| Задержка внешнего [API](../glossary.md#abbr-005) | Высокая | Высокое | Критичный | контрактные тесты + fallback |
 | Потеря ключевого эксперта | Средняя | Высокое | Высокий | knowledge transfer + backup owner |
 | Рост облачных затрат | Средняя | Среднее | Средний | FinOps-контроль и бюджетные лимиты |
 
-## RACI по документации и рискам
+## [RACI](../glossary.md#abbr-068) по документации и рискам
 
 | Активность | BA/SA | PO | Архитектор | QA | DevOps/SRE | PM |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -117,7 +114,7 @@
 ### Релиз и эксплуатация
 
 - runbook и план rollback проверены;
-- SLA/SLO и alerting согласованы;
+- [SLA](../glossary.md#abbr-079)/SLO и alerting согласованы;
 - post-release review запланирован.
 
 ## Схема контроля качества и рисков
@@ -139,7 +136,7 @@ stop
 ```
 ## Стандарты и источники
 
-- ISO/IEC/IEEE 12207: <https://www.iso.org/standard/63712.html>
+- [ISO](../glossary.md#abbr-043)/IEC/[IEEE](../glossary.md#abbr-041) 12207: <https://www.iso.org/standard/63712.html>
 - ISO 31000 Risk Management: <https://www.iso.org/iso-31000-risk-management.html>
 - NIST SSDF: <https://csrc.nist.gov/Projects/ssdf>
 - DORA research: <https://dora.dev/research/>

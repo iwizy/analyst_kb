@@ -1,8 +1,5 @@
 # Колоночные NoSQL (Wide-Column)
 
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
-
 Wide-column СУБД оптимизированы под большие потоки записи и масштабирование на кластере из множества узлов.
 
 ## Уровни сложности
@@ -53,12 +50,12 @@ CREATE TABLE device_metrics (
 
 ## Безопасность
 
-- TLS inter-node/client-node;
+- [TLS](../../../glossary.md#abbr-088) inter-node/client-node;
 - role-based authorization;
 - шифрование данных на диске;
 - аудит изменений схемы и админ-операций.
 
-## Миграция из SQL
+## [Миграция](../../../glossary.md#term-045) из [SQL](../../../glossary.md#abbr-084)
 
 1. Для каждого отчета/эндпоинта сформировать отдельную denormalized таблицу.
 2. Выбрать partition key, предотвращающий hot spots.

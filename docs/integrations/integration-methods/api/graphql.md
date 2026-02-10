@@ -1,8 +1,5 @@
 # GraphQL
 
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
-
 GraphQL эффективен, когда клиентам нужны гибкие выборки и агрегация данных из нескольких источников.
 
 ## Уровни сложности
@@ -84,4 +81,4 @@ query GetProduct {
 
 - GraphQL Spec: <https://spec.graphql.org/>
 - Apollo Federation docs: <https://www.apollographql.com/docs/federation>
-- GraphQL over HTTP: <https://graphql.github.io/graphql-over-http/>
+- GraphQL over [HTTP](../../../glossary.md#abbr-038): <https://graphql.github.io/graphql-over-http/>

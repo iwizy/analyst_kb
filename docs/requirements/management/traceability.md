@@ -1,7 +1,4 @@
-# Трассировка требований
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# [Трассировка](../../glossary.md#term-069) требований
 
 Трассировка требований обеспечивает видимость связей между целями бизнеса, требованиями, реализацией и проверкой. Это основа быстрого impact analysis и контроля полноты покрытия.
 
@@ -75,9 +72,9 @@ BR ..> BG : value alignment
 
 | Requirement ID | Business Goal | Feature | Dev Task | Test Case | Code/PR | Статус |
 | --- | --- | --- | --- | --- | --- | --- |
-| BR-RET-001 | Сократить TAT возврата на 30% | FE-RET-04 | DEV-142 | QA-301 | PR-884 | In Progress |
+| BR-RET-001 | Сократить TAT возврата на 30% | FE-RET-04 | DEV-142 | [QA](../../glossary.md#abbr-067)-301 | PR-884 | In Progress |
 | FR-RET-012 | Авторасчет суммы возврата | FE-RET-07 | DEV-211 | QA-355 | PR-913 | Passed |
-| NFR-RET-004 | p95 <= 1 сек | FE-RET-07 | DEV-225 | PERF-022 | PR-918 | Planned |
+| [NFR](../../glossary.md#abbr-053)-RET-004 | p95 <= 1 сек | FE-RET-07 | DEV-225 | PERF-022 | PR-918 | Planned |
 
 ## Шаблон RTM
 
@@ -164,4 +161,4 @@ BR ..> BG : value alignment
 
 - [Управление изменениями требований](change-management.md)
 - [Поддержка актуальности требований](relevance.md)
-- [Валидация и верификация требований](../validation.md)
+- [[Валидация](../../glossary.md#term-013) и верификация требований](../validation.md)

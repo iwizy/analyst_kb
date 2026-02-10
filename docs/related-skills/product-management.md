@@ -1,8 +1,5 @@
 # Управление продуктом
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Product management помогает аналитику связывать требования с ценностью, а не только с реализацией.
 
 ## Уровни сложности
@@ -33,21 +30,21 @@ Product management помогает аналитику связывать тре
 | Strategy | как достигаем vision | strategy map |
 | Roadmap | что делаем по кварталам | roadmap |
 | Backlog | чем занимаемся в ближайших итерациях | epic/story backlog |
-| Metrics | как измеряем результат | KPI/OKR dashboard |
+| Metrics | как измеряем результат | [KPI](../glossary.md#abbr-047)/[OKR](../glossary.md#abbr-058) dashboard |
 
 ## Метрики и использование
 
-| Метрика | Для чего | Инструмент |
+| [Метрика](../glossary.md#term-044) | Для чего | Инструмент |
 | --- | --- | --- |
-| North Star | долгосрочная ценность | BI dashboard |
+| North Star | долгосрочная ценность | [BI](../glossary.md#abbr-008) dashboard |
 | Conversion | эффективность воронки | product analytics |
 | Retention | удержание | cohorts |
-| NPS | удовлетворенность | survey tools |
+| [NPS](../glossary.md#abbr-054) | удовлетворенность | survey tools |
 
 ## Цикл Discovery -> Define -> Deliver -> Learn
 
-1. Discovery: интервью, problem framing, UX research.
-2. Define: JTBD/personas, scope, критерии успеха.
+1. Discovery: интервью, problem framing, [UX](../glossary.md#abbr-093) research.
+2. Define: [JTBD](../glossary.md#abbr-045)/personas, scope, критерии успеха.
 3. Deliver: MVP, delivery plan, управление зависимостями.
 4. Learn: анализ данных, обратная связь, корректировка roadmap.
 
@@ -67,7 +64,7 @@ Product management помогает аналитику связывать тре
 Пример:
 
 - Цель: увеличить repeat purchase rate на 8%.
-- Гипотеза: персональные рекомендации в корзине повышают повторные покупки.
+- [Гипотеза](../glossary.md#term-018): персональные рекомендации в корзине повышают повторные покупки.
 - Success metric: repeat purchase rate 30-day.
 - Срок: 6 недель, 2 спринта разработки + 2 недели наблюдения.
 

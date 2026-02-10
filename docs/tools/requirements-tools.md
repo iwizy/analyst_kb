@@ -1,8 +1,5 @@
 # Инструменты управления требованиями
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Раздел описывает практический стек для ведения требований, трассировки, согласования и контроля изменений в Agile и Waterfall контуре.
 
 ## Уровни сложности
@@ -27,26 +24,26 @@
 
 ## Сравнение решений
 
-| Инструмент | Traceability | Workflow customization | Версионирование | Интеграция с тестами | Аналитика/отчеты | Когда использовать |
+| Инструмент | Traceability | Workflow customization | [Версионирование](../glossary.md#term-015) | [Интеграция](../glossary.md#term-033) с тестами | Аналитика/отчеты | Когда использовать |
 | --- | --- | --- | --- | --- | --- | --- |
 | Jira + Confluence | высокая при правильной схеме ссылок | высокая | история задач и страниц | Xray/Zephyr/TestRail | дашборды + JQL | продуктовые и enterprise команды |
 | IBM DOORS Next | очень высокая | высокая | строгая конфигурация | через инженерный стек IBM | enterprise отчеты | safety/regulatory проекты |
 | Polarion | очень высокая | высокая | baseline и variants | встроенные ALM-связи | сильная трассировка | промышленность, automotive |
 | Jama Connect | очень высокая | средняя/высокая | версии и reviews | test links, coverage | impact/coverage отчеты | медтех, hardware/software |
-| Azure DevOps | высокая | высокая | repos + boards | Test Plans | Power BI | Microsoft-экосистема |
+| Azure DevOps | высокая | высокая | repos + boards | Test Plans | Power [BI](../glossary.md#abbr-008) | Microsoft-экосистема |
 | ReqView (ReqIF) | средняя/высокая | средняя | версии проекта | экспорт/импорт связей | базовые отчеты | обмен требованиями между сторонами |
-| Git-based (Markdown + PR) | зависит от дисциплины | высокая через шаблоны | сильная (Git) | через CI/testing links | кастомная | engineering-first команды |
+| Git-based (Markdown + PR) | зависит от дисциплины | высокая через шаблоны | сильная (Git) | через [CI](../glossary.md#abbr-016)/testing links | кастомная | engineering-first команды |
 | Aha! | средняя | средняя | roadmap versions | через интеграции | product analytics | продуктовый roadmap |
 | ClickUp | средняя | высокая | task-level history | через интеграции | dashboard | SMB/стартапы |
 
 ## Практический сценарий end-to-end
 
-1. Confluence: создать спецификацию по шаблону (контекст, сценарии, AC, NFR).
+1. Confluence: создать спецификацию по шаблону (контекст, сценарии, [AC](../glossary.md#abbr-002), [NFR](../glossary.md#abbr-053)).
 2. Jira: завести Epic -> Story, связать с Confluence страницей.
 3. Тесты: связать Story с test case (например, Xray).
 4. RTM: сформировать отчет coverage `Requirement -> Task -> Test`.
 5. Обмен: экспортировать требования в ReqIF для внешнего подрядчика.
-6. Миграция: при переходе DOORS -> Jama сохранить IDs, baseline и mapping атрибутов.
+6. [Миграция](../glossary.md#term-045): при переходе DOORS -> Jama сохранить IDs, baseline и mapping атрибутов.
 
 ## Best practices
 
@@ -88,7 +85,7 @@
 | Контекст | Как работать в инструменте |
 | --- | --- |
 | Agile | Epic/Story/Task + AC + refinement history |
-| Waterfall | BRD/SRS baseline + formal CR + approval workflow |
+| Waterfall | [BRD](../glossary.md#abbr-010)/[SRS](../glossary.md#abbr-085) baseline + formal CR + approval workflow |
 | Hybrid | baseline для critical scope + итеративный backlog delivery |
 
 ## Интеграция с DevOps pipeline
@@ -101,12 +98,12 @@
 ## Связь с SDLC и архитектурой
 
 - анализ: repository требований + stakeholder comments;
-- дизайн: linkage к C4/UML/API contracts;
+- дизайн: linkage к [C4](../glossary.md#abbr-011)/[UML](../glossary.md#abbr-092)/[API](../glossary.md#abbr-005) contracts;
 - реализация: задачи и PR связаны с requirement IDs;
 - тестирование: coverage от требований до test cases;
 - эксплуатация: изменения и инциденты возвращаются в requirement backlog.
 
-## Зависимость от методологии
+## [Зависимость](../glossary.md#term-027) от методологии
 
 - Agile: story-centric workflow, быстрый refinement, связь с sprint cadence.
 - Waterfall: baseline-документы, формальные approvals и CR lifecycle.
@@ -137,4 +134,4 @@
 ## Актуализация
 
 - пересматривайте шаблоны полей и workflow не реже 1 раза в квартал;
-- обновляйте интеграции с test management и CI/CD после крупных релизов платформ.
+- обновляйте интеграции с test management и [CI/CD](../glossary.md#abbr-017) после крупных релизов платформ.

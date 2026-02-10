@@ -1,8 +1,5 @@
 # Форматы сериализации
 
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
-
 Формат сериализации влияет на совместимость, производительность, размер сообщений и сложность поддержки контрактов.
 
 ## Уровни сложности
@@ -22,16 +19,16 @@
 ### Продвинутый уровень
 
 - балансировать latency/size/CPU в real-time системах;
-- проектировать multi-format платформы (REST + gRPC + Kafka);
+- проектировать multi-format платформы ([REST](../../../glossary.md#abbr-071) + [gRPC](../../../glossary.md#abbr-036) + Kafka);
 - автоматизировать проверку и миграции схем.
 
 ## Сравнение форматов
 
 | Формат | Тип | Сильные стороны | Ограничения | Типовые сценарии |
 | --- | --- | --- | --- | --- |
-| JSON | текстовый | читаемость, экосистема | объемнее бинарных | public API, web/mobile |
-| XML/XSD | текстовый | строгая валидация, legacy standard | многословность | enterprise B2B, SOAP |
-| YAML | текстовый | удобен для конфигураций | чувствителен к отступам | CI/CD, инфраструктурные манифесты |
+| JSON | текстовый | читаемость, экосистема | объемнее бинарных | public [API](../../../glossary.md#abbr-005), web/mobile |
+| XML/XSD | текстовый | строгая валидация, legacy standard | многословность | enterprise B2B, [SOAP](../../../glossary.md#abbr-083) |
+| YAML | текстовый | удобен для конфигураций | чувствителен к отступам | [[CI](../../../glossary.md#abbr-016)/CD](../../../glossary.md#abbr-017), инфраструктурные манифесты |
 | Protobuf | бинарный | компактный, быстрый, строгий контракт | нечитабелен без tools | gRPC, internal services |
 | Avro | бинарный | сильная schema evolution, Kafka ecosystem | сложнее для прямого чтения | event streaming |
 | Thrift | бинарный/текстовый | multi-language RPC | меньше распространение сейчас | legacy RPC |
@@ -61,7 +58,7 @@
 - [YAML](yaml.md)
 ## Стандарты и источники
 
-- RFC 8259 JSON: <https://www.rfc-editor.org/rfc/rfc8259>
+- [RFC](../../../glossary.md#abbr-072) 8259 JSON: <https://www.rfc-editor.org/rfc/rfc8259>
 - XML 1.0: <https://www.w3.org/TR/xml/>
 - JSON Schema: <https://json-schema.org/specification>
 - Protocol Buffers: <https://protobuf.dev/>

@@ -1,8 +1,5 @@
 # Структурирование требований
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Структурирование превращает набор требований в управляемую систему. Без структуры требования быстро дублируются, теряют связность и становятся дорогими в сопровождении.
 
 ## Цель
@@ -24,10 +21,10 @@
 Цепочка верхнего уровня:
 `business goals -> BR -> UR -> SR -> acceptance criteria`.
 
-1. Бизнес-цели и KPI.
+1. Бизнес-цели и [KPI](../glossary.md#abbr-047).
 1. Бизнес-требования (BR).
 1. Пользовательские требования/сценарии (UR).
-1. Системные требования (SR), включая FR и NFR.
+1. Системные требования (SR), включая FR и [NFR](../glossary.md#abbr-053).
 1. Acceptance Criteria и тесты.
 
 ## Примеры иерархий
@@ -51,9 +48,9 @@ BG-RET-001: Сократить время обработки возврата н
 | Capability | Управление заказами |
 | Feature | Возвраты |
 | Sub-feature | Частичный возврат |
-| Requirement | FR-RET-012, NFR-RET-004 |
+| Requirement | FR-RET-012, [NFR](../glossary.md#abbr-053)-RET-004 |
 
-### Слои компонентов (C4 Level 2, пример)
+### Слои компонентов ([C4](../glossary.md#abbr-011) Level 2, пример)
 
 ```kroki-plantuml
 @startuml
@@ -82,17 +79,17 @@ RS --> AU
 
 Дополнительная ось (при сложных ландшафтах):
 
-- по системам/подсистемам (Web, Mobile, Billing, CRM, DWH).
+- по системам/подсистемам (Web, Mobile, Billing, CRM, [DWH](../glossary.md#abbr-029)).
 
 Пример:
 
-- Домен «Возвраты», релиз R2, система «Billing API».
+- [Домен](../glossary.md#term-023) «Возвраты», релиз R2, система «Billing [API](../glossary.md#abbr-005)».
 
 ## Нумерация и именование
 
 ### Правила ID
 
-- префикс типа: `BR`, `UR`, `FR`, `NFR`, `AC`;
+- префикс типа: `BR`, `UR`, `FR`, `[NFR](../glossary.md#abbr-053)`, `[AC](../glossary.md#abbr-002)`;
 - доменный код: `RET`, `PAY`, `AUTH`;
 - порядковый номер с лидирующими нулями.
 
@@ -129,7 +126,7 @@ RS --> AU
 | Polarion | Крупные проекты с аудитом и комплаенсом | Workflow статусов, baseline, coverage dashboards |
 | Jama | Продукты с множеством стейкхолдеров | Review cycles, approval records, impact analysis |
 
-## Интеграция с Jira и Azure DevOps
+## [Интеграция](../glossary.md#term-033) с Jira и Azure DevOps
 
 ### Jira
 
@@ -179,6 +176,6 @@ RS --> AU
 ## Смежные материалы
 
 - [Уровни требований](levels/index.md)
-- [Декомпозиция требований](decomposition.md)
-- [Трассировка требований](management/traceability.md)
+- [[Декомпозиция](../glossary.md#term-019) требований](decomposition.md)
+- [[Трассировка](../glossary.md#term-069) требований](management/traceability.md)
 - [Управление изменениями требований](management/change-management.md)

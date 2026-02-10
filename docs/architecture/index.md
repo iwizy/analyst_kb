@@ -1,6 +1,4 @@
 # Проектирование и арх
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
 итектура
 
 Раздел описывает, как принимать архитектурные решения от уровня требований до эксплуатации: выбирать стиль системы, управлять компромиссами и документировать решения.
@@ -15,9 +13,9 @@
 
 ### Средний уровень
 
-- выбирать стиль под NFR и контекст команды;
+- выбирать стиль под [NFR](../glossary.md#abbr-053) и контекст команды;
 - проектировать взаимодействие сервисов, кэширование и надежность;
-- обосновывать решения через ADR и диаграммы C4/UML.
+- обосновывать решения через [ADR](../glossary.md#abbr-003) и диаграммы [C4](../glossary.md#abbr-011)/[UML](../glossary.md#abbr-092).
 
 ### Продвинутый уровень
 
@@ -38,10 +36,10 @@
 | Характеристика | Что означает | Влияние на решения |
 | --- | --- | --- |
 | Availability | доступность сервиса | redundancy, failover, health checks |
-| Scalability | рост без деградации SLA | stateless design, sharding, autoscaling |
+| Scalability | рост без деградации [SLA](../glossary.md#abbr-079) | stateless design, sharding, autoscaling |
 | Modifiability | скорость и безопасность изменений | модульность, слабая связность, контракты |
 | Performance | время отклика и throughput | кэш, индексы, асинхронные потоки |
-| Security | защита данных и каналов | mTLS, authz, шифрование, аудит |
+| Security | защита данных и каналов | [mTLS](../glossary.md#abbr-052), authz, шифрование, аудит |
 | Testability | проверяемость поведения | чистые границы, dependency inversion, test seams |
 
 ## Роль системного аналитика в архитектуре
@@ -87,11 +85,11 @@ S --> A
 
 - [Архитектура информационных систем](systems-architecture/index.md)
 - [Подходы к проектированию](design-approaches/index.md)
-- [Декомпозиция задач](task-decomposition.md)
+- [[Декомпозиция](../glossary.md#term-019) задач](task-decomposition.md)
 - [Архитектура предприятия](enterprise-architecture/index.md)
 ## Стандарты и источники
 
-- ISO/IEC/IEEE 42010: <https://www.iso.org/standard/50508.html>
+- [ISO](../glossary.md#abbr-043)/IEC/[IEEE](../glossary.md#abbr-041) 42010: <https://www.iso.org/standard/50508.html>
 - Software Architecture in Practice (Bass, Clements, Kazman)
 - Martin Fowler architecture articles: <https://martinfowler.com/architecture/>
 - O'Reilly Software Architecture patterns resources

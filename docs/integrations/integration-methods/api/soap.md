@@ -1,7 +1,4 @@
-# SOAP
-
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
+# [SOAP](../../../glossary.md#abbr-083)
 
 SOAP остается актуальным в regulated и legacy-интеграциях, где важны WS-* стандарты, строгие схемы и контрактный подход.
 
@@ -21,7 +18,7 @@ SOAP остается актуальным в regulated и legacy-интегра
 
 ### Продвинутый уровень
 
-- интегрировать SOAP с modern API gateway/microservices;
+- интегрировать SOAP с modern [API](../../../glossary.md#abbr-005) gateway/microservices;
 - управлять версионированием WSDL и backward compatibility;
 - реализовывать security/compliance требования enterprise уровня.
 
@@ -49,7 +46,7 @@ SOAP остается актуальным в regulated и legacy-интегра
 </soapenv:Envelope>
 ```
 
-## Пример SOAP Fault
+## Пример [SOAP](../../../glossary.md#abbr-083) Fault
 
 ```xml
 <soap:Fault>
@@ -65,7 +62,7 @@ SOAP остается актуальным в regulated и legacy-интегра
 - `WS-ReliableMessaging`: надежная доставка;
 - `WS-Policy`: декларативные требования к взаимодействию.
 
-## Когда выбирать SOAP
+## Когда выбирать [SOAP](../../../glossary.md#abbr-083)
 
 - интеграция с legacy enterprise или государственными системами;
 - контур с жесткими требованиями к формальным контрактам и аудиту;
@@ -73,7 +70,7 @@ SOAP остается актуальным в regulated и legacy-интегра
 
 ## Типичные ошибки
 
-- попытка использовать SOAP там, где достаточно REST/gRPC;
+- попытка использовать SOAP там, где достаточно [REST](../../../glossary.md#abbr-071)/[gRPC](../../../glossary.md#abbr-036);
 - отсутствие стратегии версии WSDL;
 - игнорирование производительности и размера XML;
 - недостаточный контроль WS-Security конфигураций.

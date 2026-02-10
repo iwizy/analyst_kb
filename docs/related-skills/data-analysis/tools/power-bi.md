@@ -1,7 +1,4 @@
-# Power BI
-
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
+# Power [BI](../../../glossary.md#abbr-008)
 
 Power BI подходит для корпоративной отчетности и self-service аналитики в Microsoft-экосистеме.
 
@@ -15,7 +12,7 @@ Power BI подходит для корпоративной отчетности
 
 ### Средний уровень
 
-- использовать DAX для KPI и временных расчетов;
+- использовать DAX для [KPI](../../../glossary.md#abbr-047) и временных расчетов;
 - настраивать RLS (row-level security);
 - оптимизировать refresh и производительность.
 
@@ -44,7 +41,7 @@ Power BI подходит для корпоративной отчетности
 ## Кросс-ссылки
 
 - [BI и визуализация](../bi-and-visualization.md)
-- [DWH](../dwh.md)
+- [[DWH](../../../glossary.md#abbr-029)](../dwh.md)
 - [Tableau](tableau.md)## Источники
 
 - Power BI docs: <https://learn.microsoft.com/power-bi/>

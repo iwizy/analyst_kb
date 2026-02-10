@@ -1,8 +1,5 @@
 # Агрегатные функции
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Агрегаты превращают события и транзакции в бизнес-метрики.
 
 ## Уровни сложности
@@ -53,7 +50,7 @@ FROM orders;
 
 1. Всегда фиксируйте grain метрики (день/клиент/заказ).
 2. Добавляйте контрольные сверки на малых выборках.
-3. Используйте pre-aggregation для регулярных BI-отчетов.
+3. Используйте pre-aggregation для регулярных [BI](../../glossary.md#abbr-008)-отчетов.
 
 ## Упражнения
 
@@ -63,4 +60,4 @@ FROM orders;
 ## Стандарты и источники
 
 - PostgreSQL aggregate functions: <https://www.postgresql.org/docs/current/functions-aggregate.html>
-- ISO/IEC 9075 SQL: <https://www.iso.org/standard/76583.html>
+- [ISO](../../glossary.md#abbr-043)/IEC 9075 [SQL](../../glossary.md#abbr-084): <https://www.iso.org/standard/76583.html>

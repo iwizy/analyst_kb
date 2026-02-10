@@ -1,8 +1,5 @@
 # Вложенные запросы
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Подзапросы удобны для выражения сложных условий, но требуют контроля плана выполнения.
 
 ## Уровни сложности
@@ -57,4 +54,4 @@ WHERE EXISTS (
 ## Стандарты и источники
 
 - PostgreSQL subqueries: <https://www.postgresql.org/docs/current/functions-subquery.html>
-- SQL style guide: <https://www.sqlstyle.guide/>
+- [SQL](../../glossary.md#abbr-084) style guide: <https://www.sqlstyle.guide/>

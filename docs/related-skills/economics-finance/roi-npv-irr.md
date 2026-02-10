@@ -1,7 +1,4 @@
-# ROI, NPV, IRR
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# [ROI](../../glossary.md#abbr-073), [NPV](../../glossary.md#abbr-055), [IRR](../../glossary.md#abbr-042)
 
 ROI, NPV и IRR используются вместе: ROI для быстрого скрининга, NPV для учета времени денег, IRR для сравнения доходности с требуемой ставкой.
 
@@ -70,7 +67,7 @@ ROI, NPV и IRR используются вместе: ROI для быстрог
 
 ## Кросс-ссылки
 
-- [TCO](tco.md)
+- [[TCO](../../glossary.md#abbr-087)](tco.md)
 - [Управление рисками](../../common-competencies/estimation-risks/risk-management.md)
 - [Приоритизация](../../requirements/management/prioritization.md)## Источники
 

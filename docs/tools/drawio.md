@@ -1,8 +1,5 @@
 # Draw.io
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Draw.io (diagrams.net) - инструмент для быстрого создания схем, диаграмм и
 карточек архитектурных решений. Для системного аналитика он удобен как
 оперативный рабочий инструмент на этапах исследования и согласования.
@@ -53,9 +50,9 @@ Draw.io (diagrams.net) - инструмент для быстрого созда
 ## Смежные материалы
 
 - [PlantUML](plantuml.md)
-- [C4](../notations/c4.md)
-- [DFD](../notations/dfd.md)
-- [BPMN](../notations/bpmn.md)
+- [[C4](../glossary.md#abbr-011)](../notations/c4.md)
+- [[DFD](../glossary.md#abbr-025)](../notations/dfd.md)
+- [[BPMN](../glossary.md#abbr-009)](../notations/bpmn.md)
 
 ## Практическое дополнение
 

@@ -1,8 +1,5 @@
 # Процесс разработки
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Раздел описывает полный цикл поставки программного продукта: от идеи до промышленной эксплуатации и улучшений. Фокус на практиках, которые помогают системному аналитику управлять требованиями, качеством и рисками в реальном delivery-контуре.
 
 ## Уровни сложности
@@ -22,20 +19,20 @@
 ### Продвинутый уровень
 
 - настраивать процесс для больших программ и регуляторных контуров;
-- управлять метриками потока и надежности (DORA, SLO, MTTR);
+- управлять метриками потока и надежности (DORA, [SLO](../glossary.md#abbr-081), [MTTR](../glossary.md#abbr-051));
 - внедрять DevOps/GitOps/Platform Engineering практики.
 
 ## Карта раздела
 
 | Блок | Что дает аналитику | Ключевой результат |
 | --- | --- | --- |
-| Жизненный цикл ПО | Сквозную модель поставки и контроля | Прозрачные входы/выходы фаз |
+| [Жизненный цикл ПО](../glossary.md#term-026) | Сквозную модель поставки и контроля | Прозрачные входы/выходы фаз |
 | Agile-практики | Управление ценностью и потоком изменений | Предсказуемый delivery-ритм |
-| DevOps и CI/CD | Ускорение и стабилизацию релизов | Автоматизированный pipeline |
+| DevOps и [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017) | Ускорение и стабилизацию релизов | Автоматизированный pipeline |
 | Гибридные модели | Баланс гибкости и формального governance | Управляемость в enterprise-среде |
 | Качество/документация/риски | Снижение дефектов и процессных потерь | Контролируемое качество релизов |
-| Сопровождение | Устойчивость продукта после релиза | Наблюдаемость и улучшения |
-| Основы программирования и тестирования | Сильную коммуникацию с разработкой и QA | Более точные требования и приемка |
+| Сопровождение | [Устойчивость](../glossary.md#term-073) продукта после релиза | Наблюдаемость и улучшения |
+| Основы программирования и тестирования | Сильную коммуникацию с разработкой и [QA](../glossary.md#abbr-067) | Более точные требования и приемка |
 
 ## Сквозной контур разработки
 
@@ -58,20 +55,20 @@ stop
 
 1. Начните с [этапов жизненного цикла ПО](product-lifecycle/stages.md).
 2. Выберите [модель управления потоком работ](agile-processes.md) или [гибридный подход](hybrid-models.md).
-3. Настройте [DevOps-практики](product-lifecycle/devops-basics.md) и [CI/CD](product-lifecycle/cicd-basics.md).
+3. Настройте [DevOps-практики](product-lifecycle/devops-basics.md) и [[[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017)](product-lifecycle/cicd-basics.md).
 4. Зафиксируйте [контур качества, документации и рисков](quality-documentation-risks.md).
 5. Свяжите работу команды с [сопровождением и эксплуатацией](feature-support/index.md).
 
 ## Кросс-ссылки
 
 - [Требования](../requirements/index.md): входной поток требований в SDLC.
-- [Проектирование и архитектура](../architecture/index.md): архитектурные решения и ADR.
+- [Проектирование и архитектура](../architecture/index.md): архитектурные решения и [ADR](../glossary.md#abbr-003).
 - [Интеграции](../integrations/index.md): контрактные и эксплуатационные риски интеграций.
 - [Базы данных](../database/index.md): data-модель, миграции и эксплуатация хранилищ.## Стандарты и источники
 
-- ISO/IEC/IEEE 12207: <https://www.iso.org/standard/63712.html>
+- [ISO](../glossary.md#abbr-043)/IEC/[IEEE](../glossary.md#abbr-041) 12207: <https://www.iso.org/standard/63712.html>
 - Scrum Guide (текущая официальная публикация): <https://scrumguides.org/>
 - Kanban Guide: <https://kanbanguides.org/>
-- SAFe Framework: <https://scaledagileframework.com/>
-- ITIL 4: <https://www.axelos.com/certifications/itil-service-management>
+- [SAFe](../glossary.md#abbr-077) Framework: <https://scaledagileframework.com/>
+- [ITIL](../glossary.md#abbr-044) 4: <https://www.axelos.com/certifications/itil-service-management>
 - DORA research: <https://dora.dev/research/>

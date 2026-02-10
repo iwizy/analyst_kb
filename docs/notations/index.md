@@ -1,8 +1,5 @@
 # Нотации и моделирование
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Раздел помогает системному аналитику выбирать нотацию под задачу, строить понятные диаграммы и связывать модели с требованиями, архитектурой, интеграциями и данными.
 
 ## Уровни сложности
@@ -23,13 +20,13 @@
 
 - выстраивать governance моделирования на уровне команды/домена;
 - применять модели для принятия архитектурных и продуктовых решений;
-- автоматизировать моделирование в docs-as-code/CI-процессах.
+- автоматизировать моделирование в docs-as-code/[CI](../glossary.md#abbr-016)-процессах.
 
 ## Зачем моделирование
 
 | Цель | Результат | Для кого |
 | --- | --- | --- |
-| Снизить неоднозначность требований | единая интерпретация границ и поведения | BA, PO, QA, Dev |
+| Снизить неоднозначность требований | единая интерпретация границ и поведения | BA, [PO](../glossary.md#abbr-065), [QA](../glossary.md#abbr-067), Dev |
 | Согласовать архитектуру | видимость компонентов, зависимостей, потоков | Архитектор, Tech Lead |
 | Уточнить данные и контракты | корректная структура сущностей и интерфейсов | BA, Data Engineer |
 | Ускорить изменения | быстрее анализ влияния и оценка рисков | PM, команда разработки |
@@ -38,9 +35,9 @@
 
 | Уровень | Что описывает | Типовые нотации |
 | --- | --- | --- |
-| Концептуальный | контекст, цели, границы, ключевые сущности | C4 C1, Goal Map, Context DFD |
-| Логический | процессы, правила, связи сущностей, взаимодействия | BPMN, UML, ERD, DFD |
-| Физический | технологическая реализация, таблицы, API, deployment | C4 C2/C3, SQL ERD, Archimate |
+| Концептуальный | контекст, цели, границы, ключевые сущности | [C4](../glossary.md#abbr-011) C1, Goal Map, Context [DFD](../glossary.md#abbr-025) |
+| Логический | процессы, правила, связи сущностей, взаимодействия | [BPMN](../glossary.md#abbr-009), [UML](../glossary.md#abbr-092), [ERD](../glossary.md#abbr-032), DFD |
+| Физический | технологическая реализация, таблицы, [API](../glossary.md#abbr-005), deployment | C4 C2/C3, [SQL](../glossary.md#abbr-084) ERD, Archimate |
 
 ## Сквозной пример: процесс покупки
 
@@ -62,19 +59,19 @@ B --> D : детализация реализации
 ## Связь с другими разделами базы знаний
 
 - С требованиями: контекстные диаграммы и карты целей поддерживают [определение границ системы](../requirements/system-boundaries/index.md) и [выявление стейкхолдеров](../requirements/stakeholders.md).
-- С архитектурой: C4 и Archimate дополняют [архитектуру информационных систем](../architecture/systems-architecture/index.md).
-- С БД: ERD и DFD напрямую связаны с [проектированием модели данных](../database/data-modeling.md) и [нормализацией](../database/normalization/index.md).
+- С архитектурой: [C4](../glossary.md#abbr-011) и Archimate дополняют [архитектуру информационных систем](../architecture/systems-architecture/index.md).
+- С БД: [ERD](../glossary.md#abbr-032) и [DFD](../glossary.md#abbr-025) напрямую связаны с [проектированием модели данных](../database/data-modeling.md) и [нормализацией](../database/normalization/index.md).
 - С интеграциями: Sequence/C4/Archimate помогают проектировать [интеграционные паттерны](../integrations/integration-methods/patterns.md).
 
 ## Классы нотаций и выбор
 
 | Класс | Нотации | Когда выбирать |
 | --- | --- | --- |
-| Процессные | BPMN, eEPC, IDEF0 | описать flow работы и роли |
-| Структурные | UML Class, ERD, DFD | описать сущности, связи, данные |
+| Процессные | [BPMN](../glossary.md#abbr-009), eEPC, IDEF0 | описать flow работы и роли |
+| Структурные | [UML](../glossary.md#abbr-092) Class, ERD, DFD | описать сущности, связи, данные |
 | Архитектурные | C4, Archimate | показать систему и технологический ландшафт |
 | Аналитические | Fishbone, Decision Tree, Goal/Impact Map | найти причины, приоритизировать решения |
-| Оценочные | CMMI, COBIT, ACMM | оценить зрелость процесса и управление |
+| Оценочные | [CMMI](../glossary.md#abbr-018), [COBIT](../glossary.md#abbr-019), ACMM | оценить зрелость процесса и управление |
 
 ## Плюсы и минусы системного моделирования
 
@@ -118,8 +115,8 @@ B --> D : детализация реализации
 | Naming conventions | единый шаблон имен: `Domain_Object_Action` |
 | Review | обязательный peer review моделей перед релизом |
 | Versioning | хранить диаграммы рядом с документацией в Git |
-| Трассировка | ссылки на requirement ID, ADR, API contracts |
-| CI | проверка синтаксиса диаграмм и битых ссылок |
+| [Трассировка](../glossary.md#term-069) | ссылки на requirement ID, [ADR](../glossary.md#abbr-003), [API](../glossary.md#abbr-005) contracts |
+| [CI](../glossary.md#abbr-016) | проверка синтаксиса диаграмм и битых ссылок |
 
 ## Инструменты и форматы
 
@@ -127,7 +124,7 @@ B --> D : детализация реализации
 | --- | --- | --- |
 | Настольные | Enterprise Architect, MagicDraw, Visual Paradigm | большой репозиторий моделей, XMI, governance |
 | Облачные | Lucidchart, draw.io, Cacoo | быстрый совместный воркшоп, онлайн-редактирование |
-| Текст-как-код | PlantUML, Mermaid, Structurizr DSL | Git-flow, code review, CI/CD генерация |
+| Текст-как-код | PlantUML, Mermaid, Structurizr DSL | Git-flow, code review, [CI/CD](../glossary.md#abbr-017) генерация |
 | BPMN-редакторы | Camunda Modeler, Signavio | исполняемые BPMN и process automation |
 | Archimate-инструменты | Archi, BizzDesign | enterprise architecture repository |
 
@@ -139,7 +136,7 @@ B --> D : детализация реализации
 | XMI | обмен UML-моделями между инструментами |
 | DSL source | version control и CI генерация диаграмм |
 
-## Интеграция в документацию и CI/CD
+## [Интеграция](../glossary.md#term-033) в документацию и CI/CD
 
 1. Храните исходники диаграмм рядом с Markdown-статьями.
 2. Проверяйте синтаксис диаграмм на этапе pull request.
@@ -157,7 +154,7 @@ B --> D : детализация реализации
 - [eEPC](eepc.md)
 - [IDEF0](idef0.md)
 - [Archimate](archimate.md)
-- [Диаграмма Исикавы](fishbone-diagram.md)
+- [[Диаграмма](../glossary.md#term-022) Исикавы](fishbone-diagram.md)
 - [Деревья решений](decision-trees.md)
 - [Карта целей](goals-map.md)
 - [Impact Map](impact-map.md)

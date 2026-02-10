@@ -1,8 +1,5 @@
 # Модель OSI
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Модель OSI помогает структурировать диагностику интеграционных проблем по слоям: от физики до приложений.
 
 ## Уровни сложности
@@ -10,26 +7,26 @@
 ### Базовый уровень
 
 - знать 7 уровней OSI и их назначение;
-- соотносить API-проблемы с уровнем стека;
+- соотносить [API](../../glossary.md#abbr-005)-проблемы с уровнем стека;
 - понимать различие OSI и TCP/IP.
 
 ### Средний уровень
 
 - использовать OSI для incident triage;
-- определять, где ломается интеграция: сеть, TLS, приложение;
+- определять, где ломается интеграция: сеть, [TLS](../../glossary.md#abbr-088), приложение;
 - сопоставлять инструменты диагностики каждому уровню.
 
 ### Продвинутый уровень
 
 - выстраивать системные runbooks по уровням;
-- ускорять RCA через layer-by-layer анализ;
+- ускорять [RCA](../../glossary.md#abbr-070) через layer-by-layer анализ;
 - стандартизировать сетевую диагностику в командах.
 
 ## Уровни OSI
 
 | Уровень | Что делает | Пример в интеграциях |
 | --- | --- | --- |
-| 7 Application | прикладные протоколы | HTTP, gRPC, SOAP, WebSocket |
+| 7 Application | прикладные протоколы | [HTTP](../../glossary.md#abbr-038), [gRPC](../../glossary.md#abbr-036), [SOAP](../../glossary.md#abbr-083), WebSocket |
 | 6 Presentation | форматы/кодирование | JSON, XML, Protobuf, TLS data formatting |
 | 5 Session | управление сессиями | TLS session, WebSocket session |
 | 4 Transport | доставка между хостами | TCP, UDP |
@@ -64,10 +61,10 @@ O4 --> T4
 | Симптом | Вероятный уровень | Инструменты |
 | --- | --- | --- |
 | `connection timeout` | L3/L4 | ping, traceroute, mtr |
-| TLS handshake fail | L5/L6 | openssl s_client, gateway logs |
-| `429/503` | L7 | API metrics, gateway dashboards |
+| [TLS](../../glossary.md#abbr-088) handshake fail | L5/L6 | openssl s_client, gateway logs |
+| `429/503` | L7 | [API](../../glossary.md#abbr-005) metrics, gateway dashboards |
 | потеря пакетов | L2/L3 | tcpdump, Wireshark |
 ## Стандарты и источники
 
-- ISO/IEC 7498-1 (OSI reference model): <https://www.iso.org/standard/20269.html>
-- RFC 1122 Host Requirements: <https://www.rfc-editor.org/rfc/rfc1122>
+- [ISO](../../glossary.md#abbr-043)/IEC 7498-1 (OSI reference model): <https://www.iso.org/standard/20269.html>
+- [RFC](../../glossary.md#abbr-072) 1122 Host Requirements: <https://www.rfc-editor.org/rfc/rfc1122>

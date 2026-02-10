@@ -1,6 +1,4 @@
 # Микросервисная арх
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
 итектура
 
 Микросервисы разделяют систему на автономные сервисы по business capabilities с независимым деплоем и масштабированием.
@@ -10,7 +8,7 @@
 ### Базовый уровень
 
 - понимать service boundaries и ownership;
-- использовать API-контракты и события;
+- использовать [API](../../../glossary.md#abbr-005)-контракты и события;
 - обеспечивать независимый релиз сервисов.
 
 ### Средний уровень
@@ -66,7 +64,7 @@ BUS --> INV : StockReserved
 
 - продукт и домены стабильно растут;
 - несколько команд с независимым backlog;
-- есть зрелые CI/CD, SRE, observability.
+- есть зрелые [[CI](../../../glossary.md#abbr-016)/CD](../../../glossary.md#abbr-017), SRE, observability.
 
 ## Антипаттерны
 
@@ -80,8 +78,8 @@ BUS --> INV : StockReserved
 | --- | --- | --- |
 | Spring Boot | зрелая экосистема enterprise | тяжелее старт и память |
 | Quarkus | быстрый cold start, cloud-native | меньше зрелых enterprise интеграций |
-| REST | универсальность и простота | overhead payload и latency |
-| gRPC | эффективный service-to-service | сложнее для внешних клиентов |
+| [REST](../../../glossary.md#abbr-071) | универсальность и простота | overhead payload и latency |
+| [gRPC](../../../glossary.md#abbr-036) | эффективный service-to-service | сложнее для внешних клиентов |
 | Kafka | высоконагруженный streaming backbone | выше операционная сложность |
 | Pulsar | multi-tenant и geo-replication | экосистема уже, чем Kafka |
 

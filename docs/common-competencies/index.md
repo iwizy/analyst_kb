@@ -1,8 +1,5 @@
 # Общие компетенции
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Раздел объединяет практики, которые нужны системному аналитику независимо от домена и технологического стека: оценка, риски, финансы, time management, stakeholder management и data-driven принятие решений.
 
 ## Уровни сложности
@@ -58,7 +55,7 @@ stop
 
 ## Примеры по отраслям
 
-| Домен | Что обычно критично |
+| [Домен](../glossary.md#term-023) | Что обычно критично |
 | --- | --- |
 | Финтех | риск-менеджмент, аудит, финансовая оценка, комплаенс |
 | E-commerce | скорость экспериментов, data-driven метрики, stakeholder alignment |
@@ -72,6 +69,6 @@ stop
 - [Софт-скилы](../soft-skills/index.md)## Источники
 
 - BABOK v3: <https://www.iiba.org/standards-and-resources/babok/>
-- PMBOK 7: <https://www.pmi.org/pmbok-guide-standards>
-- ISO 31000:2018: <https://www.iso.org/iso-31000-risk-management.html>
+- [PMBOK](../glossary.md#abbr-064) 7: <https://www.pmi.org/pmbok-guide-standards>
+- [ISO](../glossary.md#abbr-043) 31000:2018: <https://www.iso.org/iso-31000-risk-management.html>
 - NIST RMF: <https://csrc.nist.gov/projects/risk-management>

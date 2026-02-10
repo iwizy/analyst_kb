@@ -1,9 +1,6 @@
-# API
+# [API](../../../glossary.md#abbr-005)
 
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
-
-Подраздел сравнивает основные API-подходы: REST, SOAP, GraphQL, gRPC, JSON-RPC и WebSockets.
+Подраздел сравнивает основные API-подходы: [REST](../../../glossary.md#abbr-071), [SOAP](../../../glossary.md#abbr-083), GraphQL, [gRPC](../../../glossary.md#abbr-036), JSON-RPC и WebSockets.
 
 ## Уровни сложности
 
@@ -22,14 +19,14 @@
 ### Продвинутый уровень
 
 - проектировать API portfolio с governance;
-- оценивать TCO и эксплуатационные риски каждого подхода;
+- оценивать [TCO](../../../glossary.md#abbr-087) и эксплуатационные риски каждого подхода;
 - внедрять observability и performance optimization под стиль API.
 
 ## Сравнение технологий
 
 | API-стиль | Подходит для | Сильные стороны | Ограничения |
 | --- | --- | --- | --- |
-| REST/HTTP | публичные и BFF API | простота, стандартная веб-инфраструктура | over/under-fetching |
+| REST/[HTTP](../../../glossary.md#abbr-038) | публичные и BFF API | простота, стандартная веб-инфраструктура | over/under-fetching |
 | SOAP | enterprise и legacy B2B | WS-* стандарты, строгие контракты | сложность и объем |
 | GraphQL | frontend aggregation | гибкая выборка данных | сложность governance и кеша |
 | gRPC | internal service-to-service | низкая latency, строгость proto | сложнее для браузера/партнеров |
@@ -40,7 +37,7 @@
 
 1. Публичный API для внешних клиентов: чаще REST.
 2. Межсервисный low-latency: чаще gRPC.
-3. UI с разными сценариями выборки: GraphQL.
+3. [UI](../../../glossary.md#abbr-091) с разными сценариями выборки: GraphQL.
 4. Legacy enterprise и strict contracts: SOAP.
 5. Realtime push: WebSockets.
 
@@ -54,7 +51,7 @@
 - [WebSockets](websockets.md)
 ## Стандарты и источники
 
-- RFC 9110 HTTP: <https://www.rfc-editor.org/rfc/rfc9110>
+- [RFC](../../../glossary.md#abbr-072) 9110 HTTP: <https://www.rfc-editor.org/rfc/rfc9110>
 - GraphQL Spec: <https://spec.graphql.org/>
 - gRPC docs: <https://grpc.io/docs/>
 - JSON-RPC 2.0: <https://www.jsonrpc.org/specification>

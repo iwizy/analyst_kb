@@ -1,9 +1,6 @@
 # Лимиты и квоты
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
-Лимиты и квоты защищают API от перегрузки и обеспечивают справедливое распределение ресурсов между клиентами.
+Лимиты и квоты защищают [API](../../glossary.md#abbr-005) от перегрузки и обеспечивают справедливое распределение ресурсов между клиентами.
 
 ## Уровни сложности
 
@@ -36,7 +33,7 @@
 
 ## Алгоритмы
 
-| Алгоритм | Плюсы | Минусы | Когда применять |
+| [Алгоритм](../../glossary.md#term-004) | Плюсы | Минусы | Когда применять |
 | --- | --- | --- | --- |
 | Fixed window | простота | скачки на границе окна | низкая критичность |
 | Sliding window | точнее и ровнее | выше вычислительная стоимость | публичные API |
@@ -47,7 +44,7 @@
 
 1. Сегментируйте клиентов: internal, partner, public, premium.
 2. Для операции задайте cost units (дешевые/дорогие методы).
-3. Рассчитайте базовый лимит по SLA и capacity.
+3. Рассчитайте базовый лимит по [SLA](../../glossary.md#abbr-079) и capacity.
 4. Добавьте burst allowance и аварийный guardrail.
 5. Установите квоту на период и правила replenishment.
 
@@ -60,7 +57,7 @@
 | Partner gold | GET catalog | 1200 | 300 | 3000000 |
 | Internal service | POST payment | 600 | 120 | без месячной квоты |
 
-## HTTP-контракт при превышении
+## [HTTP](../../glossary.md#abbr-038)-контракт при превышении
 
 ```http
 HTTP/1.1 429 Too Many Requests
@@ -96,7 +93,7 @@ plugins:
 - отсутствие коммуникации лимитов в документации.
 ## Стандарты и источники
 
-- RFC 6585 (429 Too Many Requests): <https://www.rfc-editor.org/rfc/rfc6585>
-- RFC 9110 HTTP Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
+- [RFC](../../glossary.md#abbr-072) 6585 (429 Too Many Requests): <https://www.rfc-editor.org/rfc/rfc6585>
+- RFC 9110 [HTTP](../../glossary.md#abbr-038) Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
 - Envoy rate limiting: <https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/other_features/global_rate_limiting>
 - Kong docs: <https://docs.konghq.com/>

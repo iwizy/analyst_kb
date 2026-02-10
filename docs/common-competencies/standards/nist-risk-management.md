@@ -1,8 +1,5 @@
 # NIST Risk Management Framework (RMF)
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 NIST RMF — framework для управления рисками информационной безопасности и соответствия, широко применяемый в регулируемых и критичных системах.
 
 ## Уровни сложности
@@ -45,7 +42,7 @@ NIST RMF — framework для управления рисками информа
 ## Связь с требованиями и процессом
 
 - security требования фиксируются в спецификациях;
-- controls включаются в DoD/quality gates;
+- controls включаются в [DoD](../../glossary.md#abbr-026)/quality gates;
 - инциденты и findings обновляют risk register.
 
 ## Типичные ошибки
@@ -58,7 +55,7 @@ NIST RMF — framework для управления рисками информа
 
 - [Информационная безопасность](../../architecture/information-security/index.md)
 - [Управление рисками](../estimation-risks/risk-management.md)
-- [Процесс разработки: ITSM/ITIL](../../development-process/feature-support/itsm-itil.md)## Источники
+- [Процесс разработки: ITSM/[ITIL](../../glossary.md#abbr-044)](../../development-process/feature-support/itsm-itil.md)## Источники
 
 - NIST RMF: <https://csrc.nist.gov/projects/risk-management>
 - NIST SP 800-37 (RMF guidance).

@@ -1,9 +1,6 @@
 # Сущности, атрибуты, контракты
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
-Контракт API должен отражать доменную модель и бизнес-правила, а не только формат JSON. Ошибки на этом шаге приводят к дорогим миграциям и несовместимости между командами.
+[Контракт](../../glossary.md#term-038) [API](../../glossary.md#abbr-005) должен отражать доменную модель и бизнес-правила, а не только формат JSON. Ошибки на этом шаге приводят к дорогим миграциям и несовместимости между командами.
 
 ## Уровни сложности
 
@@ -23,7 +20,7 @@
 
 - управлять эволюцией схем в распределенной системе;
 - внедрять data contracts и ownership модели;
-- строить multi-format контракты (REST + events + gRPC).
+- строить multi-format контракты ([REST](../../glossary.md#abbr-071) + events + [gRPC](../../glossary.md#abbr-036)).
 
 ## Как выявлять сущности и атрибуты
 
@@ -43,7 +40,7 @@
 | Owner | Команда-владелец |
 | Business invariant | Набор правил целостности |
 | Required attributes | Минимум для корректной операции |
-| PII/Sensitive | Флаги чувствительных данных |
+| [PII](../../glossary.md#abbr-063)/Sensitive | Флаги чувствительных данных |
 | Versioning rule | Правила эволюции полей |
 
 ## Шаблон API-контракта
@@ -54,7 +51,7 @@
 | Операции | методы/эндпоинты/queries/mutations |
 | Схемы request/response | обязательность, типы, enum |
 | Ошибки | коды, условия, retryability |
-| Безопасность | authn/authz, scopes, mTLS |
+| Безопасность | authn/authz, scopes, [mTLS](../../glossary.md#abbr-052) |
 | Лимиты | rate limit, quota, burst |
 | Совместимость | version, deprecation, sunset |
 | Нефункциональные требования | latency, availability, idempotency |
@@ -114,7 +111,7 @@ type Query {
 }
 ```
 
-### gRPC/proto (фрагмент)
+### [gRPC](../../glossary.md#abbr-036)/proto (фрагмент)
 
 ```proto
 syntax = "proto3";
@@ -142,7 +139,7 @@ service OrdersService {
 }
 ```
 
-### SOAP/WSDL (сокращенный пример)
+### [SOAP](../../glossary.md#abbr-083)/WSDL (сокращенный пример)
 
 ```xml
 <wsdl:operation name="GetOrder">
@@ -155,10 +152,10 @@ service OrdersService {
 
 | Подход | Плюсы | Минусы | Когда выбирать |
 | --- | --- | --- | --- |
-| Contract-first | прогнозируемость, рано выявляет конфликты | выше порог запуска | multi-team, внешние API |
+| Contract-first | прогнозируемость, рано выявляет конфликты | выше порог запуска | multi-team, внешние [API](../../glossary.md#abbr-005) |
 | Code-first | быстрый старт | риск drift между кодом и документацией | внутренний прототип, low risk |
 
-## CI/CD для контрактов
+## [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017) для контрактов
 
 - pull request на контракт обязателен до кода;
 - линтеры: `spectral`, `openapi-cli`, `buf`;
@@ -169,7 +166,7 @@ service OrdersService {
 ## Типичные ошибки
 
 - смешение доменной модели и внутренней DTO-структуры сервиса;
-- отсутствие owner и SLA у контракта;
+- отсутствие owner и [SLA](../../glossary.md#abbr-079) у контракта;
 - внедрение breaking-change без migration guide;
 - неявные поля (nullable без описания причин);
 - разные значения enum в синхронных и асинхронных контрактах.

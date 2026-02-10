@@ -1,9 +1,6 @@
 # Инструменты интеграций
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
-Раздел покрывает инструменты для ETL/ELT, событийных платформ, API management, service mesh и observability в распределенных системах.
+Раздел покрывает инструменты для [ETL](../glossary.md#abbr-033)/[ELT](../glossary.md#abbr-030), событийных платформ, [API](../glossary.md#abbr-005) management, service mesh и observability в распределенных системах.
 
 ## Уровни сложности
 
@@ -23,7 +20,7 @@
 
 - проектировать платформу интеграций на уровне программы;
 - автоматизировать контроль качества и reliability;
-- строить end-to-end tracing и SLA/SLO по интеграциям.
+- строить end-to-end tracing и [SLA](../glossary.md#abbr-079)/[SLO](../glossary.md#abbr-081) по интеграциям.
 
 ## Категории и инструменты
 
@@ -32,9 +29,9 @@
 | iPaaS | MuleSoft, Boomi, Workato | SaaS/B2B интеграции, orchestration |
 | ESB/BPM | WSO2, Camunda | process orchestration, enterprise flows |
 | ETL/ELT | Talend, dbt, Airflow, Flink | batch/stream transformation |
-| Брокеры и UI | Kafka, RabbitMQ UI, Pulsar Manager | pub/sub, event streaming |
+| Брокеры и [UI](../glossary.md#abbr-091) | Kafka, RabbitMQ UI, Pulsar Manager | pub/sub, event streaming |
 | API management | Kong, Apigee, Azure API Management | auth, rate limit, portal, governance |
-| Service mesh observability | Kiali, Linkerd Viz | mTLS, traffic policy, service-to-service visibility |
+| Service mesh observability | Kiali, Linkerd Viz | [mTLS](../glossary.md#abbr-052), traffic policy, service-to-service visibility |
 | Observability stack | Prometheus, Grafana, Jaeger, Kibana | metrics, logs, traces |
 
 ## Сравнение интеграционных решений
@@ -42,10 +39,10 @@
 | Инструмент | Коннекторы | Сложность настройки | Лицензия/стоимость | Когда выбирать |
 | --- | --- | --- | --- | --- |
 | Talend Cloud | много готовых коннекторов | средняя/высокая | commercial | enterprise ETL/ELT |
-| dbt | SQL-centric трансформации | средняя | OSS + cloud | аналитические ELT пайплайны |
+| dbt | [SQL](../glossary.md#abbr-084)-centric трансформации | средняя | OSS + cloud | аналитические ELT пайплайны |
 | Airflow | оркестрация DAG | средняя/высокая | OSS | расписания и зависимые задачи |
 | Apache Flink | stream processing | высокая | OSS | real-time вычисления |
-| Kafka Connect | коннекторы CDC и sink/source | средняя | OSS/Confluent | потоковые интеграции и CDC |
+| Kafka Connect | коннекторы [CDC](../glossary.md#abbr-014) и sink/source | средняя | OSS/Confluent | потоковые интеграции и CDC |
 | NiFi | визуальные data flow | средняя | OSS | быстрое проектирование потоков |
 
 ## Практические сценарии
@@ -53,7 +50,7 @@
 ### ETL-пайплайн: Talend vs dbt
 
 - Talend: когда нужен визуальный designer и много heterogeneous источников.
-- dbt: когда основной слой трансформаций в DWH SQL-first.
+- dbt: когда основной слой трансформаций в [DWH](../glossary.md#abbr-029) SQL-first.
 
 ### Kafka Connect + Schema Registry
 
@@ -82,7 +79,7 @@
 - NiFi: лучше для data flow routing и near-real-time ingestion.
 - Airflow: лучше для batch orchestration и dependency-aware расписаний.
 
-### ETL template (dbt model)
+### [ETL](../glossary.md#abbr-033) template (dbt model)
 
 ```sql
 select
@@ -107,24 +104,24 @@ where status = 'PAID'
 | --- | --- |
 | Задержка | consumer lag, queue depth |
 | Ошибки | error rate, failed transformations |
-| Доступность | connector/task status |
-| Производительность | throughput, p95 latency |
+| [Доступность](../glossary.md#term-025) | connector/task status |
+| [Производительность](../glossary.md#term-053) | throughput, p95 latency |
 | Стабильность | rebalance frequency, retry storm |
 
 Рекомендации:
 
-- алерты по SLA/SLO, а не только по инфраструктурным метрикам;
+- алерты по [SLA](../glossary.md#abbr-079)/[SLO](../glossary.md#abbr-081), а не только по инфраструктурным метрикам;
 - OpenTelemetry для end-to-end trace;
 - correlation id в сообщениях и логах.
 
-## Интеграция с API gateway и mesh
+## [Интеграция](../glossary.md#term-033) с [API](../glossary.md#abbr-005) gateway и mesh
 
 - синхронные API через gateway;
 - асинхронные каналы через broker;
 - политики безопасности и лимитов на edge;
 - трассировка запросов через mesh + tracing backend.
 
-## Зависимость от архитектурного стиля
+## [Зависимость](../glossary.md#term-027) от архитектурного стиля
 
 - Микросервисы: обязательны API management, брокеры, tracing и mesh-политики.
 - SOA/ESB: важны централизованные mediation/transformation-инструменты.
@@ -136,14 +133,14 @@ where status = 'PAID'
 - дизайн: выбрать паттерн (sync/async/file/event);
 - реализация: настроить connectors, schema governance, retries;
 - тестирование: contract + load + chaos сценарии;
-- эксплуатация: мониторинг, incident response, RCA.
+- эксплуатация: мониторинг, incident response, [RCA](../glossary.md#abbr-070).
 
 ## Кросс-ссылки
 
 - [Интеграции](../integrations/index.md)
 - [Паттерны надежности](../integrations/integration-methods/reliability-patterns.md)
 - [Процесс разработки: Мониторинг и логирование](../development-process/feature-support/monitoring-logging.md)
-- [Требования: Трассировка](../requirements/management/traceability.md)
+- [Требования: [Трассировка](../glossary.md#term-069)](../requirements/management/traceability.md)
 
 ## Типичные ошибки
 

@@ -1,9 +1,5 @@
 # Типы баз данных
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
-
-Раздел помогает выбрать тип БД на основе транзакционных требований, профиля запросов, CAP/PACELC-компромиссов и эксплуатационных ограничений.
+Раздел помогает выбрать тип БД на основе транзакционных требований, профиля запросов, [CAP](../../glossary.md#abbr-013)/[PACELC](../../glossary.md#abbr-061)-компромиссов и эксплуатационных ограничений.
 
 ## Уровни сложности
 
@@ -19,14 +15,14 @@
 
 ### Продвинутый
 
-- комбинировать distributed SQL, HTAP, search и vector storage;
+- комбинировать distributed [SQL](../../glossary.md#abbr-084), HTAP, search и vector storage;
 - управлять стоимостью и сложностью multi-database архитектур.
 
 ## Расширенная карта типов
 
 | Класс | Подтип | Сильные стороны | Ограничения | Примеры |
 | --- | --- | --- | --- | --- |
-| Реляционные | OLTP SQL | ACID, SQL, строгая целостность | сложнее scale-out | PostgreSQL, MySQL, Oracle |
+| Реляционные | [OLTP](../../glossary.md#abbr-060) SQL | ACID, SQL, строгая целостность | сложнее scale-out | PostgreSQL, MySQL, Oracle |
 | NewSQL | Distributed SQL | SQL + горизонтальное масштабирование + согласованность | сложнее эксплуатация | Spanner, CockroachDB, YugabyteDB, TiDB |
 | NewSQL | HTAP | совмещение транзакций и near-real-time аналитики | высокая стоимость и сложность модели | SingleStore, TiDB HTAP |
 | NoSQL | Document | гибкая схема, быстрое развитие домена | сложные аналитические join-сценарии | MongoDB, Couchbase |
@@ -43,7 +39,7 @@
 | Критерий | Вопрос | Рекомендуемый фокус |
 | --- | --- | --- |
 | Транзакции | Нужны ли multi-row/multi-table ACID инварианты? | Реляционная / distributed SQL |
-| Консистентность | Допустима ли eventual consistency? | NoSQL для non-critical reads |
+| [Консистентность](../../glossary.md#term-040) | Допустима ли eventual consistency? | NoSQL для non-critical reads |
 | Скорость записи | Есть ли постоянный high write ingestion? | Wide-column / TSDB / log storage |
 | Сложность запросов | Нужны сложные join/window/CTE? | SQL-системы |
 | CAP-компромисс | Что важнее при partition: C или A? | CP для финтеха, AP для feed/caching |
@@ -56,16 +52,16 @@
 | --- | --- | --- | --- |
 | CP/EL (консистентность и latency не критична) | C > A | C > L | Spanner, CockroachDB |
 | AP/EL (доступность и write throughput) | A > C | L > C | Cassandra, DynamoDB |
-| Гибридный | по доменам отдельно | по SLA слоя | Polyglot architecture |
+| Гибридный | по доменам отдельно | по [SLA](../../glossary.md#abbr-079) слоя | Polyglot architecture |
 
 ## Паттерны сочетания хранилищ
 
-| Паттерн | Состав | Сценарий |
+| [Паттерн](../../glossary.md#term-052) | Состав | Сценарий |
 | --- | --- | --- |
 | Transaction + Cache | PostgreSQL + Redis | e-commerce checkout + быстрые карточки |
 | Transaction + Search | MySQL/PostgreSQL + OpenSearch | каталоги и полнотекст |
 | SQL + TSDB | PostgreSQL + TimescaleDB | IoT platform (события + мастер-данные) |
-| OLTP + DWH | OLTP DB + ClickHouse/Redshift | управленческая аналитика и BI |
+| OLTP + [DWH](../../glossary.md#abbr-029) | OLTP DB + ClickHouse/Redshift | управленческая аналитика и [BI](../../glossary.md#abbr-008) |
 | Core DB + Ledger | SQL + Hyperledger | аудитируемые бизнес-процессы в госсекторе |
 
 ## Типовые ошибки
@@ -78,7 +74,7 @@
 ## Практические рекомендации
 
 1. Декомпозируйте данные по bounded contexts и паттернам доступа.
-2. Для каждого storage определите SLO, владельца и границы ответственности.
+2. Для каждого storage определите [SLO](../../glossary.md#abbr-081), владельца и границы ответственности.
 3. Документируйте CAP/PACELC-компромиссы в архитектурных решениях.
 4. Добавьте сценарии миграции и graceful degradation заранее.
 ## Стандарты и источники

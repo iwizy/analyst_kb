@@ -1,7 +1,4 @@
-# CMMI
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# [CMMI](../../glossary.md#abbr-018)
 
 CMMI (Capability Maturity Model Integration) оценивает зрелость процессов разработки и поставки ПО.
 
@@ -21,7 +18,7 @@ CMMI (Capability Maturity Model Integration) оценивает зрелость
 
 ### Продвинутый уровень
 
-- связывать CMMI с бизнес-целями и SLO;
+- связывать CMMI с бизнес-целями и [SLO](../../glossary.md#abbr-081);
 - управлять зрелостью в масштабе программы/портфеля;
 - интегрировать CMMI с Agile/DevOps практиками.
 
@@ -55,7 +52,7 @@ L4 --> L5
 Контекст: продуктовая команда в финтехе на уровне 2 хочет выйти на уровень 3.
 
 - стандартизируют требования и ревью-процедуры;
-- вводят общий DoR/DoD;
+- вводят общий [DoR](../../glossary.md#abbr-027)/[DoD](../../glossary.md#abbr-026);
 - внедряют шаблоны дефект-анализа;
 - фиксируют процесс в внутреннем стандарте и обучают команды.
 
@@ -79,17 +76,17 @@ L4 --> L5
 
 | Ошибка | Как избежать |
 | --- | --- |
-| фокус на документах вместо результата | связывайте инициативы с KPI |
+| фокус на документах вместо результата | связывайте инициативы с [KPI](../../glossary.md#abbr-047) |
 | слишком широкий scope | начинайте с приоритетных областей |
 | нет поддержки руководства | закрепите sponsorship и owners |
 | отсутствие обратной связи | проводите регулярные ретро и ревью метрик |
 
 ## Инструменты и форматы
 
-- assessment templates, process repository (Confluence), BI dashboards;
+- assessment templates, process repository (Confluence), [BI](../../glossary.md#abbr-008) dashboards;
 - артефакты: assessment report, gap log, improvement roadmap.
 ## Стандарты и источники
 
-- CMMI model resources: <https://cmmiinstitute.com/>
+- [CMMI](../../glossary.md#abbr-018) model resources: <https://cmmiinstitute.com/>
 - CMMI appraisal methods documentation
 - Agile + CMMI guidance publications

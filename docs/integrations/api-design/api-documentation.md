@@ -1,9 +1,6 @@
-# Документирование API
+# Документирование [API](../../glossary.md#abbr-005)
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
-Качественная документация API должна быть одновременно читаемой для людей и валидируемой автоматически в CI/CD.
+Качественная документация API должна быть одновременно читаемой для людей и валидируемой автоматически в [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017).
 
 ## Уровни сложности
 
@@ -29,12 +26,12 @@
 
 | Формат | Для чего лучше | Сильные стороны | Ограничения |
 | --- | --- | --- | --- |
-| OpenAPI 3.1 | REST API | экосистема, генерация SDK, linting | не описывает event-driven полноценно |
+| OpenAPI 3.1 | [REST](../../glossary.md#abbr-071) API | экосистема, генерация SDK, linting | не описывает event-driven полноценно |
 | RAML | REST design-first | удобен для моделирования API-first | меньше tooling, чем у OpenAPI |
 | AsyncAPI | event/API over messaging | каналы, сообщения, bindings | ниже зрелость в отдельных инструментах |
 | GraphQL SDL | GraphQL APIs | компактная схема и интроспекция | нужен отдельный governance на резолверы |
-| Protobuf | gRPC/messaging | строгая типизация, бинарная эффективность | слабая читаемость без tooling |
-| Avro IDL | Kafka schema registry | эволюция схем, serialization contracts | меньше удобства для HTTP API |
+| Protobuf | [gRPC](../../glossary.md#abbr-036)/messaging | строгая типизация, бинарная эффективность | слабая читаемость без tooling |
+| Avro IDL | Kafka schema registry | эволюция схем, serialization contracts | меньше удобства для [HTTP](../../glossary.md#abbr-038) API |
 
 ## Что должно быть в спецификации
 
@@ -42,7 +39,7 @@
 - операции и контракты (input/output/errors);
 - аутентификация и авторизация;
 - лимиты, идемпотентность, retry policy;
-- SLO/SLA и observability поля (trace headers, correlation id);
+- [SLO](../../glossary.md#abbr-081)/[SLA](../../glossary.md#abbr-079) и observability поля (trace headers, correlation id);
 - политика версий, deprecation и обратной совместимости.
 
 ## Пример REST endpoint (полный минимум)
@@ -98,14 +95,14 @@ type PaymentResult {
 
 ## Code generation, mocks, contract tests
 
-| Задача | Инструменты | Практика |
+| [Задача](../../glossary.md#term-028) | Инструменты | Практика |
 | --- | --- | --- |
-| Генерация SDK/стабов | OpenAPI Generator, Swagger Codegen, protoc | генерируйте в CI и фиксируйте версии |
-| Mock API | WireMock, MockServer, Prism | используйте для ранней интеграции front/back |
+| Генерация SDK/стабов | OpenAPI Generator, Swagger Codegen, protoc | генерируйте в [CI](../../glossary.md#abbr-016) и фиксируйте версии |
+| Mock [API](../../glossary.md#abbr-005) | WireMock, MockServer, Prism | используйте для ранней интеграции front/back |
 | Contract testing | Pact, Spring Cloud Contract | проверяйте provider-consumer до релиза |
-| Публикация | Swagger UI, Redocly, Stoplight | публикуйте changelog и deprecation notes |
+| Публикация | Swagger [UI](../../glossary.md#abbr-091), Redocly, Stoplight | публикуйте changelog и deprecation notes |
 
-## CI/CD для документации
+## [CI/CD](../../glossary.md#abbr-017) для документации
 
 1. Проверка синтаксиса (`spectral`, `openapi-cli`, `asyncapi validate`).
 2. Проверка совместимости (`oasdiff`, `graphql-inspector`).

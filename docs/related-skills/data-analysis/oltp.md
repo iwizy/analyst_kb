@@ -1,7 +1,4 @@
-# OLTP
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# [OLTP](../../glossary.md#abbr-060)
 
 OLTP (Online Transaction Processing) это контур оперативных транзакций, где критичны целостность данных, низкая задержка и корректная обработка конкурентных операций.
 
@@ -17,7 +14,7 @@ OLTP (Online Transaction Processing) это контур оперативных 
 
 - описывать инварианты бизнес-процесса;
 - учитывать блокировки, идемпотентность и повторы;
-- задавать SLA по latency и error rate.
+- задавать [SLA](../../glossary.md#abbr-079) по latency и error rate.
 
 ### Продвинутый уровень
 
@@ -52,9 +49,9 @@ OLTP (Online Transaction Processing) это контур оперативных 
 
 ## Кросс-ссылки
 
-- [OLAP](olap.md)
-- [Идемпотентность](../../integrations/api-design/idempotency.md)
-- [Консистентность и распределение](../../database/consistency-and-distribution.md)## Источники
+- [[OLAP](../../glossary.md#abbr-059)](olap.md)
+- [[Идемпотентность](../../glossary.md#term-029)](../../integrations/api-design/idempotency.md)
+- [[Консистентность](../../glossary.md#term-040) и распределение](../../database/consistency-and-distribution.md)## Источники
 
 - Designing Data-Intensive Applications.
 - PostgreSQL transaction docs: <https://www.postgresql.org/docs/current/tutorial-transactions.html>

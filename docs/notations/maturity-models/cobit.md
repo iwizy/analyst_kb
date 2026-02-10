@@ -1,7 +1,4 @@
-# COBIT
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# [COBIT](../../glossary.md#abbr-019)
 
 COBIT — фреймворк управления и контроля ИТ, который помогает связать бизнес-цели, ИТ-процессы, риски и метрики.
 
@@ -16,18 +13,18 @@ COBIT — фреймворк управления и контроля ИТ, ко
 ### Средний уровень
 
 - строить governance-модель и роли ответственности;
-- использовать COBIT вместе с KPI/KRI;
+- использовать COBIT вместе с [KPI](../../glossary.md#abbr-047)/KRI;
 - применять framework для аудита и соответствия.
 
 ### Продвинутый уровень
 
 - интегрировать COBIT с enterprise risk management;
 - выстраивать сквозной IT governance cycle;
-- комбинировать COBIT с ITIL/ISO и внутренними стандартами.
+- комбинировать COBIT с [ITIL](../../glossary.md#abbr-044)/[ISO](../../glossary.md#abbr-043) и внутренними стандартами.
 
 ## Домены COBIT
 
-| Домен | Назначение |
+| [Домен](../../glossary.md#term-023) | Назначение |
 | --- | --- |
 | EDM | Evaluate, Direct and Monitor |
 | APO | Align, Plan and Organize |
@@ -67,7 +64,7 @@ R --> A
 - текущий уровень: 2 (managed);
 - целевой уровень: 3 (established);
 - gap: нет единой taxonomy инцидентов и post-incident review;
-- инициативы: стандарт классификации, runbooks, SLA-dashboard.
+- инициативы: стандарт классификации, runbooks, [SLA](../../glossary.md#abbr-079)-dashboard.
 
 ## Плюсы и минусы
 
@@ -83,20 +80,20 @@ R --> A
 2. Проведите baseline capability assessment.
 3. Определите target state и ключевые риски.
 4. Запустите инициативы улучшения с владельцами.
-5. Отслеживайте KPI/KRI и проводите reassessment.
+5. Отслеживайте [KPI](../../glossary.md#abbr-047)/KRI и проводите reassessment.
 
 ## Типичные ошибки и как избежать
 
 | Ошибка | Как избежать |
 | --- | --- |
-| "внедрить весь COBIT сразу" | начните с критичных процессов |
+| "внедрить весь [COBIT](../../glossary.md#abbr-019) сразу" | начните с критичных процессов |
 | нет измеримых KPI/KRI | фиксируйте метрики до запуска изменений |
 | отсутствие ownership | назначайте process owner и control owner |
 | формальное соблюдение без эффектов | проверяйте бизнес-результат изменений |
 
 ## Инструменты и форматы
 
-- GRC-платформы, Confluence/Jira, BI dashboards;
+- GRC-платформы, Confluence/Jira, [BI](../../glossary.md#abbr-008) dashboards;
 - артефакты: control matrix, capability report, risk register.
 ## Стандарты и источники
 

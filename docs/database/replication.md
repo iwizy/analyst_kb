@@ -1,9 +1,5 @@
 # Реплицирование данных
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
-
-Репликация повышает доступность и масштабируемость чтения, но требует контроля lag, failover и консистентности на уровне сценариев.
+[Репликация](../glossary.md#term-056) повышает доступность и масштабируемость чтения, но требует контроля lag, failover и консистентности на уровне сценариев.
 
 ## Уровни сложности
 
@@ -20,7 +16,7 @@
 ### Продвинутый
 
 - failover/switchover automation;
-- CDC pipelines (Debezium/Kafka Connect/GoldenGate).
+- [CDC](../glossary.md#abbr-014) pipelines (Debezium/Kafka Connect/GoldenGate).
 
 ## Механизмы репликации
 
@@ -28,7 +24,7 @@
 | --- | --- | --- |
 | Physical replication | копирование WAL/binlog на уровне страниц/блоков | HA и read replicas |
 | Logical replication | репликация таблиц/строк/событий | selective replication, интеграции |
-| Statement-based (MySQL) | передача SQL-операций | ограниченно, есть риски недетерминизма |
+| Statement-based (MySQL) | передача [SQL](../glossary.md#abbr-084)-операций | ограниченно, есть риски недетерминизма |
 | Row-based (MySQL) | передача изменений строк | чаще предпочтительно для надежности |
 | Streaming replication | непрерывная передача журнала | near-real-time replica |
 
@@ -60,7 +56,7 @@
 
 Применение:
 
-- синхронизация в DWH/search/cache;
+- синхронизация в [DWH](../glossary.md#abbr-029)/search/cache;
 - event-driven интеграции;
 - аудит и replay.
 
@@ -81,7 +77,7 @@
 
 ## Практические рекомендации
 
-1. Определите SLA на lag для каждого read-сценария.
+1. Определите [SLA](../glossary.md#abbr-079) на lag для каждого read-сценария.
 2. Разделите HA-репликацию и аналитический CDC контур.
 3. Ведите runbook: failover, switchover, rollback.
 4. Проводите регулярные game day тесты.

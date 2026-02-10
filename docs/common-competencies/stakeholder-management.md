@@ -1,6 +1,4 @@
 # Управление стейкх
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
 олдерами
 
 Управление стейкхолдерами помогает согласовывать ожидания, снижать конфликт целей и ускорять принятие решений.
@@ -15,7 +13,7 @@
 
 ### Средний уровень
 
-- использовать RACI и stakeholder map;
+- использовать [RACI](../glossary.md#abbr-068) и stakeholder map;
 - управлять ожиданиями на разных этапах SDLC;
 - работать с конфликтами через данные и фасилитацию.
 
@@ -44,7 +42,7 @@
 
 ## RACI-шаблон
 
-| Активность | BA/SA | PO | Architect | QA | Sponsor |
+| Активность | BA/SA | [PO](../glossary.md#abbr-065) | Architect | [QA](../glossary.md#abbr-067) | Sponsor |
 | --- | --- | --- | --- | --- | --- |
 | Формирование требований | R | A | C | C | I |
 | Приоритизация | C | A/R | C | I | I |
@@ -111,6 +109,6 @@
 - устные решения без фиксации owner/date;
 - отсутствие пересмотра stakeholder map при изменениях.## Источники
 
-- PMBOK (Stakeholder Management).
+- [PMBOK](../glossary.md#abbr-064) (Stakeholder Management).
 - BABOK (Elicitation & Collaboration).
 - Fisher/Ury, *Getting to Yes*.

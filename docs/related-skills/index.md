@@ -1,14 +1,11 @@
 # Смежные навыки
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Смежные навыки превращают аналитика из автора требований в системного партнера для продукта, архитектуры, разработки и эксплуатации.
 
 ## Что входит в раздел
 
 - [Анализ данных](data-analysis/index.md)
-- [UX/UI основы](ux-ui-basics.md)
+- [[UX](../glossary.md#abbr-093)/[UI](../glossary.md#abbr-091) основы](ux-ui-basics.md)
 - [Основы тестирования](testing-fundamentals.md)
 - [Управление продуктом](product-management.md)
 - [Основы безопасности](security-basics.md)
@@ -29,28 +26,28 @@
 ### Средний уровень
 
 - Product management: связывать backlog с бизнес-ценностью.
-- Экономика и финансы: обосновывать решения через ROI/NPV/TCO.
+- Экономика и финансы: обосновывать решения через [ROI](../glossary.md#abbr-073)/[NPV](../glossary.md#abbr-055)/[TCO](../glossary.md#abbr-087).
 - Project management: управлять зависимостями, рисками и сроками.
 
 ### Продвинутый уровень
 
-- ML/DS: формулировать data/ML требования и метрики качества модели.
+- ML/[DS](../glossary.md#abbr-028): формулировать data/ML требования и метрики качества модели.
 - Prompt engineering: ускорять аналитическую рутину и контроль качества артефактов.
-- Доменные специализации: BI, финтех, e-commerce, госсектор.
+- Доменные специализации: [BI](../glossary.md#abbr-008), финтех, e-commerce, госсектор.
 
 ## Карта компетенций
 
 | Направление | Цель для аналитика | Key result | Пример применения |
 | --- | --- | --- | --- |
 | UX/UI | проектировать сценарии с учетом поведения пользователя | снижение drop-off в ключевом флоу | e-commerce: улучшение checkout |
-| Тестирование | сделать требования проверяемыми | снижение доли дефектов на UAT | финтех: меньше дефектов в платежах |
+| Тестирование | сделать требования проверяемыми | снижение доли дефектов на [UAT](../glossary.md#abbr-089) | финтех: меньше дефектов в платежах |
 | Анализ данных | принимать решения на основе фактов | рост доли data-driven решений | госуслуги: сокращение времени обработки заявок |
 | Product management | связать инициативы с целями продукта | прозрачная связь `vision -> roadmap -> backlog` | B2C: рост retention |
-| Security | учитывать угрозы на этапе требований | снижение security findings на релизе | финтех: комплаенс и защита PII |
-| ML/DS | корректно задавать ML-фичи | метрики модели привязаны к бизнес-KPI | антифрод, churn prediction |
+| Security | учитывать угрозы на этапе требований | снижение security findings на релизе | финтех: комплаенс и защита [PII](../glossary.md#abbr-063) |
+| ML/DS | корректно задавать ML-фичи | метрики модели привязаны к бизнес-[KPI](../glossary.md#abbr-047) | антифрод, churn prediction |
 | Экономика | считать ценность и стоимость изменений | обоснованная приоритизация инвестиций | выбор build vs buy |
 | Project management | управлять поставкой в ограничениях | предсказуемость delivery по срокам | корпоративный rollout |
-| Prompt engineering | ускорить анализ и формализацию | сокращение времени на черновики артефактов | генерация AC и тест-кейсов |
+| Prompt engineering | ускорить анализ и формализацию | сокращение времени на черновики артефактов | генерация [AC](../glossary.md#abbr-002) и тест-кейсов |
 
 ## Почему база это UX + тестирование + data literacy
 
@@ -62,7 +59,7 @@
 
 ## Рекомендованный путь развития
 
-1. Закрыть базу: UX/UI, testing fundamentals, SQL + BI.
+1. Закрыть базу: UX/UI, testing fundamentals, [SQL](../glossary.md#abbr-084) + BI.
 2. Добавить контур управления: product management + project management.
 3. Усилить качество решений: security + economics.
 4. Выбрать специализацию: BI, доменная экспертиза, prompt engineering, ML/DS.
@@ -93,6 +90,6 @@
 - [Базы данных](../database/index.md)## Источники
 
 - BABOK v3: <https://www.iiba.org/standards-and-resources/babok/>
-- PMBOK 7: <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>
+- [PMBOK](../glossary.md#abbr-064) 7: <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>
 - Lean Analytics: <https://leananalyticsbook.com/>
 - Nielsen Norman Group: <https://www.nngroup.com/>

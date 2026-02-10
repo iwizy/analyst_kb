@@ -1,8 +1,5 @@
 # Spiral-модель
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Spiral сочетает предсказуемость управления и итеративность, делая риск главным фактором планирования.
 
 ## Уровни сложности
@@ -78,4 +75,4 @@ R&D-платформа для телемедицины: на ранних эта
 - отсутствие критериев завершения витка.## Источники
 
 - Boehm, *A Spiral Model of Software Development and Enhancement*.
-- PMBOK risk management practices.
+- [PMBOK](../../glossary.md#abbr-064) risk management practices.

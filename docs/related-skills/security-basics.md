@@ -1,8 +1,5 @@
 # Основы безопасности
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Security для аналитика это не отдельный этап, а требования, которые вшиваются в продукт и интеграции с самого начала.
 
 ## Уровни сложности
@@ -15,8 +12,8 @@ Security для аналитика это не отдельный этап, а �
 
 ### Средний уровень
 
-- формулировать security AC для API и UI;
-- учитывать RBAC/ABAC, аудит и ротацию секретов;
+- формулировать security [AC](../glossary.md#abbr-002) для [API](../glossary.md#abbr-005) и [UI](../glossary.md#abbr-091);
+- учитывать [RBAC](../glossary.md#abbr-069)/ABAC, аудит и ротацию секретов;
 - работать с требованиями GDPR/PCI DSS/локальных регуляторов.
 
 ### Продвинутый уровень
@@ -27,16 +24,16 @@ Security для аналитика это не отдельный этап, а �
 
 ## 1. Authentication & Authorization
 
-- OAuth 2.0 / OIDC для пользовательских сценариев.
-- JWT: проверка `exp`, `aud`, `iss`, `sub`.
-- mTLS для межсервисного взаимодействия.
+- [OAuth](../glossary.md#abbr-056) 2.0 / [OIDC](../glossary.md#abbr-057) для пользовательских сценариев.
+- [JWT](../glossary.md#abbr-046): проверка `exp`, `aud`, `iss`, `sub`.
+- [mTLS](../glossary.md#abbr-052) для межсервисного взаимодействия.
 - RBAC/ABAC для разграничения доступа.
 
 ## 2. Data Protection
 
-- TLS 1.2/1.3 для передачи данных.
+- [TLS](../glossary.md#abbr-088) 1.2/1.3 для передачи данных.
 - AES-256 и KMS/HSM для хранения.
-- PII классификация и data minimization.
+- [PII](../glossary.md#abbr-063) классификация и data minimization.
 - secure cookies, CSRF protection, session policies.
 
 ## 3. Secure design и разработка
@@ -62,7 +59,7 @@ Security для аналитика это не отдельный этап, а �
 
 ## Пример security-требований к API
 
-| Область | Требование |
+| Область | [Требование](../glossary.md#term-071) |
 | --- | --- |
 | Токены | access token 15 минут, refresh token rotation |
 | Транспорт | mTLS для service-to-service |
@@ -76,7 +73,7 @@ Security для аналитика это не отдельный этап, а �
 | --- | --- | --- |
 | Replay attack | повтор операций | nonce + idempotency key + short TTL |
 | Token theft | несанкционированный доступ | short-lived JWT + key rotation + mTLS |
-| SQL injection | компрометация данных | parametrized queries + WAF + SAST |
+| [SQL](../glossary.md#abbr-084) injection | компрометация данных | parametrized queries + WAF + SAST |
 | Privilege escalation | доступ к чужим данным | RBAC/ABAC + audit + periodic review |
 
 ## Типичные ошибки
@@ -89,7 +86,7 @@ Security для аналитика это не отдельный этап, а �
 ## Кросс-ссылки
 
 - [Безопасность API](../integrations/api-design/security.md)
-- [Идемпотентность](../integrations/api-design/idempotency.md)
+- [[Идемпотентность](../glossary.md#term-029)](../integrations/api-design/idempotency.md)
 - [Информационная безопасность](../architecture/information-security/index.md)
 
 ## Чек-лист для аналитика
@@ -103,5 +100,5 @@ Security для аналитика это не отдельный этап, а �
 - OWASP Top 10: <https://owasp.org/www-project-top-ten/>
 - NIST CSF: <https://www.nist.gov/cyberframework>
 - CIS Controls: <https://www.cisecurity.org/controls>
-- ISO/IEC 27001: <https://www.iso.org/isoiec-27001-information-security.html>
+- [ISO](../glossary.md#abbr-043)/IEC 27001: <https://www.iso.org/isoiec-27001-information-security.html>
 - PCI DSS: <https://www.pcisecuritystandards.org/>

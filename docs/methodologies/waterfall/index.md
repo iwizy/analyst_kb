@@ -1,8 +1,5 @@
 # Предсказуемые методологии: Waterfall и варианты
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Предсказуемые подходы применяются там, где важны контроль, формальная документация и трассируемость. Они особенно эффективны при стабильных требованиях и высокой цене ошибки.
 
 ## Уровни сложности
@@ -10,7 +7,7 @@
 ### Базовый уровень
 
 - понимать последовательность фаз и stage-gates;
-- знать обязательные артефакты (BRD/SRS, test plan, release docs);
+- знать обязательные артефакты ([BRD](../../glossary.md#abbr-010)/[SRS](../../glossary.md#abbr-085), test plan, release docs);
 - различать Waterfall, V-Model, Spiral и Incremental.
 
 ### Средний уровень
@@ -43,17 +40,17 @@ stop
 
 | Фаза | Артефакты | Ключевые роли |
 | --- | --- | --- |
-| Анализ | Vision/Scope, BRD, SRS | BA/SA, PO, бизнес-владелец |
-| Дизайн | архитектурные схемы, ADR, data model | архитектор, SA |
+| Анализ | Vision/Scope, [BRD](../../glossary.md#abbr-010), [SRS](../../glossary.md#abbr-085) | BA/SA, [PO](../../glossary.md#abbr-065), бизнес-владелец |
+| Дизайн | архитектурные схемы, [ADR](../../glossary.md#abbr-003), data model | архитектор, SA |
 | Реализация | код, review records | dev team |
-| Тестирование | test plan, test cases, defect log, RTM | QA, SA |
+| Тестирование | test plan, test cases, defect log, RTM | [QA](../../glossary.md#abbr-067), SA |
 | Внедрение | release checklist, runbook, rollback plan | DevOps/SRE, PM |
 
 ### Шаблон BRD (минимум)
 
 | Раздел | Содержание |
 | --- | --- |
-| Business goals | бизнес-цель и KPI |
+| Business goals | бизнес-цель и [KPI](../../glossary.md#abbr-047) |
 | Scope | в границах / вне границ |
 | Stakeholders | роли и ответственность |
 | High-level requirements | ключевые требования |
@@ -66,7 +63,7 @@ stop
 | --- | --- |
 | Functional requirements | функциональные сценарии и правила |
 | Non-functional requirements | производительность, надежность, безопасность |
-| External interfaces | API, протоколы, форматы данных |
+| External interfaces | [API](../../glossary.md#abbr-005), протоколы, форматы данных |
 | Data requirements | сущности, атрибуты, ограничения |
 | Verification criteria | как проверяется каждое требование |
 
@@ -115,9 +112,9 @@ stop
 ## Кросс-ссылки
 
 - [Требования: Управление изменениями](../../requirements/management/change-management.md)
-- [Требования: Трассировка](../../requirements/management/traceability.md)
+- [Требования: [Трассировка](../../glossary.md#term-069)](../../requirements/management/traceability.md)
 - [Процесс разработки: Этапы SDLC](../../development-process/product-lifecycle/stages.md)## Источники
 
-- PMBOK Guide: <https://www.pmi.org/pmbok-guide-standards>
-- ISO/IEC/IEEE 12207: <https://www.iso.org/standard/63712.html>
+- [PMBOK](../../glossary.md#abbr-064) Guide: <https://www.pmi.org/pmbok-guide-standards>
+- [ISO](../../glossary.md#abbr-043)/IEC/[IEEE](../../glossary.md#abbr-041) 12207: <https://www.iso.org/standard/63712.html>
 - NASA Systems Engineering Handbook (V&V practices): <https://www.nasa.gov/reference/systems-engineering-handbook/>

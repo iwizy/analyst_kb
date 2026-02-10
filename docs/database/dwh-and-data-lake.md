@@ -1,7 +1,4 @@
-# DWH, Data Lake и Lakehouse
-
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
+# [DWH](../glossary.md#abbr-029), Data Lake и Lakehouse
 
 Современная платформа данных обычно сочетает несколько слоев: DWH для trusted-аналитики, Data Lake для сырья, Lakehouse для объединения гибкости и управляемости.
 
@@ -10,7 +7,7 @@
 ### Базовый
 
 - различать DWH, Data Lake, Lakehouse;
-- понимать ETL vs ELT и batch vs stream.
+- понимать [ETL](../glossary.md#abbr-033) vs [ELT](../glossary.md#abbr-030) и batch vs stream.
 
 ### Средний
 
@@ -63,7 +60,7 @@ G --> BI
 ## Data Mesh и data contracts
 
 - Data Mesh: data ownership в доменных командах, данные как продукт.
-- Data Contracts: формальные контракты схемы, качества и SLA между producer/consumer.
+- Data Contracts: формальные контракты схемы, качества и [SLA](../glossary.md#abbr-079) между producer/consumer.
 
 ## Сравнение платформ
 
@@ -75,14 +72,14 @@ G --> BI
 
 ## Кейсы по отраслям
 
-- Финансы: DWH для регуляторной отчетности + строгий lineage.
+- Финансы: [DWH](../glossary.md#abbr-029) для регуляторной отчетности + строгий lineage.
 - E-commerce: Lakehouse для near-real-time маркетинговой аналитики.
 - IoT: stream ingestion + TSDB/Lake для телеметрии и прогнозов.
 
 ## Типовые ошибки
 
 - отсутствие единого словаря метрик между доменами;
-- попытка строить BI напрямую на raw-слое;
+- попытка строить [BI](../glossary.md#abbr-008) напрямую на raw-слое;
 - нет data quality тестов в пайплайне;
 - неуправляемый рост стоимости compute/storage.
 

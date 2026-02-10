@@ -1,6 +1,4 @@
 # Гибридные подх
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
 оды
 
 Гибридные модели объединяют предсказуемый governance и адаптивную delivery-практику. Это наиболее частый выбор в enterprise-программах.
@@ -55,7 +53,7 @@ stop
 
 - дублирование отчетности;
 - конфликт календарей stage-gate и sprint cadence;
-- неясные полномочия PO vs CCB/CAB.
+- неясные полномочия [PO](../glossary.md#abbr-065) vs CCB/CAB.
 
 ## Stage-Gate + Kanban
 
@@ -67,14 +65,14 @@ stop
 
 - stage-gate для бизнес-решений;
 - Kanban-доска для операционного потока;
-- WIP-лимиты и классы обслуживания.
+- [WIP](../glossary.md#abbr-094)-лимиты и классы обслуживания.
 
 ### Когда применять
 
 - исследовательские проекты с частыми изменениями;
 - инженерные команды, где важна потоковая загрузка.
 
-## DDD + Scrum
+## [DDD](../glossary.md#abbr-024) + Scrum
 
 ### Цель
 
@@ -96,12 +94,12 @@ stop
 1. Один источник приоритетов: единый backlog.
 2. Единый risk register и decision log.
 3. Явные входы/выходы между governance и delivery.
-4. Обязательные quality gates, интегрированные в CI/CD.
+4. Обязательные quality gates, интегрированные в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017).
 5. Регулярный пересмотр модели по метрикам.
 
 ## Пример внедрения (финансовый сектор)
 
-- Upstream: BRD/SRS + архитектурный review + комплаенс-ограничения.
+- Upstream: [BRD](../glossary.md#abbr-010)/[SRS](../glossary.md#abbr-085) + архитектурный review + комплаенс-ограничения.
 - Delivery: 2-недельные спринты Scrum.
 - Downstream: CAB + release freeze window + эксплуатационное approval.
 - Результат: более частые релизы при сохранении audit-требований.
@@ -112,7 +110,7 @@ stop
 - [Требования: Управление изменениями](../requirements/management/change-management.md)
 - [Архитектура: Документирование решений](../architecture/systems-architecture/documentation-visualization.md)## Источники
 
-- PMI PMBOK (hybrid delivery).
+- PMI [PMBOK](../glossary.md#abbr-064) (hybrid delivery).
 - Scrum Guide: <https://scrumguides.org/>
 - Kanban Guide: <https://kanbanguides.org/>
-- SAFe patterns for governance: <https://scaledagileframework.com/>
+- [SAFe](../glossary.md#abbr-077) patterns for governance: <https://scaledagileframework.com/>

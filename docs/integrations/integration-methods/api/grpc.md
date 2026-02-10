@@ -1,7 +1,4 @@
-# gRPC
-
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
+# [gRPC](../../../glossary.md#abbr-036)
 
 gRPC оптимален для межсервисного взаимодействия с высокой нагрузкой и строгими контрактами.
 
@@ -57,7 +54,7 @@ service PaymentsService {
 
 ## Безопасность и observability
 
-- TLS/mTLS для всех каналов;
+- [TLS](../../../glossary.md#abbr-088)/[mTLS](../../../glossary.md#abbr-052) для всех каналов;
 - interceptors для auth, audit, correlation id;
 - status codes и retry policies согласованы между командами;
 - distributed tracing через OpenTelemetry.
@@ -72,10 +69,10 @@ service PaymentsService {
 
 - переиспользование field number после удаления поля;
 - отсутствие deadlines и timeouts;
-- неразделение internal/external API;
+- неразделение internal/external [API](../../../glossary.md#abbr-005);
 - игнорирование backward compatibility при изменении proto.
 ## Стандарты и источники
 
-- gRPC docs: <https://grpc.io/docs/>
+- [gRPC](../../../glossary.md#abbr-036) docs: <https://grpc.io/docs/>
 - Protocol Buffers guide: <https://protobuf.dev/programming-guides/proto3/>
 - grpc-web: <https://github.com/grpc/grpc-web>

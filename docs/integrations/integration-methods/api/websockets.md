@@ -1,8 +1,5 @@
 # WebSockets
 
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
-
 WebSockets дают двусторонний канал связи в реальном времени и применяются там, где polling слишком дорогой или медленный.
 
 ## Уровни сложности
@@ -79,6 +76,6 @@ Client -> RealtimeService: pong
 - непредусмотренные bursts приводят к переполнению очередей.
 ## Стандарты и источники
 
-- RFC 6455 WebSocket: <https://www.rfc-editor.org/rfc/rfc6455>
+- [RFC](../../../glossary.md#abbr-072) 6455 WebSocket: <https://www.rfc-editor.org/rfc/rfc6455>
 - STOMP: <https://stomp.github.io/>
 - MQTT v5: <https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html>

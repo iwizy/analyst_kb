@@ -1,8 +1,5 @@
 # Выявление рисков
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Выявление рисков это системный поиск событий, которые могут повлиять на сроки, стоимость, качество, безопасность и достижение бизнес-целей.
 
 ## Уровни сложности
@@ -15,7 +12,7 @@
 
 ### Средний уровень
 
-- использовать FMEA, SWOT, PESTLE, brainstorming;
+- использовать [FMEA](../../glossary.md#abbr-034), [SWOT](../../glossary.md#abbr-086), PESTLE, brainstorming;
 - назначать owners и процесс регулярного обновления;
 - оценивать стоимость риска и резерв.
 
@@ -91,7 +88,7 @@
 
 | ID | Риск | Тип | Вероятность | Влияние | Owner | План | Статус |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| R-01 | Задержка внешнего API | Технический | Medium | High | Integration Lead | fallback + контрактный review | Open |
+| R-01 | Задержка внешнего [API](../../glossary.md#abbr-005) | Технический | Medium | High | Integration Lead | fallback + контрактный review | Open |
 | R-02 | Уход ключевого эксперта | Организационный | Medium | Medium | PM | cross-training + backup owner | Open |
 | R-03 | Изменение регуляторики | Внешний | Low | High | Compliance Lead | мониторинг + change readiness | Monitor |
 
@@ -114,6 +111,6 @@
 - формальный реестр без регулярного пересмотра;
 - отсутствие связи риска с планом работ.## Источники
 
-- ISO 31000:2018.
-- PMBOK risk management.
+- [ISO](../../glossary.md#abbr-043) 31000:2018.
+- [PMBOK](../../glossary.md#abbr-064) risk management.
 - AIAG/VDA FMEA handbook.

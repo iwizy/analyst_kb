@@ -1,7 +1,4 @@
-# Идемпотентность
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# [Идемпотентность](../../glossary.md#term-029)
 
 Идемпотентность гарантирует, что повторный запрос не создаст дубликат эффекта. Это критично для платежей, заказов, бронирований и асинхронных операций.
 
@@ -9,7 +6,7 @@
 
 ### Базовый уровень
 
-- понимать, какие HTTP-методы идемпотентны по семантике;
+- понимать, какие [HTTP](../../glossary.md#abbr-038)-методы идемпотентны по семантике;
 - применять `Idempotency-Key` для create-операций;
 - возвращать одинаковый результат на повтор.
 
@@ -100,11 +97,11 @@ return res.status(201).json(out);
 | Проблема | Решение |
 | --- | --- |
 | Два узла одновременно обрабатывают один ключ | distributed lock или atomic upsert |
-| Репликация отстает | писать/читать idempotency store в primary |
+| [Репликация](../../glossary.md#term-056) отстает | писать/читать idempotency store в primary |
 | Повтор в очереди | dedup key в consumer + inbox pattern |
 | Повтор после TTL | TTL по бизнес-окну риска, а не минимально возможный |
 
-## Идемпотентность и MQ
+## [Идемпотентность](../../glossary.md#term-029) и MQ
 
 - producer использует transactional outbox;
 - consumer хранит processed-message-id (inbox);
@@ -119,6 +116,6 @@ return res.status(201).json(out);
 - отсутствие наблюдаемости по конфликтам идемпотентности.
 ## Стандарты и источники
 
-- RFC 9110 (Idempotent Methods): <https://www.rfc-editor.org/rfc/rfc9110>
+- [RFC](../../glossary.md#abbr-072) 9110 (Idempotent Methods): <https://www.rfc-editor.org/rfc/rfc9110>
 - Stripe idempotency practice: <https://docs.stripe.com/idempotency>
 - Transactional Outbox pattern: <https://microservices.io/patterns/data/transactional-outbox.html>

@@ -1,8 +1,5 @@
 # Event-Driven и Serverless
 
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
-
 Event-Driven Architecture (EDA) и serverless/FaaS усиливают слабую связность и эластичность, но требуют строгой дисциплины по событиям, идемпотентности и observability.
 
 ## Уровни сложности

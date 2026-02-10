@@ -1,15 +1,12 @@
 # Основы SRE
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 SRE (Site Reliability Engineering) - инженерный подход к эксплуатации, где надежность управляется метриками, автоматизацией и error budget.
 
 ## Уровни сложности
 
 ### Базовый уровень
 
-- понимать SLI/SLO/SLA;
+- понимать [SLI](../../glossary.md#abbr-080)/[SLO](../../glossary.md#abbr-081)/[SLA](../../glossary.md#abbr-079);
 - считать error budget;
 - использовать базовые runbook и on-call практики.
 
@@ -41,13 +38,13 @@ endif
 stop
 ```
 
-## Пример SLI/SLO
+## Пример [SLI](../../glossary.md#abbr-080)/[SLO](../../glossary.md#abbr-081)
 
 | Сценарий | SLI | SLO |
 | --- | --- | --- |
 | Оформление заказа | доля успешных операций | >= 99.9% за 30 дней |
-| API оплаты | p95 latency | <= 350 мс |
-| Доступность checkout | uptime | >= 99.95% |
+| [API](../../glossary.md#abbr-005) оплаты | p95 latency | <= 350 мс |
+| [Доступность](../../glossary.md#term-025) checkout | uptime | >= 99.95% |
 
 ## Базовые SRE-практики
 

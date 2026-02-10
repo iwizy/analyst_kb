@@ -1,9 +1,6 @@
 # JSON-RPC
 
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
-
-JSON-RPC подходит для command-oriented интеграций и простых RPC-вызовов поверх HTTP/WebSocket.
+JSON-RPC подходит для command-oriented интеграций и простых RPC-вызовов поверх [HTTP](../../../glossary.md#abbr-038)/WebSocket.
 
 ## Уровни сложности
 

@@ -1,7 +1,4 @@
-# Безопасность API
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# Безопасность [API](../../glossary.md#abbr-005)
 
 Безопасность API строится по принципу defense-in-depth: идентификация, авторизация, защита канала, контроль злоупотреблений и наблюдаемость.
 
@@ -9,15 +6,15 @@
 
 ### Базовый уровень
 
-- применять HTTPS/TLS и базовую токен-аутентификацию;
+- применять HTTPS/[TLS](../../glossary.md#abbr-088) и базовую токен-аутентификацию;
 - различать аутентификацию и авторизацию;
-- проверять критичные JWT-claims.
+- проверять критичные [JWT](../../glossary.md#abbr-046)-claims.
 
 ### Средний уровень
 
-- выбирать OAuth flow под тип клиента;
+- выбирать [OAuth](../../glossary.md#abbr-056) flow под тип клиента;
 - настраивать scopes per endpoint и rate limits;
-- внедрять mTLS и rotation ключей.
+- внедрять [mTLS](../../glossary.md#abbr-052) и rotation ключей.
 
 ### Продвинутый уровень
 
@@ -30,8 +27,8 @@
 | Слой | Что защищает | Типовые механизмы |
 | --- | --- | --- |
 | Transport | канал связи | TLS 1.2+, mTLS, HSTS |
-| Identity | кто вызывает API | OAuth 2.1, OIDC, API keys |
-| Authorization | что можно делать | scopes, RBAC/ABAC, policy engine |
+| Identity | кто вызывает API | OAuth 2.1, [OIDC](../../glossary.md#abbr-057), API keys |
+| Authorization | что можно делать | scopes, [RBAC](../../glossary.md#abbr-069)/ABAC, policy engine |
 | Abuse protection | защита от перегрузки и злоупотреблений | rate limiting, quotas, WAF |
 | Data protection | защита payload | encryption at rest/in transit, masking |
 | Audit | расследование инцидентов | immutable audit log, trace id |
@@ -63,7 +60,7 @@ API --> ServiceA: 200 OK
 @enduml
 ```
 
-## JWT: что проверять обязательно
+## [JWT](../../glossary.md#abbr-046): что проверять обязательно
 
 - `iss` (issuer) и `aud` (audience);
 - `exp`, `nbf`, `iat` (временные ограничения);
@@ -91,7 +88,7 @@ API --> ServiceA: 200 OK
 | JWS | подпись, целостность, подлинность |
 | JWE | шифрование payload (конфиденциальность) |
 
-## Zero Trust: mTLS + SPIFFE
+## Zero Trust: [mTLS](../../glossary.md#abbr-052) + SPIFFE
 
 - каждому сервису выдается short-lived identity (SPIFFE ID);
 - sidecar или gateway проверяет сертификат обеих сторон;
@@ -112,13 +109,13 @@ API --> ServiceA: 200 OK
 ## Инструменты
 
 - Identity providers: Keycloak, Auth0, Okta;
-- API Security/WAF: Cloudflare, AWS WAF, NGINX App Protect;
+- [API](../../glossary.md#abbr-005) Security/WAF: Cloudflare, AWS WAF, NGINX App Protect;
 - Service identity: SPIRE, Istio mTLS;
 - Secrets/keys: HashiCorp Vault, AWS KMS, Azure Key Vault.
 ## Стандарты и источники
 
-- OAuth 2.1 draft: <https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/>
+- [OAuth](../../glossary.md#abbr-056) 2.1 draft: <https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/>
 - OpenID Connect Core: <https://openid.net/specs/openid-connect-core-1_0.html>
-- RFC 7519 JWT: <https://www.rfc-editor.org/rfc/rfc7519>
+- [RFC](../../glossary.md#abbr-072) 7519 [JWT](../../glossary.md#abbr-046): <https://www.rfc-editor.org/rfc/rfc7519>
 - RFC 7517 JWK: <https://www.rfc-editor.org/rfc/rfc7517>
 - OWASP API Security Top 10: <https://owasp.org/API-Security/>

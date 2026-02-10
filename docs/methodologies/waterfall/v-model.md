@@ -1,8 +1,5 @@
 # V-модель
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 V-модель усиливает предсказуемый цикл, явно связывая этапы спецификации с соответствующими уровнями тестирования.
 
 ## Уровни сложности
@@ -67,8 +64,8 @@ DD .. UT
 
 | Артефакт | Владелец |
 | --- | --- |
-| BRD/SRS | BA/SA |
-| Test Strategy/Plan | QA lead |
+| [BRD](../../glossary.md#abbr-010)/[SRS](../../glossary.md#abbr-085) | BA/SA |
+| Test Strategy/Plan | [QA](../../glossary.md#abbr-067) lead |
 | Requirement-Test Traceability Matrix | BA/SA + QA |
 | Протоколы верификации/валидации | QA + бизнес |
 
@@ -102,5 +99,5 @@ DD .. UT
 - несинхронное обновление требований и тестов;
 - позднее выявление расхождений между SRS и тест-дизайном.## Источники
 
-- ISO/IEC/IEEE 29148 (requirements): <https://www.iso.org/standard/72089.html>
+- [ISO](../../glossary.md#abbr-043)/IEC/[IEEE](../../glossary.md#abbr-041) 29148 (requirements): <https://www.iso.org/standard/72089.html>
 - ISO/IEC/IEEE 29119 (testing): <https://www.iso.org/standard/45142.html>

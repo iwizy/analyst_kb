@@ -1,7 +1,4 @@
-# SQL для аналитиков
-
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
+# [SQL](../../glossary.md#abbr-084) для аналитиков
 
 SQL для аналитика это основной язык проверки гипотез, верификации требований и построения метрик.
 
@@ -27,9 +24,9 @@ SQL для аналитика это основной язык проверки 
 
 ## Практические задачи аналитика
 
-| Задача | SQL-паттерн |
+| [Задача](../../glossary.md#term-028) | SQL-паттерн |
 | --- | --- |
-| Агрегация по периодам | `date_trunc` + `group by` |
+| [Агрегация](../../glossary.md#term-002) по периодам | `date_trunc` + `group by` |
 | Сегментация клиентов | `case when` + группировка |
 | Когортный анализ | первая активность + период сдвига |
 | Поиск аномалий | оконные функции + сравнение с baseline |
@@ -98,8 +95,8 @@ order by dt;
 
 ## Инструменты
 
-- Metabase: быстрые SQL-вопросы и дашборды.
-- Apache Superset: гибкая BI-визуализация и SQL Lab.
+- Metabase: быстрые [SQL](../../glossary.md#abbr-084)-вопросы и дашборды.
+- Apache Superset: гибкая [BI](../../glossary.md#abbr-008)-визуализация и SQL Lab.
 - DataGrip/DBeaver: удобная работа с запросами и схемой.
 
 ## Типовые ошибки
@@ -113,7 +110,7 @@ order by dt;
 
 - [SQL в разделе БД](../../database/sql/index.md)
 - [BI и визуализация](bi-and-visualization.md)
-- [Статистика и A/B-тесты](statistics-and-ab-tests.md)## Источники
+- [Статистика и [A/B](../../glossary.md#abbr-001)-тесты](statistics-and-ab-tests.md)## Источники
 
 - PostgreSQL documentation: <https://www.postgresql.org/docs/>
 - Mode SQL tutorial: <https://mode.com/sql-tutorial/>

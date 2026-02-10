@@ -1,8 +1,5 @@
 # Data Governance
 
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
 Data Governance задает роли, правила и процессы управления данными: качество, доступ, происхождение, соответствие регуляторике.
 
 ## Уровни сложности
@@ -42,11 +39,11 @@ Data Governance задает роли, правила и процессы упр
 ## Базовые политики
 
 - классификация данных (public/internal/confidential/restricted);
-- access control (RBAC/ABAC);
+- access control ([RBAC](../glossary.md#abbr-069)/ABAC);
 - retention and archival policy;
 - data quality policy и incident process.
 
-## Кейс: финансовая компания
+## [Кейс](../glossary.md#term-036): финансовая компания
 
 Контекст:
 
@@ -57,9 +54,9 @@ Data Governance задает роли, правила и процессы упр
 
 1. Создать Governance Council и назначить Data Owners.
 2. Внедрить каталог метаданных и lineage по критичным отчетам.
-3. Ввести обязательную классификацию PII/финансовых атрибутов.
+3. Ввести обязательную классификацию [PII](../glossary.md#abbr-063)/финансовых атрибутов.
 4. Реализовать RBAC/ABAC и контроль доступа по принципу least privilege.
-5. Запустить KPI: completeness, lineage coverage, policy violations.
+5. Запустить [KPI](../glossary.md#abbr-047): completeness, lineage coverage, policy violations.
 
 ## Типовые ошибки
 
@@ -71,7 +68,7 @@ Data Governance задает роли, правила и процессы упр
 ## Практические рекомендации
 
 1. Начинайте с critical data domains и регуляторных отчетов.
-2. Интегрируйте governance checks в CI/CD и data pipelines.
+2. Интегрируйте governance checks в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017) и data pipelines.
 3. Делайте lineage обязательным для tier-1 витрин.
 4. Регулярно проводите review доступа и policy compliance.
 ## Стандарты и источники

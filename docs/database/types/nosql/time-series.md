@@ -1,6 +1,4 @@
 # Базы данных
-> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
-
  временных рядов
 
 TSDB оптимизированы под потоковые записи и оконный анализ метрик/телеметрии.
@@ -15,7 +13,7 @@ TSDB оптимизированы под потоковые записи и ок
 ### Средний
 
 - проектирование tags без cardinality explosion;
-- continuous aggregates и SLO-метрики.
+- continuous aggregates и [SLO](../../../glossary.md#abbr-081)-метрики.
 
 ### Продвинутый
 
@@ -26,7 +24,7 @@ TSDB оптимизированы под потоковые записи и ок
 
 - мониторинг инфраструктуры и приложений;
 - IoT телеметрия;
-- операционные KPI в near-real-time.
+- операционные [KPI](../../../glossary.md#abbr-047) в near-real-time.
 
 ## Пример записи
 
@@ -45,7 +43,7 @@ GROUP BY bucket
 ORDER BY bucket;
 ```
 
-## Консистентность и целостность
+## [Консистентность](../../../glossary.md#term-040) и целостность
 
 - write path ориентирован на throughput;
 - eventual consistency допустима для мониторинга;
@@ -53,13 +51,13 @@ ORDER BY bucket;
 
 ## Безопасность
 
-- TLS и auth агентов;
-- контроль PII в tags;
-- RBAC для dashboard/query.
+- [TLS](../../../glossary.md#abbr-088) и auth агентов;
+- контроль [PII](../../../glossary.md#abbr-063) в tags;
+- [RBAC](../../../glossary.md#abbr-069) для dashboard/query.
 
-## Миграция из SQL
+## [Миграция](../../../glossary.md#term-045) из [SQL](../../../glossary.md#abbr-084)
 
-1. Вывести метрики из OLTP таблиц.
+1. Вывести метрики из [OLTP](../../../glossary.md#abbr-060) таблиц.
 2. Определить retention слои (raw/rollup/archive).
 3. Настроить ingestion и quality checks.
 4. Сверить стоимость хранения на горизонте роста.
@@ -73,7 +71,7 @@ ORDER BY bucket;
 ## Практические рекомендации
 
 1. Жестко ограничьте high-cardinality labels.
-2. Разделите ingestion и аналитические запросы по SLA.
+2. Разделите ingestion и аналитические запросы по [SLA](../../../glossary.md#abbr-079).
 3. Введите naming convention и owner для каждой метрики.
 4. Мониторьте gaps, lag и loss событий.
 ## Стандарты и источники

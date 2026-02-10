@@ -1,8 +1,5 @@
 # FDD (Feature-Driven Development)
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 FDD организует поставку вокруг бизнес-фич, обеспечивая прозрачный прогресс в терминах ценности.
 
 ## Уровни сложности
@@ -22,7 +19,7 @@ FDD организует поставку вокруг бизнес-фич, об
 ### Продвинутый уровень
 
 - применять FDD для крупных B2B-программ;
-- сочетать FDD с DDD и архитектурными ограничениями;
+- сочетать FDD с [DDD](../../glossary.md#abbr-024) и архитектурными ограничениями;
 - контролировать качество на уровне feature lifecycle.
 
 ## Процесс FDD
@@ -84,5 +81,5 @@ B2B-платформа с несколькими клиентскими сегм
 - отсутствие единой доменной модели;
 - статус по задачам вместо статуса по фичам.## Источники
 
-- Coad, De Luca, Lefebvre, *Java Modeling in Color with UML* (истоки FDD).
+- Coad, De Luca, Lefebvre, *Java Modeling in Color with [UML](../../glossary.md#abbr-092)* (истоки FDD).
 - Agile Alliance FDD overview: <https://www.agilealliance.org/glossary/fdd/>

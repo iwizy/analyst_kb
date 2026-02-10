@@ -1,8 +1,5 @@
 # Кэширование
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Кэширование снижает latency и нагрузку на backend, но требует явного управления актуальностью и инвалидацией данных.
 
 ## Уровни сложности
@@ -31,12 +28,12 @@
 | --- | --- | --- |
 | In-memory local | Caffeine, LRU/LFU | быстрый локальный доступ |
 | Distributed cache | Redis, Memcached, Hazelcast | shared cache между инстансами |
-| HTTP cache | Cache-Control, ETag | кэш на клиенте/CDN/proxy |
+| [HTTP](../../glossary.md#abbr-038) cache | Cache-Control, ETag | кэш на клиенте/CDN/proxy |
 | CDN | CloudFront, Fastly, Akamai | статический/полустатический контент |
 
 ## Паттерны кэширования
 
-| Паттерн | Идея | Плюсы | Риски |
+| [Паттерн](../../glossary.md#term-052) | Идея | Плюсы | Риски |
 | --- | --- | --- | --- |
 | Cache-Aside | app читает cache, при miss идет в DB | гибкость | сложнее invalidation |
 | Read-through | cache сам загружает данные | проще клиенту | зависимость от cache layer |
@@ -96,5 +93,5 @@ Service --> Client: value
 ## Стандарты и источники
 
 - Redis docs: <https://redis.io/docs/>
-- HTTP caching RFC 9111.
+- [HTTP](../../glossary.md#abbr-038) caching [RFC](../../glossary.md#abbr-072) 9111.
 - CDN best practices vendor docs.

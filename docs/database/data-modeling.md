@@ -1,8 +1,4 @@
 # Проектирование модели данных
-> Глоссарий терминов и сокращений: [Открыть](../glossary.md)
-
-
-
 Модель данных связывает бизнес-процессы, требования и физическое хранение. Качественная модель снижает стоимость изменений и повышает прогнозируемость продукта.
 
 ## Уровни сложности
@@ -14,13 +10,13 @@
 
 ### Средний
 
-- проектировать модель под query patterns и SLA;
-- проводить ревью модели с бизнесом, разработкой и QA.
+- проектировать модель под query patterns и [SLA](../glossary.md#abbr-079);
+- проводить ревью модели с бизнесом, разработкой и [QA](../glossary.md#abbr-067).
 
 ### Продвинутый
 
 - управлять эволюцией схемы в distributed architecture;
-- применять DDD (bounded context, aggregate boundaries).
+- применять [DDD](../glossary.md#abbr-024) (bounded context, aggregate boundaries).
 
 ## Этапы моделирования
 
@@ -73,11 +69,11 @@ Order ||--o{ OrderItem
 ### CRM система
 
 - сущности: `Client`, `Contact`, `Opportunity`, `Activity`;
-- ключевые запросы: воронка, активность по сегментам, SLA обработки лидов.
+- ключевые запросы: воронка, активность по сегментам, [SLA](../glossary.md#abbr-079) обработки лидов.
 
 ### IoT платформа
 
-- мастер-данные устройств в OLTP;
+- мастер-данные устройств в [OLTP](../glossary.md#abbr-060);
 - телеметрия в TSDB/Wide-column;
 - агрегаты и алерты в аналитическом контуре.
 
@@ -85,9 +81,9 @@ Order ||--o{ OrderItem
 
 | Критерий | Star | Snowflake |
 | --- | --- | --- |
-| Простота BI | выше | ниже |
-| Нормализация измерений | низкая | выше |
-| Производительность join | чаще лучше | зависит от движка |
+| Простота [BI](../glossary.md#abbr-008) | выше | ниже |
+| [Нормализация](../glossary.md#term-048) измерений | низкая | выше |
+| [Производительность](../glossary.md#term-053) join | чаще лучше | зависит от движка |
 | Сопровождение | проще для витрин | сложнее, но меньше дублирования |
 
 ## Изменения схемы и миграции
@@ -99,7 +95,7 @@ Order ||--o{ OrderItem
 - data backfill отдельными контролируемыми джобами;
 - валидация качества данных после миграции.
 
-## DDD и роль БД
+## [DDD](../glossary.md#abbr-024) и роль БД
 
 - bounded context определяет границы схемы и ownership;
 - aggregate root задает транзакционные границы;
@@ -116,11 +112,11 @@ Order ||--o{ OrderItem
 
 1. Для каждого домена храните отдельный data dictionary.
 2. Проводите архитектурное ревью модели перед релизом.
-3. Фиксируйте ADR для ключевых решений по схеме.
-4. Включайте тесты данных в CI/CD пайплайн.
+3. Фиксируйте [ADR](../glossary.md#abbr-003) для ключевых решений по схеме.
+4. Включайте тесты данных в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017) пайплайн.
 ## Стандарты и источники
 
-- ISO/IEC 11179 (metadata registries): <https://www.iso.org/standard/35343.html>
+- [ISO](../glossary.md#abbr-043)/IEC 11179 (metadata registries): <https://www.iso.org/standard/35343.html>
 - Martin Fowler, Data Mapper: <https://martinfowler.com/eaaCatalog/dataMapper.html>
 - Eric Evans, Domain-Driven Design: <https://www.domainlanguage.com/ddd/>
 - Kimball Group: <https://www.kimballgroup.com/>

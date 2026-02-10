@@ -1,8 +1,5 @@
 # Этапы жизненного цикла ПО
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Страница детализирует SDLC по фазам: цели, входы, выходы, роли, артефакты, критерии перехода и типовые ошибки.
 
 ## Уровни сложности
@@ -15,7 +12,7 @@
 
 ### Средний уровень
 
-- формировать DoR/DoD и quality gates;
+- формировать [DoR](../../glossary.md#abbr-027)/[DoD](../../glossary.md#abbr-026) и quality gates;
 - управлять зависимостями между фазами;
 - адаптировать фазовый контур под Agile и гибридные модели.
 
@@ -29,26 +26,26 @@
 
 | Фаза | Цель | Входы | Выходы | Ключевые роли |
 | --- | --- | --- | --- | --- |
-| Инициация | подтвердить целесообразность | стратегия, бизнес-проблема, ограничения | Vision/Scope, Business Case, high-level roadmap | Sponsor, PO, BA, PM |
-| Анализ | сформировать проверяемые требования | vision, stakeholder map, текущие процессы | BRD/SRS, backlog, NFR, RTM baseline | BA/SA, PO, архитектор, QA |
-| Дизайн | выбрать и обосновать решение | требования, ограничения, NFR | C4/UML/ER, API contracts, ADR, UX прототипы | Архитектор, SA, lead dev |
+| Инициация | подтвердить целесообразность | стратегия, бизнес-проблема, ограничения | Vision/Scope, Business Case, high-level roadmap | Sponsor, [PO](../../glossary.md#abbr-065), BA, PM |
+| Анализ | сформировать проверяемые требования | vision, stakeholder map, текущие процессы | [BRD](../../glossary.md#abbr-010)/[SRS](../../glossary.md#abbr-085), backlog, [NFR](../../glossary.md#abbr-053), RTM baseline | BA/SA, PO, архитектор, [QA](../../glossary.md#abbr-067) |
+| Дизайн | выбрать и обосновать решение | требования, ограничения, NFR | [C4](../../glossary.md#abbr-011)/[UML](../../glossary.md#abbr-092)/ER, [API](../../glossary.md#abbr-005) contracts, [ADR](../../glossary.md#abbr-003), [UX](../../glossary.md#abbr-093) прототипы | Архитектор, SA, lead dev |
 | Разработка | реализовать инкремент | дизайн, backlog, DoR | код, PR, unit tests, changelog | Dev team, SA |
-| Тестирование | подтвердить качество | код, test plan, AC | test report, defect log, UAT decision | QA, BA/SA, PO |
+| Тестирование | подтвердить качество | код, test plan, [AC](../../glossary.md#abbr-002) | test report, defect log, [UAT](../../glossary.md#abbr-089) decision | QA, BA/SA, PO |
 | Внедрение | безопасно выпустить | release package, runbook, rollback plan | production release, release notes | DevOps/SRE, PM, PO |
-| Эксплуатация | обеспечить стабильность и улучшения | production signals, incident data | SLI/SLO review, postmortem, improvement backlog | SRE, support, SA, PO |
+| Эксплуатация | обеспечить стабильность и улучшения | production signals, incident data | [SLI](../../glossary.md#abbr-080)/[SLO](../../glossary.md#abbr-081) review, postmortem, improvement backlog | SRE, support, SA, PO |
 
 ## Документы и артефакты по фазам
 
 ### Инициация
 
 - Vision/Scope;
-- Business Case (ROI/NPV/риски);
+- Business Case ([ROI](../../glossary.md#abbr-073)/[NPV](../../glossary.md#abbr-055)/риски);
 - карта стейкхолдеров.
 
 ### Анализ
 
 - BRD/SRS или набор спецификаций в backlog;
-- Use Case/User Story/JTBD;
+- Use Case/User Story/[JTBD](../../glossary.md#abbr-045);
 - критерии приемки и NFR;
 - decision log.
 
@@ -109,18 +106,18 @@
 
 ## Метрики SDLC
 
-| Область | Метрика | Как интерпретировать |
+| Область | [Метрика](../../glossary.md#term-044) | Как интерпретировать |
 | --- | --- | --- |
 | Скорость поставки | Lead Time for Changes | меньше = быстрее поток |
 | Качество | Change Failure Rate | меньше = стабильнее релизы |
-| Восстановление | MTTR | меньше = быстрее реакция |
+| Восстановление | [MTTR](../../glossary.md#abbr-051) | меньше = быстрее реакция |
 | Предсказуемость | Plan vs Actual | ближе к 1 = стабильное планирование |
 
 ## Вариации SDLC по типам продуктов
 
 | Тип продукта | Что усиливать |
 | --- | --- |
-| Web | непрерывные релизы, observability, A/B-практики |
+| Web | непрерывные релизы, observability, [A/B](../../glossary.md#abbr-001)-практики |
 | Mobile | релизный менеджмент в App Store/Google Play, backward compatibility |
 | Embedded/IoT | safety/security testing, hardware-in-the-loop, сертификационные этапы |
 
@@ -139,6 +136,6 @@ endif
 stop
 ```## Стандарты и источники
 
-- ISO/IEC/IEEE 12207: <https://www.iso.org/standard/63712.html>
+- [ISO](../../glossary.md#abbr-043)/IEC/[IEEE](../../glossary.md#abbr-041) 12207: <https://www.iso.org/standard/63712.html>
 - ISO/IEC/IEEE 29148 (требования): <https://www.iso.org/standard/72089.html>
 - IEEE 730 (quality assurance): <https://standards.ieee.org/>

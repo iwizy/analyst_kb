@@ -1,8 +1,5 @@
 # Практические кейсы и миграции
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Раздел показывает, как архитектурные стили работают в реальных сценариях и как выполнять миграции без "большого взрыва".
 
 ## Уровни сложности
@@ -25,7 +22,7 @@
 - управлять dual-write/read рисками;
 - подтверждать эффект миграции метриками.
 
-## Кейс 1: e-commerce monolith -> microservices
+## [Кейс](../../glossary.md#term-036) 1: e-commerce monolith -> microservices
 
 ### Контекст
 
@@ -35,8 +32,8 @@
 ### Шаги миграции (Strangler Fig)
 
 1. Выделить bounded context `Catalog`.
-2. Вынести read API через gateway routing.
-3. Подключить CDC/events для синхронизации.
+2. Вынести read [API](../../glossary.md#abbr-005) через gateway routing.
+3. Подключить [CDC](../../glossary.md#abbr-014)/events для синхронизации.
 4. Перевести write-path и выключить legacy маршрут.
 
 ```kroki-plantuml
@@ -53,10 +50,10 @@ E --> C
 @enduml
 ```
 
-## Кейс 2: fintech DDD architecture
+## [Кейс](../../glossary.md#term-036) 2: fintech [DDD](../../glossary.md#abbr-024) architecture
 
 - домены: onboarding, payments, ledger, compliance;
-- паттерны: bounded contexts, CQRS для ledger-read, strict audit;
+- паттерны: bounded contexts, [CQRS](../../glossary.md#abbr-020) для ledger-read, strict audit;
 - риск: consistency между платежом и бухгалтерским учетом;
 - решение: saga + idempotency + compensations.
 
@@ -77,12 +74,12 @@ E --> C
 
 ## Шаблон миграционного плана
 
-| Этап | Цель | Метрика выхода |
+| Этап | Цель | [Метрика](../../glossary.md#term-044) выхода |
 | --- | --- | --- |
 | Discovery | определить контексты и риски | context map + risk register |
-| Pilot | вынести 1 bounded context | стабильный SLA пилота |
+| Pilot | вынести 1 bounded context | стабильный [SLA](../../glossary.md#abbr-079) пилота |
 | Expansion | расширить extraction wave | снижение lead time |
-| Stabilization | выключить legacy-пути | инциденты в пределах SLO |
+| Stabilization | выключить legacy-пути | инциденты в пределах [SLO](../../glossary.md#abbr-081) |
 
 ## Практические рекомендации
 

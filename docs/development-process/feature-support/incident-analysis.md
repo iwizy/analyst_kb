@@ -1,8 +1,5 @@
 # Разбор инцидентов
 
-> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
-
-
 Разбор инцидентов (postmortem) нужен для устранения первопричин и предотвращения повторов. Цель - улучшать систему, а не искать виноватых.
 
 ## Уровни сложности
@@ -15,13 +12,13 @@
 
 ### Средний уровень
 
-- применять RCA-методы (5 Why, Fishbone);
+- применять [RCA](../../glossary.md#abbr-070)-методы (5 Why, Fishbone);
 - разделять symptoms, causes и contributing factors;
 - связывать результаты postmortem с backlog и change management.
 
 ### Продвинутый уровень
 
-- использовать error budget и SLO для приоритизации мер;
+- использовать error budget и [SLO](../../glossary.md#abbr-081) для приоритизации мер;
 - проводить incident trend analysis;
 - управлять reliability roadmap на квартал.
 
@@ -44,17 +41,17 @@ stop
 | Поле | Что фиксировать |
 | --- | --- |
 | Incident ID | ссылка на инцидент |
-| Влияние | пользователи, деньги, SLA |
+| Влияние | пользователи, деньги, [SLA](../../glossary.md#abbr-079) |
 | Таймлайн | обнаружение, эскалация, восстановление |
 | Первопричина | техническая/процессная |
 | Усиливающие факторы | мониторинг, архитектура, коммуникация |
 | Действия | corrective/preventive, owner, due date |
 | Проверка эффекта | метрика и дата ревью |
 
-## Пример RCA (кратко)
+## Пример [RCA](../../glossary.md#abbr-070) (кратко)
 
 - Симптом: рост 5xx в сервисе заказов.
-- Причина: деградация внешнего API платежей.
+- Причина: деградация внешнего [API](../../glossary.md#abbr-005) платежей.
 - Почему impact высокий: не настроен fallback и circuit breaker.
 - Действие: добавить circuit breaker, cache для статусов, пересмотреть timeout budget.
 
@@ -75,4 +72,4 @@ stop
 
 - Google SRE (postmortem culture): <https://sre.google/sre-book/postmortem-culture/>
 - NIST SP 800-61: <https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final>
-- ITIL 4 Incident/Problem practices: <https://www.axelos.com/>
+- [ITIL](../../glossary.md#abbr-044) 4 Incident/Problem practices: <https://www.axelos.com/>
