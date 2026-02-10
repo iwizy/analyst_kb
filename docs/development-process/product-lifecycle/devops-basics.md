@@ -1,32 +1,101 @@
 # Основы DevOps
 
-DevOps - совместная модель работы разработки и эксплуатации, цель которой: быстрее и безопаснее поставлять изменения.
+DevOps это совместная модель работы разработки, тестирования и эксплуатации, где скорость поставки и надежность продукта достигаются через автоматизацию, измеримость и непрерывную обратную связь.
 
-## Ключевые практики
+## Уровни сложности
 
-- автоматизация build/test/deploy;
-- инфраструктура как код (IaC);
-- observability: логи, метрики, трейсы;
-- incident response и postmortem-культура;
-- shift-left по качеству и безопасности.
+### Базовый уровень
 
-## IaC в контуре DevOps
+- понимать DevOps как культуру, а не только набор инструментов;
+- знать ключевые практики: CI/CD, IaC, observability;
+- видеть связь между требованиями и эксплуатационными метриками.
 
-| Практика | Что дает |
-| --- | --- |
-| Terraform/CloudFormation | воспроизводимая инфраструктура |
-| GitOps | контроль изменений через pull request |
-| Policy as Code | контроль соответствия стандартам |
+### Средний уровень
 
-## Операционные метрики
+- формировать требования к pipeline и мониторингу;
+- описывать operational readiness до релиза;
+- настраивать feedback loop из production в backlog.
 
-- deployment frequency;
-- lead time for changes;
-- change failure rate;
-- MTTR.
+### Продвинутый уровень
 
-## Типичные ошибки
+- применять GitOps/Platform Engineering практики;
+- строить SLO-driven delivery и error-budget policy;
+- учитывать FinOps и стоимость эксплуатации при проектировании.
 
-- считать DevOps отдельной ролью вместо командной ответственности;
-- автоматизировать деплой без quality gates;
-- игнорировать observability на раннем этапе.
+## DevOps-практики
+
+| Практика | Что решает | Типовые инструменты |
+| --- | --- | --- |
+| Continuous Integration | раннее обнаружение дефектов | GitHub Actions, GitLab CI, Jenkins |
+| Continuous Delivery/Deployment | частые безопасные релизы | Argo CD, GitLab, Azure DevOps |
+| Infrastructure as Code | воспроизводимость инфраструктуры | Terraform, Pulumi, Ansible |
+| Continuous Testing | качество на ранних этапах | pytest, JUnit, Postman/Newman |
+| Observability | управляемость production | Prometheus, Grafana, ELK, OpenTelemetry |
+| Incident Management | снижение MTTR | PagerDuty, Opsgenie, Jira Service Management |
+
+## Роль системного аналитика в DevOps-контуре
+
+- формулирует NFR для pipeline, наблюдаемости и отказоустойчивости;
+- описывает эксплуатационные сценарии: rollback, деградация, SLA;
+- помогает трассировать бизнес-цели к SLI/SLO и alerting policy;
+- участвует в postmortem и формировании backlog улучшений.
+
+## DevOps feedback loop
+
+```kroki-plantuml
+skinparam monochrome true
+start
+:Сбор требований и NFR;
+:Реализация и тесты;
+:Автодеплой;
+:Мониторинг и инциденты;
+:Postmortem и RCA;
+:Улучшения в backlog;
+stop
+```
+
+## Выбор CI/CD и DevOps-инструментов
+
+| Платформа | Плюсы | Ограничения | Когда выбирать |
+| --- | --- | --- | --- |
+| GitHub Actions | быстро для GitHub-репозиториев | ограниченные enterprise workflow без доп. настройки | продуктовые команды на GitHub |
+| GitLab CI | единая платформа SCM+CI/CD | сложность первоначальной настройки | команды с GitLab full-stack |
+| Jenkins | гибкость и экосистема плагинов | высокий операционный overhead | сложные кастомные enterprise pipeline |
+| Azure DevOps | интеграция с Microsoft stack | vendor lock-in риски | корпоративный ландшафт Microsoft |
+
+## Рекомендации по настройке
+
+- обязательные проверки перед merge: tests, lint, security scan;
+- branch protection и review policy;
+- versioned artifacts и контроль provenance;
+- контролируемые rollout-стратегии (canary, blue/green);
+- автоматический rollback для критичных сбоев.
+
+## Тренды, которые стоит учитывать
+
+- GitOps (декларативные deployment-модели через Git);
+- Platform Engineering (self-service платформа для команд);
+- FinOps (контроль стоимости инфраструктуры);
+- policy-as-code и security-as-code.
+
+## Чек-лист самопроверки
+
+- DevOps-процесс описан как сквозной контур, а не набор изолированных шагов;
+- pipeline включает автоматические проверки качества и безопасности;
+- эксплуатационные метрики связаны с бизнес-целями;
+- postmortem приводит к реальным изменениям в процессе;
+- есть владельцы и SLA для incident-response.
+
+## Контрольные вопросы
+
+1. Какие NFR должны быть зафиксированы до старта реализации?
+2. Где проходит граница ответственности команды разработки и эксплуатации?
+3. Какие метрики вы используете для оценки зрелости DevOps?
+4. Как устроен путь обратной связи из production в backlog?
+
+## Стандарты и источники
+
+- DORA research: <https://dora.dev/research/>
+- OpenTelemetry: <https://opentelemetry.io/docs/>
+- Terraform docs: <https://developer.hashicorp.com/terraform/docs>
+- GitOps principles (CNCF): <https://opengitops.dev/>

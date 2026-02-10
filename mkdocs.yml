@@ -335,6 +335,7 @@ nav:
           - Мониторинг и логирование: development-process/feature-support/monitoring-logging.md
           - Разбор инцидентов: development-process/feature-support/incident-analysis.md
           - Основы SRE: development-process/feature-support/sre-basics.md
+          - ITSM/ITIL процессы сопровождения: development-process/feature-support/itsm-itil.md
       - Основы программирования:
           - Основы программирования: development-process/programming-basics/index.md
           - ООП: development-process/programming-basics/oop.md
