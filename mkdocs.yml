@@ -399,11 +399,14 @@ nav:
           - Оценка трудоемкости: common-competencies/estimation-risks/effort-estimation.md
           - Выявление рисков: common-competencies/estimation-risks/risk-identification.md
           - Управление рисками: common-competencies/estimation-risks/risk-management.md
-          - Финансовая оценка (ROI/NPV): common-competencies/estimation-risks/financial-evaluation.md
+          - Финансовая оценка: common-competencies/estimation-risks/financial-evaluation.md
       - Стандарты и своды знаний:
           - Стандарты и своды знаний: common-competencies/standards/index.md
           - BABOK: common-competencies/standards/babok.md
           - SEBOK: common-competencies/standards/sebok.md
+          - PMBOK: common-competencies/standards/pmbok.md
+          - ISO 31000: common-competencies/standards/iso-31000.md
+          - NIST RMF: common-competencies/standards/nist-risk-management.md
           - DAMA DMBOK: common-competencies/standards/dama-dmbok.md
           - ITIL: common-competencies/standards/itil.md
           - COBIT: common-competencies/standards/cobit.md
@@ -411,7 +414,6 @@ nav:
           - CPRE: common-competencies/standards/cpre.md
           - ГОСТ 19: common-competencies/standards/gost-19.md
           - ГОСТ 34: common-competencies/standards/gost-34.md
-          - PMBOK: common-competencies/standards/pmbok.md
           - ISO 12207: common-competencies/standards/iso-12207.md
           - ISO 15288: common-competencies/standards/iso-15288.md
           - IEEE: common-competencies/standards/ieee.md
@@ -421,6 +423,13 @@ nav:
           - SWOT: common-competencies/techniques/swot.md
           - 5 Why: common-competencies/techniques/five-why.md
           - Mind Map: common-competencies/techniques/mind-map.md
+          - Value Stream Mapping: common-competencies/techniques/value-stream-mapping.md
+          - Fishbone (Ishikawa): common-competencies/techniques/fishbone.md
+          - MoSCoW: common-competencies/techniques/moscow.md
+          - Kano: common-competencies/techniques/kano.md
+          - Affinity Diagram: common-competencies/techniques/affinity-diagram.md
+          - Impact Mapping: common-competencies/techniques/impact-mapping.md
+          - Story Mapping: common-competencies/techniques/story-mapping.md
 
   - Смежные навыки:
       - Введение: related-skills/index.md
