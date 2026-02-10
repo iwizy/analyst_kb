@@ -1,5 +1,8 @@
 # CPRE
 
+> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
+
+
 CPRE (Certified Professional for Requirements Engineering) - система
 сертификации IREB по инженерии требований.
 

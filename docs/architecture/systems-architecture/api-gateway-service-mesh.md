@@ -1,5 +1,8 @@
 # API Gateway и Service Mesh
 
+> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
+
+
 Gateway и Service Mesh решают разные слои задач: gateway для north-south трафика, mesh для east-west трафика между сервисами.
 
 ## Уровни сложности

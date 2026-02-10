@@ -1,5 +1,8 @@
 # DAMA DMBOK
 
+> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
+
+
 DAMA DMBOK - свод знаний по управлению данными (Data Management Body of
 Knowledge). Он систематизирует практики качества, архитектуры и governance
 данных.

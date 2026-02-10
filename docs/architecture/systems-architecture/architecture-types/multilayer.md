@@ -1,4 +1,7 @@
-# Многослойная архитектура
+# Многослойная арх
+> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
+
+итектура
 
 Layered architecture разделяет систему на слои с четкой ответственностью: presentation, application/business, persistence/integration.
 

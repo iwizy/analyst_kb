@@ -1,5 +1,8 @@
 # DODAF
 
+> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
+
+
 DoDAF (Department of Defense Architecture Framework) - фреймворк для описания
 сложных систем через набор стандартизированных viewpoints и моделей.
 

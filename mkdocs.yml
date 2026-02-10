@@ -87,6 +87,7 @@ nav:
       - Введение: index.md
       - Манифест аналитика: manifesto.md
       - Карта компетенций: competence-map.md
+      - Глоссарий: glossary.md
 
   - Требования:
       - Введение: requirements/index.md

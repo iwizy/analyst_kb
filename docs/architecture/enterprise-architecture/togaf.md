@@ -1,5 +1,8 @@
 # TOGAF
 
+> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
+
+
 TOGAF (The Open Group Architecture Framework) - один из наиболее используемых
 фреймворков для развития архитектуры предприятия. Центральный механизм TOGAF -
 цикл ADM (Architecture Development Method).

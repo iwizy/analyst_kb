@@ -1,4 +1,7 @@
 # Key-Value базы данных
+> Глоссарий терминов и сокращений: [Открыть](../../../glossary.md)
+
+
 
 Key-value БД предназначены для ultra-fast доступа по ключу и часто используются как кэш, session store и low-latency state storage.
 

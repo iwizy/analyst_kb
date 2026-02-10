@@ -1,5 +1,8 @@
 # CBAP
 
+> Глоссарий терминов и сокращений: [Открыть](../../glossary.md)
+
+
 CBAP (Certified Business Analysis Professional) - продвинутая сертификация IIBA
 для опытных бизнес-аналитиков.
 
