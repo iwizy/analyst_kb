@@ -1,60 +1,125 @@
 # Kafka
 
-Kafka это распределенный commit log для событийных потоков с высокой пропускной способностью.
+Kafka подходит для high-throughput event streaming, replay и интеграции большого количества сервисов через устойчивый журнал событий.
 
-## Базовые сущности
+## Уровни сложности
 
-- topic;
-- partition;
-- producer;
-- consumer group;
-- offset;
-- broker.
+### Базовый уровень
+
+- понимать `topic`, `partition`, `offset`;
+- настраивать producer/consumer и consumer groups;
+- контролировать lag и базовый retry.
+
+### Средний уровень
+
+- применять idempotent producer и transactional processing;
+- использовать schema registry (Avro/Protobuf);
+- оптимизировать partition keys и retention.
+
+### Продвинутый уровень
+
+- строить multi-region кластеры;
+- внедрять exactly-once semantics и stream processing;
+- управлять горячими партициями и cost/performance балансом.
+
+## Архитектура
+
+| Компонент | Назначение |
+| --- | --- |
+| Topic | логическая категория событий |
+| Partition | масштабирование и параллелизм |
+| Segment | файл хранения внутри partition |
+| Broker | узел кластера, хранит партиции |
+| Controller | управляет лидерами и состоянием кластера |
+| Consumer Group | конкурентное чтение с partition assignment |
 
 ## Поток обработки
 
 ```kroki-plantuml
 @startuml
-participant Producer
-database Kafka as "Kafka Topic"
-participant ConsumerA
-participant ConsumerB
+actor Producer
+queue "Kafka Topic" as T
+participant "Consumer Group A" as C
+database "DLQ Topic" as D
 
-Producer -> Kafka: publish event
-Kafka -> ConsumerA: consume (group A)
-Kafka -> ConsumerB: consume (group B)
+Producer -> T: publish event
+C -> T: poll batch
+alt processing ok
+  C -> C: commit offset
+else processing failed
+  C -> D: publish failed event
+end
 @enduml
 ```
 
-## Когда выбирать Kafka
+## Ключевые настройки producer
 
-- high-throughput event streaming;
-- event sourcing;
-- аналитические/ETL потоки;
-- интеграция множества независимых потребителей.
+| Параметр | Рекомендация |
+| --- | --- |
+| `acks` | `all` для надежной записи |
+| `enable.idempotence` | `true` для защиты от дубликатов |
+| `retries` | >0 с backoff |
+| `compression.type` | `lz4`/`zstd` для баланса CPU/size |
+| `max.in.flight.requests.per.connection` | аккуратно при строгом порядке |
 
-## Ключевые решения
+## Exactly-once semantics (EOS)
 
-- partition key для порядка и распределения;
-- retention policy;
-- offset commit strategy;
-- schema governance (Avro/Protobuf + registry).
+- idempotent producer исключает дубли при ретраях;
+- transactional producer связывает запись в несколько топиков и offset commit;
+- consumer должен быть transaction-aware.
 
-## Типичные ошибки
+## Schema evolution
 
-- плохой partition key -> hot partition;
-- отсутствие DLQ/retry topic;
-- schema changes без compatibility checks;
-- большие сообщения вместо ссылки на объект в storage.
+- используйте Schema Registry;
+- задайте policy: backward/forward/full compatibility;
+- не удаляйте и не переиспользуйте критичные поля без миграции.
 
-## Практические рекомендации
+## Stream processing
 
-- внедрять schema registry и compatibility policy;
-- использовать idempotent producer и transactional semantics там, где нужно;
-- наблюдать consumer lag и rebalance events;
-- выделять отдельные топики под retry/DLQ.
+- Kafka Streams/Flink для stateful обработки;
+- materialized state stores для агрегаций;
+- checkpointing и replay для восстановления.
 
-## Смежные материалы
+## Анти-паттерны
 
-- [Интеграционные паттерны](../patterns.md)
-- [Паттерны надежности](../reliability-patterns.md)
+- hot partition из-за плохого partition key;
+- oversized messages вместо claim-check;
+- unbounded retention без потребности replay;
+- commit offset до завершения обработки.
+
+## Мониторинг
+
+| Метрика | Зачем |
+| --- | --- |
+| consumer lag | признак отставания обработки |
+| rebalance frequency | стабильность consumer groups |
+| produce/consume rate | throughput и capacity planning |
+| under-replicated partitions | риск потери устойчивости |
+| request latency | деградация кластера/сети |
+
+## Пример offset management
+
+- at-least-once: commit после успешной обработки;
+- batch processing: commit после батча;
+- при ошибке: отправка в DLQ + commit либо stop (по policy).
+
+## Контрольные вопросы
+
+1. Почему выбран partition key и как он влияет на баланс?
+2. Какие гарантия доставки и идемпотентности требуются?
+3. Как организованы retry и DLQ для проблемных событий?
+4. Какие пороги lag и rebalance считаются аварийными?
+
+## Чек-лист самопроверки
+
+- настроены `acks=all` и idempotent producer;
+- определена и протестирована offset strategy;
+- schema registry и compatibility policy внедрены;
+- метрики lag/replication/rebalance мониторятся;
+- есть runbook на failover и reprocessing.
+
+## Стандарты и источники
+
+- Kafka docs: <https://kafka.apache.org/documentation/>
+- Confluent EOS guide: <https://docs.confluent.io/platform/current/streams/concepts.html>
+- Kafka Streams docs: <https://kafka.apache.org/documentation/streams/>

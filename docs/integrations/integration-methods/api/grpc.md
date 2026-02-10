@@ -1,60 +1,94 @@
 # gRPC
 
-gRPC это высокопроизводительный RPC-фреймворк на базе HTTP/2 и Protocol Buffers.
+gRPC оптимален для межсервисного взаимодействия с высокой нагрузкой и строгими контрактами.
 
-## Почему выбирают gRPC
+## Уровни сложности
 
-- компактный бинарный протокол;
-- codegen для строгих контрактов;
-- поддержка unary и streaming вызовов;
-- хорош для service-to-service в микросервисах.
+### Базовый уровень
+
+- описывать сервисы в `.proto`;
+- использовать unary вызовы;
+- обрабатывать gRPC status codes.
+
+### Средний уровень
+
+- применять streaming режимы;
+- внедрять interceptors (auth, logging, tracing);
+- проектировать backward-compatible proto эволюцию.
+
+### Продвинутый уровень
+
+- использовать gRPC Gateway/grpc-web для внешних клиентов;
+- оптимизировать latency (connection pooling, compression);
+- управлять сервис-дискавери и load balancing на платформенном уровне.
 
 ## Пример proto
 
 ```proto
 syntax = "proto3";
+package payments.v1;
 
-service OrderService {
-  rpc GetOrder (GetOrderRequest) returns (OrderResponse);
-  rpc StreamOrders (StreamOrdersRequest) returns (stream OrderResponse);
+message CreatePaymentRequest {
+  string order_id = 1;
+  double amount = 2;
 }
 
-message GetOrderRequest { string order_id = 1; }
-message StreamOrdersRequest { string customer_id = 1; }
-message OrderResponse {
-  string order_id = 1;
+message CreatePaymentResponse {
+  string payment_id = 1;
   string status = 2;
-  double amount = 3;
+}
+
+service PaymentsService {
+  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
 }
 ```
 
-## Виды вызовов
+## Типы вызовов
 
-- unary;
-- server streaming;
-- client streaming;
-- bidirectional streaming.
+| Тип | Когда использовать |
+| --- | --- |
+| Unary | обычный request/response |
+| Server streaming | сервер отправляет поток результатов |
+| Client streaming | клиент отправляет поток данных |
+| Bidirectional streaming | двусторонний поток в реальном времени |
 
-## Безопасность
+## Безопасность и observability
 
-- TLS/mTLS;
-- JWT/OAuth2 metadata;
-- per-method authz policies.
+- TLS/mTLS для всех каналов;
+- interceptors для auth, audit, correlation id;
+- status codes и retry policies согласованы между командами;
+- distributed tracing через OpenTelemetry.
 
 ## Ограничения
 
-- в браузере обычно нужен grpc-web прокси;
-- сложнее отладка без специализированных инструментов;
-- careful versioning protobuf-схем обязателен.
+- сложнее для внешних браузерных клиентов без grpc-web;
+- требует дисциплины в versioning proto;
+- бинарный формат менее удобен для ручной диагностики.
 
-## Практические рекомендации
+## Типичные ошибки
 
-- не переиспользовать номера полей в proto;
-- использовать deadlines/timeouts;
-- включать retry policies осознанно;
-- документировать backward-compatible правила эволюции proto.
+- переиспользование field number после удаления поля;
+- отсутствие deadlines и timeouts;
+- неразделение internal/external API;
+- игнорирование backward compatibility при изменении proto.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Безопасность API (OAuth 2.0, JWT, mTLS)](../../api-design/security.md)
-- [Паттерны надежности](../reliability-patterns.md)
+1. Для каких вызовов нужен unary, а где нужен streaming?
+2. Какие deadlines установлены для критичных операций?
+3. Как проверяется совместимость proto в CI?
+4. Нужен ли grpc-gateway для внешних клиентов?
+
+## Чек-лист самопроверки
+
+- `.proto` контракты версионируются и валидируются;
+- заданы deadlines, retry policy и status mapping;
+- настроены interceptors для auth/logging/tracing;
+- учитывается совместимость схем;
+- измерены latency и throughput под нагрузкой.
+
+## Стандарты и источники
+
+- gRPC docs: <https://grpc.io/docs/>
+- Protocol Buffers guide: <https://protobuf.dev/programming-guides/proto3/>
+- grpc-web: <https://github.com/grpc/grpc-web>

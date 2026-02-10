@@ -1,54 +1,97 @@
 # WebSockets
 
-WebSockets обеспечивают двунаправленный канал связи в реальном времени поверх одного долгоживущего соединения.
+WebSockets дают двусторонний канал связи в реальном времени и применяются там, где polling слишком дорогой или медленный.
 
-## Когда применять
+## Уровни сложности
 
-- live-дашборды;
-- чаты и коллаборация;
-- streaming updates в торговых/мониторинговых системах;
-- push-уведомления между сервисом и UI.
+### Базовый уровень
+
+- понимать handshake и жизненный цикл соединения;
+- реализовывать heartbeat и reconnect;
+- разграничивать каналы/топики по подписке.
+
+### Средний уровень
+
+- использовать протоколы поверх WebSocket (STOMP, MQTT, Socket.IO);
+- внедрять backpressure и rate control;
+- проектировать отказоустойчивый reconnect.
+
+### Продвинутый уровень
+
+- масштабировать миллионы соединений через sharding;
+- сочетать WebSockets с message brokers;
+- проектировать fallback на SSE/long polling.
 
 ## Базовый поток
 
 ```kroki-plantuml
 @startuml
 actor Client
-participant Server
+participant Gateway
+participant RealtimeService
 
-Client -> Server: HTTP Upgrade (WebSocket)
-Server --> Client: 101 Switching Protocols
-Client <-> Server: bi-directional messages
+Client -> Gateway: HTTP Upgrade to WebSocket
+Gateway -> RealtimeService: establish session
+Client <-> RealtimeService: bidirectional messages
+RealtimeService -> Client: heartbeat/ping
+Client -> RealtimeService: pong
 @enduml
 ```
 
 ## Практические аспекты
 
-- heartbeats (ping/pong);
-- reconnect strategy и resume;
-- backpressure и ограничение buffer;
-- auth при установке соединения + re-auth на ротации токена.
+| Тема | Рекомендация |
+| --- | --- |
+| Auth | проверяйте токен на handshake и при renew |
+| Heartbeat | ping/pong с таймаутом для детекта обрывов |
+| Reconnect | exponential backoff + jitter |
+| Backpressure | лимиты очередей и drop policy |
+| Ordering | фиксируйте sequence number в сообщениях |
 
-## Достоинства
+## HA и масштабирование
 
-- низкая задержка;
-- серверный push без polling;
-- эффективный обмен частыми небольшими сообщениями.
+- sticky sessions или shared session store;
+- горизонтальный scale через shard key (tenant/user/topic);
+- publish через broker (Kafka/RabbitMQ/NATS) в websocket nodes;
+- graceful shutdown соединений при deploy.
 
-## Ограничения
+## Безопасность
 
-- сложнее балансировка и эксплуатация большого числа соединений;
-- нужен протокол поверх WS для ack/retry/order;
-- не заменяет полностью request/response API.
+- используйте WSS, а не WS;
+- ограничивайте origins и CORS-политику;
+- изолируйте каналы по tenant и scope;
+- вводите лимиты на message size и частоту сообщений.
 
-## Практические рекомендации
+## Fallback
 
-- использовать message envelope с `type`, `id`, `trace_id`;
-- ограничивать max message size;
-- проектировать fallback на SSE/polling для некоторых клиентов;
-- метрики: connection count, reconnect rate, msg lag.
+- если WebSocket недоступен: SSE для server push;
+- для старых клиентов: long polling;
+- явно документируйте деградацию и поведение клиента.
 
-## Смежные материалы
+## Типичные ошибки
 
-- [Паттерны надежности](../reliability-patterns.md)
-- [Сокеты](../../networking/sockets.md)
+- отсутствие reconnect policy на клиенте;
+- нет heartbeats и таймаутов;
+- один общий канал для всех типов сообщений;
+- непредусмотренные bursts приводят к переполнению очередей.
+
+## Контрольные вопросы
+
+1. Как приложение восстанавливает соединение после обрыва?
+2. Как ограничивается частота и размер сообщений?
+3. Где хранится состояние подписок в multi-node кластере?
+4. Какие fallback-механизмы поддерживаются клиентом?
+
+## Чек-лист самопроверки
+
+- handshake и auth строго определены;
+- heartbeat/reconnect/backpressure реализованы;
+- масштабирование и HA стратегия задокументированы;
+- безопасность WSS и tenant isolation включены;
+- есть fallback и тесты деградации.
+
+## Стандарты и источники
+
+- RFC 6455 WebSocket: <https://www.rfc-editor.org/rfc/rfc6455>
+- STOMP: <https://stomp.github.io/>
+- MQTT v5: <https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html>

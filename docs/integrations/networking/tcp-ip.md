@@ -1,35 +1,89 @@
 # TCP/IP
 
-TCP/IP это практический стек интернета, на котором работают HTTP, gRPC, AMQP и большинство интеграционных протоколов.
+TCP/IP — основной стек для большинства интеграций. Понимание его поведения помогает правильно настраивать таймауты, ретраи и балансировку.
+
+## Уровни сложности
+
+### Базовый уровень
+
+- понимать роли уровней TCP/IP;
+- знать TCP handshake и базовые состояния соединения;
+- связывать RTT и timeout API.
+
+### Средний уровень
+
+- учитывать congestion control и keepalive;
+- понимать влияние HTTP/2 и HTTP/3 на latency;
+- проектировать connection pooling.
+
+### Продвинутый уровень
+
+- оптимизировать сетевые параметры под high-load;
+- управлять деградациями в multi-region;
+- выбирать CUBIC/BBR/QUIC под профиль трафика.
 
 ## Уровни стека TCP/IP
 
-- Link;
-- Internet (IP);
-- Transport (TCP/UDP);
-- Application.
+| Уровень | Назначение |
+| --- | --- |
+| Application | HTTP, gRPC, DNS, SMTP |
+| Transport | TCP/UDP |
+| Internet | IP, ICMP, routing |
+| Link | Ethernet, Wi-Fi |
 
-## TCP: что важно для интеграций
+## TCP handshake
 
-- гарантированная доставка;
-- упорядоченность байтового потока;
-- управление перегрузкой;
-- retransmission при потерях.
+```kroki-plantuml
+@startuml
+participant Client
+participant Server
+Client -> Server: SYN
+Server --> Client: SYN-ACK
+Client -> Server: ACK
+Client <-> Server: Data transfer
+@enduml
+```
 
-## Влияние на API
+## Что важно для интеграций
 
-- long-tail latency при packet loss;
-- head-of-line blocking (в разных контекстах);
-- важность timeout и connection pooling.
+| Тема | Практика |
+| --- | --- |
+| TCP keepalive | выявляйте "мертвые" соединения |
+| Congestion control | учитывайте CUBIC/BBR при throughput тестах |
+| Head-of-line blocking | для HTTP/1.1 выше, HTTP/2 снижает |
+| Connection pooling | уменьшает стоимость handshakes |
+| TLS reuse | снижает latency повторных вызовов |
 
-## Практические рекомендации
+## HTTP/2 и HTTP/3
 
-- настраивать timeout connect/read/write явно;
-- использовать keep-alive и pool limits;
-- мониторить retransmits, RTT, SYN backlog;
-- учитывать TLS handshake cost при частых коротких соединениях.
+- HTTP/2: multiplexing и header compression;
+- HTTP/3: поверх QUIC, лучше при потере пакетов;
+- выбор зависит от среды клиентов и поддерживаемой инфраструктуры.
 
-## Смежные материалы
+## Диагностика
 
-- [UDP](udp.md)
-- [Паттерны надежности](../integration-methods/reliability-patterns.md)
+- `mtr`/`traceroute` для поиска сетевого узкого места;
+- `tcpdump`/Wireshark для анализа retransmission;
+- gateway/service metrics для связи сетевых и прикладных ошибок.
+
+## Контрольные вопросы
+
+1. Какие timeout значения учитывают реальный RTT между зонами?
+2. Используются ли keepalive и connection pooling в клиентах?
+3. Есть ли различия производительности между HTTP/2 и HTTP/3 в вашей среде?
+4. Как вы выявляете packet loss и retransmission spikes?
+
+## Чек-лист самопроверки
+
+- параметры timeout/retry привязаны к сетевым измерениям;
+- включены keepalive и connection pooling;
+- протестированы HTTP/1.1 vs HTTP/2 vs HTTP/3;
+- есть сетевой runbook диагностики;
+- метрики TCP/TLS коррелируются с API SLO.
+
+## Стандарты и источники
+
+- RFC 9293 TCP: <https://www.rfc-editor.org/rfc/rfc9293>
+- RFC 793 (исторически): <https://www.rfc-editor.org/rfc/rfc793>
+- RFC 7540 HTTP/2: <https://www.rfc-editor.org/rfc/rfc7540>
+- RFC 9114 HTTP/3: <https://www.rfc-editor.org/rfc/rfc9114>

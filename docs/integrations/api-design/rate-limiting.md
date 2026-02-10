@@ -1,57 +1,115 @@
 # Лимиты и квоты
 
-Rate limiting защищает API от перегрузки и злоупотреблений, а квоты обеспечивают предсказуемое распределение ресурсов между потребителями.
+Лимиты и квоты защищают API от перегрузки и обеспечивают справедливое распределение ресурсов между клиентами.
 
-## Типы ограничений
+## Уровни сложности
 
-- per-client RPS;
-- per-token/per-user;
-- burst + sustained limits;
-- daily/monthly quota;
-- лимиты на тяжелые операции.
+### Базовый уровень
+
+- понимать разницу rate limit и quota;
+- возвращать корректные ответы при превышении лимита;
+- применять базовый алгоритм token bucket.
+
+### Средний уровень
+
+- проектировать лимиты по клиентам, операциям и тарифам;
+- внедрять adaptive throttling;
+- согласовывать лимиты с retry и idempotency.
+
+### Продвинутый уровень
+
+- внедрять multi-dimensional quotas и billing triggers;
+- управлять глобальными лимитами в multi-region;
+- строить прогнозирование нагрузки и auto-tuning лимитов.
+
+## Базовые понятия
+
+| Термин | Значение |
+| --- | --- |
+| Rate limit | максимальное число запросов в интервале времени |
+| Quota | общий бюджет операций за период (день/месяц) |
+| Burst | кратковременный всплеск выше базового rps |
+| Adaptive throttling | динамическая регулировка лимита по состоянию системы |
 
 ## Алгоритмы
 
-- Token Bucket: гибкий контроль burst.
-- Leaky Bucket: выравнивание потока.
-- Fixed Window: просто, но может давать spikes на границах окна.
-- Sliding Window: более точный контроль.
+| Алгоритм | Плюсы | Минусы | Когда применять |
+| --- | --- | --- | --- |
+| Fixed window | простота | скачки на границе окна | низкая критичность |
+| Sliding window | точнее и ровнее | выше вычислительная стоимость | публичные API |
+| Token bucket | поддержка burst | нужен корректный refill | высоконагруженные API |
+| Leaky bucket | сглаживание нагрузки | менее гибкий для burst | backend с ограниченной емкостью |
 
-## HTTP-практика
+## Методика расчета лимитов
 
-Статус и заголовки:
+1. Сегментируйте клиентов: internal, partner, public, premium.
+2. Для операции задайте cost units (дешевые/дорогие методы).
+3. Рассчитайте базовый лимит по SLA и capacity.
+4. Добавьте burst allowance и аварийный guardrail.
+5. Установите квоту на период и правила replenishment.
 
-- `429 Too Many Requests`
-- `Retry-After`
-- `X-RateLimit-Limit`
-- `X-RateLimit-Remaining`
-- `X-RateLimit-Reset`
+### Пример матрицы лимитов
 
-Пример:
+| Клиент | Операция | Лимит в минуту | Burst | Месячная квота |
+| --- | --- | --- | --- | --- |
+| Public free | GET catalog | 120 | 30 | 200000 |
+| Public free | POST order | 20 | 5 | 20000 |
+| Partner gold | GET catalog | 1200 | 300 | 3000000 |
+| Internal service | POST payment | 600 | 120 | без месячной квоты |
+
+## HTTP-контракт при превышении
 
 ```http
 HTTP/1.1 429 Too Many Requests
 Retry-After: 30
-X-RateLimit-Limit: 100
+X-RateLimit-Limit: 120
 X-RateLimit-Remaining: 0
-X-RateLimit-Reset: 1739092800
+X-RateLimit-Reset: 1710001000
+Content-Type: application/problem+json
 ```
 
-## Дизайн лимитов
+## Пример конфигурации (Kong, концептуально)
 
-1. Классифицировать endpoints по "стоимости".
-1. Ввести разные профили лимитов (free/partner/internal).
-1. Отдельно контролировать write-heavy операции.
-1. Поддержать graceful degradation (очередь/partial response).
+```yaml
+plugins:
+  - name: rate-limiting
+    config:
+      minute: 120
+      policy: redis
+      fault_tolerant: true
+```
+
+## Retry с backoff и jitter
+
+- для `429` используйте exponential backoff + jitter;
+- ограничьте `max attempts`, чтобы не создать retry storm;
+- не повторяйте non-idempotent операции без idempotency key.
 
 ## Типичные ошибки
 
-- единый лимит для всех операций;
-- отсутствие лимитов на batch endpoint;
-- отсутствие observability по дропам `429`;
-- retry storm без backoff у клиентов.
+- одинаковый лимит для всех клиентов и операций;
+- отсутствие лимитов на "дорогие" endpoints;
+- нет telemetry: не видно, кто и где исчерпывает бюджет;
+- отсутствие коммуникации лимитов в документации.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Безопасность API (OAuth 2.0, JWT, mTLS)](security.md)
-- [Паттерны надежности](../integration-methods/reliability-patterns.md)
+1. Лимиты учитывают стоимость операции и класс клиента?
+2. Клиенты получают понятный `429` с `Retry-After`?
+3. Есть ли защита от retry storm при деградации?
+4. Как лимиты связаны с тарификацией и квотами?
+
+## Чек-лист самопроверки
+
+- лимиты рассчитаны от capacity и SLA;
+- выбран алгоритм (token/sliding window) под профиль API;
+- настроены headers и error model для 429;
+- внедрены adaptive throttling и observability;
+- лимиты задокументированы в контракте.
+
+## Стандарты и источники
+
+- RFC 6585 (429 Too Many Requests): <https://www.rfc-editor.org/rfc/rfc6585>
+- RFC 9110 HTTP Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
+- Envoy rate limiting: <https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/other_features/global_rate_limiting>
+- Kong docs: <https://docs.konghq.com/>

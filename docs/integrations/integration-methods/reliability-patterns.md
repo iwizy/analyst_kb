@@ -1,65 +1,126 @@
 # Паттерны надежности
 
-Надежность интеграций достигается комбинацией технических паттернов и наблюдаемости.
+Паттерны надежности позволяют выдерживать сбои downstream-сервисов без каскадных отказов всей системы.
 
-## Retry
+## Уровни сложности
 
-Повтор запроса при временных ошибках.
+### Базовый уровень
 
-Правила:
+- использовать retry, timeout и DLQ;
+- настраивать базовые пороги и лимиты;
+- исключать бесконечные повторы.
 
-- только для retryable ошибок;
-- exponential backoff + jitter;
-- лимит числа попыток.
+### Средний уровень
 
-## Timeout
+- применять circuit breaker и bulkhead;
+- комбинировать паттерны по типам операций;
+- связывать надежность с observability и error budgets.
 
-Ограничивает время ожидания ответа, предотвращает зависание ресурсов.
+### Продвинутый уровень
 
-## Circuit Breaker
+- внедрять policy-as-code и adaptive resilience;
+- настраивать шаблоны per dependency/class of traffic;
+- управлять надежностью в multi-region системах.
 
-Размыкает вызовы к деградировавшему сервису и защищает систему от cascade failure.
+## Каталог паттернов
 
-## Bulkhead
+| Паттерн | Назначение | Ключевые параметры |
+| --- | --- | --- |
+| Retry | повтор на transient error | maxAttempts, backoff, jitter |
+| Timeout | ограничение ожидания | timeoutMs |
+| Circuit Breaker | отсечение неработающего downstream | failureThreshold, openDuration |
+| Bulkhead | изоляция ресурсов | pool size, queue size |
+| Rate Limit | защита от перегрузки | requests/s, burst |
+| DLQ | изоляция невалидных/проблемных сообщений | retention, retry policy |
+| Outbox/Inbox | надежная доставка между БД и шиной | poll interval, dedup window |
+| Cache-aside | снижение нагрузки на downstream | ttl, stale policy |
+| Fallback | деградация без полного отказа | fallback response strategy |
 
-Изолирует ресурсы по пулам, чтобы отказ одного направления не погасил весь сервис.
-
-## Dead Letter Queue (DLQ)
-
-Сообщения, не прошедшие обработку, отправляются в отдельный канал для ручного/автоматического разбора.
-
-## Outbox/Inbox
-
-- Outbox: транзакционная публикация событий вместе с изменением БД.
-- Inbox: дедупликация входящих событий по message-id.
-
-## Поток с retry + breaker
+## Комбинирование паттернов
 
 ```kroki-plantuml
 @startuml
-actor Client
-participant ServiceA
-participant ServiceB
-
-Client -> ServiceA: request
-ServiceA -> ServiceB: call (attempt 1)
-ServiceB --> ServiceA: timeout
-ServiceA -> ServiceB: retry (backoff)
-ServiceB --> ServiceA: fail
-ServiceA -> ServiceA: circuit opens
-ServiceA --> Client: fallback response
+start
+:Call downstream;
+:Apply timeout;
+if (timeout or error?) then (yes)
+  :Retry with backoff and jitter;
+  if (still failing?) then (yes)
+    :Open circuit breaker;
+    :Return fallback;
+  else (no)
+    :Success;
+  endif
+else (no)
+  :Success;
+endif
+stop
 @enduml
 ```
 
-## Практические рекомендации
+## Пример конфигурации Resilience4j (концептуально)
 
-- задать timeout короче SLA вызывающего сервиса;
-- не делать бесконечные retry;
-- логировать attempt number и reason;
-- измерять error budget и retry-storm метрики.
+```yaml
+resilience4j:
+  circuitbreaker:
+    instances:
+      payments:
+        slidingWindowSize: 50
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+  retry:
+    instances:
+      payments:
+        maxAttempts: 3
+        waitDuration: 200ms
+```
 
-## Смежные материалы
+## Пример Polly (.NET, псевдо)
 
-- [Интеграционные паттерны](patterns.md)
-- [Идемпотентность](../api-design/idempotency.md)
-- [Брокеры сообщений](message-brokers/index.md)
+```csharp
+var retry = Policy.Handle<Exception>()
+  .WaitAndRetryAsync(3, i => TimeSpan.FromMilliseconds(100 * i));
+
+var breaker = Policy.Handle<Exception>()
+  .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
+
+await Policy.WrapAsync(retry, breaker).ExecuteAsync(CallApi);
+```
+
+## Метрики observability
+
+| Метрика | Для чего |
+| --- | --- |
+| retry success rate | эффективность повторов |
+| breaker open time | длительность деградации |
+| timeout ratio | сигнал перегрузки/сети |
+| DLQ backlog age | накопление необработанных сообщений |
+| error budget burn rate | скорость "сжигания" SLO бюджета |
+
+## Типичные ошибки
+
+- retry без timeout и ограничений;
+- одинаковая политика для read/write операций;
+- retry на 4xx ошибки, где повтор бессмыслен;
+- отсутствие алертов по breaker и DLQ.
+
+## Контрольные вопросы
+
+1. Какие ошибки считаются transient, а какие terminal?
+2. Есть ли дифференцированные policy для критичных операций?
+3. Как система деградирует при падении внешнего API?
+4. Какие SLO-метрики подтверждают эффективность политики?
+
+## Чек-лист самопроверки
+
+- настроены timeout, retry и circuit breaker;
+- retry использует backoff + jitter;
+- DLQ и outbox/inbox покрывают асинхронные потоки;
+- есть fallback-сценарии для критичных операций;
+- метрики и алерты настроены по каждому dependency.
+
+## Стандарты и источники
+
+- Resilience4j docs: <https://resilience4j.readme.io/>
+- Polly docs: <https://www.pollydocs.org/>
+- Google SRE workbook (error budgets): <https://sre.google/workbook/table-of-contents/>

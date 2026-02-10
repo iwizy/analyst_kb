@@ -1,72 +1,100 @@
 # GraphQL
 
-GraphQL позволяет клиенту запрашивать только нужные поля и работать через единый endpoint.
+GraphQL эффективен, когда клиентам нужны гибкие выборки и агрегация данных из нескольких источников.
+
+## Уровни сложности
+
+### Базовый уровень
+
+- понимать SDL, Query, Mutation;
+- проектировать базовые типы и резолверы;
+- ограничивать поля, доступные клиенту.
+
+### Средний уровень
+
+- решать проблему N+1 и настраивать DataLoader;
+- внедрять кеширование, persisted queries и depth limiting;
+- поддерживать schema evolution и deprecation.
+
+### Продвинутый уровень
+
+- использовать federation/schema stitching;
+- строить BFF на GraphQL с governance и security;
+- оптимизировать производительность сложных графов запросов.
 
 ## Базовые элементы
 
-- schema;
-- query;
-- mutation;
-- subscription;
-- resolvers.
+| Элемент | Назначение |
+| --- | --- |
+| SDL | описание типов, полей и операций |
+| Query | получение данных |
+| Mutation | изменение данных |
+| Resolver | бизнес-логика получения поля |
+| Subscription | realtime-обновления |
 
 ## Пример schema
 
 ```graphql
-type Order {
+type Product {
   id: ID!
-  status: String!
-  amount: Float!
+  name: String!
+  price: Float!
 }
 
 type Query {
-  order(id: ID!): Order
+  product(id: ID!): Product
+  products(limit: Int = 20): [Product!]!
 }
 ```
 
 ## Пример запроса
 
 ```graphql
-query GetOrder($id: ID!) {
-  order(id: $id) {
+query GetProduct {
+  product(id: "p-10") {
     id
-    status
-    amount
+    name
+    price
   }
 }
 ```
 
-## Пример mutation
+## N+1 и DataLoader
 
-```graphql
-mutation Refund($id: ID!) {
-  refundOrder(orderId: $id) {
-    id
-    status
-  }
-}
-```
+- проблема: для списка сущностей выполняется отдельный запрос на каждую связанную сущность;
+- решение: batch-loading и кеш в пределах запроса;
+- дополнительно: ограничение `max depth` и `max complexity`.
 
-## Достоинства
+## Federation и BFF
 
-- точечная выборка полей;
-- удобно для BFF и сложных UI;
-- единый контракт для композиции данных.
+- Federation позволяет объединять схемы доменных сервисов в единый supergraph;
+- BFF поверх GraphQL упрощает фронтенд-агрегацию;
+- важно задавать ownership полей и правила согласования schema changes.
 
-## Ограничения
+## Типичные ошибки
 
-- сложнее кэширование;
-- риск дорогих nested queries;
-- требуется query complexity/rate limit контроль.
+- отсутствие ограничений глубины/сложности запросов;
+- schema drift из-за слабого governance;
+- перегрузка одного endpoint без rate limiting;
+- прямой доступ к внутренней доменной модели без boundary.
 
-## Практические рекомендации
+## Контрольные вопросы
 
-- вводить query depth и complexity limits;
-- отключать introspection в публичном проде при необходимости;
-- versioning делать через schema evolution и deprecation;
-- добавлять persisted queries для защиты и производительности.
+1. Для каких клиентов GraphQL действительно снижает число вызовов?
+2. Решена ли N+1 проблема в ключевых query?
+3. Какие лимиты стоят на depth/complexity?
+4. Как устроена совместимость и deprecation полей?
 
-## Смежные материалы
+## Чек-лист самопроверки
 
-- [Лимиты и квоты](../../api-design/rate-limiting.md)
-- [Обратная совместимость](../../api-design/backward-compatibility.md)
+- схема и резолверы документированы;
+- внедрены DataLoader и query limits;
+- настроены authz и rate limits по операциям;
+- есть процесс эволюции схемы;
+- observability собирает метрики по полям и операциям.
+
+## Стандарты и источники
+
+- GraphQL Spec: <https://spec.graphql.org/>
+- Apollo Federation docs: <https://www.apollographql.com/docs/federation>
+- GraphQL over HTTP: <https://graphql.github.io/graphql-over-http/>

@@ -1,61 +1,128 @@
 # API Gateway и Service Mesh
 
-API Gateway и Service Mesh решают разные уровни задач: north-south и east-west трафик.
+API Gateway и Service Mesh решают разные задачи и чаще работают вместе: gateway на границе, mesh внутри сервисной сети.
 
-## API Gateway
+## Уровни сложности
 
-Функции:
+### Базовый уровень
 
-- единая точка входа;
-- auth, rate limit, request validation;
-- routing, transformation, API composition;
-- observability и API analytics.
+- понимать границу ответственности gateway и mesh;
+- использовать gateway для auth, routing, basic limits;
+- использовать mesh для mTLS, retries, telemetry.
 
-Примеры: Kong, NGINX, Apigee, AWS API Gateway.
+### Средний уровень
 
-## Service Mesh
+- проектировать edge + mesh архитектуру;
+- централизовать политики безопасности и надежности;
+- внедрять developer portal и onboarding.
 
-Функции:
+### Продвинутый уровень
 
-- mTLS между сервисами;
-- retry/timeout/circuit breaker на межсервисных вызовах;
-- traffic shifting (canary, blue/green);
-- distributed tracing без изменения кода.
+- выстраивать platform engineering вокруг API management;
+- управлять multi-cluster и multi-region mesh;
+- оптимизировать TCO self-hosted vs managed.
 
-Примеры: Istio, Linkerd, Consul Mesh.
+## Сравнение ролей
 
-## Схема
+| Компонент | Основная роль | Типовые функции |
+| --- | --- | --- |
+| API Gateway | north-south traffic | authn/authz, routing, transform, quotas, monetization |
+| Service Mesh | east-west traffic | mTLS, service identity, retries, circuit breaker, tracing |
+
+## Схема развертывания
 
 ```kroki-plantuml
 @startuml
 left to right direction
 actor Client
-rectangle "API Gateway" as GW
-rectangle "Service A" as A
-rectangle "Service B" as B
-rectangle "Service Mesh Control Plane" as CP
-
-Client --> GW
-GW --> A
+rectangle "API Gateway" as G
+cloud "Kubernetes Cluster" {
+  rectangle "Service A + sidecar" as A
+  rectangle "Service B + sidecar" as B
+  rectangle "Service C + sidecar" as C
+  rectangle "Mesh Control Plane" as CP
+}
+Client --> G
+G --> A
 A --> B
-CP ..> A
-CP ..> B
+B --> C
+CP --> A
+CP --> B
+CP --> C
 @enduml
 ```
 
-## Когда что использовать
+## Сравнение инструментов API Gateway
 
-- внешний B2C/B2B API: обязательно gateway;
-- микросервисы с большим east-west трафиком: mesh;
-- зрелая платформа: gateway + mesh совместно.
+| Инструмент | Сильные стороны | Ограничения |
+| --- | --- | --- |
+| Kong | богатый open-source ecosystem, плагины | enterprise-фичи платные |
+| Apigee | зрелое API management и аналитика | высокий TCO |
+| AWS API Gateway | managed в AWS, быстрая интеграция | vendor lock-in и ограничения по кастомизации |
+| Azure API Management | сильный enterprise control plane | cost при большом трафике |
+| NGINX | высокая производительность и гибкость | требует больше самостоятельной сборки платформы |
+
+## Сравнение Service Mesh
+
+| Mesh | Сильные стороны | Ограничения |
+| --- | --- | --- |
+| Istio | богатые policy и traffic management | высокая сложность эксплуатации |
+| Linkerd | легковесность и простота | меньше продвинутых фич |
+| Consul | сильная сервисная сетка + сервис-дискавери | отдельная операционная сложность |
+| Kuma | мультиплатформенность и простые политики | экосистема меньше, чем у Istio |
+
+## Примеры политик
+
+### Circuit breaker (концептуально, mesh)
+
+```yaml
+policy: circuit-breaker
+service: payments
+maxConnections: 100
+maxRequests: 200
+consecutiveErrors: 5
+```
+
+### Gateway rate limit (концептуально)
+
+```yaml
+route: /public/*
+limitPerMinute: 120
+burst: 30
+```
+
+## Self-hosted vs managed
+
+| Модель | Когда выбирать |
+| --- | --- |
+| Self-hosted | есть сильная platform-команда, нужен полный контроль |
+| Managed | нужна скорость запуска и снижение ops-нагрузки |
 
 ## Типичные ошибки
 
-- попытка использовать gateway вместо mesh для east-west;
-- дублирование политик в каждом сервисе;
-- отсутствие единых trace-id/correlation-id сквозь gateway и mesh.
+- попытка решить все задачи только gateway или только mesh;
+- дублирование политик и конфликты между слоями;
+- отсутствие owner на API onboarding и lifecycle;
+- недостаточная observability маршрутов и политик.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Безопасность API (OAuth 2.0, JWT, mTLS)](security.md)
-- [Паттерны надежности](../integration-methods/reliability-patterns.md)
+1. Какие политики должны жить на gateway, а какие в mesh?
+2. Кто владелец интеграционной платформы и SLA?
+3. Как контролируются изменения политик и их rollback?
+4. Какой TCO у выбранной модели на горизонте 2-3 лет?
+
+## Чек-лист самопроверки
+
+- определены роли gateway и mesh без дублирования;
+- есть единый policy lifecycle и change process;
+- настроены auth, mTLS, retries, circuit breaker;
+- есть developer portal и onboarding процесс;
+- собираются метрики и трассировка на обоих уровнях.
+
+## Стандарты и источники
+
+- Istio docs: <https://istio.io/latest/docs/>
+- Linkerd docs: <https://linkerd.io/>
+- Kong docs: <https://docs.konghq.com/>
+- Envoy docs: <https://www.envoyproxy.io/docs/>

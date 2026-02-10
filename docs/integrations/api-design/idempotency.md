@@ -1,77 +1,137 @@
 # Идемпотентность
 
-Идемпотентность гарантирует, что повторный запрос не создаст дополнительные побочные эффекты. Это критично при retry из-за timeout/сетевых сбоев.
+Идемпотентность гарантирует, что повторный запрос не создаст дубликат эффекта. Это критично для платежей, заказов, бронирований и асинхронных операций.
 
-## HTTP и идемпотентность
+## Уровни сложности
 
-По стандартной семантике:
+### Базовый уровень
 
-- идемпотентные: `GET`, `PUT`, `DELETE`;
-- неидемпотентные: `POST`, `PATCH` (по умолчанию).
+- понимать, какие HTTP-методы идемпотентны по семантике;
+- применять `Idempotency-Key` для create-операций;
+- возвращать одинаковый результат на повтор.
 
-На практике `POST` часто делают идемпотентным через `Idempotency-Key`.
+### Средний уровень
 
-## Idempotency-Key pattern
+- хранить результат выполнения и payload hash;
+- поддерживать TTL, дедупликацию и корреляцию запросов;
+- распространять идемпотентность на очереди и события.
 
-### Запрос
+### Продвинутый уровень
 
-```http
-POST /v1/payments
-Idempotency-Key: 7ea6c4d0-0a1c-4d4d-8df2-3ef1f1b14dc8
-Content-Type: application/json
-```
+- решать race conditions в кластере;
+- реализовать exactly-once where feasible;
+- связывать idempotency с outbox/inbox и distributed locks.
 
-```json
-{
-  "order_id": "ORD-100245",
-  "amount": 4950,
-  "currency": "RUB"
-}
-```
+## Где нужна идемпотентность
 
-### Поведение сервера
+| Сценарий | Риск без идемпотентности |
+| --- | --- |
+| Создание платежа | двойное списание |
+| Создание заказа | дубли в OMS и fulfillment |
+| Публикация события | повторные side-effects в downstream |
+| Batch import | множественные записи при повторном запуске |
 
-1. Проверить ключ в idempotency storage.
-1. Если ключ новый: выполнить операцию, сохранить результат.
-1. Если ключ уже использован: вернуть ранее сохраненный ответ.
+## Шаблон реализации
 
-## Диаграмма потока
+1. Клиент отправляет `Idempotency-Key`.
+2. Сервер вычисляет `payload hash`.
+3. Проверяется ключ в хранилище (Redis/DB).
+4. Если ключ найден и hash совпадает, возвращается сохраненный ответ.
+5. Если ключ найден и hash не совпадает, возвращается ошибка конфликта.
+6. При первом выполнении результат и статус сохраняются с TTL.
+
+## Поток обработки
 
 ```kroki-plantuml
 @startuml
 actor Client
 participant API
-database Store as "Idempotency Store"
+database Store
 
-Client -> API: POST /payments (Idempotency-Key=K)
-API -> Store: lookup(K)
-Store --> API: not found
-API -> API: execute payment
-API -> Store: save(K, response)
-API --> Client: 201 Created
-
-Client -> API: RETRY POST /payments (K)
-API -> Store: lookup(K)
-Store --> API: found response
-API --> Client: same 201 response
+Client -> API: POST /payments + Idempotency-Key
+API -> Store: lookup(key)
+alt key exists
+  API -> Store: compare payload hash
+  alt hash match
+    API -> Store: load previous response
+    API --> Client: previous response
+  else hash mismatch
+    API --> Client: 409 conflict
+  end
+else new key
+  API -> API: process business operation
+  API -> Store: save response with TTL
+  API --> Client: 201 created
+end
 @enduml
 ```
 
-## Практические детали
+## Pseudo-code (Java/Spring)
 
-- TTL ключа (например, 24 часа) фиксировать в контракте;
-- ключ должен быть уникален на business-operation;
-- хранить digest payload, чтобы отловить reuse ключа с другим телом;
-- возвращать явную ошибку при конфликте ключ/пэйлоад.
+```java
+String key = req.header("Idempotency-Key");
+String hash = sha256(req.body());
+Record r = repo.find(key);
+if (r != null && r.hash.equals(hash)) return r.response;
+if (r != null && !r.hash.equals(hash)) throw conflict();
+Response out = service.process(req);
+repo.save(key, hash, out, ttlHours);
+return out;
+```
+
+## Pseudo-code (Node.js/Express)
+
+```javascript
+const key = req.get('Idempotency-Key');
+const hash = sha256(JSON.stringify(req.body));
+const rec = await store.get(key);
+if (rec && rec.hash === hash) return res.status(rec.status).json(rec.body);
+if (rec && rec.hash !== hash) return res.status(409).json({ error: 'payload mismatch' });
+const out = await processBusiness(req.body);
+await store.put(key, { hash, status: 201, body: out }, ttlSec);
+return res.status(201).json(out);
+```
+
+## Конкурентность и кластер
+
+| Проблема | Решение |
+| --- | --- |
+| Два узла одновременно обрабатывают один ключ | distributed lock или atomic upsert |
+| Репликация отстает | писать/читать idempotency store в primary |
+| Повтор в очереди | dedup key в consumer + inbox pattern |
+| Повтор после TTL | TTL по бизнес-окну риска, а не минимально возможный |
+
+## Идемпотентность и MQ
+
+- producer использует transactional outbox;
+- consumer хранит processed-message-id (inbox);
+- side-effects выполняются после проверки dedup;
+- retry не должен менять бизнес-эффект.
 
 ## Типичные ошибки
 
-- не хранить результат операции для повторной выдачи;
-- использовать слишком короткий TTL;
-- не защищать хранилище от race condition;
-- выполнять non-idempotent side effects до записи ключа.
+- хранение только ключа без payload hash;
+- слишком короткий TTL для финансовых операций;
+- повтор non-idempotent операций в retry без ключа;
+- отсутствие наблюдаемости по конфликтам идемпотентности.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Лимиты и квоты](rate-limiting.md)
-- [Паттерны надежности](../integration-methods/reliability-patterns.md)
+1. Какие операции в вашей системе создают невозвратимые side-effects?
+2. Какой TTL оправдан бизнес-риском дублирования?
+3. Что происходит при повторе с тем же ключом и другим payload?
+4. Как дедупликация работает в асинхронных consumer?
+
+## Чек-лист самопроверки
+
+- ключ идемпотентности обязателен для create-операций;
+- хранятся key + payload hash + результат;
+- реализована защита от race condition;
+- идемпотентность покрывает и HTTP, и messaging;
+- конфликтные повторы наблюдаемы и алертятся.
+
+## Стандарты и источники
+
+- RFC 9110 (Idempotent Methods): <https://www.rfc-editor.org/rfc/rfc9110>
+- Stripe idempotency practice: <https://docs.stripe.com/idempotency>
+- Transactional Outbox pattern: <https://microservices.io/patterns/data/transactional-outbox.html>

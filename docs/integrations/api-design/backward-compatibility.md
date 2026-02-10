@@ -1,58 +1,100 @@
 # Обратная совместимость
 
-Обратная совместимость это способность API эволюционировать без поломки существующих клиентов.
+Обратная совместимость снижает операционный риск и стоимость интеграции: клиентам не нужно срочно переписывать код после каждого релиза API.
 
-## Цель
+## Уровни сложности
 
-- сохранить работоспособность текущих интеграций;
-- снизить стоимость миграций;
-- обеспечить предсказуемый lifecycle версий.
+### Базовый уровень
 
-## Правила non-breaking изменений
+- различать breaking и non-breaking изменения;
+- использовать политику deprecation;
+- избегать удаления и изменения типов полей.
 
-- добавление нового optional поля;
-- добавление нового endpoint/operation;
-- добавление нового значения enum при наличии fallback;
-- добавление нового response header.
+### Средний уровень
 
-## Что считается breaking
+- автоматизировать compatibility checks;
+- поддерживать staging с реальными consumer-контрактами;
+- публиковать migration guide.
 
-- удаление поля/операции;
-- изменение типа поля (`string -> number`);
-- изменение семантики существующего кода ошибки;
-- обязательность ранее optional поля.
+### Продвинутый уровень
 
-## Матрица совместимости
+- управлять миграциями через canary/blue-green;
+- применять graceful degradation и fallback;
+- контролировать совместимость SDK, UI и партнерских клиентов.
 
-| Изменение | Совместимо? | Комментарий |
+## Классификация изменений
+
+| Тип изменения | Класс | Пример |
 | --- | --- | --- |
-| Новое optional поле в JSON | Да | Старый клиент игнорирует |
-| Переименование поля | Нет | Нужна новая версия |
-| Новый error code | Условно | Клиент должен иметь generic обработчик |
-| Изменение URL endpoint | Нет | Только через versioning |
+| Добавление необязательного поля | non-breaking | `discountCode?: string` |
+| Расширение enum новым значением | условно non-breaking | требует tolerant parser у клиента |
+| Удаление поля | breaking | убрать `paymentStatus` |
+| Изменение типа | breaking | `amount: string` -> `amount: object` |
+| Новый endpoint | non-breaking | `/v1/orders/{id}/history` |
 
-## Процесс управления изменениями
+## Влияние на SDK и UI
 
-1. Зафиксировать change proposal и impact.
-1. Прогнать automated contract diff.
-1. Объявить deprecation period.
-1. Обновить docs/SDK/examples.
-1. Мониторить adoption новой версии.
+- SDK: breaking-change ведет к compile/runtime ошибкам и росту инцидентов.
+- UI: изменение семантики ответов без фичефлага ломает пользовательские сценарии.
+- Партнеры: если нет migration guide, растет time-to-recover и стоимость поддержки.
 
-## Пример deprecation policy
+## Процесс контроля совместимости
 
-- `v1` поддерживается 12 месяцев после выхода `v2`.
-- За 90 дней до отключения публикуется sunset notice.
-- После sunset endpoint возвращает `410 Gone`.
+1. PR на контракт проходит automatic diff.
+2. Для breaking-change нужен explicit approval архитектурного review.
+3. Генерируется migration guide и deprecation notice.
+4. Проводится тест в совместимом staging окружении.
+5. Релиз идет через canary и мониторинг ошибок клиентов.
 
-## Практические рекомендации
+## Blue/Green, Canary, Rollback
 
-- делать tolerant-reader на клиентах;
-- не менять семантику статусов молча;
-- включать compatibility tests в CI;
-- вести changelog с примерами миграции.
+```kroki-plantuml
+@startuml
+start
+:Release Green version;
+:Route 10pct traffic to Green;
+if (Errors within threshold?) then (yes)
+  :Increase to 50pct and 100pct;
+  :Sunset Blue;
+else (no)
+  :Rollback to Blue;
+  :Open incident and patch;
+endif
+stop
+@enduml
+```
 
-## Смежные материалы
+## Артефакты процесса
 
-- [Версионирование API](versioning.md)
-- [Документирование API (OpenAPI, RAML)](api-documentation.md)
+- Compatibility report (до и после релиза);
+- Migration guide с примерами кода;
+- Sunset policy и коммуникационный план;
+- Контрольный список rollback readiness.
+
+## Типичные ошибки
+
+- изменения по принципу "починим клиентов позже";
+- отсутствие версии схемы в событиях;
+- неверный парсинг неизвестных enum у клиентов;
+- неучтенные внешние интеграции при тестировании.
+
+## Контрольные вопросы
+
+1. Можно ли откатить релиз без изменения клиентских данных?
+2. Что произойдет с клиентом, который не обновится 3-6 месяцев?
+3. Есть ли автоматическая проверка совместимости для всех контрактов?
+4. Есть ли owner у deprecation-коммуникации?
+
+## Чек-лист самопроверки
+
+- breaking/non-breaking правила формализованы;
+- compatibility checks включены в CI;
+- migration guide обязателен для breaking-change;
+- rollout идет через canary/blue-green;
+- sunset policy и каналы коммуникации описаны.
+
+## Стандарты и источники
+
+- OpenAPI backward compatibility practices: <https://learn.openapis.org/specification/servers.html>
+- RFC 9110 HTTP Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
+- Google API Improvement Proposals: <https://google.aip.dev/>

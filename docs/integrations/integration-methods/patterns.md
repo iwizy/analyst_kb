@@ -1,86 +1,136 @@
 # Интеграционные паттерны
 
-Паттерн интеграции определяет, как системы координируют состояние и обмениваются событиями.
+Интеграционные паттерны задают устойчивую архитектуру взаимодействия сервисов. Ниже собраны паттерны, которые чаще всего применяются в enterprise-проектах.
+
+## Уровни сложности
+
+### Базовый уровень
+
+- различать request/response и publish/subscribe;
+- понимать, где нужен синхронный ответ, а где событие;
+- фиксировать базовый контракт и ownership.
+
+### Средний уровень
+
+- применять Saga, CQRS и Event-Driven Architecture;
+- комбинировать паттерны (например, outbox + pub/sub);
+- проектировать компенсации и повторную обработку.
+
+### Продвинутый уровень
+
+- внедрять orchestration/choreography на уровне платформы;
+- использовать process manager для сложных потоков;
+- управлять сквозной согласованностью в multi-domain системах.
 
 ## Request/Response
 
-Синхронный вызов с быстрым ответом.
-
-Когда применять:
-
-- интерактивные операции;
-- запросы с коротким SLA;
-- когда результат нужен немедленно.
-
-Риск: сильная связность и cascading failure.
+- **Когда использовать:** нужен немедленный результат (валидация, чтение баланса, синхронное подтверждение).
+- **Плюсы:** простота, предсказуемость для клиента.
+- **Минусы:** сильная связность, чувствительность к latency downstream.
 
 ## Publish/Subscribe
 
-Издатель отправляет событие в канал, подписчики получают независимо.
-
-Когда применять:
-
-- fan-out уведомления;
-- реактивные процессы;
-- интеграция нескольких потребителей без tight coupling.
+- **Когда использовать:** одно событие должны обработать несколько подписчиков.
+- **Плюсы:** слабая связность, масштабируемость.
+- **Минусы:** сложнее трассировка и отладка eventual consistency.
 
 ## Saga
 
-Координация распределенной бизнес-транзакции через цепочку локальных транзакций и компенсаций.
+### Оркестрация
 
-### Оркестрация SAGA
+- координатор управляет шагами и компенсациями;
+- проще контролировать поток, но создается central coordinator.
+
+### Хореография
+
+- сервисы реагируют на события без центра;
+- выше автономность, но сложнее анализировать поток.
 
 ```kroki-plantuml
 @startuml
-participant Order
-participant Orchestrator
-participant Payment
-participant Inventory
-participant Delivery
+participant "Order Service" as O
+participant "Payment Service" as P
+participant "Inventory Service" as I
+participant "Notification Service" as N
 
-Order -> Orchestrator: Create order
-Orchestrator -> Payment: Reserve funds
-Payment --> Orchestrator: OK
-Orchestrator -> Inventory: Reserve stock
-Inventory --> Orchestrator: FAIL
-Orchestrator -> Payment: Compensate (release funds)
+O -> P: Reserve payment
+P --> O: Reserved
+O -> I: Reserve items
+alt stock ok
+  I --> O: Reserved
+  O -> N: Publish OrderConfirmed
+else stock fail
+  I --> O: Failed
+  O -> P: Compensation CancelPayment
+  O -> N: Publish OrderRejected
+end
 @enduml
 ```
 
 ## CQRS
 
-Разделение модели записи (Command) и чтения (Query).
+- разделение командной и запросной моделей;
+- полезно при разных профилях write/read нагрузки;
+- требует стратегии синхронизации read model.
 
-Когда применять:
+## Event-Driven Architecture
 
-- разные профили write/read;
-- сложные read-модели и витрины;
-- event-driven архитектура.
+- события фиксируют значимые бизнес-факты;
+- подписчики обрабатывают их независимо;
+- важно определить schema evolution и replay policy.
 
-## Event-Driven Architecture (EDA)
+## Дополнительные паттерны
 
-Система реагирует на события, а не на прямые синхронные вызовы.
+| Паттерн | Суть | Пример |
+| --- | --- | --- |
+| Aggregator | собирает данные из нескольких источников | BFF собирает профиль клиента |
+| Splitter | делит большой запрос на части | batch платежей на отдельные операции |
+| Claim Check | хранит payload вне шины, передает ссылку | большие документы в object storage |
+| Service Bus | централизованный транспорт/маршрутизация | legacy ESB контур |
+| Command pattern | явные команды вместо вызовов CRUD | `ApproveLoan`, `ShipOrder` |
+| Transactional Outbox | событие публикуется из надежной outbox | заказ + событие `OrderCreated` |
+| Process Manager | управляет длительным бизнес-процессом | заявка с многими проверками |
 
-Плюсы:
+## Orchestration vs Choreography
 
-- масштабируемость;
-- слабая связность;
-- удобная эволюция потребителей.
+| Критерий | Orchestration | Choreography |
+| --- | --- | --- |
+| Управление процессом | централизованное | распределенное |
+| Наблюдаемость | проще | сложнее |
+| Связность | выше к оркестратору | ниже, но сложнее governance |
+| Когда выбирать | критичные транзакционные процессы | события между автономными доменами |
 
-Риски:
+## Инструменты
 
-- eventual consistency;
-- сложность отладки и трассировки;
-- необходимость event contract governance.
+- Apache Camel, Spring Integration, Camel K;
+- Temporal/Zeebe для process orchestration;
+- NServiceBus/MassTransit для .NET экосистемы;
+- Kafka/Pulsar/NATS для event backbone.
 
-## Практические рекомендации
+## Типичные ошибки
 
-- фиксировать ownership каждого события;
-- versioning event payload делать явно;
-- вводить correlation id сквозь весь поток;
-- закладывать idempotent consumers по умолчанию.
+- выбор паттерна без оценки консистентности и компенсаций;
+- отсутствие owner у событий и схем;
+- скрытые side-effects без idempotency;
+- смешение orchestration и choreography без явных границ.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Паттерны надежности](reliability-patterns.md)
-- [Брокеры сообщений](message-brokers/index.md)
+1. Где в вашем процессе обязательна транзакционность, а где допустима компенсация?
+2. Кто владеет каждым событием и его schema evolution?
+3. Есть ли process manager для долгих межсервисных процессов?
+4. Как диагностируется цепочка событий end-to-end?
+
+## Чек-лист самопроверки
+
+- паттерн выбран по бизнес-сценарию и рискам;
+- определены компенсации и SLA обработки;
+- ownership событий и контрактов закреплен;
+- предусмотрены idempotency и replay-стратегии;
+- наблюдаемость и audit для потока реализованы.
+
+## Стандарты и источники
+
+- Enterprise Integration Patterns: <https://www.enterpriseintegrationpatterns.com/>
+- Saga pattern: <https://microservices.io/patterns/data/saga.html>
+- Transactional Outbox: <https://microservices.io/patterns/data/transactional-outbox.html>

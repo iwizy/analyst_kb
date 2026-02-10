@@ -1,94 +1,142 @@
-# Документирование API (OpenAPI, RAML)
+# Документирование API
 
-Документация API это исполнимый контракт, который используется разработкой, QA, интеграторами и платформенной командой.
+Качественная документация API должна быть одновременно читаемой для людей и валидируемой автоматически в CI/CD.
 
-## Что обязательно документировать
+## Уровни сложности
 
-- purpose и domain boundary;
-- операции и схемы;
-- ошибки и retry semantics;
-- auth, scopes, limits;
-- версионирование и политика депрекации;
-- примеры запросов и ответов.
+### Базовый уровень
 
-## OpenAPI
+- публиковать машиночитаемую спецификацию;
+- описывать схемы запросов/ответов и ошибки;
+- добавлять примеры и базовые сценарии.
 
-OpenAPI де-факто стандарт описания REST API.
+### Средний уровень
 
-Минимальный пример:
+- внедрить единый шаблон документации и style guide;
+- использовать mock-серверы и contract testing;
+- автоматизировать публикацию в developer portal.
+
+### Продвинутый уровень
+
+- управлять каталогом API-продуктов;
+- проводить compatibility checks и quality gates;
+- использовать docs-as-code и versioned portals.
+
+## Сравнение форматов спецификаций
+
+| Формат | Для чего лучше | Сильные стороны | Ограничения |
+| --- | --- | --- | --- |
+| OpenAPI 3.1 | REST API | экосистема, генерация SDK, linting | не описывает event-driven полноценно |
+| RAML | REST design-first | удобен для моделирования API-first | меньше tooling, чем у OpenAPI |
+| AsyncAPI | event/API over messaging | каналы, сообщения, bindings | ниже зрелость в отдельных инструментах |
+| GraphQL SDL | GraphQL APIs | компактная схема и интроспекция | нужен отдельный governance на резолверы |
+| Protobuf | gRPC/messaging | строгая типизация, бинарная эффективность | слабая читаемость без tooling |
+| Avro IDL | Kafka schema registry | эволюция схем, serialization contracts | меньше удобства для HTTP API |
+
+## Что должно быть в спецификации
+
+- бизнес-назначение и потребители;
+- операции и контракты (input/output/errors);
+- аутентификация и авторизация;
+- лимиты, идемпотентность, retry policy;
+- SLO/SLA и observability поля (trace headers, correlation id);
+- политика версий, deprecation и обратной совместимости.
+
+## Пример REST endpoint (полный минимум)
 
 ```yaml
-openapi: 3.0.3
-info:
-  title: Orders API
-  version: 1.0.0
 paths:
-  /v1/orders/{orderId}:
-    get:
-      summary: Get order
+  /payments:
+    post:
+      operationId: createPayment
+      summary: Create payment order
+      security:
+        - oauth2: [payments.write]
       parameters:
-        - name: orderId
-          in: path
+        - in: header
+          name: Idempotency-Key
           required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  order_id:
-                    type: string
-                  status:
-                    type: string
-```
-
-## RAML
-
-RAML используется как альтернативный DSL для API-дизайна.
-
-Минимальный пример:
-
-```yaml
-#%RAML 1.0
-title: Orders API
-version: v1
-baseUri: https://api.example.com
-/orders/{orderId}:
-  get:
-    responses:
-      200:
-        body:
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
           application/json:
-            type: object
-            properties:
-              order_id: string
-              status: string
+            schema:
+              type: object
+              required: [orderId, amount, currency]
+              properties:
+                orderId: { type: string }
+                amount: { type: number }
+                currency: { type: string }
+      responses:
+        "201": { description: Created }
+        "400": { description: Validation error }
+        "429": { description: Rate limit exceeded }
 ```
 
-## Рекомендации по процессу
+## Пример GraphQL endpoint
 
-- хранить спецификации в git вместе с кодом;
-- использовать contract review как обязательный gate;
-- генерировать docs/SDK/mock из спецификации;
-- валидировать breaking changes автоматически в CI.
+```graphql
+type Mutation {
+  createPayment(input: PaymentInput!): PaymentResult!
+}
 
-## Инструменты
+input PaymentInput {
+  orderId: ID!
+  amount: Float!
+  currency: String!
+}
 
-- OpenAPI: Swagger Editor, Redoc, Stoplight, Spectral.
-- RAML: API Designer, AMF tools.
+type PaymentResult {
+  paymentId: ID!
+  status: String!
+}
+```
 
-## Частые ошибки
+## Code generation, mocks, contract tests
 
-- документация не совпадает с фактической реализацией;
-- нет примеров ошибок и limit-политик;
-- отсутствует changelog по версиям;
-- не описаны SLA и idempotency semantics.
+| Задача | Инструменты | Практика |
+| --- | --- | --- |
+| Генерация SDK/стабов | OpenAPI Generator, Swagger Codegen, protoc | генерируйте в CI и фиксируйте версии |
+| Mock API | WireMock, MockServer, Prism | используйте для ранней интеграции front/back |
+| Contract testing | Pact, Spring Cloud Contract | проверяйте provider-consumer до релиза |
+| Публикация | Swagger UI, Redocly, Stoplight | публикуйте changelog и deprecation notes |
 
-## Смежные материалы
+## CI/CD для документации
 
-- [Версионирование API](versioning.md)
-- [Обратная совместимость](backward-compatibility.md)
+1. Проверка синтаксиса (`spectral`, `openapi-cli`, `asyncapi validate`).
+2. Проверка совместимости (`oasdiff`, `graphql-inspector`).
+3. Генерация preview-портала для PR.
+4. Публикация в каталог API после merge.
+5. Нотификация клиентов при breaking/deprecation изменениях.
+
+## Типичные ошибки
+
+- документация обновляется после релиза, а не до него;
+- в спецификации нет примеров ошибок и edge cases;
+- отсутствуют migration notes и сроки sunset;
+- не заданы требования безопасности по операциям.
+
+## Контрольные вопросы
+
+1. Сможет ли новая команда интегрироваться только по вашей документации?
+2. Есть ли в спецификации полный error model и security requirements?
+3. Автоматически ли проверяется обратная совместимость?
+4. Есть ли единый API-портал и owner каждой спецификации?
+
+## Чек-лист самопроверки
+
+- спецификация машиночитаемая и валидируется в CI;
+- для каждой операции есть примеры request/response/errors;
+- зафиксированы auth, rate limit и idempotency;
+- есть changelog, versioning policy и deprecation rules;
+- публикация в API portal автоматизирована.
+
+## Стандарты и источники
+
+- OpenAPI: <https://spec.openapis.org/oas/latest.html>
+- AsyncAPI: <https://www.asyncapi.com/docs/reference/specification/latest>
+- RAML: <https://github.com/raml-org/raml-spec>
+- GraphQL SDL: <https://spec.graphql.org/>
+- Protocol Buffers: <https://protobuf.dev/>
+- Pact docs: <https://docs.pact.io/>

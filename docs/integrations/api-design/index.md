@@ -1,42 +1,100 @@
 # Проектирование API
 
-Проектирование API это проектирование контракта между командами и системами. Хороший API минимизирует стоимость изменений и снижает количество интеграционных инцидентов.
+Подраздел описывает, как проектировать API-контракты с учетом совместимости, безопасности, эксплуатационных ограничений и жизненного цикла изменений.
 
-## Принципы
+## Уровни сложности
 
-- Contract-first: сначала контракт, потом реализация.
-- Явная семантика операций и ошибок.
-- Консистентные naming conventions.
-- Предсказуемая модель версионирования и депрекации.
-- Безопасность и лимиты как часть контракта.
+### Базовый уровень
+
+- выбрать стиль API под бизнес-сценарий;
+- описать минимальный контракт (ресурсы, операции, ошибки);
+- закрепить правила именования и статусы ответов.
+
+### Средний уровень
+
+- внедрить contract-first, versioning и deprecation policy;
+- настроить idempotency, rate limiting и authz;
+- автоматизировать проверку контрактов в CI.
+
+### Продвинутый уровень
+
+- управлять несколькими API-продуктами через gateway/portal;
+- строить совместимость между командами и поколениями клиентов;
+- внедрить governance: линтеры, каталоги, API scorecards.
+
+## Принципы дизайна API
+
+1. `Consumer-oriented design`: контракт должен отражать сценарий клиента, а не внутреннюю реализацию.
+2. `Explicit semantics`: одинаковые операции и коды ошибок во всех сервисах.
+3. `Compatibility first`: non-breaking изменения по умолчанию.
+4. `Security by default`: authn/authz, mTLS, audit и ограничение доступа на уровне контракта.
+5. `Operability`: метрики, трассировка, correlation-id и поддержка graceful degradation.
+
+## Выбор API-стиля
+
+| Стиль | Когда применять | Сильные стороны | Ограничения |
+| --- | --- | --- | --- |
+| REST | публичные и BFF API | простота, HTTP-инфраструктура | over/under-fetching |
+| GraphQL | сложные фронтенд-агрегации | гибкость выборки | сложность кеша и лимитов |
+| gRPC | межсервисные вызовы с SLA по latency | бинарный протокол, строгость контрактов | сложнее для внешних клиентов |
+| SOAP | enterprise/legacy и WS-* | строгие стандарты и безопасность | объем и сложность |
+| JSON-RPC | command-oriented API | компактность, batch | слабее ресурсная модель |
 
 ## Жизненный цикл API
 
-1. Discovery: цели, потребители, SLA/SLO.
-1. Design: ресурсы/операции, схемы, ошибки, политики.
-1. Review: архитектурный и security review.
-1. Publish: документация и SDK.
-1. Operate: метрики, version lifecycle, incident response.
+```kroki-plantuml
+@startuml
+start
+:Определение потребителей и сценариев;
+:Проектирование контракта;
+:Линтинг и contract review;
+:Реализация и contract testing;
+:Публикация и onboarding клиентов;
+:Мониторинг и анализ потребления;
+:Изменения, deprecation, sunset;
+stop
+@enduml
+```
 
-## Contract checklist
+## Минимальный набор governance-правил
 
-- endpoint/method/operation;
-- request/response schema;
-- error model;
-- auth requirements;
-- rate limits;
-- idempotency policy;
-- compatibility rules;
-- observability fields (`trace_id`, `correlation_id`).
+- единая политика именования полей и URL;
+- единая error model (problem details, error codes, trace id);
+- обязательная секция `security` и `rate limits` в контракте;
+- semver + changelog + migration notes;
+- автоматическая проверка backward compatibility.
 
 ## Переход к подразделам
 
 - [Сущности, атрибуты, контракты](entities-attributes-contracts.md)
-- [Документирование API (OpenAPI, RAML)](api-documentation.md)
+- [Документирование API](api-documentation.md)
 - [Версионирование API](versioning.md)
 - [Обратная совместимость](backward-compatibility.md)
-- [Безопасность API (OAuth 2.0, JWT, mTLS)](security.md)
+- [Безопасность API](security.md)
 - [Лимиты и квоты](rate-limiting.md)
 - [Идемпотентность](idempotency.md)
 - [API Gateway и Service Mesh](api-gateway-and-service-mesh.md)
 - [Форматы сериализации](serialization-formats/index.md)
+
+## Контрольные вопросы
+
+1. Кто ваш primary consumer и какие сценарии для него критичны?
+2. Какие изменения вы считаете breaking для клиентов?
+3. Где в контракте фиксируются лимиты, безопасность и idempotency?
+4. Какие автоматические проверки выполняются при изменении API?
+
+## Чек-лист самопроверки
+
+- API стиль выбран по сценарию и SLA;
+- контракт согласован до реализации;
+- определены версия, deprecation и sunset policy;
+- включены security и reliability требования;
+- метрики и трассировка предусмотрены в дизайне.
+
+## Стандарты и источники
+
+- OpenAPI: <https://spec.openapis.org/oas/latest.html>
+- GraphQL Spec: <https://spec.graphql.org/>
+- gRPC docs: <https://grpc.io/docs/>
+- JSON-RPC 2.0: <https://www.jsonrpc.org/specification>
+- W3C SOAP 1.2: <https://www.w3.org/TR/soap12-part1/>

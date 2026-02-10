@@ -1,73 +1,109 @@
 # REST/HTTP(S)
 
-REST это архитектурный стиль работы с ресурсами через HTTP-методы, статусы и гипермедиа-ссылки.
+REST остается базовым стандартом для большинства внешних API благодаря простоте и зрелой экосистеме.
+
+## Уровни сложности
+
+### Базовый уровень
+
+- проектировать ресурсные URL и HTTP-методы;
+- использовать корректные status codes;
+- описывать API через OpenAPI.
+
+### Средний уровень
+
+- внедрять HATEOAS, caching, pagination;
+- применять RFC 7807/9457 error model;
+- обеспечивать backward compatibility.
+
+### Продвинутый уровень
+
+- проектировать high-scale REST API с observability;
+- управлять политиками кэширования и conditional requests;
+- внедрять advanced schema patterns (`oneOf`, `anyOf`).
 
 ## Принципы REST
 
-- клиент-серверное разделение;
+- ресурсная модель (`/orders/{id}`);
+- унифицированный интерфейс HTTP;
 - stateless взаимодействие;
-- cacheable responses;
-- uniform interface;
-- layered system.
+- self-descriptive messages;
+- кешируемость ответов там, где уместно.
 
-## Ресурсная модель
+## HTTP-методы
 
-- коллекция: `/v1/orders`
-- экземпляр: `/v1/orders/{orderId}`
+| Метод | Семантика | Идемпотентность |
+| --- | --- | --- |
+| GET | чтение | да |
+| POST | создание/команда | нет (без доп. паттернов) |
+| PUT | полная замена | да |
+| PATCH | частичное обновление | зависит от операции |
+| DELETE | удаление | да |
 
-## HTTP-методы и семантика
-
-- `GET` — чтение;
-- `POST` — создание/команда;
-- `PUT` — полная замена;
-- `PATCH` — частичное обновление;
-- `DELETE` — удаление.
-
-## HATEOAS
-
-HATEOAS добавляет в ответ ссылки на допустимые следующие действия.
+## HATEOAS (пример)
 
 ```json
 {
-  "order_id": "ORD-100245",
-  "status": "paid",
+  "id": "ord-1001",
+  "status": "PAID",
   "_links": {
-    "self": {"href": "/v1/orders/ORD-100245"},
-    "refund": {"href": "/v1/orders/ORD-100245/refund", "method": "POST"}
+    "self": { "href": "/orders/ord-1001" },
+    "cancel": { "href": "/orders/ord-1001/cancel", "method": "POST" }
   }
 }
 ```
 
-## Коды ошибок и error model
-
-Рекомендуется использовать RFC 7807 (`application/problem+json`).
+## Ошибки по RFC 7807/9457
 
 ```json
 {
-  "type": "https://api.example.com/errors/validation",
-  "title": "Validation failed",
-  "status": 400,
-  "detail": "amount must be positive",
-  "trace_id": "4ed5f2f5d3"
+  "type": "https://api.example.com/problems/insufficient-funds",
+  "title": "Insufficient funds",
+  "status": 409,
+  "detail": "Balance is lower than requested amount",
+  "instance": "/payments/req-991",
+  "traceId": "trc-123"
 }
 ```
 
-### Базовые статус-коды
+## Пагинация
 
-- `200`, `201`, `202`, `204`;
-- `400`, `401`, `403`, `404`, `409`, `422`, `429`;
-- `500`, `502`, `503`, `504`.
+| Подход | Плюсы | Минусы |
+| --- | --- | --- |
+| Offset/limit | простота | медленнее на больших offset |
+| Cursor | стабильность при изменениях данных | сложнее реализация |
+| Keyset | высокая производительность | ограничение на сортировку |
 
-## Практические рекомендации
+## Кэширование
 
-- использовать `Idempotency-Key` для критичных `POST`;
-- явно документировать retry semantics;
-- не ломать контракт через silent changes;
-- использовать ETag/If-None-Match для кэширования;
-- сохранять предсказуемые error codes.
+- используйте `Cache-Control` и `ETag`;
+- для условных запросов применяйте `If-None-Match`;
+- разделяйте публичный и приватный cache policy.
 
-## Смежные материалы
+## Типичные ошибки
 
-- [Документирование API (OpenAPI, RAML)](../../api-design/api-documentation.md)
-- [Идемпотентность](../../api-design/idempotency.md)
-- [Обратная совместимость](../../api-design/backward-compatibility.md)
+- RPC-дизайн под видом REST (`/getOrderById`);
+- непоследовательные статус-коды;
+- отсутствие версионирования и deprecation;
+- смешение транспортных и бизнес-ошибок.
+
+## Контрольные вопросы
+
+1. Ресурсы и методы отражают бизнес-семантику?
+2. Применяется единая error model для всех endpoint?
+3. Выбран подход пагинации, устойчивый к росту данных?
+4. Какие endpoints поддерживают caching и почему?
+
+## Чек-лист самопроверки
+
+- OpenAPI актуален и покрывает все операции;
+- status codes и ошибки стандартизированы;
+- настроены pagination, caching и conditional requests;
+- обеспечены versioning и compatibility;
+- метрики latency/error собираются по endpoint.
+
+## Стандарты и источники
+
+- RFC 9110 HTTP Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
+- RFC 9457 Problem Details: <https://www.rfc-editor.org/rfc/rfc9457>
+- Richardson Maturity Model: <https://martinfowler.com/articles/richardsonMaturityModel.html>

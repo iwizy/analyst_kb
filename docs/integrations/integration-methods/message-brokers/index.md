@@ -1,29 +1,76 @@
 # Брокеры сообщений
 
-Брокеры сообщений обеспечивают асинхронное взаимодействие между сервисами, снижая связность и повышая устойчивость системы.
+Брокеры сообщений обеспечивают асинхронную интеграцию, выравнивание нагрузки и decoupling между сервисами.
 
-## Когда использовать брокер
+## Уровни сложности
 
-- нужно decouple producer и consumer;
-- необходима буферизация пиков;
-- требуется fan-out событий;
-- важна retry/DLQ стратегия.
+### Базовый уровень
 
-## Kafka vs RabbitMQ (кратко)
+- понимать роли producer, broker, consumer;
+- выбирать между очередями и логом событий;
+- проектировать базовую retry/DLQ стратегию.
+
+### Средний уровень
+
+- настраивать partitioning/routing и consumer groups;
+- управлять schema evolution;
+- обеспечивать идемпотентность и упорядочивание.
+
+### Продвинутый уровень
+
+- проектировать multi-region messaging;
+- управлять exactly-once, replay и governance схем;
+- выстраивать платформу событий для многих доменов.
+
+## Kafka vs RabbitMQ
 
 | Критерий | Kafka | RabbitMQ |
 | --- | --- | --- |
-| Модель | distributed log | message broker с очередями/exchange |
-| Сильная сторона | high throughput, stream processing | гибкая маршрутизация и подтверждения |
-| Типичный кейс | event streaming, analytics pipeline | task queue, командные интеграции |
+| Модель | распределенный commit log | брокер очередей/маршрутизации |
+| Сильная сторона | throughput, replay, streaming | гибкая маршрутизация и простая очередная семантика |
+| Упорядочивание | внутри partition | внутри queue |
+| Типовые кейсы | event backbone, аналитика, интеграция доменов | task queues, command messaging, workflow |
 
 ## Delivery semantics
 
-- at-most-once;
-- at-least-once;
-- exactly-once (частично и контекстно, зависит от платформы/дизайна).
+| Семантика | Когда нужна | Как достигается |
+| --- | --- | --- |
+| At-most-once | допускается потеря, но не дубли | commit до обработки |
+| At-least-once | потеря недопустима | retry + idempotent consumer |
+| Exactly-once | критичные финансовые/регистрационные операции | transactional producer/consumer + idempotency |
+
+## Альтернативы
+
+| Решение | Когда выбирать |
+| --- | --- |
+| NATS | легковесный request/reply и pub/sub |
+| Pulsar | geo-replication, tiered storage, multi-tenancy |
+| Amazon SQS | managed очередь в AWS |
+| Google Pub/Sub | managed messaging в GCP |
+| Azure Service Bus | enterprise messaging в Azure |
 
 ## Переход к подразделам
 
 - [Kafka](kafka.md)
 - [RabbitMQ](rabbitmq.md)
+
+## Контрольные вопросы
+
+1. Нужна очередь задач или журнал событий с replay?
+2. Как вы обеспечиваете идемпотентность consumer?
+3. Какие SLA по задержке и доставке сообщений?
+4. Как контролируется эволюция схем сообщений?
+
+## Чек-лист самопроверки
+
+- выбран брокер под сценарий и профиль нагрузки;
+- определена delivery semantics;
+- настроены retry, DLQ и мониторинг lag;
+- есть правила schema evolution;
+- ownership топиков/очередей закреплен.
+
+## Стандарты и источники
+
+- Kafka docs: <https://kafka.apache.org/documentation/>
+- RabbitMQ docs: <https://www.rabbitmq.com/documentation.html>
+- CloudEvents spec: <https://cloudevents.io/>

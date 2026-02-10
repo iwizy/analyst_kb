@@ -1,89 +1,195 @@
 # Сущности, атрибуты, контракты
 
-Основа API-дизайна это корректная модель предметной области и стабильный контракт.
+Контракт API должен отражать доменную модель и бизнес-правила, а не только формат JSON. Ошибки на этом шаге приводят к дорогим миграциям и несовместимости между командами.
 
-## Сущности
+## Уровни сложности
 
-Сущность отражает бизнес-объект: `Customer`, `Order`, `Invoice`.
+### Базовый уровень
 
-Критерии хорошей сущности:
+- выделять сущности, атрибуты и связи;
+- фиксировать обязательные и опциональные поля;
+- задавать единые правила именования.
 
-- четкая ответственность;
-- устойчивый идентификатор;
-- прозрачный lifecycle (created, updated, archived).
+### Средний уровень
 
-## Атрибуты
+- проектировать bounded contexts и агрегаты;
+- различать internal model и external API model;
+- использовать contract-first и schema linting.
 
-Атрибуты делятся на группы:
+### Продвинутый уровень
 
-- identity (`id`, `external_id`);
-- business fields (`status`, `amount`);
-- technical metadata (`created_at`, `updated_at`, `version`).
+- управлять эволюцией схем в распределенной системе;
+- внедрять data contracts и ownership модели;
+- строить multi-format контракты (REST + events + gRPC).
 
-Пример:
+## Как выявлять сущности и атрибуты
 
-```json
-{
-  "order_id": "ORD-2026-00045",
-  "customer_id": "CUS-932",
-  "status": "paid",
-  "amount": 4950.00,
-  "currency": "RUB",
-  "created_at": "2026-02-09T10:15:00Z"
+### Шаги
+
+1. Определите bounded context и границы ответственности сервиса.
+2. Выделите агрегаты и invariants (что должно быть атомарно).
+3. Зафиксируйте canonical attributes: идентификаторы, статусы, бизнес-даты.
+4. Опишите жизненный цикл сущности: create/update/close.
+5. Разведите поля по зонам: required, optional, computed, deprecated.
+
+### Мини-шаблон сущности
+
+| Поле | Описание |
+| --- | --- |
+| Entity name | Доменное имя (`Order`, `Invoice`) |
+| Owner | Команда-владелец |
+| Business invariant | Набор правил целостности |
+| Required attributes | Минимум для корректной операции |
+| PII/Sensitive | Флаги чувствительных данных |
+| Versioning rule | Правила эволюции полей |
+
+## Шаблон API-контракта
+
+| Раздел | Что фиксировать |
+| --- | --- |
+| Назначение | бизнес-цель и потребители |
+| Операции | методы/эндпоинты/queries/mutations |
+| Схемы request/response | обязательность, типы, enum |
+| Ошибки | коды, условия, retryability |
+| Безопасность | authn/authz, scopes, mTLS |
+| Лимиты | rate limit, quota, burst |
+| Совместимость | version, deprecation, sunset |
+| Нефункциональные требования | latency, availability, idempotency |
+
+## Примеры контрактов в разных стилях
+
+### REST/OpenAPI (фрагмент)
+
+```yaml
+openapi: 3.1.0
+info:
+  title: Orders API
+  version: 1.4.0
+paths:
+  /orders/{orderId}:
+    get:
+      operationId: getOrder
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Order found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "404":
+          description: Not found
+components:
+  schemas:
+    Order:
+      type: object
+      required: [id, status, total]
+      properties:
+        id: { type: string }
+        status: { type: string, enum: [NEW, PAID, SHIPPED, CANCELED] }
+        total: { type: number }
+```
+
+### GraphQL SDL (фрагмент)
+
+```graphql
+type Order {
+  id: ID!
+  status: OrderStatus!
+  total: Float!
+  updatedAt: String!
+}
+
+enum OrderStatus { NEW PAID SHIPPED CANCELED }
+
+type Query {
+  order(id: ID!): Order
 }
 ```
 
-## Контракт API
+### gRPC/proto (фрагмент)
 
-Контракт определяет:
+```proto
+syntax = "proto3";
+package orders.v1;
 
-- операции (методы/процедуры);
-- схемы запросов/ответов;
-- коды и формат ошибок;
-- условия авторизации;
-- ограничения (rate limit, размер payload, timeout).
-
-## Пример контракта endpoint
-
-```http
-POST /v1/orders
-Authorization: Bearer <token>
-Idempotency-Key: 63a8b8f4-6d67-4f11-9b67-1c6758d4f943
-Content-Type: application/json
-```
-
-```json
-{
-  "customer_id": "CUS-932",
-  "items": [
-    {"sku": "SKU-1", "qty": 1, "price": 4200},
-    {"sku": "SKU-2", "qty": 1, "price": 750}
-  ]
+message GetOrderRequest { string id = 1; }
+message Order {
+  string id = 1;
+  string status = 2;
+  double total = 3;
+}
+service OrdersService {
+  rpc GetOrder(GetOrderRequest) returns (Order);
 }
 ```
 
-## Ошибки контракта
-
-Рекомендуемый единый формат ошибок:
+### JSON-RPC 2.0 (пример)
 
 ```json
 {
-  "error": {
-    "code": "ORDER_VALIDATION_FAILED",
-    "message": "Item price must be positive",
-    "trace_id": "4ed5f2f5d3"
-  }
+  "jsonrpc": "2.0",
+  "method": "order.get",
+  "params": { "id": "ord-1001" },
+  "id": "req-77"
 }
 ```
 
-## Практические рекомендации
+### SOAP/WSDL (сокращенный пример)
 
-- не смешивать transport-level и business-level ошибки;
-- указывать nullable/required явно;
-- фиксировать enum и его эволюцию;
-- добавлять примеры happy-path и negative-path в контракт.
+```xml
+<wsdl:operation name="GetOrder">
+  <wsdl:input message="tns:GetOrderRequest"/>
+  <wsdl:output message="tns:GetOrderResponse"/>
+</wsdl:operation>
+```
 
-## Смежные материалы
+## Contract-first vs code-first
 
-- [Документирование API (OpenAPI, RAML)](api-documentation.md)
-- [Обратная совместимость](backward-compatibility.md)
+| Подход | Плюсы | Минусы | Когда выбирать |
+| --- | --- | --- | --- |
+| Contract-first | прогнозируемость, рано выявляет конфликты | выше порог запуска | multi-team, внешние API |
+| Code-first | быстрый старт | риск drift между кодом и документацией | внутренний прототип, low risk |
+
+## CI/CD для контрактов
+
+- pull request на контракт обязателен до кода;
+- линтеры: `spectral`, `openapi-cli`, `buf`;
+- diff-проверки: `oasdiff`, `swagger-diff`, `graphql-inspector`;
+- contract tests: PACT/WireMock;
+- публикация артефактов контракта в registry.
+
+## Типичные ошибки
+
+- смешение доменной модели и внутренней DTO-структуры сервиса;
+- отсутствие owner и SLA у контракта;
+- внедрение breaking-change без migration guide;
+- неявные поля (nullable без описания причин);
+- разные значения enum в синхронных и асинхронных контрактах.
+
+## Контрольные вопросы
+
+1. Есть ли у каждой сущности владелец и жизненный цикл?
+2. Какие поля контракта критичны для обратной совместимости?
+3. Одинаковы ли значения enum во всех каналах интеграции?
+4. Какие проверки контракта выполняются автоматически?
+
+## Чек-лист самопроверки
+
+- зафиксированы bounded contexts и агрегаты;
+- есть шаблон контракта с NFR и безопасностью;
+- определены правила именования и эволюции схем;
+- в CI есть lint + diff + contract tests;
+- прописаны migration guide и deprecation policy.
+
+## Стандарты и источники
+
+- Domain-Driven Design Reference: <https://www.domainlanguage.com/ddd/reference/>
+- OpenAPI: <https://spec.openapis.org/oas/latest.html>
+- GraphQL: <https://spec.graphql.org/>
+- Protocol Buffers: <https://protobuf.dev/>
+- WSDL 1.1 note: <https://www.w3.org/TR/wsdl>

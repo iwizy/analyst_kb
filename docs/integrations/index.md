@@ -1,115 +1,114 @@
 # Интеграции
 
-Раздел описывает интеграции как инженерную систему: выбор контрактов, паттернов взаимодействия, надежности, безопасности и эксплуатационных практик.
+Раздел дает практический фреймворк для проектирования, внедрения и сопровождения интеграций: от выбора типа взаимодействия до надежности, наблюдаемости и соответствия регуляторике.
 
-## Что покрывает раздел
+## Уровни сложности
 
-- дизайн API: REST, GraphQL, gRPC, JSON-RPC, SOAP;
-- описание контрактов (OpenAPI, AsyncAPI, RAML), версионирование и совместимость;
-- безопасность: OAuth 2.0, JWT, mTLS, rate limiting, idempotency;
-- архитектурные элементы: API Gateway, Service Mesh;
-- паттерны интеграции: request/response, pub/sub, Saga, CQRS, event-driven;
-- паттерны надежности: retry, timeout, circuit breaker, bulkhead, DLQ;
-- брокеры сообщений, file exchange, shared database;
-- наблюдаемость: trace-id, correlation-id, SLI/SLO.
+### Базовый уровень
 
-## Карта решений
+- различать синхронные и асинхронные интеграции;
+- выбирать базовый API-стиль под задачу;
+- понимать минимальные требования к безопасности, ошибкам и SLA.
+
+### Средний уровень
+
+- проектировать контракты и версионирование без поломки клиентов;
+- выбирать паттерны надежности (retry, timeout, circuit breaker, DLQ);
+- проектировать интеграции через API Gateway, брокеры и файловый обмен.
+
+### Продвинутый уровень
+
+- строить интеграционные платформы (mesh, event backbone, API management);
+- управлять совместимостью и миграциями в multi-team и multi-domain среде;
+- внедрять observability, compliance и data governance для интеграций.
+
+## Карта тем раздела
 
 ```kroki-plantuml
 @startuml
 left to right direction
-rectangle "Контракт\nAPI Design" as A
-rectangle "Паттерн\nвзаимодействия" as P
-rectangle "Надежность\nи безопасность" as R
-rectangle "Транспорт\nи брокеры" as T
-rectangle "Эксплуатация\nи мониторинг" as O
-A --> P
-P --> R
-R --> T
-T --> O
+rectangle "Presentation\nWeb Mobile BFF" as P
+rectangle "API Gateway\nAuth Routing Policies" as G
+rectangle "Service Mesh\nmTLS Telemetry Resilience" as M
+rectangle "Integration Layer\nREST gRPC Events Files" as I
+rectangle "Messaging and Storage\nKafka RabbitMQ DB Object Storage" as S
+rectangle "Observability and Compliance\nTracing Audit Policies" as O
+
+P --> G
+G --> M
+M --> I
+I --> S
+I --> O
 @enduml
 ```
 
-## Выбор API-стиля
+## Быстрый алгоритм выбора подхода
 
-| Стиль | Когда применять | Сильные стороны | Ограничения |
+1. Зафиксируйте бизнес-сценарий и критичность операции.
+2. Определите целевой SLA/SLO: latency, availability, RTO/RPO.
+3. Оцените профиль нагрузки: RPS, burst, read/write ratio, объем сообщений.
+4. Сформулируйте требования к консистентности: strict, bounded staleness, eventual.
+5. Определите доверенную модель: внешний клиент, партнер, внутренний сервис.
+6. Выберите паттерн взаимодействия: request/response, pub/sub, batch file, stream.
+7. Зафиксируйте контракт, версионирование, observability и rollback-стратегию.
+
+## Матрица выбора типа интеграции
+
+| Критерий | Синхронный API | Асинхронные события | Файловый обмен |
 | --- | --- | --- | --- |
-| REST/HTTP | Публичные и партнерские API | Простота, экосистема, кеширование | Не всегда удобен для сложных графов данных |
-| GraphQL | Клиентам нужен гибкий набор полей | Точное получение данных, меньше overfetch | Сложность контроля cost/лимитов |
-| gRPC | Внутренние высоконагруженные сервисы | Производительность, строгие контракты | Ниже удобство для внешних web-клиентов |
-| JSON-RPC | Командно-ориентированные API | Простота вызовов процедур | Меньше стандартных REST-практик |
-| SOAP | Enterprise/регуляторные контуры | Стандарты WS-* и формальные контракты | Высокая сложность и verbosity |
+| Latency | миллисекунды-секунды | секунды-минуты | минуты-часы |
+| Согласованность | выше, но жестче связность | eventual consistency | обычно пакетная |
+| Надежность | зависит от retry/timeout | выше через очередь и DLQ | зависит от SLA канала |
+| Масштабирование | через горизонтальный scale API | через партиции/консьюмеры | через батчи и окна |
+| Типовые кейсы | checkout, валидация лимита | уведомления, интеграция доменов | регламентный обмен с партнерами |
 
-## Паттерны взаимодействия
+## Примеры по доменам
 
-| Паттерн | Когда использовать | Риски |
+| Домен | B2C | B2B | Межсервисное взаимодействие |
+| --- | --- | --- | --- |
+| Fintech | мобильные платежи через REST + OAuth2 | ISO 20022 batch + SFTP/AS2 | antifraud events + scoring через Kafka |
+| E-commerce | каталог и корзина через REST/GraphQL | поставщики через EDI/файлы | заказ-склад-доставка через Saga |
+| Gov | портал услуг через API gateway | межведомственный обмен по SOAP/SMEV | события статусов заявлений через брокер |
+| Media | контент API + CDN | лицензирование с партнерами по контрактам | stream событий просмотров в DWH |
+
+## Ключевые метрики интеграций
+
+| Метрика | Что показывает | Целевой контроль |
 | --- | --- | --- |
-| Request/Response | Нужен мгновенный ответ | Чувствительность к задержкам и каскадным сбоям |
-| Publish/Subscribe | Слабая связанность и масштаб событий | Сложнее отладка и гарантии порядка |
-| Saga | Распределенные бизнес-транзакции | Сложность компенсаций и наблюдаемости |
-| CQRS | Разные профили read/write | Архитектурная сложность и eventual consistency |
-| Event-driven | Высокая асинхронность и расширяемость | Требует строгой схемы событий и дисциплины версий |
-
-## Надежность и безопасность
-
-Минимальный стандарт:
-
-- идемпотентность для повторяемых операций записи;
-- retry c backoff и jitter, timeout и circuit breaker;
-- bulkhead для изоляции деградации;
-- mTLS для межсервисных вызовов в доверенном контуре;
-- OAuth 2.0/JWT для внешнего доступа;
-- лимиты и квоты на gateway-слое.
-
-## Быстрый алгоритм выбора интеграционного подхода
-
-1. Зафиксировать профиль взаимодействия: sync/async/batch/stream.
-1. Выбрать паттерн и транспорт (HTTP/gRPC/broker/file).
-1. Определить контракт и стратегию версионирования.
-1. Добавить безопасность и idempotency.
-1. Спроектировать надежность (retry/breaker/DLQ).
-1. Настроить observability и правила SLO.
-
-## Кейсы по доменам
-
-### Финтех
-
-- REST/gRPC + строгая идемпотентность;
-- обязательные audit logs и mTLS;
-- паттерн Saga для распределенных платежных сценариев.
-
-### E-commerce
-
-- API Gateway для фронт-клиентов;
-- Kafka/RabbitMQ для событий заказа и уведомлений;
-- акцент на деградационные стратегии и rate limiting.
-
-### Госуслуги
-
-- формальные контракты и повышенные требования совместимости;
-- строгая версионизация и трассировка изменений;
-- контроль SLA обмена с внешними реестрами.
-
-## Первоисточники и стандарты
-
-- OpenAPI Specification: <https://spec.openapis.org/oas/latest.html>
-- AsyncAPI Specification: <https://www.asyncapi.com/docs/reference/specification/latest>
-- GraphQL Specification: <https://spec.graphql.org/>
-- gRPC docs: <https://grpc.io/docs/>
-- OAuth 2.0 (RFC 6749): <https://www.rfc-editor.org/rfc/rfc6749>
-- JWT (RFC 7519): <https://www.rfc-editor.org/rfc/rfc7519>
-- HTTP Semantics (RFC 9110): <https://www.rfc-editor.org/rfc/rfc9110>
+| p95 latency | пользовательский опыт и SLA | контроль по endpoint и операции |
+| Throughput | пропускная способность | контроль пиков и деградаций |
+| Error rate | стабильность и корректность | алерты на рост 4xx/5xx |
+| Retry success rate | эффективность восстановления | не ниже порога по критичным операциям |
+| DLQ size/age | накопление проблемных сообщений | ограничение времени в DLQ |
+| Contract drift | риск расхождения с документацией | проверка в CI/CD |
 
 ## Переход к подразделам
 
 - [Проектирование API](api-design/index.md)
-- [Способы интеграции](integration-methods/index.md)
+- [Способы интеграции и паттерны](integration-methods/index.md)
 - [Сетевое взаимодействие](networking/index.md)
 
 ## Контрольные вопросы
 
-- Почему выбранный стиль API лучше других для текущего сценария?
-- Где в потоке обеспечивается идемпотентность и обратная совместимость?
-- Какие паттерны надежности защищают от каскадного отказа?
-- Как связаны SLO интеграции и бизнес-SLA процесса?
-- Какие метрики и дашборды нужны для оперативного контроля интеграций?
+1. Какие операции в вашей системе критичны к latency, а какие к надежной доставке?
+2. Где допустима eventual consistency, а где нужна синхронная проверка?
+3. Какой механизм rollback/compensation используется при частичных сбоях?
+4. Какие SLO закреплены в контракте с внешними системами?
+5. Есть ли единая политика версионирования и deprecation?
+
+## Чек-лист самопроверки
+
+- выбран тип интеграции под профиль нагрузки и SLA;
+- определены security-требования и доверенная модель;
+- контракт версии и политика совместимости формализованы;
+- предусмотрены retry, timeout, circuit breaker, DLQ;
+- настроены трассировка, метрики и audit-log.
+
+## Стандарты и источники
+
+- RFC 9110 HTTP Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
+- RFC 9457 Problem Details for HTTP APIs: <https://www.rfc-editor.org/rfc/rfc9457>
+- OAuth 2.1 draft: <https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/>
+- OpenAPI Specification: <https://spec.openapis.org/oas/latest.html>
+- AsyncAPI Specification: <https://www.asyncapi.com/docs/reference/specification/latest>
+- Enterprise Integration Patterns: <https://www.enterpriseintegrationpatterns.com/>

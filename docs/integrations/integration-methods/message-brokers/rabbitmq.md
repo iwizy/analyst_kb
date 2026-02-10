@@ -1,61 +1,115 @@
 # RabbitMQ
 
-RabbitMQ это брокер сообщений на базе AMQP с гибкой маршрутизацией и надежной доставкой через ack/requeue/DLQ.
+RabbitMQ удобен для task-oriented интеграций и сложной маршрутизации сообщений через exchange/queue модель.
 
-## Базовые сущности
+## Уровни сложности
 
-- exchange (`direct`, `topic`, `fanout`, `headers`);
-- queue;
-- binding;
-- producer;
-- consumer;
-- ack/nack.
+### Базовый уровень
+
+- понимать exchange, queue, binding;
+- использовать ack/nack и retry;
+- настраивать DLX для неуспешных сообщений.
+
+### Средний уровень
+
+- выбирать exchange type под сценарий маршрутизации;
+- настраивать TTL, priority queues и quorum queues;
+- строить отказоустойчивый кластер.
+
+### Продвинутый уровень
+
+- внедрять federation/shovel для междатацентрового обмена;
+- управлять backpressure и flow control;
+- автоматизировать observability и capacity planning.
+
+## Exchange types
+
+| Тип | Как маршрутизирует | Когда применять |
+| --- | --- | --- |
+| direct | точное совпадение routing key | point-to-point команды |
+| topic | шаблоны routing key | доменные события и фильтрация |
+| fanout | broadcast всем связанным очередям | уведомления |
+| headers | по заголовкам | сложная маршрутизация по метаданным |
 
 ## Поток
 
 ```kroki-plantuml
 @startuml
-participant Producer
+actor Publisher
 participant Exchange
-queue QueueA
-queue QueueB
-participant Consumer
+participant QueueA
+participant QueueDLQ
+actor Consumer
 
-Producer -> Exchange: publish(routing_key)
-Exchange -> QueueA: route
-Exchange -> QueueB: route
-QueueA -> Consumer: deliver
-Consumer --> QueueA: ack
+Publisher -> Exchange: publish (routing key)
+Exchange -> QueueA: route message
+Consumer -> QueueA: consume
+alt success
+  Consumer -> QueueA: ack
+else fail
+  Consumer -> QueueA: nack
+  QueueA -> QueueDLQ: dead letter
+end
 @enduml
 ```
 
-## Когда выбирать RabbitMQ
+## Практические настройки
 
-- command/task queues;
-- сложная маршрутизация сообщений;
-- приоритеты, TTL, DLQ и fine-grained control;
-- умеренные объемы при высоких требованиях к delivery control.
+| Параметр | Рекомендация |
+| --- | --- |
+| `prefetch` | ограничивайте для fair dispatch |
+| TTL | задавайте для временных сообщений |
+| DLX | обязательно для retry/DLQ сценариев |
+| Quorum queue | для HA и отказоустойчивости |
+| Priority queues | только при реальной необходимости |
 
-## Достоинства
+## Quorum vs Classic queues
 
-- гибкая маршрутизация;
-- удобные механики ack/retry/dead-letter;
-- зрелый tooling для enterprise задач.
+| Критерий | Quorum | Classic |
+| --- | --- | --- |
+| Надежность | выше, Raft-based | ниже в старых mirrored конфигурациях |
+| Производительность | стабильная, но может быть дороже | может быть быстрее на простых кейсах |
+| Рекомендация | default для критичных очередей | legacy/простой сценарий |
 
-## Ограничения
+## Retry и delay
 
-- меньше throughput, чем у Kafka в stream-heavy сценариях;
-- требует аккуратной настройки при росте кластера;
-- порядок сообщений зависит от модели очередей/консюмеров.
+- через DLX + TTL (requeue после задержки);
+- через `x-delayed-message` plugin;
+- ограничивайте количество попыток и храните reason code.
 
-## Практические рекомендации
+## Мониторинг
 
-- использовать manual ack для критичных обработчиков;
-- настраивать DLX/DLQ и retry policy;
-- ограничивать prefetch для consumer fairness;
-- контролировать unacked messages и queue depth.
+| Метрика | Зачем |
+| --- | --- |
+| queue depth | накопление сообщений |
+| ack rate | скорость успешной обработки |
+| unacked messages | признаки зависших consumer |
+| publish confirm latency | производительность продюсеров |
+| node disk/memory alarm | риск остановки приема сообщений |
 
-## Смежные материалы
+## Типичные ошибки
 
-- [Паттерны надежности](../reliability-patterns.md)
-- [Обмен файлами](../file-exchange.md)
+- бесконечный requeue без DLQ;
+- отсутствие prefetch и saturation consumer;
+- слишком много сложных routing patterns без governance;
+- неучтенная устойчивость при отказе узла.
+
+## Контрольные вопросы
+
+1. Какой exchange type соответствует вашему паттерну маршрутизации?
+2. Как обработаются сообщения после нескольких неудачных попыток?
+3. Какие очереди должны быть quorum?
+4. Какие метрики считаются сигналом аварии?
+
+## Чек-лист самопроверки
+
+- выбран правильный exchange type и routing strategy;
+- настроены ack/nack, retry и DLQ;
+- внедрены quorum queues для критичных потоков;
+- есть мониторинг очередей и consumer здоровья;
+- подготовлены runbooks на failover и recovery.
+
+## Стандарты и источники
+
+- RabbitMQ docs: <https://www.rabbitmq.com/documentation.html>
+- RabbitMQ quorum queues: <https://www.rabbitmq.com/quorum-queues.html>

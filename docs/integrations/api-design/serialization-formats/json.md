@@ -1,51 +1,105 @@
 # JSON
 
-JSON это де-факто формат обмена данными в HTTP API.
+JSON остается основным форматом для публичных API благодаря читаемости и универсальной поддержке.
 
-## Сильные стороны
+## Уровни сложности
 
-- компактный и широко поддерживаемый;
-- удобен для JavaScript/TypeScript клиентов;
-- хорошо сочетается с OpenAPI и JSON Schema.
+### Базовый уровень
 
-## Ограничения
+- валидировать JSON по схеме;
+- использовать однозначные типы и nullable-правила;
+- документировать примеры запросов/ответов.
 
-- нет встроенной типобезопасности на уровне транспорта;
-- нет комментариев;
-- бинарные данные передаются неэффективно (base64).
+### Средний уровень
+
+- управлять эволюцией JSON-схем;
+- контролировать size payload и глубину вложенности;
+- применять `ETag`, `Cache-Control` и partial responses.
+
+### Продвинутый уровень
+
+- оптимизировать JSON для high-load (streaming, compression);
+- выстраивать совместимость в multi-client API;
+- автоматизировать schema linting и drift detection.
+
+## JSON Schema vs OpenAPI Schema
+
+| Критерий | JSON Schema | OpenAPI Schema |
+| --- | --- | --- |
+| Назначение | универсальная валидация JSON | описание API-контрактов |
+| Экосистема | широкий набор валидаторов | тесно интегрировано с API tooling |
+| Особенности | богатые ограничения и композиции | удобно для endpoint-документации |
 
 ## Пример payload
 
 ```json
 {
-  "order_id": "ORD-100245",
-  "status": "paid",
-  "amount": 4950.0,
+  "orderId": "ord-1001",
+  "customerId": "c-42",
   "items": [
-    {"sku": "SKU-1", "qty": 1, "price": 4200.0},
-    {"sku": "SKU-2", "qty": 1, "price": 750.0}
-  ]
+    { "sku": "A-1", "qty": 2, "price": 10.5 }
+  ],
+  "total": 21.0,
+  "createdAt": "2026-02-10T12:30:00Z"
 }
 ```
 
-## JSON Schema пример
+## Пример JSON Schema
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
-  "required": ["order_id", "status", "amount"],
+  "required": ["orderId", "items", "total"],
   "properties": {
-    "order_id": {"type": "string"},
-    "status": {"type": "string", "enum": ["draft", "paid", "cancelled"]},
-    "amount": {"type": "number", "minimum": 0}
+    "orderId": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sku", "qty"],
+        "properties": {
+          "sku": { "type": "string" },
+          "qty": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "total": { "type": "number", "minimum": 0 }
   }
 }
 ```
 
-## Практические рекомендации
+## Performance considerations
 
-- не использовать float для денег без договоренности о precision;
-- фиксировать timezone формат (`ISO-8601`);
-- не менять тип поля без новой версии;
-- добавлять schema validation в CI/CD.
+- включайте gzip/brotli для больших payload;
+- ограничивайте max body size;
+- избегайте глубоких вложенностей и избыточных полей;
+- для стриминга используйте NDJSON, когда нужен поток событий.
+
+## Типичные ошибки
+
+- неявные nullable-поля без семантики;
+- drift между документацией и фактическим payload;
+- использование строк вместо типизированных чисел/дат;
+- неконтролируемый рост payload при backward-совместимых расширениях.
+
+## Контрольные вопросы
+
+1. Какие правила schema evolution приняты для JSON?
+2. Что считается breaking-change для вашего JSON-контракта?
+3. Какие ограничения по размеру и вложенности установлены?
+4. Есть ли автопроверка схем и примеров в CI?
+
+## Чек-лист самопроверки
+
+- схемы JSON формально заданы и валидируются;
+- обязательные/необязательные поля документированы;
+- предусмотрены меры оптимизации размера payload;
+- есть политика backward compatibility;
+- примеры request/response синхронизированы с кодом.
+
+## Стандарты и источники
+
+- RFC 8259 JSON: <https://www.rfc-editor.org/rfc/rfc8259>
+- JSON Schema: <https://json-schema.org/specification>
+- OpenAPI 3.1: <https://spec.openapis.org/oas/latest.html>

@@ -1,30 +1,49 @@
 # SOAP
 
-SOAP это протокол обмена XML-сообщениями с формализованным контрактом (WSDL), часто применяемый в enterprise и B2B-интеграциях.
+SOAP остается актуальным в regulated и legacy-интеграциях, где важны WS-* стандарты, строгие схемы и контрактный подход.
 
-## Когда выбирать SOAP
+## Уровни сложности
 
-- требуется строгий контракт и XSD-валидация;
-- есть legacy-ландшафт и существующие SOAP-сервисы;
-- важны WS-* стандарты (security, addressing, reliable messaging).
+### Базовый уровень
 
-## Компоненты
+- понимать структуру SOAP Envelope/Body/Fault;
+- читать WSDL и XSD;
+- реализовывать базовые операции request/response.
 
-- Envelope;
-- Header;
-- Body;
-- Fault.
+### Средний уровень
+
+- применять WS-Security и WS-Addressing;
+- проектировать надежную доставку и idempotent операции;
+- тестировать SOAP-контракты через SoapUI/CXF.
+
+### Продвинутый уровень
+
+- интегрировать SOAP с modern API gateway/microservices;
+- управлять версионированием WSDL и backward compatibility;
+- реализовывать security/compliance требования enterprise уровня.
+
+## Основные элементы
+
+| Элемент | Назначение |
+| --- | --- |
+| WSDL | описание сервиса, операций и типов |
+| XSD | строгие схемы данных |
+| SOAP Envelope | транспортная оболочка сообщения |
+| SOAP Fault | стандартизированная ошибка |
+| WS-Security | подпись, шифрование, токены |
 
 ## Пример SOAP-запроса
 
 ```xml
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <soap:Body>
-    <GetOrder xmlns="http://example.com/orders">
-      <OrderId>ORD-100245</OrderId>
-    </GetOrder>
-  </soap:Body>
-</soap:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:ord="http://example.com/orders">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <ord:GetOrderRequest>
+      <ord:OrderId>ord-1001</ord:OrderId>
+    </ord:GetOrderRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
 ```
 
 ## Пример SOAP Fault
@@ -36,26 +55,43 @@ SOAP это протокол обмена XML-сообщениями с форм
 </soap:Fault>
 ```
 
-## Достоинства
+## WS-* расширения
 
-- строгая типизация и валидация;
-- развитый enterprise-стек;
-- формальное описание сервиса через WSDL.
+- `WS-Security`: подпись и шифрование сообщений;
+- `WS-Addressing`: маршрутизация и адресация;
+- `WS-ReliableMessaging`: надежная доставка;
+- `WS-Policy`: декларативные требования к взаимодействию.
 
-## Недостатки
+## Когда выбирать SOAP
 
-- более сложный и тяжелый протокол;
-- выше стоимость разработки и поддержки;
-- менее удобен для легковесных web/mobile клиентов.
+- интеграция с legacy enterprise или государственными системами;
+- контур с жесткими требованиями к формальным контрактам и аудиту;
+- обязательность WS-Security/WS-RM стандартов.
 
-## Практические рекомендации
+## Типичные ошибки
 
-- версионировать WSDL/XSD осознанно;
-- фиксировать fault model;
-- использовать mTLS и WS-Security при внешних интеграциях;
-- покрывать контракт integration tests.
+- попытка использовать SOAP там, где достаточно REST/gRPC;
+- отсутствие стратегии версии WSDL;
+- игнорирование производительности и размера XML;
+- недостаточный контроль WS-Security конфигураций.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [XML/XSD](../../api-design/serialization-formats/xml-xsd.md)
-- [Безопасность API (OAuth 2.0, JWT, mTLS)](../../api-design/security.md)
+1. Требуются ли WS-* стандарты для вашего сценария?
+2. Как версионируются WSDL/XSD и как мигрируют клиенты?
+3. Какие требования к подписи и шифрованию сообщений?
+4. Чем подтверждается совместимость между версиями?
+
+## Чек-лист самопроверки
+
+- WSDL/XSD актуальны и версионируются;
+- настроены SOAP Fault и error mapping;
+- включены WS-Security политики;
+- есть нагрузочное тестирование XML сообщений;
+- подготовлены migration guide для клиентов.
+
+## Стандарты и источники
+
+- SOAP 1.2: <https://www.w3.org/TR/soap12-part1/>
+- WSDL: <https://www.w3.org/TR/wsdl>
+- WS-Security: <https://docs.oasis-open.org/wss-m/wss/v1.1.1/wss-SOAPMessageSecurity-v1.1.1.html>
