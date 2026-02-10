@@ -155,7 +155,7 @@ service OrdersService {
 | Contract-first | прогнозируемость, рано выявляет конфликты | выше порог запуска | multi-team, внешние [API](../../glossary.md#abbr-005) |
 | Code-first | быстрый старт | риск drift между кодом и документацией | внутренний прототип, low risk |
 
-## [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017) для контрактов
+## [CI/CD](../../glossary.md#abbr-017) для контрактов
 
 - pull request на контракт обязателен до кода;
 - линтеры: `spectral`, `openapi-cli`, `buf`;

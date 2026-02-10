@@ -64,7 +64,7 @@ ML для аналитика это способ формализовать за
 ## Кросс-ссылки
 
 - [Анализ данных](data-analysis/index.md)
-- [[DWH](../glossary.md#abbr-029) и Data Lake](../database/dwh-and-data-lake.md)
+- [DWH и Data Lake](../database/dwh-and-data-lake.md)
 - [Требования к качеству](../requirements/quality.md)## Источники
 
 - CRISP-DM overview: <https://www.datascience-pm.com/crisp-dm-2/>

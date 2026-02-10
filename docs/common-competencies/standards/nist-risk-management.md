@@ -55,7 +55,7 @@ NIST RMF — framework для управления рисками информа
 
 - [Информационная безопасность](../../architecture/information-security/index.md)
 - [Управление рисками](../estimation-risks/risk-management.md)
-- [Процесс разработки: ITSM/[ITIL](../../glossary.md#abbr-044)](../../development-process/feature-support/itsm-itil.md)## Источники
+- [Процесс разработки: ITSM/ITIL](../../development-process/feature-support/itsm-itil.md)## Источники
 
 - NIST RMF: <https://csrc.nist.gov/projects/risk-management>
 - NIST SP 800-37 (RMF guidance).

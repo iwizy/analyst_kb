@@ -32,14 +32,14 @@
 
 - [Подходы к спецификации требований](requirements/specification-approaches.md) 🟢
 - [Структурирование требований](requirements/structuring.md) 🟢
-- [[Декомпозиция](glossary.md#term-019) требований](requirements/decomposition.md) 🟢
-- [[Валидация](glossary.md#term-013) и верификация требований](requirements/validation.md) 🟢
+- [Декомпозиция требований](requirements/decomposition.md) 🟢
+- [Валидация и верификация требований](requirements/validation.md) 🟢
 - [Приоритизация требований](requirements/management/prioritization.md) 🟢
 
 ### Продвинутый уровень 🟢
 
 - [Управление требованиями](requirements/management/index.md) 🟢
-  - [[Трассировка](glossary.md#term-069) требований](requirements/management/traceability.md) 🟢
+  - [Трассировка требований](requirements/management/traceability.md) 🟢
   - [Поддержка актуальности требований](requirements/management/relevance.md) 🟢
   - [Управление изменениями требований](requirements/management/change-management.md) 🟢
   - [Согласование требований](requirements/management/coordination.md) 🟢
@@ -56,13 +56,13 @@
     - [Временной ряд](database/types/nosql/time-series.md) 🟢
     - [Графовые](database/types/nosql/graph.md) 🟢
     - [Поисковые](database/types/nosql/search.md) 🟢
-- [[Консистентность](glossary.md#term-040) и распределение](database/consistency-and-distribution.md) 🟢
+- [Консистентность и распределение](database/consistency-and-distribution.md) 🟢
 - [Распределённые реестры](database/distributed-ledgers/index.md) 🟢
   - [Blockchain и смарт-контракты](database/distributed-ledgers/blockchain-and-smart-contracts.md) 🟢
 - [Проектирование модели данных](database/data-modeling.md) 🟢
-- [[Нормализация](glossary.md#term-048) и денормализация](database/normalization/index.md) 🟢
+- [Нормализация и денормализация](database/normalization/index.md) 🟢
   - [Нормальные формы](database/normalization/normal-forms.md) 🟢
-- [[SQL](glossary.md#abbr-084)](database/sql/index.md) 🟢
+- [SQL](database/sql/index.md) 🟢
   - [Селекты](database/sql/selects.md) 🟢
   - [Агрегатные функции](database/sql/aggregate-functions.md) 🟢
   - [Группировка и сортировка](database/sql/grouping-sorting.md) 🟢
@@ -72,23 +72,23 @@
   - [Оконные функции](database/sql/window-functions.md) 🟢
 - [Масштабирование БД](database/scaling/index.md) 🟢
   - [Партицирование](database/scaling/partitioning.md) 🟢
-  - [[Шардирование](glossary.md#term-078)](database/scaling/sharding.md) 🟢
-- [[DWH](glossary.md#abbr-029) и Data Lake](database/dwh-and-data-lake.md) 🟢
-- [Master Data Management ([MDM](glossary.md#abbr-049))](database/mdm.md) 🟢
+  - [Шардирование](database/scaling/sharding.md) 🟢
+- [DWH и Data Lake](database/dwh-and-data-lake.md) 🟢
+- [Master Data Management (MDM)](database/mdm.md) 🟢
 - [Data Governance](database/data-governance.md) 🟢
 - [Реплицирование данных](database/replication.md) 🟢
 - [Бэкапирование данных](database/backup.md) 🟢
 
 ## Интеграции 🟢
 
-- [Проектирование [API](glossary.md#abbr-005)](integrations/api-design/index.md) 🟢
+- [Проектирование API](integrations/api-design/index.md) 🟢
   - [Сущности, атрибуты, контракты](integrations/api-design/entities-attributes-contracts.md) 🟢
   - [Документирование API](integrations/api-design/api-documentation.md) 🟢
-  - [[Версионирование](glossary.md#term-015) API](integrations/api-design/versioning.md) 🟢
-  - [[Обратная совместимость](glossary.md#term-049)](integrations/api-design/backward-compatibility.md) 🟢
+  - [Версионирование API](integrations/api-design/versioning.md) 🟢
+  - [Обратная совместимость](integrations/api-design/backward-compatibility.md) 🟢
   - [Безопасность API](integrations/api-design/security.md) 🟢
   - [Лимиты и квоты](integrations/api-design/rate-limiting.md) 🟢
-  - [[Идемпотентность](glossary.md#term-029)](integrations/api-design/idempotency.md) 🟢
+  - [Идемпотентность](integrations/api-design/idempotency.md) 🟢
   - [API Gateway и Service Mesh](integrations/api-design/api-gateway-and-service-mesh.md) 🟢
   - [Форматы сериализации](integrations/api-design/serialization-formats/index.md) 🟢
     - [JSON](integrations/api-design/serialization-formats/json.md) 🟢
@@ -98,10 +98,10 @@
   - [Интеграционные паттерны](integrations/integration-methods/patterns.md) 🟢
   - [Паттерны надежности](integrations/integration-methods/reliability-patterns.md) 🟢
   - [API](integrations/integration-methods/api/index.md) 🟢
-    - [[REST](glossary.md#abbr-071) / [HTTP](glossary.md#abbr-038)(S)](integrations/integration-methods/api/rest-http.md) 🟢
-    - [[SOAP](glossary.md#abbr-083)](integrations/integration-methods/api/soap.md) 🟢
+    - [REST / HTTP(S)](integrations/integration-methods/api/rest-http.md) 🟢
+    - [SOAP](integrations/integration-methods/api/soap.md) 🟢
     - [GraphQL](integrations/integration-methods/api/graphql.md) 🟢
-    - [[gRPC](glossary.md#abbr-036)](integrations/integration-methods/api/grpc.md) 🟢
+    - [gRPC](integrations/integration-methods/api/grpc.md) 🟢
     - [JSON-RPC](integrations/integration-methods/api/json-rpc.md) 🟢
     - [WebSockets](integrations/integration-methods/api/websockets.md) 🟢
   - [Брокеры сообщений](integrations/integration-methods/message-brokers/index.md) 🟢
@@ -117,25 +117,25 @@
 
 ## Нотации, диаграммы, моделирование 🟢
 
-- [[UML](glossary.md#abbr-092)](notations/uml/index.md) 🟢
+- [UML](notations/uml/index.md) 🟢
   - [Sequence](notations/uml/sequence.md) 🟢
   - [Activity](notations/uml/activity.md) 🟢
   - [Class](notations/uml/class.md) 🟢
   - [State Machine](notations/uml/state-machine.md) 🟢
-- [[BPMN](glossary.md#abbr-009)](notations/bpmn.md) 🟢
-- [[C4](glossary.md#abbr-011)](notations/c4.md) 🟢
-- [[ERD](glossary.md#abbr-032)](notations/erd.md) 🟢
-- [[DFD](glossary.md#abbr-025)](notations/dfd.md) 🟢
+- [BPMN](notations/bpmn.md) 🟢
+- [C4](notations/c4.md) 🟢
+- [ERD](notations/erd.md) 🟢
+- [DFD](notations/dfd.md) 🟢
 - [eEPC](notations/eepc.md) 🟢
 - [IDEF0](notations/idef0.md) 🟢
 - [Archimate](notations/archimate.md) 🟢
-- [[Диаграмма](glossary.md#term-022) Исикавы](notations/fishbone-diagram.md) 🟢
+- [Диаграмма Исикавы](notations/fishbone-diagram.md) 🟢
 - [Деревья решений](notations/decision-trees.md) 🟢
 - [Карта целей](notations/goals-map.md) 🟢
 - [Impact Map](notations/impact-map.md) 🟢
 - [Модели зрелости](notations/maturity-models/index.md) 🟢
-  - [[CMMI](glossary.md#abbr-018)](notations/maturity-models/cmmi.md) 🟢
-  - [[COBIT](glossary.md#abbr-019)](notations/maturity-models/cobit.md) 🟢
+  - [CMMI](notations/maturity-models/cmmi.md) 🟢
+  - [COBIT](notations/maturity-models/cobit.md) 🟢
   - [ACMM](notations/maturity-models/acmm.md) 🟢
 
 ## Алгоритмы 🟢
@@ -164,14 +164,14 @@
   - [Архитектурные паттерны и антипаттерны](architecture/systems-architecture/patterns-antipatterns.md) 🟢
   - [Синхронное и асинхронное взаимодействие](architecture/systems-architecture/sync-async.md) 🟢
   - [Кэширование](architecture/systems-architecture/caching.md) 🟢
-  - [[Оркестрация](glossary.md#term-051) и хореография](architecture/systems-architecture/orchestration-choreography.md) 🟢
+  - [Оркестрация и хореография](architecture/systems-architecture/orchestration-choreography.md) 🟢
   - [Масштабирование сервисов](architecture/systems-architecture/service-scaling.md) 🟢
   - [Контейнеризация](architecture/systems-architecture/containerization.md) 🟢
   - [Мониторинг и поддержка](architecture/systems-architecture/monitoring-support.md) 🟢
   - [Облачные вычисления](architecture/systems-architecture/cloud-computing.md) 🟢
 - [Подходы к проектированию](architecture/design-approaches/index.md) 🟢
   - [Объектно-ориентированное проектирование](architecture/design-approaches/oop-design/index.md) 🟢
-    - [[DDD](glossary.md#abbr-024)](architecture/design-approaches/oop-design/ddd.md) 🟢
+    - [DDD](architecture/design-approaches/oop-design/ddd.md) 🟢
     - [Event Storming](architecture/design-approaches/oop-design/event-storming.md) 🟢
   - [Функциональное (структурное) проектирование](architecture/design-approaches/functional-design.md) 🟢
 - [Декомпозиция задач](architecture/task-decomposition.md) 🟢
@@ -180,7 +180,7 @@
   - [Zachman](architecture/enterprise-architecture/zachman.md) 🟢
   - [FEAF](architecture/enterprise-architecture/feaf.md) 🟢
   - [DODAF](architecture/enterprise-architecture/dodaf.md) 🟢
-- [Пользовательский интерфейс ([UI](glossary.md#abbr-091)/[UX](glossary.md#abbr-093))](architecture/ui-ux/index.md) 🟢
+- [Пользовательский интерфейс (UI/UX)](architecture/ui-ux/index.md) 🟢
   - [Основы UI/UX](architecture/ui-ux/basics.md) 🟢
   - [Прототипирование](architecture/ui-ux/prototyping.md) 🟢
   - [Customer Journey Map](architecture/ui-ux/customer-journey-map.md) 🟢
@@ -189,7 +189,7 @@
   - [Авторизация и аутентификация](architecture/information-security/authorization-authentication.md) 🟢
   - [Хеширование и шифрование](architecture/information-security/hashing-encryption.md) 🟢
   - [Основы криптографии](architecture/information-security/cryptography-basics.md) 🟢
-  - [SSL / [TLS](glossary.md#abbr-088)](architecture/information-security/ssl-tls.md) 🟢
+  - [SSL / TLS](architecture/information-security/ssl-tls.md) 🟢
   - [Электронная подпись](architecture/information-security/digital-signature.md) 🟢
   - [Основные уязвимости веб-сервисов и приложений](architecture/information-security/common-web-vulnerabilities.md) 🟢
 
@@ -198,7 +198,7 @@
 - [Жизненный цикл программного продукта](development-process/product-lifecycle/index.md) 🟢
   - [Этапы жизненного цикла ПО](development-process/product-lifecycle/stages.md) 🟢
   - [Основы DevOps](development-process/product-lifecycle/devops-basics.md) 🟢
-  - [Основы [[CI](glossary.md#abbr-016)/CD](glossary.md#abbr-017)](development-process/product-lifecycle/cicd-basics.md) 🟢
+  - [Основы CI/CD](development-process/product-lifecycle/cicd-basics.md) 🟢
   - [Git](development-process/product-lifecycle/git.md) 🟢
 - [Сопровождение функциональности](development-process/feature-support/index.md) 🟢
   - [Мониторинг и логирование](development-process/feature-support/monitoring-logging.md) 🟢
@@ -252,19 +252,19 @@
   - [BABOK](common-competencies/standards/babok.md) 🟢
   - [SEBOK](common-competencies/standards/sebok.md) 🟢
   - [DAMA DMBOK](common-competencies/standards/dama-dmbok.md) 🟢
-  - [[ITIL](glossary.md#abbr-044)](common-competencies/standards/itil.md) 🟢
+  - [ITIL](common-competencies/standards/itil.md) 🟢
   - [COBIT](common-competencies/standards/cobit.md) 🟢
   - [CBAP](common-competencies/standards/cbap.md) 🟢
   - [CPRE](common-competencies/standards/cpre.md) 🟢
   - [ГОСТ 19](common-competencies/standards/gost-19.md) 🟢
   - [ГОСТ 34](common-competencies/standards/gost-34.md) 🟢
-  - [[PMBOK](glossary.md#abbr-064)](common-competencies/standards/pmbok.md) 🟢
-  - [[ISO](glossary.md#abbr-043) 12207](common-competencies/standards/iso-12207.md) 🟢
+  - [PMBOK](common-competencies/standards/pmbok.md) 🟢
+  - [ISO 12207](common-competencies/standards/iso-12207.md) 🟢
   - [ISO 15288](common-competencies/standards/iso-15288.md) 🟢
-  - [[IEEE](glossary.md#abbr-041)](common-competencies/standards/ieee.md) 🟢
+  - [IEEE](common-competencies/standards/ieee.md) 🟢
   - [ARIS](common-competencies/standards/aris.md) 🟢
 - [Техники](common-competencies/techniques/index.md) 🟢
-  - [[SWOT](glossary.md#abbr-086)](common-competencies/techniques/swot.md) 🟢
+  - [SWOT](common-competencies/techniques/swot.md) 🟢
   - [5 Why](common-competencies/techniques/five-why.md) 🟢
   - [Mind Map](common-competencies/techniques/mind-map.md) 🟢
 
@@ -272,18 +272,18 @@
 
 - [Анализ данных](related-skills/data-analysis/index.md) 🟢
   - [DWH](related-skills/data-analysis/dwh.md) 🟢
-  - [[OLTP](glossary.md#abbr-060)](related-skills/data-analysis/oltp.md) 🟢
-  - [[OLAP](glossary.md#abbr-059)](related-skills/data-analysis/olap.md) 🟢
-  - [[ETL](glossary.md#abbr-033) / [ELT](glossary.md#abbr-030)](related-skills/data-analysis/etl-elt.md) 🟢
+  - [OLTP](related-skills/data-analysis/oltp.md) 🟢
+  - [OLAP](related-skills/data-analysis/olap.md) 🟢
+  - [ETL / ELT](related-skills/data-analysis/etl-elt.md) 🟢
   - [Data Science](related-skills/data-analysis/data-science.md) 🟢
   - [Инструменты анализа данных](related-skills/data-analysis/tools/index.md) 🟢
     - [Tableau](related-skills/data-analysis/tools/tableau.md) 🟢
     - [QlikView](related-skills/data-analysis/tools/qlikview.md) 🟢
-    - [Power [BI](glossary.md#abbr-008)](related-skills/data-analysis/tools/power-bi.md) 🟢
+    - [Power BI](related-skills/data-analysis/tools/power-bi.md) 🟢
 - [Управление продуктом](related-skills/product-management.md) 🟢
 - [Экономика и финансы](related-skills/economics-finance/index.md) 🟢
-  - [[TCO](glossary.md#abbr-087)](related-skills/economics-finance/tco.md) 🟢
-  - [[ROI](glossary.md#abbr-073), [NPV](glossary.md#abbr-055), [IRR](glossary.md#abbr-042)](related-skills/economics-finance/roi-npv-irr.md) 🟢
+  - [TCO](related-skills/economics-finance/tco.md) 🟢
+  - [ROI, NPV, IRR](related-skills/economics-finance/roi-npv-irr.md) 🟢
 - [Управление проектами](related-skills/project-management.md) 🟢
 - [Промпт-инжиниринг](related-skills/prompt-engineering.md) 🟢
 
@@ -294,7 +294,7 @@
   - [Ведение переписки](soft-skills/communication/correspondence.md) 🟢
   - [Умение общаться](soft-skills/communication/communication.md) 🟢
   - [Проведение презентаций](soft-skills/communication/presentations.md) 🟢
-  - [[Фасилитация](glossary.md#term-074) встреч](soft-skills/communication/facilitation.md) 🟢
+  - [Фасилитация встреч](soft-skills/communication/facilitation.md) 🟢
   - [Эмоциональный интеллект](soft-skills/communication/emotional-intelligence.md) 🟢
   - [Участие в коммьюнити](soft-skills/communication/community.md) 🟢
   - [Грамотность](soft-skills/communication/literacy.md) 🟢

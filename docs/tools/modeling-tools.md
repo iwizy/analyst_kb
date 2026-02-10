@@ -18,7 +18,7 @@
 
 ### Продвинутый уровень
 
-- использовать diagrams-as-code в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017);
+- использовать diagrams-as-code в [CI/CD](../glossary.md#abbr-017);
 - синхронизировать модели с требованиями и архитектурой;
 - управлять репозиторием архитектурных артефактов на уровне программы.
 
@@ -79,7 +79,7 @@ API --> DB
 3. Построить слой бизнеса, приложений и технологий.
 4. Запустить регулярный review модели.
 
-## [Интеграция](../glossary.md#term-033) с Git и [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017)
+## [Интеграция](../glossary.md#term-033) с Git и [CI/CD](../glossary.md#abbr-017)
 
 - text-as-code (PlantUML/Mermaid): хранить в Git, проверять в PR;
 - visual-файлы (`.drawio`, `.vsdx`): хранить исходники + экспортированные SVG;

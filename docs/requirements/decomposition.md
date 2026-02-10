@@ -244,4 +244,4 @@ endif
 - [Уровни требований](levels/index.md)
 - [Структурирование требований](structuring.md)
 - [Приоритизация требований](management/prioritization.md)
-- [[Трассировка](../glossary.md#term-069) требований](management/traceability.md)
+- [Трассировка требований](management/traceability.md)

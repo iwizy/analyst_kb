@@ -25,7 +25,7 @@
 
 ## Карта техник
 
-- [[SWOT](../../glossary.md#abbr-086)](swot.md)
+- [SWOT](swot.md)
 - [5 Why](five-why.md)
 - [Mind Map](mind-map.md)
 - [Value Stream Mapping](value-stream-mapping.md)

@@ -94,8 +94,8 @@
 ## Кросс-ссылки
 
 - [Тестирование в процессе разработки](../development-process/testing/index.md)
-- [[Валидация](../glossary.md#term-013) требований](../requirements/validation.md)
-- [[Трассировка](../glossary.md#term-069)](../requirements/management/traceability.md)## Источники
+- [Валидация требований](../requirements/validation.md)
+- [Трассировка](../requirements/management/traceability.md)## Источники
 
 - ISTQB Foundation: <https://www.istqb.org/>
 - Google Testing Blog: <https://testing.googleblog.com/>

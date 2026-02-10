@@ -154,7 +154,7 @@ B --> D : детализация реализации
 - [eEPC](eepc.md)
 - [IDEF0](idef0.md)
 - [Archimate](archimate.md)
-- [[Диаграмма](../glossary.md#term-022) Исикавы](fishbone-diagram.md)
+- [Диаграмма Исикавы](fishbone-diagram.md)
 - [Деревья решений](decision-trees.md)
 - [Карта целей](goals-map.md)
 - [Impact Map](impact-map.md)

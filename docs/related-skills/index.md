@@ -5,7 +5,7 @@
 ## Что входит в раздел
 
 - [Анализ данных](data-analysis/index.md)
-- [[UX](../glossary.md#abbr-093)/[UI](../glossary.md#abbr-091) основы](ux-ui-basics.md)
+- [UX/UI основы](ux-ui-basics.md)
 - [Основы тестирования](testing-fundamentals.md)
 - [Управление продуктом](product-management.md)
 - [Основы безопасности](security-basics.md)

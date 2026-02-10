@@ -64,7 +64,7 @@ BUS --> INV : StockReserved
 
 - продукт и домены стабильно растут;
 - несколько команд с независимым backlog;
-- есть зрелые [[CI](../../../glossary.md#abbr-016)/CD](../../../glossary.md#abbr-017), SRE, observability.
+- есть зрелые [CI/CD](../../../glossary.md#abbr-017), SRE, observability.
 
 ## Антипаттерны
 

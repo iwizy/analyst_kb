@@ -20,7 +20,7 @@
 
 - контролировать backward compatibility автоматически;
 - управлять SDK generation и developer portal;
-- выстраивать полноценный API quality gate в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017).
+- выстраивать полноценный API quality gate в [CI/CD](../glossary.md#abbr-017).
 
 ## Категории инструментов
 
@@ -99,9 +99,9 @@ stop
 
 ## Кросс-ссылки
 
-- [Интеграции: Проектирование [API](../glossary.md#abbr-005)](../integrations/api-design/index.md)
-- [Интеграции: [Версионирование](../glossary.md#term-015) API](../integrations/api-design/versioning.md)
-- [Процесс разработки: [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017)](../development-process/product-lifecycle/cicd-basics.md)
+- [Интеграции: Проектирование API](../integrations/api-design/index.md)
+- [Интеграции: Версионирование API](../integrations/api-design/versioning.md)
+- [Процесс разработки: CI/CD](../development-process/product-lifecycle/cicd-basics.md)
 - [Требования: Подходы к спецификации](../requirements/specification-approaches.md)
 
 ## Связь с требованиями и SDLC

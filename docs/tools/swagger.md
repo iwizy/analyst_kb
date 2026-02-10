@@ -83,7 +83,7 @@ paths:
 ## Смежные материалы
 
 - [Postman](postman.md)
-- [[SOAP](../glossary.md#abbr-083) [UI](../glossary.md#abbr-091)](soap-ui.md)
+- [SOAP UI](soap-ui.md)
 - [Проектирование API](../integrations/api-design/index.md)
 - [Документирование API](../integrations/api-design/api-documentation.md)
 

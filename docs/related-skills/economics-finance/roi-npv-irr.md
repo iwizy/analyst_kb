@@ -67,7 +67,7 @@ ROI, NPV и IRR используются вместе: ROI для быстрог
 
 ## Кросс-ссылки
 
-- [[TCO](../../glossary.md#abbr-087)](tco.md)
+- [TCO](tco.md)
 - [Управление рисками](../../common-competencies/estimation-risks/risk-management.md)
 - [Приоритизация](../../requirements/management/prioritization.md)## Источники
 

@@ -74,4 +74,4 @@ PROXY --> R : read-heavy
 ## Переход к подразделам
 
 - [Партицирование](partitioning.md)
-- [[Шардирование](../../glossary.md#term-078)](sharding.md)
+- [Шардирование](sharding.md)

@@ -85,7 +85,7 @@ S --> A
 
 - [Архитектура информационных систем](systems-architecture/index.md)
 - [Подходы к проектированию](design-approaches/index.md)
-- [[Декомпозиция](../glossary.md#term-019) задач](task-decomposition.md)
+- [Декомпозиция задач](task-decomposition.md)
 - [Архитектура предприятия](enterprise-architecture/index.md)
 ## Стандарты и источники
 

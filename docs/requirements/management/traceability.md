@@ -161,4 +161,4 @@ BR ..> BG : value alignment
 
 - [Управление изменениями требований](change-management.md)
 - [Поддержка актуальности требований](relevance.md)
-- [[Валидация](../../glossary.md#term-013) и верификация требований](../validation.md)
+- [Валидация и верификация требований](../validation.md)

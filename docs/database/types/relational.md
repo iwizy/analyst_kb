@@ -15,7 +15,7 @@
 
 ### Продвинутый
 
-- partitioning, online-migrations, [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017) базы, observability, backup/restore drills.
+- partitioning, online-migrations, [CI/CD](../../glossary.md#abbr-017) базы, observability, backup/restore drills.
 
 ## Где реляционные СУБД подходят лучше всего
 
@@ -103,7 +103,7 @@ LIMIT 20;
 - seq scan по крупным таблицам;
 - expensive query fingerprints из `pg_stat_statements`.
 
-## Миграции схемы и [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017) для БД
+## Миграции схемы и [CI/CD](../../glossary.md#abbr-017) для БД
 
 Рекомендуемый процесс:
 

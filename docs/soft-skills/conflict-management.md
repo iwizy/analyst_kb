@@ -69,7 +69,7 @@
 ## Кросс-ссылки
 
 - [Ведение переговоров](communication/negotiation.md)
-- [[Фасилитация](../glossary.md#term-074) встреч](communication/facilitation.md)
+- [Фасилитация встреч](communication/facilitation.md)
 - [Согласование требований](../requirements/management/coordination.md)## Источники
 
 - Thomas-Kilmann Conflict Mode Instrument.

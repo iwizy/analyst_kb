@@ -110,7 +110,7 @@ order by dt;
 
 - [SQL в разделе БД](../../database/sql/index.md)
 - [BI и визуализация](bi-and-visualization.md)
-- [Статистика и [A/B](../../glossary.md#abbr-001)-тесты](statistics-and-ab-tests.md)## Источники
+- [Статистика и A/B-тесты](statistics-and-ab-tests.md)## Источники
 
 - PostgreSQL documentation: <https://www.postgresql.org/docs/>
 - Mode SQL tutorial: <https://mode.com/sql-tutorial/>

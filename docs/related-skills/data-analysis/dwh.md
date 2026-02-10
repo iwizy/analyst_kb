@@ -61,8 +61,8 @@ DM --> BI
 
 ## Кросс-ссылки
 
-- [[ETL](../../glossary.md#abbr-033)/[ELT](../../glossary.md#abbr-030)](etl-elt.md)
-- [[DWH](../../glossary.md#abbr-029) и Data Lake](../../database/dwh-and-data-lake.md)
+- [ETL/ELT](etl-elt.md)
+- [DWH и Data Lake](../../database/dwh-and-data-lake.md)
 - [Data Governance](../../database/data-governance.md)## Источники
 
 - The Data Warehouse Toolkit (Kimball & Ross).

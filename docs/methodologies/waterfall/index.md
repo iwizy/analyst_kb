@@ -112,7 +112,7 @@ stop
 ## Кросс-ссылки
 
 - [Требования: Управление изменениями](../../requirements/management/change-management.md)
-- [Требования: [Трассировка](../../glossary.md#term-069)](../../requirements/management/traceability.md)
+- [Требования: Трассировка](../../requirements/management/traceability.md)
 - [Процесс разработки: Этапы SDLC](../../development-process/product-lifecycle/stages.md)## Источники
 
 - [PMBOK](../../glossary.md#abbr-064) Guide: <https://www.pmi.org/pmbok-guide-standards>

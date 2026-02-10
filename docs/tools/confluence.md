@@ -65,7 +65,7 @@ Confluence - инструмент для ведения командной ба�
 - [Jira](jira.md)
 - [PlantUML](plantuml.md)
 - [Управление требованиями](../requirements/management/index.md)
-- [[Трассировка](../glossary.md#term-069) требований](../requirements/management/traceability.md)
+- [Трассировка требований](../requirements/management/traceability.md)
 
 ## Практическое дополнение
 

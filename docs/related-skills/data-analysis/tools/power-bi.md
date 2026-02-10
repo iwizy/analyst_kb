@@ -41,7 +41,7 @@ Power BI подходит для корпоративной отчетности
 ## Кросс-ссылки
 
 - [BI и визуализация](../bi-and-visualization.md)
-- [[DWH](../../../glossary.md#abbr-029)](../dwh.md)
+- [DWH](../dwh.md)
 - [Tableau](tableau.md)## Источники
 
 - Power BI docs: <https://learn.microsoft.com/power-bi/>

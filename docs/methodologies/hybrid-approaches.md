@@ -94,7 +94,7 @@ stop
 1. Один источник приоритетов: единый backlog.
 2. Единый risk register и decision log.
 3. Явные входы/выходы между governance и delivery.
-4. Обязательные quality gates, интегрированные в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017).
+4. Обязательные quality gates, интегрированные в [CI/CD](../glossary.md#abbr-017).
 5. Регулярный пересмотр модели по метрикам.
 
 ## Пример внедрения (финансовый сектор)

@@ -24,7 +24,7 @@
 - [Электронная подпись](digital-signature.md)
 - [Хеширование и шифрование](hashing-encryption.md)
 - [Способы обеспечения ИБ](security-methods.md)
-- [SSL/[TLS](../../glossary.md#abbr-088)](ssl-tls.md)
+- [SSL/TLS](ssl-tls.md)
 
 ## Практическое дополнение
 

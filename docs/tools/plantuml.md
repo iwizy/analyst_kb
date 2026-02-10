@@ -379,11 +379,11 @@ bar
 
 ## Смежные материалы
 
-- [[UML](../glossary.md#abbr-092)](../notations/uml/index.md)
+- [UML](../notations/uml/index.md)
 - [Sequence](../notations/uml/sequence.md)
 - [Class](../notations/uml/class.md)
-- [[ERD](../glossary.md#abbr-032)](../notations/erd.md)
-- [[C4](../glossary.md#abbr-011)](../notations/c4.md)
+- [ERD](../notations/erd.md)
+- [C4](../notations/c4.md)
 - [Archimate](../notations/archimate.md)
 - [Draw.io](drawio.md)
 

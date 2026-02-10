@@ -140,7 +140,7 @@ where status = 'PAID'
 - [Интеграции](../integrations/index.md)
 - [Паттерны надежности](../integrations/integration-methods/reliability-patterns.md)
 - [Процесс разработки: Мониторинг и логирование](../development-process/feature-support/monitoring-logging.md)
-- [Требования: [Трассировка](../glossary.md#term-069)](../requirements/management/traceability.md)
+- [Требования: Трассировка](../requirements/management/traceability.md)
 
 ## Типичные ошибки
 

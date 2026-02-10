@@ -80,7 +80,7 @@
 ## Кросс-ссылки
 
 - [Ведение переговоров](negotiation.md)
-- [[Фасилитация](../../glossary.md#term-074) встреч](facilitation.md)
+- [Фасилитация встреч](facilitation.md)
 - [Качество требований](../../requirements/quality.md)## Источники
 
 - Nonviolent Communication (Marshall Rosenberg).

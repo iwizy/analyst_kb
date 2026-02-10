@@ -37,7 +37,7 @@ IEEE публикует стандарты по системной и прогр
 ## Смежные материалы
 
 - [Качество требований](../../requirements/quality.md)
-- [[Валидация](../../glossary.md#term-013) и верификация](../../requirements/validation.md)
+- [Валидация и верификация](../../requirements/validation.md)
 - [Архитектура информационных систем](../../architecture/systems-architecture/index.md)
 
 ## Практическое дополнение

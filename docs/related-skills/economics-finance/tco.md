@@ -59,7 +59,7 @@ TCO (Total Cost of Ownership) помогает увидеть полную ст�
 
 ## Кросс-ссылки
 
-- [ROI, NPV, [IRR](../../glossary.md#abbr-042)](roi-npv-irr.md)
+- [ROI, NPV, IRR](roi-npv-irr.md)
 - [Базы данных: выбор и проектирование](../../database/index.md)
 - [Интеграции](../../integrations/index.md)## Источники
 

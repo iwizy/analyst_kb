@@ -76,9 +76,9 @@ pm.test("Response contains order id", function () {
 ## Смежные материалы
 
 - [Swagger](swagger.md)
-- [[SOAP](../glossary.md#abbr-083) [UI](../glossary.md#abbr-091)](soap-ui.md)
+- [SOAP UI](soap-ui.md)
 - [Проектирование API](../integrations/api-design/index.md)
-- [[Идемпотентность](../glossary.md#term-029)](../integrations/api-design/idempotency.md)
+- [Идемпотентность](../integrations/api-design/idempotency.md)
 
 ## Практическое дополнение
 

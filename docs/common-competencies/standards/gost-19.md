@@ -36,7 +36,7 @@
 ## Смежные материалы
 
 - [ГОСТ 34](gost-34.md)
-- [[ISO](../../glossary.md#abbr-043) 12207](iso-12207.md)
+- [ISO 12207](iso-12207.md)
 - [Confluence](../../tools/confluence.md)
 
 ## Практическое дополнение

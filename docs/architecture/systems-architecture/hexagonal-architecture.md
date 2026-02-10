@@ -76,7 +76,7 @@ OP --> OUT
 1. Порт отражает use-case, а не технический CRUD.
 2. Domain Core не импортирует инфраструктурные пакеты.
 3. Для каждого внешнего провайдера — отдельный adapter.
-4. Сверяйтесь с [[DDD](../../glossary.md#abbr-024)](../design-approaches/oop-design/ddd.md).
+4. Сверяйтесь с [DDD](../design-approaches/oop-design/ddd.md).
 ## Стандарты и источники
 
 - Cockburn, Hexagonal Architecture papers.

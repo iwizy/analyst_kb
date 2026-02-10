@@ -27,9 +27,9 @@ Data literacy для системного аналитика это умение
 - [BI и визуализация](bi-and-visualization.md)
 - [Статистика и A/B-тесты](statistics-and-ab-tests.md)
 - [DWH](dwh.md)
-- [ETL/[ELT](../../glossary.md#abbr-030)](etl-elt.md)
-- [[OLTP](../../glossary.md#abbr-060)](oltp.md)
-- [[OLAP](../../glossary.md#abbr-059)](olap.md)
+- [ETL/ELT](etl-elt.md)
+- [OLTP](oltp.md)
+- [OLAP](olap.md)
 - [Data Science](data-science.md)
 - [Инструменты анализа данных](tools/index.md)
 
@@ -75,7 +75,7 @@ E --> H : корректировка
 
 - [Data-driven решения](../../common-competencies/data-driven-decisions.md)
 - [Приоритизация требований](../../requirements/management/prioritization.md)
-- [[DWH](../../glossary.md#abbr-029) и Data Lake](../../database/dwh-and-data-lake.md)## Источники
+- [DWH и Data Lake](../../database/dwh-and-data-lake.md)## Источники
 
 - Lean Analytics.
 - Storytelling with Data.

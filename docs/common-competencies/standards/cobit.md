@@ -35,7 +35,7 @@ COBIT - фреймворк управления и контроля ИТ на у
 
 ## Смежные материалы
 
-- [[ITIL](../../glossary.md#abbr-044)](itil.md)
+- [ITIL](itil.md)
 - [Управление рисками](../estimation-risks/risk-management.md)
 - [Архитектура предприятия](../../architecture/enterprise-architecture/index.md)
 

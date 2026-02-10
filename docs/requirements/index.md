@@ -38,9 +38,9 @@
 Рекомендуемые материалы:
 
 - [Структурирование требований](structuring.md)
-- [[Декомпозиция](../glossary.md#term-019) требований](decomposition.md)
+- [Декомпозиция требований](decomposition.md)
 - [Подходы к спецификации требований](specification-approaches.md)
-- [[Валидация](../glossary.md#term-013) и верификация требований](validation.md)
+- [Валидация и верификация требований](validation.md)
 - [Приоритизация требований](management/prioritization.md)
 - [Поддержка актуальности требований](management/relevance.md)
 
@@ -59,11 +59,11 @@
 Рекомендуемые материалы:
 
 - [Управление требованиями](management/index.md)
-- [[Трассировка](../glossary.md#term-069) требований](management/traceability.md)
+- [Трассировка требований](management/traceability.md)
 - [Управление изменениями требований](management/change-management.md)
 - [Согласование требований](management/coordination.md)
 - [BABOK](../common-competencies/standards/babok.md)
-- [[IEEE](../glossary.md#abbr-041)](../common-competencies/standards/ieee.md)
+- [IEEE](../common-competencies/standards/ieee.md)
 
 ## Карта раздела
 
@@ -396,7 +396,7 @@ UC1 --> WMS : Резерв товара
 - [Сбор требований](elicitation.md)
 - [Подходы к спецификации требований](specification-approaches.md)
 - [Валидация и верификация требований](validation.md)
-- [[Декомпозиция](../glossary.md#term-019) требований](decomposition.md)
+- [Декомпозиция требований](decomposition.md)
 - [Структурирование требований](structuring.md)
 - [Управление требованиями](management/index.md)
 

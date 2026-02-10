@@ -293,4 +293,4 @@ HiPPO (Highest Paid Person's Opinion) как единственный источ
 - [Согласование требований](coordination.md)
 - [Управление изменениями требований](change-management.md)
 - [Поддержка актуальности требований](relevance.md)
-- [[Трассировка](../../glossary.md#term-069) требований](traceability.md)
+- [Трассировка требований](traceability.md)

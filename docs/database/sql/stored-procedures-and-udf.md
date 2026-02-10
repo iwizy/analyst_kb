@@ -16,7 +16,7 @@
 
 ### Продвинутый
 
-- [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017) и rollback/roll-forward для [SQL](../../glossary.md#abbr-084)-артефактов;
+- [CI/CD](../../glossary.md#abbr-017) и rollback/roll-forward для [SQL](../../glossary.md#abbr-084)-артефактов;
 - сравнение платформ PostgreSQL/Oracle/MySQL.
 
 ## Сравнение платформ
@@ -41,7 +41,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-## [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017) практика
+## [CI/CD](../../glossary.md#abbr-017) практика
 
 1. Хранить процедуры в git как versioned migrations.
 2. Проверять синтаксис и unit-tests в CI.

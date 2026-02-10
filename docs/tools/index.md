@@ -26,7 +26,7 @@
 
 - [Инструменты моделирования](modeling-tools.md)
 - [Инструменты управления требованиями](requirements-tools.md)
-- [Инструменты дизайна и тестирования [API](../glossary.md#abbr-005)](api-tools.md)
+- [Инструменты дизайна и тестирования API](api-tools.md)
 - [Инструменты работы с БД](database-tools.md)
 - [Инструменты интеграций](integration-tools.md)
 
@@ -36,7 +36,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Моделирование | [UML](../glossary.md#abbr-092)/[BPMN](../glossary.md#abbr-009)/[C4](../glossary.md#abbr-011)/ArchiMate, визуализация процессов | UML, BPMN, C4, ArchiMate, [ERD](../glossary.md#abbr-032) | PlantUML, Mermaid, draw.io, Lucidchart, Visio, Visual Paradigm, MagicDraw, Enterprise Architect | OSS/free + commercial | обычно EN, частично RU | оба режима | от локальной команды до enterprise |
 | Требования | backlog, спецификации, traceability, audit | User Story, Use Case, [BRD](../glossary.md#abbr-010)/[SRS](../glossary.md#abbr-085), ReqIF | Jira+Confluence, Azure DevOps, DOORS Next, Polarion, Jama, ReqView, Aha!, ClickUp | чаще commercial, есть OSS/гибрид | EN, частично RU | cloud/on-prem | высокий эффект в medium/large программах |
-| API | contract-first, тесты, документация | OpenAPI 3.1, RAML, GraphQL SDL, Protobuf, WSDL | Swagger, Postman/Newman, SoapUI, Apollo Studio, grpcurl, PACT, Dredd | mixed | EN | cloud/on-prem | высокий эффект при [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017) |
+| API | contract-first, тесты, документация | OpenAPI 3.1, RAML, GraphQL SDL, Protobuf, WSDL | Swagger, Postman/Newman, SoapUI, Apollo Studio, grpcurl, PACT, Dredd | mixed | EN | cloud/on-prem | высокий эффект при [CI/CD](../glossary.md#abbr-017) |
 | Базы данных | проектирование схем, миграции, диагностика | [SQL](../glossary.md#abbr-084), NoSQL schema, migration DSL | DataGrip, DBeaver, pgAdmin, Flyway, Liquibase, Mongo Compass, dbdiagram.io | mixed | EN | desktop + cloud | критично для data-driven систем |
 | Интеграции | [ETL](../glossary.md#abbr-033)/[ELT](../glossary.md#abbr-030), брокеры, orchestration, observability | ETL, streaming, EDA, API Mgmt, mesh | Talend, Airflow, dbt, NiFi, Kafka Connect, Kong, Apigee, Kiali, Grafana | mixed | EN | cloud/on-prem | высокий эффект в распределенных системах |
 

@@ -42,7 +42,7 @@ security:
 | Сценарий | Комментарий |
 | --- | --- |
 | OpenAPI/AsyncAPI файл | удобен для человеко-читаемого контракта |
-| [[CI](../../../glossary.md#abbr-016)/CD](../../../glossary.md#abbr-017) pipeline | основной формат в GitOps-практиках |
+| [CI/CD](../../../glossary.md#abbr-017) pipeline | основной формат в GitOps-практиках |
 | Kubernetes манифесты | стандарт де-факто |
 | Бизнес payload [API](../../../glossary.md#abbr-005) | обычно лучше JSON/XML |
 

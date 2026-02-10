@@ -46,7 +46,7 @@ stop
 ## Кросс-ссылки
 
 - [Основы DevOps](../product-lifecycle/devops-basics.md)
-- [Основы [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017)](../product-lifecycle/cicd-basics.md)
+- [Основы CI/CD](../product-lifecycle/cicd-basics.md)
 - [Качество, документация и риски](../quality-documentation-risks.md)
 - [Интеграции: паттерны надежности](../../integrations/integration-methods/reliability-patterns.md)## Стандарты и источники
 

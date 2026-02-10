@@ -320,7 +320,7 @@ checkoutFacade.placeOrder(cmd);
 1. Вводите паттерн только под реальную повторяющуюся проблему.
 2. Фиксируйте решение в [ADR](../../glossary.md#abbr-003) и code review checklist.
 3. Проверяйте, что паттерн не ухудшил читаемость.
-4. Сверяйтесь с [[DDD](../../glossary.md#abbr-024)](../design-approaches/oop-design/ddd.md) и [Hexagonal](hexagonal-architecture.md).
+4. Сверяйтесь с [DDD](../design-approaches/oop-design/ddd.md) и [Hexagonal](hexagonal-architecture.md).
 ## Стандарты и источники
 
 - Gamma et al., *Design Patterns*.

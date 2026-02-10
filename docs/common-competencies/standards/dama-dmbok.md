@@ -40,9 +40,9 @@ Knowledge). Он систематизирует практики качеств�
 
 ## Смежные материалы
 
-- [[MDM](../../glossary.md#abbr-049)](../../database/mdm.md)
+- [MDM](../../database/mdm.md)
 - [Реплицирование данных](../../database/replication.md)
-- [[DWH](../../glossary.md#abbr-029)](../../related-skills/data-analysis/dwh.md)
+- [DWH](../../related-skills/data-analysis/dwh.md)
 
 ## Практическое дополнение
 

@@ -68,7 +68,7 @@ Data Governance задает роли, правила и процессы упр
 ## Практические рекомендации
 
 1. Начинайте с critical data domains и регуляторных отчетов.
-2. Интегрируйте governance checks в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017) и data pipelines.
+2. Интегрируйте governance checks в [CI/CD](../glossary.md#abbr-017) и data pipelines.
 3. Делайте lineage обязательным для tier-1 витрин.
 4. Регулярно проводите review доступа и policy compliance.
 ## Стандарты и источники

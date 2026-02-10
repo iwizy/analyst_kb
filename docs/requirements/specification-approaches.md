@@ -304,7 +304,7 @@ Then система создает документ возврата и отпр
 ## Смежные материалы
 
 - [Критерии качества требований](quality.md)
-- [[Валидация](../glossary.md#term-013) и верификация требований](validation.md)
+- [Валидация и верификация требований](validation.md)
 - [Структурирование требований](structuring.md)
 - [Управление изменениями требований](management/change-management.md)
 - [BABOK](../common-competencies/standards/babok.md)

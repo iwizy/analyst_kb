@@ -59,8 +59,8 @@ Camunda Modeler - инструмент для моделирования [BPMN](
 ## Смежные материалы
 
 - [BPMN](../notations/bpmn.md)
-- [[Декомпозиция](../glossary.md#term-019) задач](../architecture/task-decomposition.md)
-- [[Оркестрация](../glossary.md#term-051) и хореография](../architecture/systems-architecture/orchestration-choreography.md)
+- [Декомпозиция задач](../architecture/task-decomposition.md)
+- [Оркестрация и хореография](../architecture/systems-architecture/orchestration-choreography.md)
 - [Управление изменениями](../requirements/management/change-management.md)
 
 ## Практическое дополнение

@@ -18,7 +18,7 @@
 
 ### Продвинутый уровень
 
-- интегрировать database workflow в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017);
+- интегрировать database workflow в [CI/CD](../glossary.md#abbr-017);
 - контролировать schema drift и rollback;
 - выстраивать мониторинг и DR-процедуры.
 
@@ -86,7 +86,7 @@
 - воспроизводить окружение через versioned `docker compose`;
 - использовать seed scripts и миграции при старте.
 
-## [Интеграция](../glossary.md#term-033) с [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017)
+## [Интеграция](../glossary.md#term-033) с [CI/CD](../glossary.md#abbr-017)
 
 - шаг миграций до application deploy;
 - проверки schema drift;
@@ -110,7 +110,7 @@
 ## Кросс-ссылки
 
 - [Базы данных](../database/index.md)
-- [[Нормализация](../glossary.md#term-048) и денормализация](../database/normalization/index.md)
+- [Нормализация и денормализация](../database/normalization/index.md)
 - [Процесс разработки: DevOps](../development-process/product-lifecycle/devops-basics.md)
 - [Интеграции: Общая БД](../integrations/integration-methods/shared-database.md)
 

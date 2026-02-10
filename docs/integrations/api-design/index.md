@@ -67,12 +67,12 @@ stop
 ## Переход к подразделам
 
 - [Сущности, атрибуты, контракты](entities-attributes-contracts.md)
-- [Документирование [API](../../glossary.md#abbr-005)](api-documentation.md)
-- [[Версионирование](../../glossary.md#term-015) API](versioning.md)
-- [[Обратная совместимость](../../glossary.md#term-049)](backward-compatibility.md)
+- [Документирование API](api-documentation.md)
+- [Версионирование API](versioning.md)
+- [Обратная совместимость](backward-compatibility.md)
 - [Безопасность API](security.md)
 - [Лимиты и квоты](rate-limiting.md)
-- [[Идемпотентность](../../glossary.md#term-029)](idempotency.md)
+- [Идемпотентность](idempotency.md)
 - [API Gateway и Service Mesh](api-gateway-and-service-mesh.md)
 - [Форматы сериализации](serialization-formats/index.md)
 ## Стандарты и источники

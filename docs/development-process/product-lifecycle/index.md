@@ -26,7 +26,7 @@
 
 - [Этапы жизненного цикла ПО](stages.md)
 - [Основы DevOps](devops-basics.md)
-- [Основы [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017)](cicd-basics.md)
+- [Основы CI/CD](cicd-basics.md)
 - [Git](git.md)
 
 ## SDLC как непрерывный цикл

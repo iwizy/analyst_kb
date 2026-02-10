@@ -19,7 +19,7 @@ Git обеспечивает управляемость изменений, пр
 ### Продвинутый уровень
 
 - выстраивать multi-team strategy по релизам;
-- интегрировать Git-процесс с [[CI](../../glossary.md#abbr-016)/CD](../../glossary.md#abbr-017), compliance и audit;
+- интегрировать Git-процесс с [CI/CD](../../glossary.md#abbr-017), compliance и audit;
 - управлять рисками cherry-pick/hotfix/release train.
 
 ## Базовые сущности

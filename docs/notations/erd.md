@@ -126,7 +126,7 @@ entity "order_report" as R {
 ## Связь с другими разделами
 
 - [Проектирование модели данных](../database/data-modeling.md)
-- [[Нормализация](../glossary.md#term-048)](../database/normalization/normal-forms.md)
+- [Нормализация](../database/normalization/normal-forms.md)
 - [Типы БД](../database/types/index.md)
 
 ## Инструменты и форматы

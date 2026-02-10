@@ -145,5 +145,5 @@ Acceptance Criteria:
 
 - [Пользовательские требования](../levels/user.md)
 - [Нефункциональные требования](non-functional.md)
-- [[Декомпозиция](../../glossary.md#term-019) требований](../decomposition.md)
-- [[Трассировка](../../glossary.md#term-069) требований](../management/traceability.md)
+- [Декомпозиция требований](../decomposition.md)
+- [Трассировка требований](../management/traceability.md)

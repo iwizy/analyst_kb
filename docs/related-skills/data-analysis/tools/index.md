@@ -41,7 +41,7 @@
 ## Кросс-ссылки
 
 - [BI и визуализация](../bi-and-visualization.md)
-- [[DWH](../../../glossary.md#abbr-029)](../dwh.md)
+- [DWH](../dwh.md)
 - [Инструменты](../../../tools/index.md)## Источники
 
 - Tableau docs: <https://help.tableau.com/>

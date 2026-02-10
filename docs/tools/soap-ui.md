@@ -65,7 +65,7 @@ SOAP UI - инструмент для тестирования SOAP и [REST](..
 
 - [Swagger](swagger.md)
 - [Postman](postman.md)
-- [[SOAP](../glossary.md#abbr-083)](../integrations/integration-methods/api/soap.md)
+- [SOAP](../integrations/integration-methods/api/soap.md)
 - [XML/XSD](../integrations/api-design/serialization-formats/xml-xsd.md)
 
 ## Практическое дополнение

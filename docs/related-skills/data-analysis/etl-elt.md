@@ -64,7 +64,7 @@ ETL/ELT это практики переноса и преобразования
 ## Кросс-ссылки
 
 - [DWH](dwh.md)
-- [[Репликация](../../glossary.md#term-056) и backup](../../database/replication.md)
+- [Репликация и backup](../../database/replication.md)
 - [Мониторинг и логирование](../../development-process/feature-support/monitoring-logging.md)## Источники
 
 - Fundamentals of Data Engineering.

@@ -28,7 +28,7 @@
 | --- | --- | --- | --- | --- |
 | JSON | текстовый | читаемость, экосистема | объемнее бинарных | public [API](../../../glossary.md#abbr-005), web/mobile |
 | XML/XSD | текстовый | строгая валидация, legacy standard | многословность | enterprise B2B, [SOAP](../../../glossary.md#abbr-083) |
-| YAML | текстовый | удобен для конфигураций | чувствителен к отступам | [[CI](../../../glossary.md#abbr-016)/CD](../../../glossary.md#abbr-017), инфраструктурные манифесты |
+| YAML | текстовый | удобен для конфигураций | чувствителен к отступам | [CI/CD](../../../glossary.md#abbr-017), инфраструктурные манифесты |
 | Protobuf | бинарный | компактный, быстрый, строгий контракт | нечитабелен без tools | gRPC, internal services |
 | Avro | бинарный | сильная schema evolution, Kafka ecosystem | сложнее для прямого чтения | event streaming |
 | Thrift | бинарный/текстовый | multi-language RPC | меньше распространение сейчас | legacy RPC |

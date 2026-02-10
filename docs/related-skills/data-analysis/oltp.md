@@ -49,9 +49,9 @@ OLTP (Online Transaction Processing) это контур оперативных 
 
 ## Кросс-ссылки
 
-- [[OLAP](../../glossary.md#abbr-059)](olap.md)
-- [[Идемпотентность](../../glossary.md#term-029)](../../integrations/api-design/idempotency.md)
-- [[Консистентность](../../glossary.md#term-040) и распределение](../../database/consistency-and-distribution.md)## Источники
+- [OLAP](olap.md)
+- [Идемпотентность](../../integrations/api-design/idempotency.md)
+- [Консистентность и распределение](../../database/consistency-and-distribution.md)## Источники
 
 - Designing Data-Intensive Applications.
 - PostgreSQL transaction docs: <https://www.postgresql.org/docs/current/tutorial-transactions.html>

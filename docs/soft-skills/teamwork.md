@@ -73,7 +73,7 @@
 
 ## Кросс-ссылки
 
-- [[Фасилитация](../glossary.md#term-074) встреч](communication/facilitation.md)
+- [Фасилитация встреч](communication/facilitation.md)
 - [Управление конфликтами](conflict-management.md)
 - [Методологии: Scrum](../methodologies/frameworks/scrum.md)## Источники
 

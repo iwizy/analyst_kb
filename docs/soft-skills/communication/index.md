@@ -27,7 +27,7 @@
 - [Эффективная коммуникация](communication.md)
 - [Ведение переговоров](negotiation.md)
 - [Ведение переписки](correspondence.md)
-- [[Фасилитация](../../glossary.md#term-074) встреч](facilitation.md)
+- [Фасилитация встреч](facilitation.md)
 - [Проведение презентаций](presentations.md)
 - [Эмоциональный интеллект](emotional-intelligence.md)
 - [Участие в коммьюнити](community.md)

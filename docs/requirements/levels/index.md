@@ -106,8 +106,8 @@ SR --> AT
 ## Смежные материалы
 
 - [Структурирование требований](../structuring.md)
-- [[Декомпозиция](../../glossary.md#term-019) требований](../decomposition.md)
-- [[Трассировка](../../glossary.md#term-069) требований](../management/traceability.md)
+- [Декомпозиция требований](../decomposition.md)
+- [Трассировка требований](../management/traceability.md)
 - [Подходы к спецификации требований](../specification-approaches.md)
 
 ## Переход к подразделам

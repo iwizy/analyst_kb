@@ -176,6 +176,6 @@ RS --> AU
 ## Смежные материалы
 
 - [Уровни требований](levels/index.md)
-- [[Декомпозиция](../glossary.md#term-019) требований](decomposition.md)
-- [[Трассировка](../glossary.md#term-069) требований](management/traceability.md)
+- [Декомпозиция требований](decomposition.md)
+- [Трассировка требований](management/traceability.md)
 - [Управление изменениями требований](management/change-management.md)

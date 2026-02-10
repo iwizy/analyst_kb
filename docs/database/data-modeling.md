@@ -113,7 +113,7 @@ Order ||--o{ OrderItem
 1. Для каждого домена храните отдельный data dictionary.
 2. Проводите архитектурное ревью модели перед релизом.
 3. Фиксируйте [ADR](../glossary.md#abbr-003) для ключевых решений по схеме.
-4. Включайте тесты данных в [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017) пайплайн.
+4. Включайте тесты данных в [CI/CD](../glossary.md#abbr-017) пайплайн.
 ## Стандарты и источники
 
 - [ISO](../glossary.md#abbr-043)/IEC 11179 (metadata registries): <https://www.iso.org/standard/35343.html>

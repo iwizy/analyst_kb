@@ -86,7 +86,7 @@ Security для аналитика это не отдельный этап, а �
 ## Кросс-ссылки
 
 - [Безопасность API](../integrations/api-design/security.md)
-- [[Идемпотентность](../glossary.md#term-029)](../integrations/api-design/idempotency.md)
+- [Идемпотентность](../integrations/api-design/idempotency.md)
 - [Информационная безопасность](../architecture/information-security/index.md)
 
 ## Чек-лист для аналитика

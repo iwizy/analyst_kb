@@ -28,7 +28,7 @@
 | --- | --- | --- |
 | [Жизненный цикл ПО](../glossary.md#term-026) | Сквозную модель поставки и контроля | Прозрачные входы/выходы фаз |
 | Agile-практики | Управление ценностью и потоком изменений | Предсказуемый delivery-ритм |
-| DevOps и [[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017) | Ускорение и стабилизацию релизов | Автоматизированный pipeline |
+| DevOps и [CI/CD](../glossary.md#abbr-017) | Ускорение и стабилизацию релизов | Автоматизированный pipeline |
 | Гибридные модели | Баланс гибкости и формального governance | Управляемость в enterprise-среде |
 | Качество/документация/риски | Снижение дефектов и процессных потерь | Контролируемое качество релизов |
 | Сопровождение | [Устойчивость](../glossary.md#term-073) продукта после релиза | Наблюдаемость и улучшения |
@@ -55,7 +55,7 @@ stop
 
 1. Начните с [этапов жизненного цикла ПО](product-lifecycle/stages.md).
 2. Выберите [модель управления потоком работ](agile-processes.md) или [гибридный подход](hybrid-models.md).
-3. Настройте [DevOps-практики](product-lifecycle/devops-basics.md) и [[[CI](../glossary.md#abbr-016)/CD](../glossary.md#abbr-017)](product-lifecycle/cicd-basics.md).
+3. Настройте [DevOps-практики](product-lifecycle/devops-basics.md) и [CI/CD](product-lifecycle/cicd-basics.md).
 4. Зафиксируйте [контур качества, документации и рисков](quality-documentation-risks.md).
 5. Свяжите работу команды с [сопровождением и эксплуатацией](feature-support/index.md).
 
