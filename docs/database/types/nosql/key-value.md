@@ -1,62 +1,97 @@
-# Базы данных типа "ключ-значение"
+# Key-Value базы данных
 
-Key-Value БД дают максимально быстрый доступ по ключу и идеально подходят для сценариев с простым паттерном чтения/записи без сложных join-операций.
+Key-value БД предназначены для ultra-fast доступа по ключу и часто используются как кэш, session store и low-latency state storage.
 
-## Примеры систем
+## Уровни сложности
 
-- Redis
-- Amazon DynamoDB
-- Riak KV
-- Aerospike
-- Etcd
+### Базовый
 
-## Типовые записи
+- операции `GET/SET/DEL`, TTL;
+- выбор key naming strategy.
+
+### Средний
+
+- shard key design, eviction policy, replication lag;
+- idempotency и atomic operations.
+
+### Продвинутый
+
+- multi-region кэширование, hot key mitigation, consistency tuning.
+
+## Сценарии применения
+
+| Сценарий | Пример |
+| --- | --- |
+| Сессии пользователей | `session:{userId}` |
+| Кэш карточек товара | `product:{sku}` |
+| Ограничение rate limits | `ratelimit:{apiKey}:{minute}` |
+| Feature flags | `flag:{service}:{feature}` |
+
+## Примеры данных и операций
 
 ```text
-session:usr:932 -> {"role":"admin","expires_at":"2026-02-09T12:00:00Z"}
-cart:usr:932 -> ["SKU-1","SKU-7"]
-rate_limit:ip:203.0.113.10 -> 143
+SET session:1001 "{...}" EX 1800
+GET session:1001
+INCR ratelimit:client-77:2026-02-10T10:25
+EXPIRE ratelimit:client-77:2026-02-10T10:25 60
 ```
 
-## Пример команд (Redis)
+## Консистентность и целостность
 
-```text
-SET session:usr:932 '{"role":"admin"}' EX 3600
-GET session:usr:932
-HSET user:932 name "Ирина" tier "gold"
-HGETALL user:932
-INCR rate_limit:ip:203.0.113.10
-```
+- большинство KV систем оптимизированы под AP/low latency;
+- read-after-write зависит от топологии и клиента;
+- для критичных операций используйте CAS/transactions/Lua scripts (по возможностям системы).
 
-## Достоинства
+Практики:
 
-- очень низкая задержка (low latency);
-- высокая производительность при read/write по ключу;
-- простая операционная модель;
-- хорошо подходит для кэширования и ephemeral-данных.
+- idempotency key на write path;
+- version token для optimistic updates;
+- fallback на primary transactional store при miss/lag.
 
-## Недостатки
+## Безопасность
 
-- ограниченные возможности сложной фильтрации;
-- отсутствие SQL JOIN;
-- риск усложнения логики на уровне приложения;
-- при неверном key design легко получить hot keys.
+- TLS и auth token/ACL;
+- запрет публичных endpoint без private network;
+- шифрование снапшотов/персистентного слоя;
+- аудит administrative команд.
 
-## Области применения
+## Миграция из SQL
 
-- сессии пользователей;
-- кэш API-ответов;
-- feature flags и конфигурация;
-- счетчики, rate limiting, short-lived state.
+1. Выделить набор "горячих" ключевых чтений.
+2. Сформировать key schema и TTL policy.
+3. Реализовать cache-aside или write-through паттерн.
+4. Подключить метрики hit ratio и stale data incidents.
+
+## Типовые ошибки
+
+- использование KV как primary source of truth для сложных инвариантов;
+- отсутствие TTL и контроля memory growth;
+- hot keys без репликации/распределения;
+- кэш без инвалидации при изменении данных.
 
 ## Практические рекомендации
 
-- проектировать naming convention ключей заранее;
-- использовать TTL для временных данных;
-- контролировать размер значений и cardinality ключей;
-- выносить аналитические запросы в отдельное хранилище.
+1. Фиксируйте key convention и namespace policy.
+2. Для каждого набора ключей задавайте TTL и owner.
+3. Мониторьте cache hit ratio, eviction rate, hot keys.
+4. Для критичных операций храните источник истины в OLTP БД.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Документо-ориентированные базы данных](document.md)
-- [Шардирование](../../scaling/sharding.md)
+1. Какой процент запросов должен обслуживаться из кэша?
+2. Какие ключи самые горячие и как это влияет на latency?
+3. Как обеспечивается инвалидация при изменении первичных данных?
+4. Что происходит при недоступности KV слоя?
+
+## Чек-лист самопроверки
+
+- описана ключевая схема и TTL политика;
+- настроены репликация и failover;
+- реализован fallback сценарий;
+- метрики hit/miss/eviction контролируются;
+- доступ защищен ACL и network policy.
+
+## Стандарты и источники
+
+- Redis docs: <https://redis.io/docs/>
+- DynamoDB docs: <https://docs.aws.amazon.com/amazondynamodb/>

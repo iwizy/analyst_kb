@@ -1,72 +1,110 @@
 # Поисковые базы данных
 
-Поисковые БД используют inverted index и relevance ranking для быстрого полнотекстового поиска и фильтрации по большим массивам документов.
+Поисковые движки строят inverted index и обеспечивают полнотекстовый поиск, релевантность и быстрые фасетные фильтры.
 
-## Примеры систем
+## Уровни сложности
 
-- Elasticsearch
-- OpenSearch
-- Apache Solr
-- Meilisearch
+### Базовый
 
-## Пример документа и запроса (Elasticsearch)
+- индекс, документ, analyzer;
+- базовые запросы `match`, `term`, `range`.
 
-### Индексируемый документ
+### Средний
+
+- проектирование mapping и relevance;
+- стратегия переиндексации без простоя.
+
+### Продвинутый
+
+- CDC-синхронизация с primary DB;
+- ILM/lifecycle и cost optimization.
+
+## Где применять
+
+- каталог товаров и контента;
+- поиск по логам и инцидентам;
+- enterprise knowledge search.
+
+## Пример mapping
 
 ```json
 {
-  "id": "A-102",
-  "title": "Как выбрать базу данных для интернет-магазина",
-  "body": "Сравнение PostgreSQL, MongoDB, Elasticsearch",
-  "tags": ["database", "architecture"],
-  "published_at": "2026-02-09"
+  "mappings": {
+    "properties": {
+      "title": { "type": "text" },
+      "category": { "type": "keyword" },
+      "price": { "type": "double" },
+      "createdAt": { "type": "date" }
+    }
+  }
 }
 ```
 
-### Поисковый запрос
+## Пример запроса
 
 ```json
 {
   "query": {
     "bool": {
-      "must": [{"match": {"body": "postgresql mongodb"}}],
-      "filter": [{"term": {"tags": "database"}}]
+      "must": [{ "match": { "title": "кофемашина" } }],
+      "filter": [
+        { "term": { "category": "home_appliances" } },
+        { "range": { "price": { "lte": 20000 } } }
+      ]
     }
-  },
-  "highlight": {
-    "fields": {"body": {}}
   }
 }
 ```
 
-## Достоинства
+## Консистентность и целостность
 
-- быстрый полнотекстовый поиск;
-- релевантность, stemming, fuzzy matching, ranking;
-- мощные агрегации и faceted navigation;
-- удобный инструмент для log analytics.
+- индекс обычно eventual-consistent относительно primary DB;
+- для критичных операций подтверждение делать через primary store;
+- использовать outbox/CDC для надежного обновления индекса.
 
-## Недостатки
+## Безопасность
 
-- eventual consistency между source DB и поисковым индексом;
-- дополнительный operational контур (индексация, reindex);
-- не замена транзакционной БД для бизнес-критичных записей.
+- RBAC по индексам;
+- field/document-level security для чувствительных данных;
+- аудит поисковых запросов в regulated контуре.
 
-## Области применения
+## Миграция из SQL
 
-- поиск по каталогу и контенту;
-- enterprise search;
-- наблюдаемость и анализ логов;
-- поиск по документам и knowledge-base.
+1. Выделить search use cases и SLA.
+2. Спроектировать индексный документ.
+3. Подключить CDC pipeline.
+4. Внедрить alias-based reindex без простоя.
+
+## Типовые ошибки
+
+- использовать search как source of truth для транзакций;
+- не контролировать ILM и рост storage;
+- отсутствие fallback при рассинхронизации индекса.
 
 ## Практические рекомендации
 
-- использовать search engine как read-model, а не source of truth;
-- проектировать mapping и analyzers до массовой индексации;
-- закладывать процессы backfill/reindex;
-- измерять качество поиска: precision, recall, CTR.
+1. Разделяйте transactional API и search API.
+2. Используйте versioned aliases для безопасных миграций.
+3. Мониторьте relevance и latency отдельно.
+4. Планируйте lifecycle и архивирование индексов.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Документо-ориентированные базы данных](document.md)
-- [DWH и Data Lake](../../dwh-and-data-lake.md)
+1. Какие поисковые сценарии требуют near-real-time индекса?
+2. Как гарантируется доставка изменений в индекс?
+3. Как организован reindex без downtime?
+4. Какие поля должны быть text, а какие keyword?
+
+## Чек-лист самопроверки
+
+- mapping соответствует доменному языку;
+- CDC в индекс работает и мониторится;
+- fallback на primary DB реализован;
+- ILM/retention политики включены;
+- security и audit настроены.
+
+## Стандарты и источники
+
+- OpenSearch docs: <https://opensearch.org/docs/latest/>
+- Elasticsearch docs: <https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html>
+- Apache Lucene: <https://lucene.apache.org/core/>

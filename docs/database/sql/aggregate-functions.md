@@ -1,91 +1,77 @@
 # Агрегатные функции
 
-Агрегатные функции вычисляют сводные значения по набору строк.
+Агрегаты превращают события и транзакции в бизнес-метрики.
 
-## Базовые функции
+## Уровни сложности
 
-- `COUNT` — количество строк/значений;
-- `SUM` — сумма;
-- `AVG` — среднее;
-- `MIN` / `MAX` — минимум/максимум.
-
-## Примеры
-
-### COUNT
+### Базовый
 
 ```sql
-SELECT COUNT(*) AS total_orders
-FROM orders;
-```
-
-```sql
-SELECT COUNT(amount) AS amount_non_null
-FROM orders;
-```
-
-### SUM/AVG
-
-```sql
-SELECT SUM(amount) AS total_revenue,
-       AVG(amount) AS avg_order
+SELECT COUNT(*) AS orders_cnt,
+       SUM(total_amount) AS revenue,
+       AVG(total_amount) AS avg_check
 FROM orders
-WHERE status = 'paid';
+WHERE created_at >= current_date;
 ```
 
-### MIN/MAX
+### Средний
 
 ```sql
-SELECT MIN(amount) AS min_order,
-       MAX(amount) AS max_order
-FROM orders;
-```
-
-## Агрегация с группировкой
-
-```sql
-SELECT customer_id,
-       COUNT(*) AS orders_cnt,
-       SUM(amount) AS revenue
+SELECT date(created_at) AS day,
+       status,
+       COUNT(*) AS cnt,
+       SUM(total_amount) AS amount
 FROM orders
-WHERE status = 'paid'
-GROUP BY customer_id;
+WHERE created_at >= current_date - interval '30 days'
+GROUP BY day, status
+ORDER BY day, status;
 ```
 
-## FILTER (PostgreSQL)
+### Продвинутый
+
+- `FILTER` для условных агрегатов;
+- материализованные представления для тяжелых отчетов;
+- контроль точности (`numeric` vs floating types).
 
 ```sql
 SELECT
-  COUNT(*) FILTER (WHERE status = 'paid')   AS paid_cnt,
-  COUNT(*) FILTER (WHERE status = 'refund') AS refund_cnt
+  COUNT(*) FILTER (WHERE status = 'PAID') AS paid_cnt,
+  COUNT(*) FILTER (WHERE status = 'CANCELED') AS canceled_cnt
 FROM orders;
 ```
 
-## DISTINCT внутри агрегатов
+## Типовые ошибки
 
-```sql
-SELECT COUNT(DISTINCT customer_id) AS unique_customers
-FROM orders;
-```
-
-## NULL и агрегаты
-
-- `COUNT(*)` считает все строки;
-- `COUNT(column)` игнорирует `NULL`;
-- `SUM/AVG/MIN/MAX` игнорируют `NULL`.
-
-## Типичные ошибки
-
-- смешивать агрегаты и неагрегированные поля без `GROUP BY`;
-- использовать `COUNT(*)` вместо `COUNT(DISTINCT ...)` в задачах уникальности;
-- не учитывать влияние `NULL` на результат.
+- смешение разных уровней гранулярности;
+- агрегация без временного фильтра на больших таблицах;
+- неверная интерпретация NULL.
 
 ## Практические рекомендации
 
-- явно задавать бизнес-правила фильтрации (`status`, даты, отмены);
-- для больших отчетов использовать партиционирование/витрины;
-- сравнивать агрегаты с контрольными метриками (data quality).
+1. Всегда фиксируйте grain метрики (день/клиент/заказ).
+2. Добавляйте контрольные сверки на малых выборках.
+3. Используйте pre-aggregation для регулярных BI-отчетов.
 
-## Смежные материалы
+## Упражнения
 
-- [Группировка и сортировка](grouping-sorting.md)
-- [Оконные функции](window-functions.md)
+1. Рассчитайте конверсию `created -> paid` по дням.
+2. Найдите топ-5 категорий по выручке за квартал.
+3. Сравните `CASE` и `FILTER` в одном отчете.
+
+## Контрольные вопросы
+
+1. Какой grain выбран для метрики?
+2. Как обрабатываются NULL и edge-cases?
+3. Нужна ли materialized view для этого отчета?
+
+## Чек-лист самопроверки
+
+- grain метрики определен и документирован;
+- SQL корректно обрабатывает NULL;
+- производительность проверена на реальном объеме;
+- результаты сверены с контрольными расчетами.
+
+## Стандарты и источники
+
+- PostgreSQL aggregate functions: <https://www.postgresql.org/docs/current/functions-aggregate.html>
+- ISO/IEC 9075 SQL: <https://www.iso.org/standard/76583.html>

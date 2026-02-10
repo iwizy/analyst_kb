@@ -1,94 +1,76 @@
 # Оконные функции
 
-Оконные функции выполняют вычисления по набору строк без схлопывания результата, в отличие от `GROUP BY`. Это ключевой инструмент аналитических SQL-запросов.
+Оконные функции позволяют делать аналитические вычисления по строкам без потери детализации.
 
-## Базовый синтаксис
+## Уровни сложности
+
+### Базовый
 
 ```sql
-<window_function>() OVER (
-  [PARTITION BY ...]
-  [ORDER BY ...]
-  [ROWS/RANGE frame]
-)
+SELECT order_id,
+       customer_id,
+       total_amount,
+       ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY created_at DESC) AS rn
+FROM orders;
 ```
 
-## Популярные функции
+### Средний
 
-- `ROW_NUMBER` — уникальная нумерация строк;
-- `RANK`, `DENSE_RANK` — ранжирование;
-- `LAG`, `LEAD` — доступ к соседним строкам;
-- `SUM/AVG/... OVER` — накопительные и скользящие агрегаты.
+```sql
+SELECT date(created_at) AS day,
+       SUM(total_amount) AS day_revenue,
+       SUM(SUM(total_amount)) OVER (ORDER BY date(created_at)) AS cumulative_revenue
+FROM orders
+GROUP BY day
+ORDER BY day;
+```
 
-## Примеры
+### Продвинутый
 
-### Ранжирование по сумме заказов
+- `LAG/LEAD` для анализа изменений;
+- rolling windows для трендов;
+- контроль памяти и сортировок в больших partition.
 
 ```sql
 SELECT customer_id,
-       SUM(amount) AS revenue,
-       DENSE_RANK() OVER (ORDER BY SUM(amount) DESC) AS revenue_rank
-FROM orders
-WHERE status = 'paid'
-GROUP BY customer_id;
+       created_at,
+       total_amount,
+       LAG(total_amount) OVER (PARTITION BY customer_id ORDER BY created_at) AS prev_amount
+FROM orders;
 ```
 
-### Соседние значения (LAG)
+## Типовые ошибки
 
-```sql
-SELECT created_at::date AS day,
-       SUM(amount) AS revenue,
-       LAG(SUM(amount)) OVER (ORDER BY created_at::date) AS prev_revenue
-FROM orders
-WHERE status = 'paid'
-GROUP BY day
-ORDER BY day;
-```
-
-### Накопительный итог
-
-```sql
-SELECT created_at::date AS day,
-       SUM(amount) AS day_revenue,
-       SUM(SUM(amount)) OVER (ORDER BY created_at::date) AS running_total
-FROM orders
-WHERE status = 'paid'
-GROUP BY day
-ORDER BY day;
-```
-
-### Скользящее среднее 7 дней
-
-```sql
-SELECT day,
-       revenue,
-       AVG(revenue) OVER (
-         ORDER BY day
-         ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
-       ) AS ma7
-FROM daily_revenue;
-```
-
-## Где особенно полезны
-
-- дашборды и KPI-аналитика;
-- cohort/retention отчеты;
-- anomaly detection на временных рядах;
-- топы и ранжирование в BI.
-
-## Типичные ошибки
-
-- неверный frame (`ROWS` vs `RANGE`);
-- отсутствие `ORDER BY` в оконной функции, где он обязателен по смыслу;
-- смешение `GROUP BY` и окон без понимания уровня агрегации.
+- неверный `PARTITION BY`;
+- недетерминированный `ORDER BY`;
+- тяжелые окна без pre-aggregation.
 
 ## Практические рекомендации
 
-- сначала фиксировать grain (уровень строки) результата;
-- для читаемости использовать CTE до оконных вычислений;
-- проверять, как окно влияет на память/сортировку в плане запроса;
-- сложные вычисления материализовать в витрины.
+1. Явно фиксируйте бизнес-смысл окна.
+2. Ограничивайте размер partition где возможно.
+3. Для тяжелых отчетов используйте промежуточные витрины.
 
-## Смежные материалы
+## Упражнения
 
-- [Агрегатные функции](aggregate-functions.md)
-- [Группировка и сортировка](grouping-sorting.md)
+1. Рассчитайте rolling 7-day revenue.
+2. Найдите клиентов с ростом чека неделя к неделе.
+3. Добавьте percentile по времени обработки заявки.
+
+## Контрольные вопросы
+
+1. Какое окно соответствует требуемой метрике?
+2. Как влияет размер partition на latency?
+3. Нужна ли materialized view перед окном?
+
+## Чек-лист самопроверки
+
+- partition/order ключи выбраны корректно;
+- результаты проверены на контрольной выборке;
+- производительность подтверждена на целевом объеме;
+- логика окна документирована.
+
+## Стандарты и источники
+
+- PostgreSQL window functions: <https://www.postgresql.org/docs/current/functions-window.html>
+- Oracle analytic functions: <https://docs.oracle.com/en/database/oracle/oracle-database/>

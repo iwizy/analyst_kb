@@ -1,74 +1,114 @@
 # Blockchain и смарт-контракты
 
-Blockchain это тип распределенного реестра, где транзакции объединяются в блоки и связываются хешами. Смарт-контракт это программа в сети, автоматически исполняющая бизнес-правила.
+Смарт-контракты автоматизируют исполнение бизнес-правил в распределенном реестре. Ключевой риск — неизменяемость и цена ошибки в коде.
 
-## Базовые компоненты
+## Уровни сложности
 
-- транзакции;
-- блоки;
-- хеш-связь блоков;
-- консенсус;
-- узлы-валидаторы.
+### Базовый
 
-## Пример смарт-контракта (Solidity)
+- понимать lifecycle контракта: deploy -> invoke -> state change;
+- различать on-chain state и off-chain данные.
+
+### Средний
+
+- писать безопасные контракты и тесты;
+- учитывать gas/cost и ограничения платформы.
+
+### Продвинутый
+
+- проектировать upgradeability и governance;
+- внедрять формальную/полуформальную верификацию.
+
+## Пример Solidity (упрощенный)
 
 ```solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 contract Escrow {
     address public buyer;
     address public seller;
-    uint256 public amount;
+    bool public delivered;
 
-    constructor(address _seller) payable {
+    constructor(address _seller) {
         buyer = msg.sender;
         seller = _seller;
-        amount = msg.value;
     }
 
-    function release() external {
+    function markDelivered() external {
         require(msg.sender == buyer, "only buyer");
-        payable(seller).transfer(amount);
+        delivered = true;
     }
 }
 ```
 
-## Пример сценария
+## Пример Hyperledger Fabric (идея chaincode)
 
-Escrow-сделка:
+```text
+function CreateAsset(ctx, assetId, owner, value)
+  - validate input
+  - check uniqueness
+  - putState(assetId, payload)
+```
 
-1. Покупатель депонирует сумму в контракте.
-1. Продавец отгружает товар.
-1. Покупатель подтверждает получение.
-1. Контракт автоматически переводит средства продавцу.
+## Типовые уязвимости
 
-## Достоинства
+| Уязвимость | Сценарий | Как снижать риск |
+| --- | --- | --- |
+| Reentrancy | повторный вход до завершения изменения состояния | checks-effects-interactions, reentrancy guards |
+| Overflow/Underflow | некорректная арифметика | безопасные версии компилятора, тесты границ |
+| Access control flaw | критичные функции доступны не тем ролям | role-based modifiers, least privilege |
+| Oracle manipulation | внешние данные подменены/задержаны | trusted oracle, multi-source verification |
 
-- автоматизация исполнения договоренностей;
-- прозрачность и проверяемость состояния;
-- уменьшение роли посредников.
+## Интеграция с корпоративным контуром
 
-## Ограничения
+```kroki-plantuml
+@startuml
+left to right direction
+rectangle "Core system" as CORE
+rectangle "Smart contract" as SC
+rectangle "Oracle" as ORA
+rectangle "Off-chain DB" as OFF
 
-- ошибки в коде контракта сложно исправлять;
-- стоимость операций в сети может быть высокой;
-- ограничения throughput и latency;
-- необходимость внешних oracle для off-chain данных.
-
-## Где применять осторожно
-
-- high-frequency транзакции с жесткими SLA;
-- сценарии с требованием мгновенной отмены/редактирования данных;
-- кейсы, где закон требует полного удаления персональных данных.
+CORE --> SC : invoke transaction
+SC --> OFF : store hash/reference
+ORA --> SC : external data
+SC --> CORE : event/receipt
+@enduml
+```
 
 ## Практические рекомендации
 
-- проводить аудит смарт-контрактов перед продом;
-- использовать upgrade pattern осознанно и документированно;
-- отделять on-chain факты и off-chain операционные данные;
-- проектировать процедуру аварийной остановки (circuit breaker).
+1. Минимизируйте бизнес-логику в контракте, сложную логику оставляйте off-chain.
+2. Делайте threat modeling и security audit до релиза.
+3. Используйте testnet/staging и сценарии rollback на уровне интеграции.
+4. Для критичных контрактов добавляйте pause/emergency controls.
 
-## Смежные материалы
+## Типовые ошибки
 
-- [Распределенные реестры](index.md)
-- [Консистентность и распределение](../consistency-and-distribution.md)
+- хранение чувствительных данных в открытой цепочке;
+- отсутствие ограничений доступа к административным функциям;
+- отсутствие тестов на граничные условия и race сценарии;
+- отсутствие версии и процесса обновления контракта.
+
+## Контрольные вопросы
+
+1. Какие бизнес-правила действительно должны быть on-chain?
+2. Как вы защищены от reentrancy и некорректной авторизации?
+3. Как обрабатывается недоступность oracle?
+4. Как управляется upgrade и совместимость версий?
+
+## Чек-лист самопроверки
+
+- выполнен security review контракта;
+- покрыты тестами критичные и граничные сценарии;
+- реализованы access controls и audit logs;
+- определена стратегия upgrade/governance;
+- данные PII хранятся off-chain.
+
+## Стандарты и источники
+
+- Solidity docs: <https://docs.soliditylang.org/>
+- OpenZeppelin contracts: <https://docs.openzeppelin.com/contracts>
+- Hyperledger Fabric docs: <https://hyperledger-fabric.readthedocs.io/>
+- OWASP Smart Contract Top 10: <https://owasp.org/www-project-smart-contract-top-10/>

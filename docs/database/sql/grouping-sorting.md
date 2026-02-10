@@ -1,89 +1,69 @@
 # Группировка и сортировка
 
-`GROUP BY` и `ORDER BY` используются в аналитических и отчетных запросах для сводной статистики и ранжирования результатов.
+`GROUP BY` и `ORDER BY` определяют форму аналитического результата и часто создают основную вычислительную нагрузку.
 
-## GROUP BY
+## Уровни сложности
 
-`GROUP BY` объединяет строки в группы и позволяет применять агрегатные функции.
+### Базовый
 
 ```sql
-SELECT customer_id, SUM(amount) AS total_amount
+SELECT status, COUNT(*)
 FROM orders
-WHERE status = 'paid'
-GROUP BY customer_id;
+GROUP BY status
+ORDER BY status;
 ```
 
-## HAVING
-
-`HAVING` фильтрует уже агрегированные группы.
+### Средний
 
 ```sql
-SELECT customer_id, SUM(amount) AS total_amount
+SELECT customer_id,
+       SUM(total_amount) AS revenue
 FROM orders
+WHERE created_at >= date_trunc('month', now())
 GROUP BY customer_id
-HAVING SUM(amount) > 10000;
+HAVING SUM(total_amount) > 100000
+ORDER BY revenue DESC
+LIMIT 20;
 ```
 
-## ORDER BY
+### Продвинутый
 
-`ORDER BY` задает порядок строк.
+- индексная поддержка `ORDER BY + LIMIT`;
+- контроль memory spill при сортировке;
+- pre-aggregation для тяжелых отчетов.
 
-```sql
-SELECT order_id, amount
-FROM orders
-ORDER BY amount DESC, order_id ASC;
-```
+## Типовые ошибки
 
-## Комбинация GROUP BY + ORDER BY
-
-```sql
-SELECT date_trunc('day', created_at) AS day,
-       COUNT(*) AS orders_cnt,
-       SUM(amount) AS revenue
-FROM orders
-WHERE status = 'paid'
-GROUP BY day
-ORDER BY day;
-```
-
-## Частые сценарии
-
-### Топ клиентов
-
-```sql
-SELECT customer_id, SUM(amount) AS total_amount
-FROM orders
-WHERE status = 'paid'
-GROUP BY customer_id
-ORDER BY total_amount DESC
-LIMIT 10;
-```
-
-### Отчет по категориям
-
-```sql
-SELECT category, COUNT(*) AS products_cnt
-FROM products
-GROUP BY category
-ORDER BY products_cnt DESC;
-```
-
-## Типичные ошибки
-
-- использовать `HAVING` вместо `WHERE` без необходимости;
-- включать в `SELECT` поля, которых нет в `GROUP BY` и агрегатах;
-- сортировать большие выборки без нужных индексов;
-- ожидать deterministic-порядок без `ORDER BY`.
+- сортировка больших наборов без ограничения;
+- группировка по полям без бизнес-смысла;
+- фильтрация после группировки там, где можно до.
 
 ## Практические рекомендации
 
-- фильтровать как можно раньше (`WHERE` до `GROUP BY`);
-- проверять cardinality групп для оценки памяти/времени;
-- использовать материализованные витрины для тяжелых отчетов;
-- для часто используемых сводок готовить pre-aggregation.
+1. Сокращайте входной набор до `GROUP BY`.
+2. Для top-N используйте комбинацию индекс + `LIMIT`.
+3. Проверяйте sort/aggregate шаги в плане.
 
-## Смежные материалы
+## Упражнения
 
-- [Агрегатные функции](aggregate-functions.md)
-- [Оконные функции](window-functions.md)
-- [Индексы](indexes.md)
+1. Постройте рейтинг клиентов по обороту с порогом через `HAVING`.
+2. Сравните план до и после добавления индекса под сортировку.
+3. Найдите случай ненужной сортировки и исправьте запрос.
+
+## Контрольные вопросы
+
+1. Можно ли уменьшить набор данных до группировки?
+2. Где в плане возникает sort spill?
+3. Есть ли индекс, который покрывает сортировку?
+
+## Чек-лист самопроверки
+
+- фильтрация выполняется до группировки где это возможно;
+- сортировка ограничена и обоснована;
+- проверен план выполнения и memory usage;
+- запрос масштабируется при росте данных.
+
+## Стандарты и источники
+
+- PostgreSQL ORDER BY: <https://www.postgresql.org/docs/current/queries-order.html>
+- MySQL ORDER BY optimization: <https://dev.mysql.com/doc/refman/en/order-by-optimization.html>

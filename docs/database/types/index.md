@@ -1,65 +1,111 @@
 # Типы баз данных
 
-Выбор типа БД начинается с нагрузки, консистентности и структуры данных. Нет универсальной "лучшей" СУБД: оптимальный выбор всегда контекстный.
+Раздел помогает выбрать тип БД на основе транзакционных требований, профиля запросов, CAP/PACELC-компромиссов и эксплуатационных ограничений.
 
-## Краткая карта типов
+## Уровни сложности
 
-| Тип | Основная модель | Лучший сценарий | Примеры систем |
+### Базовый
+
+- различать реляционные, NoSQL, NewSQL, ledger и multi-model;
+- выбирать тип БД по доминирующему сценарию доступа.
+
+### Средний
+
+- оценивать trade-off между консистентностью, доступностью и задержкой;
+- проектировать связку нескольких хранилищ под разные нагрузки.
+
+### Продвинутый
+
+- комбинировать distributed SQL, HTAP, search и vector storage;
+- управлять стоимостью и сложностью multi-database архитектур.
+
+## Расширенная карта типов
+
+| Класс | Подтип | Сильные стороны | Ограничения | Примеры |
+| --- | --- | --- | --- | --- |
+| Реляционные | OLTP SQL | ACID, SQL, строгая целостность | сложнее scale-out | PostgreSQL, MySQL, Oracle |
+| NewSQL | Distributed SQL | SQL + горизонтальное масштабирование + согласованность | сложнее эксплуатация | Spanner, CockroachDB, YugabyteDB, TiDB |
+| NewSQL | HTAP | совмещение транзакций и near-real-time аналитики | высокая стоимость и сложность модели | SingleStore, TiDB HTAP |
+| NoSQL | Document | гибкая схема, быстрое развитие домена | сложные аналитические join-сценарии | MongoDB, Couchbase |
+| NoSQL | Key-value | очень низкая задержка | ограниченные ad-hoc запросы | Redis, DynamoDB |
+| NoSQL | Wide-column | высокая write throughput | сложнее модель и запросы | Cassandra, ScyllaDB |
+| NoSQL | Time-series | эффективное хранение метрик и событий | узкая специализация | InfluxDB, TimescaleDB |
+| NoSQL | Graph | естественная модель связей | не универсальна для OLTP отчетов | Neo4j, JanusGraph |
+| NoSQL | Search | полнотекст, релевантность, агрегации | не замена primary transactional store | OpenSearch, Elasticsearch |
+| Multi-model | Document + Graph + KV | меньше интеграций между отдельными БД | vendor lock-in, сложнее тюнинг | ArangoDB, Cosmos DB |
+| Специализированные | Vector DB | similarity search для AI и RAG | ограниченная транзакционность | Milvus, Weaviate, pgvector |
+
+## Критерии выбора
+
+| Критерий | Вопрос | Рекомендуемый фокус |
+| --- | --- | --- |
+| Транзакции | Нужны ли multi-row/multi-table ACID инварианты? | Реляционная / distributed SQL |
+| Консистентность | Допустима ли eventual consistency? | NoSQL для non-critical reads |
+| Скорость записи | Есть ли постоянный high write ingestion? | Wide-column / TSDB / log storage |
+| Сложность запросов | Нужны сложные join/window/CTE? | SQL-системы |
+| CAP-компромисс | Что важнее при partition: C или A? | CP для финтеха, AP для feed/caching |
+| Latency | Какие p95/p99 цели? | KV/cache/search near users |
+| Операционная зрелость | Есть ли экспертиза поддержки кластера? | выбирать manageable stack |
+
+## PACELC-ориентированный выбор
+
+| Профиль | При partition | Без partition | Типовые системы |
 | --- | --- | --- | --- |
-| Реляционные | таблицы + SQL | OLTP, строгая консистентность, сложные JOIN | PostgreSQL, MySQL, Oracle, SQL Server |
-| NoSQL документные | JSON/BSON документы | гибкая схема, каталоги, профили | MongoDB, Couchbase |
-| NoSQL key-value | ключ -> значение | кэш, сессии, ultra-low latency | Redis, DynamoDB, Riak |
-| NoSQL колоночные | wide-column | high write + горизонтальный масштаб | Cassandra, HBase, ScyllaDB |
-| NoSQL временных рядов | метрика + timestamp | мониторинг, IoT, телеметрия | InfluxDB, TimescaleDB, Prometheus |
-| NoSQL графовые | узлы и связи | графы отношений, рекомендации, fraud graph | Neo4j, JanusGraph, Neptune |
-| NoSQL поисковые | inverted index | полнотекстовый поиск и релевантность | Elasticsearch, OpenSearch, Solr |
-| NewSQL | SQL + распределенность | транзакционный scale-out | CockroachDB, TiDB, YugabyteDB, Spanner |
-| Распределенные реестры | неизменяемый ledger | multi-party trust, audit trail | Hyperledger Fabric, Corda, Ethereum |
+| CP/EL (консистентность и latency не критична) | C > A | C > L | Spanner, CockroachDB |
+| AP/EL (доступность и write throughput) | A > C | L > C | Cassandra, DynamoDB |
+| Гибридный | по доменам отдельно | по SLA слоя | Polyglot architecture |
 
-## Визуальная схема выбора
+## Паттерны сочетания хранилищ
 
-```kroki-plantuml
-@startuml
-start
-:Нужна строгая транзакционность?;
-if (Да) then (Да)
-  :SQL и сложные JOIN критичны?;
-  if (Да) then (Да)
-    :Реляционная или NewSQL;
-  else (Нет)
-    :Оценить специализированные OLTP движки;
-  endif
-else (Нет)
-  :Доминирует конкретный паттерн данных?;
-  if (Документы) then (Да)
-    :Документо-ориентированная БД;
-  elseif (Ключ-значение) then (Да)
-    :Key-Value;
-  elseif (Временные ряды) then (Да)
-    :TSDB;
-  elseif (Граф связей) then (Да)
-    :Графовая БД;
-  elseif (Полнотекстовый поиск) then (Да)
-    :Поисковая БД;
-  else (Нет)
-    :Оценить колоночную/гибридную архитектуру;
-  endif
-endif
-stop
-@enduml
-```
+| Паттерн | Состав | Сценарий |
+| --- | --- | --- |
+| Transaction + Cache | PostgreSQL + Redis | e-commerce checkout + быстрые карточки |
+| Transaction + Search | MySQL/PostgreSQL + OpenSearch | каталоги и полнотекст |
+| SQL + TSDB | PostgreSQL + TimescaleDB | IoT platform (события + мастер-данные) |
+| OLTP + DWH | OLTP DB + ClickHouse/Redshift | управленческая аналитика и BI |
+| Core DB + Ledger | SQL + Hyperledger | аудитируемые бизнес-процессы в госсекторе |
 
-## Практические правила
+## Типовые ошибки
 
-- сначала определяйте критичные инварианты данных, потом тип БД;
-- разделяйте operational storage и аналитическое хранилище;
-- не пытайтесь закрыть все сценарии одной СУБД;
-- проектируйте миграционный путь заранее (особенно при росте нагрузки).
+- выбор NoSQL без явной модели целостности;
+- игнорирование read/write ratio и hot partitions;
+- попытка выполнять BI-нагрузку на production OLTP;
+- отсутствие ownership и SLA по каждой БД в polyglot-архитектуре.
+
+## Практические рекомендации
+
+1. Декомпозируйте данные по bounded contexts и паттернам доступа.
+2. Для каждого storage определите SLO, владельца и границы ответственности.
+3. Документируйте CAP/PACELC-компромиссы в архитектурных решениях.
+4. Добавьте сценарии миграции и graceful degradation заранее.
+
+## Контрольные вопросы
+
+1. Какие требования к консистентности у каждого бизнес-процесса?
+2. Какие запросы определяют модель хранения и индексы?
+3. Какие компромиссы по latency вы готовы принять без partition?
+4. Где выгоднее multi-model, а где раздельные специализированные БД?
+
+## Чек-лист самопроверки
+
+- выбран тип БД под профиль данных и SLA;
+- описан CAP/PACELC-компромисс;
+- есть план масштабирования и эксплуатации;
+- учтен риск vendor lock-in и migration strategy;
+- зафиксированы источники и стандарты.
+
+## Стандарты и источники
+
+- CAP paper: <https://dl.acm.org/doi/10.1145/564585.564601>
+- PACELC: <https://ieeexplore.ieee.org/document/6133253>
+- PostgreSQL docs: <https://www.postgresql.org/docs/>
+- MongoDB docs: <https://www.mongodb.com/docs/>
+- CockroachDB architecture: <https://www.cockroachlabs.com/docs/stable/architecture/overview>
+- YugabyteDB architecture: <https://docs.yugabyte.com/>
 
 ## Переход к подразделам
 
 - [Реляционные базы данных](relational.md)
 - [NoSQL базы данных](nosql/index.md)
 - [NewSQL базы данных](newsql.md)
-- [Распределенные реестры](../distributed-ledgers/index.md)
 - [Консистентность и распределение](../consistency-and-distribution.md)

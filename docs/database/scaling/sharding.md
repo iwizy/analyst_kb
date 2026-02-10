@@ -1,69 +1,106 @@
 # Шардирование
 
-Шардирование делит данные горизонтально между несколькими узлами (shards), чтобы масштабировать хранилище и throughput по мере роста системы.
+Шардирование распределяет данные по нескольким независимым узлам, снимая пределы одного сервера и повышая масштабируемость.
 
-## Когда применять
+## Уровни сложности
 
-- объем данных и write-нагрузка превысили предел одного кластера;
-- vertical scaling перестал быть экономически оправдан;
-- нужны geo-distribution и локальность данных.
+### Базовый
 
-## Стратегии шардирования
+- shard key и routing;
+- типы шардирования: range/hash/directory.
 
-- Hash-based: равномерное распределение по хэшу ключа;
-- Range-based: диапазоны значений;
-- Geo-based: по региону/локальности;
-- Directory-based: маршрутизация через lookup-таблицу.
+### Средний
 
-## Пример маршрутизации
+- shard-aware clients;
+- middleware routing (Citus, Vitess, ProxySQL).
 
-```text
-shard = hash(customer_id) % N
-```
+### Продвинутый
 
-## Диаграмма
+- online rebalancing и data migration;
+- logical sharding и hybrid-архитектуры.
+
+## Архитектурные варианты
+
+| Подход | Преимущества | Ограничения |
+| --- | --- | --- |
+| Client-side sharding | полный контроль приложения | сложнее поддержка и изменения |
+| Middleware sharding | централизованный routing | доп. компонент и отказные сценарии |
+| Managed sharding | меньше операционной нагрузки | vendor lock-in |
+
+## Middleware примеры
+
+- Citus (PostgreSQL distributed extension);
+- Vitess (MySQL sharding layer);
+- ProxySQL (routing/pooling/read-write split для MySQL).
+
+## Схема shard-aware routing
 
 ```kroki-plantuml
 @startuml
-node Router
-database Shard1
-database Shard2
-database Shard3
+left to right direction
+rectangle "Service" as S
+rectangle "Shard router" as R
+database "Shard 1" as D1
+database "Shard 2" as D2
+database "Shard 3" as D3
 
-Router --> Shard1 : key mod 3 = 0
-Router --> Shard2 : key mod 3 = 1
-Router --> Shard3 : key mod 3 = 2
+S --> R : tenant_id / shard_key
+R --> D1
+R --> D2
+R --> D3
 @enduml
 ```
 
-## Достоинства
+## Rebalancing и миграции
 
-- линейный рост емкости и пропускной способности;
-- снижение нагрузки на каждый узел;
-- возможность изолировать сбои на уровне шарда.
+1. Выявить hot shards и целевое перераспределение.
+2. Выполнить incremental copy + dual-write.
+3. Провести consistency check по контрольным суммам.
+4. Переключить routing и завершить cutover.
 
-## Недостатки
+## Hybrid-подходы
 
-- сложная маршрутизация и rebalance;
-- cross-shard join и транзакции становятся дорогими;
-- риск hot shard при плохом ключе;
-- выше операционная сложность.
+- logical sharding по tenant/domain;
+- shared-nothing для write-heavy контуров;
+- shared-disk/replica для аналитических read-path.
+
+## Autoscaling и serverless
+
+- serverless БД подходят для переменной нагрузки;
+- важны контроль cold start, cost model и лимиты транзакций;
+- для stateful high-throughput систем часто нужен управляемый, но не полностью serverless режим.
 
 ## Типовые ошибки
 
-- выбор монотонного shard key (например, auto-increment id без salt);
-- отсутствие стратегии миграции при изменении числа шардов;
-- игнорирование cross-shard запросов в аналитике и отчётах.
+- выбор shard key с высокой вероятностью hot spots;
+- cross-shard joins в критичном OLTP пути;
+- отсутствие стратегии resharding;
+- недооценка operational tooling и observability.
 
 ## Практические рекомендации
 
-- проектировать shard key от распределения нагрузки, а не только от удобства;
-- добавлять observability: per-shard QPS, p95, storage, lag;
-- закладывать процессы rebalancing и backfill;
-- выносить глобальную аналитику в DWH/Data Lake.
+1. Тестируйте распределение ключей на исторических данных.
+2. Ограничьте cross-shard операции и сделайте их асинхронными.
+3. Подготовьте план resharding до того, как он понадобится.
+4. Мониторьте shard skew, p99 latency и rebalance backlog.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Партицирование](partitioning.md)
-- [DWH и Data Lake](../dwh-and-data-lake.md)
-- [Консистентность и распределение](../consistency-and-distribution.md)
+1. Какой shard key выбран и почему?
+2. Сколько cross-shard операций допускается в critical path?
+3. Как проходит миграция данных между шардами без downtime?
+4. Какие метрики подтверждают равномерность распределения?
+
+## Чек-лист самопроверки
+
+- shard key валидирован на реальных данных;
+- routing стратегия задокументирована;
+- есть runbook на rebalance/resharding;
+- cross-shard ограничения формализованы;
+- observability по shard health настроена.
+
+## Стандарты и источники
+
+- Citus docs: <https://docs.citusdata.com/>
+- Vitess docs: <https://vitess.io/docs/>
+- ProxySQL docs: <https://proxysql.com/documentation/>

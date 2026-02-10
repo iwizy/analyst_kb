@@ -1,94 +1,88 @@
 # Селекты
 
-`SELECT` это базовый инструмент извлечения данных в SQL. Качество `SELECT`-запросов напрямую влияет на производительность, корректность аналитики и стабильность API.
+`SELECT` — базовая операция анализа данных и проверки бизнес-гипотез.
 
-## Базовый шаблон
+## Уровни сложности
+
+### Базовый
 
 ```sql
-SELECT <columns>
-FROM <table_or_cte>
-[JOIN ...]
-[WHERE ...]
-[GROUP BY ...]
-[HAVING ...]
-[ORDER BY ...]
-[LIMIT ... OFFSET ...];
+SELECT order_id, customer_id, total_amount
+FROM orders
+WHERE status = 'PAID';
 ```
 
-## Практические паттерны
+Правила:
 
-### 1. Проекция только нужных колонок
+- избегать `SELECT *` в production;
+- выбирать только нужные поля;
+- ограничивать выдачу (`LIMIT`) в интерактивных сценариях.
 
-```sql
-SELECT order_id, customer_id, amount
-FROM orders
-WHERE created_at >= now() - interval '30 days';
-```
-
-Почему: меньше данных читается и передается.
-
-### 2. Фильтрация в `WHERE`
+### Средний
 
 ```sql
-SELECT customer_id, amount
-FROM orders
-WHERE status = 'paid'
-  AND amount > 1000;
-```
-
-### 3. Сортировка и ограничение
-
-```sql
-SELECT order_id, created_at, amount
-FROM orders
-ORDER BY created_at DESC
+SELECT o.order_id, c.email, o.total_amount
+FROM orders o
+JOIN customers c ON c.customer_id = o.customer_id
+WHERE o.created_at >= now() - interval '30 days'
+  AND o.status IN ('PAID', 'SHIPPED')
+ORDER BY o.created_at DESC
 LIMIT 100;
 ```
 
-### 4. Соединения таблиц
+### Продвинутый
+
+Оптимизация IO:
+
+- фильтровать до join (pushdown);
+- не использовать функции над индексируемыми полями;
+- применять keyset pagination на больших наборах.
+
+Плохой паттерн:
 
 ```sql
-SELECT o.order_id, c.full_name, o.amount
-FROM orders o
-JOIN customers c ON c.customer_id = o.customer_id
-WHERE o.status = 'paid';
+WHERE date(created_at) = current_date
 ```
 
-### 5. Пагинация
+Лучше:
 
 ```sql
-SELECT order_id, created_at
-FROM orders
-ORDER BY created_at DESC
-LIMIT 50 OFFSET 100;
+WHERE created_at >= current_date
+  AND created_at < current_date + interval '1 day'
 ```
 
-Для больших таблиц лучше keyset pagination:
+## Типовые ошибки
 
-```sql
-SELECT order_id, created_at
-FROM orders
-WHERE (created_at, order_id) < ('2026-02-09 12:00:00+00', 120003)
-ORDER BY created_at DESC, order_id DESC
-LIMIT 50;
-```
-
-## Типичные ошибки
-
-- `SELECT *` в продовых запросах;
-- отсутствие `ORDER BY` при `LIMIT`;
-- неявные cartesian join;
-- фильтрация по неиндексированным полям на больших таблицах.
+- cartesian join;
+- offset pagination на больших таблицах;
+- фильтры по неиндексируемым выражениям.
 
 ## Практические рекомендации
 
-- писать `SELECT` от реального use-case, а не "на всякий случай";
-- проверять план выполнения через `EXPLAIN`;
-- для горячих запросов держать контракт колонок стабильным;
-- измерять p95/p99 запросов, а не только среднее время.
+1. Проверяйте `EXPLAIN ANALYZE` для ключевых select-запросов.
+2. Используйте read replica для тяжелых read-only сценариев.
+3. Фиксируйте SQL-контракты для критичных API/отчетов.
 
-## Смежные материалы
+## Упражнения
 
-- [Индексы](indexes.md)
-- [Группировка и сортировка](grouping-sorting.md)
-- [Вложенные запросы](subqueries.md)
+1. Напишите запрос последних 50 заказов клиента.
+2. Перепишите запрос с `date(column)` в индекс-дружелюбный.
+3. Реализуйте keyset pagination по `created_at, order_id`.
+
+## Контрольные вопросы
+
+1. Какие поля запроса должны быть покрыты индексом?
+2. Где в плане наибольший cost и почему?
+3. Нужна ли для этого запроса read replica?
+
+## Чек-лист самопроверки
+
+- возвращаются только нужные колонки;
+- условия фильтрации и сортировки индекс-дружелюбны;
+- добавлены ограничения объема выдачи;
+- план выполнения проверен на реальном объеме.
+
+## Стандарты и источники
+
+- PostgreSQL SELECT: <https://www.postgresql.org/docs/current/sql-select.html>
+- MySQL SELECT: <https://dev.mysql.com/doc/refman/en/select.html>

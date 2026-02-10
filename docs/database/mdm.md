@@ -1,95 +1,101 @@
 # Master Data Management (MDM)
 
-MDM это управление мастер-данными (клиенты, продукты, контрагенты, локации, сотрудники) для формирования единого доверенного представления сущностей в компании.
+MDM обеспечивает единые, согласованные и управляемые мастер-данные (клиент, продукт, контрагент) для всех систем компании.
 
-## Зачем нужен MDM
+## Уровни сложности
 
-- устранить дубли и рассинхронизацию справочных данных;
-- создать single source of truth для ключевых сущностей;
-- повысить качество интеграций, аналитики и отчетности;
-- снизить операционные и регуляторные риски.
+### Базовый
 
-## Типовые домены мастер-данных
+- понимать цель Golden Record;
+- различать модели внедрения MDM.
 
-- Customer
-- Product
-- Supplier/Partner
-- Location
-- Employee
+### Средний
 
-## Архитектурные модели MDM
+- проектировать matching, survivorship и stewardship процессы;
+- выбирать инструмент MDM под контур компании.
 
-- Registry: хранится ссылка и "золотой" индекс, сами записи в источниках;
-- Consolidation: сбор и очистка в центральном хранилище;
-- Coexistence: bidirectional синхронизация между MDM и источниками;
-- Centralized: master-запись живет в MDM как первичном контуре.
+### Продвинутый
 
-## Поток Golden Record
+- строить MDM как платформенную capability с KPI качества;
+- синхронизировать MDM с Data Governance и операционными системами.
 
-```kroki-plantuml
-@startuml
-left to right direction
-rectangle "CRM" as CRM
-rectangle "ERP" as ERP
-rectangle "E-commerce" as ECOM
-rectangle "MDM Hub\nMatching + Survivorship" as MDM
-rectangle "Golden Record" as GOLD
+## Модели MDM
 
-CRM --> MDM
-ERP --> MDM
-ECOM --> MDM
-MDM --> GOLD
-GOLD --> CRM : Sync back
-GOLD --> ERP : Sync back
-GOLD --> ECOM : Sync back
-@enduml
-```
+| Модель | Описание | Когда подходит |
+| --- | --- | --- |
+| Registry | ссылки на записи из источников, без полного копирования | быстрый старт |
+| Consolidation | собирает и очищает данные в hub | аналитика и качество |
+| Coexistence | hub + обратная синхронизация в источники | поэтапная трансформация |
+| Centralized | MDM как основной источник master-data | зрелый enterprise контур |
 
-## Ключевые процессы
+## Этапы внедрения
 
-1. Profiling: оценка качества источников.
-1. Standardization: нормализация форматов.
-1. Matching: поиск дублей.
-1. Survivorship: правило выбора "победивших" атрибутов.
-1. Governance: владельцы, approval workflow, audit trail.
+1. Выбрать критичные домены (`Customer`, `Product`, `Supplier`).
+2. Определить источники и правила доверия.
+3. Настроить matching и survivorship.
+4. Внедрить stewardship workflow.
+5. Запустить синхронизацию Golden Record в потребители.
 
-## Пример правил survivorship
+## Data matching и survivorship
 
-- `phone`: брать самое свежее подтвержденное значение;
-- `legal_name`: приоритет источника ERP;
-- `email`: подтвержденный контакт из CRM.
+| Метод | Пример |
+| --- | --- |
+| Exact match | ИНН/регистрационный номер |
+| Fuzzy match | похожие ФИО, адреса, email |
+| Probabilistic | итоговый score из нескольких полей |
 
-## Пример результата
+Пример survivorship:
 
-До MDM:
+- email брать из CRM, если `verified=true`;
+- телефон брать из billing, если обновлен не старше 30 дней;
+- конфликт адреса отправлять в stewardship queue.
 
-- один клиент в CRM, ERP и support-системе с разными ID и адресами.
+## Инструменты
 
-После MDM:
+- Informatica MDM
+- Talend Data Fabric
+- Semarchy xDM
+- Ataccama ONE
 
-- единый `customer_master_id`, согласованные атрибуты, прозрачная история изменений.
+## KPI качества MDM
 
-## Достоинства
+- duplicate rate;
+- completeness score;
+- Golden Record sync latency;
+- stewardship cycle time;
+- data issue reopen rate.
 
-- высокая консистентность критичных справочников;
-- лучшее качество аналитики и сегментации;
-- меньше интеграционных ошибок;
-- ускорение процессов onboarding и обслуживания.
+## Типовые ошибки
 
-## Ограничения
-
-- сложность внедрения и change management;
-- необходимость участия бизнеса (не только IT);
-- затраты на data quality и governance-процессы.
+- попытка покрыть все домены с первого релиза;
+- отсутствие ownership и stewardship ролей;
+- неформализованные survivorship rules;
+- отсутствие интеграции MDM с operational workflow.
 
 ## Практические рекомендации
 
-- начинать с 1-2 бизнес-критичных доменов;
-- определить Data Owner и Data Steward до старта проекта;
-- внедрять MDM вместе с Data Governance, а не отдельно;
-- измерять эффект через KPI качества данных и time-to-resolution инцидентов.
+1. Начинайте с 1-2 доменов с наибольшим бизнес-эффектом.
+2. Фиксируйте правила matching/survivorship как versioned policies.
+3. Внедрите stewardship SLA и KPI.
+4. Интегрируйте MDM события через CDC/event bus.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Data Governance](data-governance.md)
-- [DWH и Data Lake](dwh-and-data-lake.md)
+1. Какие домены master-data приносят максимальную бизнес-ценность?
+2. Кто владелец качества данных по каждому домену?
+3. Как измеряется качество Golden Record?
+4. Как решаются конфликты между источниками?
+
+## Чек-лист самопроверки
+
+- выбрана и обоснована модель MDM;
+- matching и survivorship формализованы;
+- роли stewardship назначены;
+- настроена синхронизация Golden Record;
+- KPI качества данных измеряются регулярно.
+
+## Стандарты и источники
+
+- DAMA-DMBOK: <https://www.dama.org/content/body-knowledge>
+- Informatica MDM docs: <https://docs.informatica.com/master-data-management.html>
+- Semarchy docs: <https://www.semarchy.com/doc/>

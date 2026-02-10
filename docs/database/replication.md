@@ -1,73 +1,106 @@
 # Реплицирование данных
 
-Репликация это копирование изменений между узлами БД для отказоустойчивости, масштабирования чтения и геораспределения.
+Репликация повышает доступность и масштабируемость чтения, но требует контроля lag, failover и консистентности на уровне сценариев.
 
-## Зачем нужна репликация
+## Уровни сложности
 
-- повысить доступность при сбое primary;
-- масштабировать read-нагрузку;
-- размещать данные ближе к пользователям;
-- ускорять backup и отчетные нагрузки на вторичных узлах.
+### Базовый
 
-## Типы репликации
+- primary/replica топология;
+- sync vs async replication.
 
-### Синхронная
+### Средний
 
-Запись подтверждается после фиксации на primary и реплике.
+- physical vs logical replication;
+- read/write splitting и sticky sessions.
 
-Плюс: строгая консистентность.
+### Продвинутый
 
-Минус: выше задержка записи.
+- failover/switchover automation;
+- CDC pipelines (Debezium/Kafka Connect/GoldenGate).
 
-### Асинхронная
+## Механизмы репликации
 
-Primary подтверждает запись сразу, реплики догоняют позже.
+| Механизм | Описание | Когда применять |
+| --- | --- | --- |
+| Physical replication | копирование WAL/binlog на уровне страниц/блоков | HA и read replicas |
+| Logical replication | репликация таблиц/строк/событий | selective replication, интеграции |
+| Statement-based (MySQL) | передача SQL-операций | ограниченно, есть риски недетерминизма |
+| Row-based (MySQL) | передача изменений строк | чаще предпочтительно для надежности |
+| Streaming replication | непрерывная передача журнала | near-real-time replica |
 
-Плюс: высокая производительность.
+## Failover и Switchover
 
-Минус: возможен replication lag и временная рассинхронизация.
+| Операция | Смысл |
+| --- | --- |
+| Failover | аварийное переключение на replica |
+| Switchover | плановое переключение ролей |
 
-### Полусинхронная
+Практика:
 
-Компромисс: подтверждение после фиксации на части реплик.
+- автоматизация через orchestrator/patroni и health checks;
+- обязательные drills и измерение recovery time.
 
-## Топологии
+## Read/Write splitting
 
-- primary-replica;
-- multi-primary (реже, сложнее по конфликтам);
-- cascading replication.
+- write всегда в primary;
+- read-heavy запросы — в replicas;
+- для read-after-write использовать sticky routing или primary read.
 
-## Пример сценария
+## CDC (Change Data Capture)
 
-Интернет-магазин:
+Типовой стек:
 
-- primary обрабатывает покупки и оплаты;
-- read-replica обслуживают каталог и историю заказов;
-- аналитика читает данные из отдельной replica/CDC-пайплайна.
+- Debezium + Kafka Connect + Kafka;
+- Oracle GoldenGate;
+- native logical decoding.
 
-## Метрики, которые нужно мониторить
+Применение:
 
-- replication lag (seconds);
-- apply rate и backlog WAL/binlog;
-- failover time;
-- read-after-write consistency для клиентских сценариев.
+- синхронизация в DWH/search/cache;
+- event-driven интеграции;
+- аудит и replay.
 
-## Типичные ошибки
+## Метрики мониторинга
 
-- использовать replica для критичного read-after-write без sticky logic;
-- не тестировать failover в регулярном режиме;
-- не контролировать lag под пиковыми нагрузками;
-- считать репликацию заменой полноценного backup.
+- replication lag;
+- replica apply rate;
+- failover success rate;
+- write availability during failover;
+- read-after-write consistency violations.
+
+## Типовые ошибки
+
+- считать реплику заменой backup;
+- использовать replica для критичного read-after-write без sticky policy;
+- не тестировать failover под нагрузкой;
+- игнорировать schema drift в logical replication.
 
 ## Практические рекомендации
 
-- для критичных транзакций применять sync/quorum-подход;
-- для read-heavy сценариев использовать async + контроль lag;
-- разделять transactional и analytical контуры;
-- документировать runbook переключения ролей.
+1. Определите SLA на lag для каждого read-сценария.
+2. Разделите HA-репликацию и аналитический CDC контур.
+3. Ведите runbook: failover, switchover, rollback.
+4. Проводите регулярные game day тесты.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Консистентность и распределение](consistency-and-distribution.md)
-- [Масштабирование БД](scaling/index.md)
-- [Бэкапирование данных](backup.md)
+1. Какие сценарии чувствительны к replication lag?
+2. Какой механизм репликации выбран и почему?
+3. Как автоматически выполняется failover?
+4. Как контролируется качество CDC потока?
+
+## Чек-лист самопроверки
+
+- выбран и обоснован тип репликации;
+- настроены lag/health метрики и алерты;
+- failover/switchover автоматизированы и протестированы;
+- CDC pipeline имеет контроль целостности;
+- read/write splitting учитывает consistency требования.
+
+## Стандарты и источники
+
+- PostgreSQL replication: <https://www.postgresql.org/docs/current/runtime-config-replication.html>
+- MySQL replication: <https://dev.mysql.com/doc/refman/en/replication.html>
+- Debezium docs: <https://debezium.io/documentation/>
+- Kafka Connect docs: <https://kafka.apache.org/documentation/#connect>

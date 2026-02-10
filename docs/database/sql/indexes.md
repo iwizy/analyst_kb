@@ -1,77 +1,80 @@
 # Индексы
 
-Индекс это структура данных, которая ускоряет чтение за счет дополнительного хранилища и затрат на запись. Выбор индекса должен идти от реальных запросов, а не от "общих правил".
+Индексы ускоряют чтение, но увеличивают стоимость записи и обслуживания. Проектируйте их под реальные запросы.
 
-## Цель
+## Уровни сложности
 
-- уменьшить latency запросов;
-- снизить нагрузку на CPU и IO;
-- стабилизировать планы выполнения.
+### Базовый
 
-## Типы индексов (практически)
+- B-Tree для равенства/диапазонов;
+- понимание selective columns.
 
-- B-tree: равенство, диапазон, сортировка, префиксные условия.
-- Hash: точечное равенство (зависит от СУБД).
-- GIN/GiST: JSON/arrays/full-text/геоданные (PostgreSQL).
-- Full-text: полнотекстовый поиск.
-- Composite: несколько колонок в одном индексе.
+### Средний
 
-## Как выбирать индекс
+- compound, partial и covering indexes;
+- GIN/GiST/BRIN под специальные сценарии.
 
-1. Собрать top-N медленных запросов.
-1. Проверить `WHERE`, `JOIN`, `ORDER BY`, `GROUP BY`.
-1. Создать индекс под самый частый паттерн фильтрации.
-1. Перепроверить план и фактическое время (`EXPLAIN ANALYZE`).
-1. Оценить влияние на INSERT/UPDATE/DELETE.
+### Продвинутый
 
-## Пример
+- bloat management, reindex strategy;
+- контроль write amplification и index debt.
+
+## Примеры
 
 ```sql
-SELECT order_id, created_at, amount
-FROM orders
-WHERE customer_id = 932
-  AND created_at >= now() - interval '30 days'
-ORDER BY created_at DESC
-LIMIT 100;
-
 CREATE INDEX idx_orders_customer_created
-ON orders (customer_id, created_at DESC);
+  ON orders (customer_id, created_at DESC);
+
+CREATE INDEX idx_orders_paid_recent
+  ON orders (created_at DESC)
+  WHERE status = 'PAID';
 ```
 
-## Оптимизация запросов через индексы
-
-- сначала фильтр, затем сортировка: порядок колонок в composite index важен;
-- покрывающие индексы уменьшают обращения к таблице;
-- частичные индексы эффективны для горячих подмножеств;
-- удаляйте неиспользуемые и дублирующие индексы.
-
-## Частичные и функциональные индексы
+## Проверка через EXPLAIN
 
 ```sql
-CREATE INDEX idx_orders_paid_recent
-ON orders (created_at DESC)
-WHERE status = 'paid';
-
-CREATE INDEX idx_users_lower_email
-ON users ((lower(email)));
+EXPLAIN (ANALYZE, BUFFERS)
+SELECT order_id
+FROM orders
+WHERE customer_id = 10042
+ORDER BY created_at DESC
+LIMIT 20;
 ```
 
-## Антипаттерны
+## Типовые ошибки
 
-- индекс на каждую колонку "на всякий случай";
-- неверный порядок колонок в composite index;
-- ожидание, что индекс ускорит `LIKE '%text%'` без full-text;
-- игнорирование статистики и vacuum/analyze.
+- индексы без привязки к query patterns;
+- отсутствие индексов для FK/join полей;
+- накопление unused индексов;
+- отсутствие мониторинга bloat.
 
-## Чек-лист перед продом
+## Практические рекомендации
 
-- есть baseline latency до и после;
-- план запроса использует нужный индекс;
-- write overhead приемлем для SLA;
-- есть мониторинг bloat и эффективности индексов.
+1. Ведите каталог индексов с обоснованием.
+2. Регулярно анализируйте unused/bloat метрики.
+3. Удаляйте индексный мусор после периода наблюдения.
+4. Проверяйте влияние индексов на write SLA.
 
-## Смежные материалы
+## Упражнения
 
-- [Селекты](selects.md)
-- [Группировка и сортировка](grouping-sorting.md)
-- [Проектирование модели данных](../data-modeling.md)
+1. Подберите индекс под три критичных API запроса.
+2. Сравните план до/после partial index.
+3. Найдите кандидатов на удаление unused index.
+
+## Контрольные вопросы
+
+1. Какие индексы реально используются топ-запросами?
+2. Как индексация влияет на latency записи?
+3. Где признаки index bloat?
+
+## Чек-лист самопроверки
+
+- индексная стратегия связана с workload;
+- есть контроль unused и bloat;
+- write overhead измеряется;
+- EXPLAIN подтверждает ожидаемый выигрыш.
+
+## Стандарты и источники
+
+- PostgreSQL indexes: <https://www.postgresql.org/docs/current/indexes.html>
+- MySQL indexes: <https://dev.mysql.com/doc/refman/en/mysql-indexes.html>

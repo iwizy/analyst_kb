@@ -1,96 +1,71 @@
 # Вложенные запросы
 
-Вложенный запрос (subquery) это запрос внутри другого запроса. Он позволяет вычислять промежуточные результаты и использовать их в фильтрации, проекции и источнике данных.
+Подзапросы удобны для выражения сложных условий, но требуют контроля плана выполнения.
 
-## Виды подзапросов
+## Уровни сложности
 
-- в `WHERE`;
-- в `FROM`;
-- в `SELECT`;
-- коррелированные и некоррелированные;
-- `EXISTS` / `IN` / scalar subquery.
-
-## Примеры
-
-### 1. Подзапрос в WHERE
+### Базовый
 
 ```sql
-SELECT full_name
-FROM customers
+SELECT order_id, customer_id
+FROM orders
 WHERE customer_id IN (
   SELECT customer_id
-  FROM orders
-  WHERE status = 'paid'
+  FROM vip_customers
 );
 ```
 
-### 2. EXISTS
+### Средний
 
 ```sql
-SELECT c.customer_id, c.full_name
+SELECT c.customer_id, c.email
 FROM customers c
 WHERE EXISTS (
   SELECT 1
   FROM orders o
   WHERE o.customer_id = c.customer_id
-    AND o.status = 'paid'
+    AND o.created_at >= now() - interval '90 days'
 );
 ```
 
-### 3. Подзапрос в FROM
+### Продвинутый
 
-```sql
-SELECT t.customer_id, t.revenue
-FROM (
-  SELECT customer_id, SUM(amount) AS revenue
-  FROM orders
-  WHERE status = 'paid'
-  GROUP BY customer_id
-) t
-WHERE t.revenue > 10000;
-```
+- сравнивайте `IN`, `EXISTS`, `JOIN` по плану;
+- избегайте коррелированных подзапросов на больших наборах;
+- используйте CTE для читаемости и дебага.
 
-### 4. Подзапрос в SELECT
+## Типовые ошибки
 
-```sql
-SELECT c.customer_id,
-       c.full_name,
-       (
-         SELECT COUNT(*)
-         FROM orders o
-         WHERE o.customer_id = c.customer_id
-       ) AS orders_cnt
-FROM customers c;
-```
-
-## CTE как альтернатива для читаемости
-
-```sql
-WITH paid_orders AS (
-  SELECT customer_id, SUM(amount) AS revenue
-  FROM orders
-  WHERE status = 'paid'
-  GROUP BY customer_id
-)
-SELECT *
-FROM paid_orders
-WHERE revenue > 10000;
-```
-
-## Типичные ошибки
-
-- тяжелые коррелированные подзапросы в больших выборках;
-- `IN` по большим наборам без нужных индексов;
-- вложенность без явной необходимости, ухудшающая читаемость.
+- коррелированный subquery без индекса;
+- подзапрос возвращает избыточный объем;
+- вложенная логика, которую проще выразить join.
 
 ## Практические рекомендации
 
-- проверять, можно ли заменить подзапрос на `JOIN`/CTE;
-- использовать `EXISTS` для semijoin-сценариев;
-- для критичных запросов проверять план выполнения;
-- индексировать поля, участвующие в корреляции.
+1. Для semi-join сценариев чаще эффективен `EXISTS`.
+2. Проверяйте оптимизацию через EXPLAIN на production-like данных.
+3. Для сложных сценариев делите запрос на этапы.
 
-## Смежные материалы
+## Упражнения
 
-- [Селекты](selects.md)
-- [Индексы](indexes.md)
+1. Перепишите `IN` в `EXISTS` и сравните планы.
+2. Уберите коррелированный подзапрос через `JOIN`.
+3. Разбейте сложный запрос на CTE-шаги.
+
+## Контрольные вопросы
+
+1. Почему выбрана форма `EXISTS`/`IN`/`JOIN`?
+2. Какие индексы поддерживают условие вложенного запроса?
+3. Как меняется план на объеме x10?
+
+## Чек-лист самопроверки
+
+- выбрана оптимальная форма subquery;
+- индексы поддерживают связующие условия;
+- план выполнения проверен на нагрузке;
+- запрос остается читаемым.
+
+## Стандарты и источники
+
+- PostgreSQL subqueries: <https://www.postgresql.org/docs/current/functions-subquery.html>
+- SQL style guide: <https://www.sqlstyle.guide/>

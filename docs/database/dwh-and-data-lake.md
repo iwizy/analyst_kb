@@ -1,93 +1,115 @@
-# DWH и Data Lake
+# DWH, Data Lake и Lakehouse
 
-DWH и Data Lake решают разные задачи аналитического контура. В зрелой архитектуре они часто используются вместе.
+Современная платформа данных обычно сочетает несколько слоев: DWH для trusted-аналитики, Data Lake для сырья, Lakehouse для объединения гибкости и управляемости.
 
-## DWH (Data Warehouse)
+## Уровни сложности
 
-DWH это структурированное хранилище для аналитики и отчетности с управляемой моделью данных (star/snowflake), SLA качества и предсказуемыми BI-запросами.
+### Базовый
 
-Примеры платформ:
+- различать DWH, Data Lake, Lakehouse;
+- понимать ETL vs ELT и batch vs stream.
 
-- Snowflake
-- BigQuery
-- Amazon Redshift
-- ClickHouse (часто как аналитический слой)
+### Средний
 
-Типовой запрос:
+- проектировать слои staging/ODS/curated;
+- выбирать инструменты оркестрации и трансформации.
 
-```sql
-SELECT d.month, p.category, SUM(f.revenue) AS revenue
-FROM fact_sales f
-JOIN dim_date d ON d.date_id = f.date_id
-JOIN dim_product p ON p.product_id = f.product_id
-GROUP BY d.month, p.category
-ORDER BY d.month, revenue DESC;
-```
+### Продвинутый
 
-## Data Lake
+- внедрять Data Mesh и data contracts;
+- оптимизировать стоимость владения и производительность платформы.
 
-Data Lake это хранилище сырых и полуструктурированных данных в исходном формате (JSON, Parquet, Avro, CSV, logs, events).
+## ETL vs ELT
 
-Примеры платформ:
+| Подход | Что происходит первым | Когда использовать |
+| --- | --- | --- |
+| ETL | трансформация до загрузки | жесткая схема и контроль качества до DWH |
+| ELT | загрузка сырья, затем трансформация | cloud DWH/Lakehouse с масштабируемым compute |
 
-- Amazon S3 + Glue/Athena
-- Azure Data Lake Storage
-- Google Cloud Storage + BigLake
-- HDFS/Spark Lakehouse stack
+## Batch vs Stream
 
-Типовой сценарий:
+| Подход | Плюсы | Ограничения |
+| --- | --- | --- |
+| Batch | простота, предсказуемость | выше задержка данных |
+| Stream | near-real-time аналитика | выше сложность и требования к мониторингу |
 
-- ingest сырых событий из приложений и брокеров;
-- batch/stream обработка;
-- публикация curated-слоев в DWH/витрины.
+## Инструменты
 
-## Lakehouse-подход
+- dbt: трансформации и тесты модели;
+- Airflow: оркестрация;
+- Kafka/Flink/Spark: потоковые и batch pipelines.
 
-Современный подход объединяет гибкость lake и управляемость warehouse.
-
-Технологии:
-
-- Delta Lake
-- Apache Iceberg
-- Apache Hudi
-
-## Архитектурная схема
+## Архитектура слоев
 
 ```kroki-plantuml
 @startuml
 left to right direction
-rectangle "Источники\nApps, ERP, CRM, Events" as SRC
-rectangle "Data Lake\nRaw / Bronze" as LAKE
-rectangle "ETL/ELT\nSpark / dbt / Airflow" as ETL
-rectangle "DWH\nCurated / Gold" as DWH
-rectangle "BI / ML" as CONSUME
+rectangle "Sources\nApps ERP CRM" as SRC
+rectangle "Bronze\nraw" as B
+rectangle "Silver\ncleaned" as S
+rectangle "Gold\nbusiness marts" as G
+rectangle "BI/ML" as BI
 
-SRC --> LAKE
-LAKE --> ETL
-ETL --> DWH
-DWH --> CONSUME
-LAKE --> CONSUME : Data Science
+SRC --> B
+B --> S
+S --> G
+G --> BI
 @enduml
 ```
 
-## DWH vs Data Lake
+## Data Mesh и data contracts
 
-| Критерий | DWH | Data Lake |
+- Data Mesh: data ownership в доменных командах, данные как продукт.
+- Data Contracts: формальные контракты схемы, качества и SLA между producer/consumer.
+
+## Сравнение платформ
+
+| Платформа | Сильные стороны | Ограничения |
 | --- | --- | --- |
-| Тип данных | структурированные | сырые и полуструктурированные |
-| Schema | schema-on-write | schema-on-read |
-| Пользователи | BI, аналитики, финансы | data engineers, data scientists |
-| SLA отчетности | высокий | зависит от конвейера |
+| Snowflake | разделение compute/storage, удобное масштабирование | стоимость при неуправляемом compute |
+| Redshift | глубокая интеграция AWS | требует tuning для сложных нагрузок |
+| ClickHouse | высокая скорость аналитики и агрегаций | требует архитектурной дисциплины по ingest/модели |
+
+## Кейсы по отраслям
+
+- Финансы: DWH для регуляторной отчетности + строгий lineage.
+- E-commerce: Lakehouse для near-real-time маркетинговой аналитики.
+- IoT: stream ingestion + TSDB/Lake для телеметрии и прогнозов.
+
+## Типовые ошибки
+
+- отсутствие единого словаря метрик между доменами;
+- попытка строить BI напрямую на raw-слое;
+- нет data quality тестов в пайплайне;
+- неуправляемый рост стоимости compute/storage.
 
 ## Практические рекомендации
 
-- использовать Data Lake как landing zone и исторический слой;
-- строить DWH как trusted analytical layer для бизнеса;
-- внедрять Data Catalog и lineage для прозрачности;
-- формализовать data contracts между источниками и аналитикой.
+1. Введите слой контрактов и тестов данных (dbt tests/data contracts).
+2. Разделите SLA для batch и stream контуров.
+3. Внедрите FinOps-практики для контроля стоимости.
+4. Документируйте lineage и ownership каждого data продукта.
 
-## Смежные материалы
+## Контрольные вопросы
 
-- [Проектирование модели данных](data-modeling.md)
-- [Master Data Management (MDM)](mdm.md)
-- [Data Governance](data-governance.md)
+1. Какие данные должны быть в Bronze/Silver/Gold?
+2. Где требуется stream, а где достаточно batch?
+3. Какой контракт качества данных обязателен для витрины?
+4. Как контролируется стоимость платформы по доменам?
+
+## Чек-лист самопроверки
+
+- определена целевая архитектура DWH/Lake/Lakehouse;
+- выбраны ETL/ELT и batch/stream стратегии;
+- data contracts и quality tests внедрены;
+- lineage и ownership зафиксированы;
+- мониторится стоимость владения.
+
+## Стандарты и источники
+
+- Kimball Group: <https://www.kimballgroup.com/>
+- dbt docs: <https://docs.getdbt.com/>
+- Apache Airflow docs: <https://airflow.apache.org/docs/>
+- Apache Flink docs: <https://nightlies.apache.org/flink/>
+- Apache Spark docs: <https://spark.apache.org/docs/latest/>
+- Data Mesh (Zhamak Dehghani): <https://martinfowler.com/articles/data-mesh-principles.html>
