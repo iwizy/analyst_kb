@@ -65,22 +65,6 @@ Client <-> Server: Data transfer
 - `mtr`/`traceroute` для поиска сетевого узкого места;
 - `tcpdump`/Wireshark для анализа retransmission;
 - gateway/service metrics для связи сетевых и прикладных ошибок.
-
-## Контрольные вопросы
-
-1. Какие timeout значения учитывают реальный RTT между зонами?
-2. Используются ли keepalive и connection pooling в клиентах?
-3. Есть ли различия производительности между HTTP/2 и HTTP/3 в вашей среде?
-4. Как вы выявляете packet loss и retransmission spikes?
-
-## Чек-лист самопроверки
-
-- параметры timeout/retry привязаны к сетевым измерениям;
-- включены keepalive и connection pooling;
-- протестированы HTTP/1.1 vs HTTP/2 vs HTTP/3;
-- есть сетевой runbook диагностики;
-- метрики TCP/TLS коррелируются с API SLO.
-
 ## Стандарты и источники
 
 - RFC 9293 TCP: <https://www.rfc-editor.org/rfc/rfc9293>

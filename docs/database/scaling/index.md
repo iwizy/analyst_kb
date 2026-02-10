@@ -65,22 +65,6 @@ PROXY --> R : read-heavy
 2. Делайте benchmark на p95/p99, а не только среднее.
 3. Автоматизируйте rebalancing и прогоняйте DR drills.
 4. Разделяйте OLTP и OLAP контуры до масштабного роста.
-
-## Контрольные вопросы
-
-1. Что является текущим bottleneck: CPU, IO, сеть или lock contention?
-2. Каков план перехода с vertical на horizontal scaling?
-3. Как контролируется стоимость владения при росте кластера?
-4. Как подтверждается работоспособность failover/rebalance?
-
-## Чек-лист самопроверки
-
-- стратегия масштабирования согласована с ростом нагрузки;
-- есть план partition/shard migration;
-- настроены метрики latency, lag, rebalance duration;
-- выполнены тесты failover и DR;
-- ownership по каждому компоненту зафиксирован.
-
 ## Стандарты и источники
 
 - Citus docs: <https://docs.citusdata.com/>

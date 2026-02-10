@@ -51,26 +51,7 @@ OLTP (Online Transaction Processing) это контур оперативных 
 
 - [OLAP](olap.md)
 - [Идемпотентность](../../integrations/api-design/idempotency.md)
-- [Консистентность и распределение](../../database/consistency-and-distribution.md)
-
-## Чек-лист самопроверки
-
-- описаны инварианты процесса;
-- для операции определены SLA и правила повтора;
-- покрыты негативные сценарии и rollback;
-- зафиксирована связь с downstream-интеграциями.
-
-## Контрольные вопросы
-
-1. Почему OLTP и OLAP обычно разделяют физически?
-2. Какие операции должны быть строго идемпотентными?
-3. Как вы фиксируете инварианты в требованиях?
-
-## Источники
+- [Консистентность и распределение](../../database/consistency-and-distribution.md)## Источники
 
 - Designing Data-Intensive Applications.
 - PostgreSQL transaction docs: <https://www.postgresql.org/docs/current/tutorial-transactions.html>
-
-## Дата обновления
-
-Февраль 2026.

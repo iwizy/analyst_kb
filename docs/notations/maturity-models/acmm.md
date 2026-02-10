@@ -94,22 +94,6 @@ D --> O
 
 - Archi/BizzDesign, Confluence/Jira, architecture repository;
 - артефакты: maturity report, architecture roadmap, principle catalog.
-
-## Контрольные вопросы
-
-1. Какие боли бизнеса решает развитие архитектурной зрелости?
-2. Есть ли единый архитектурный репозиторий и owner?
-3. Какие решения проходят архитектурный review?
-4. Как измеряется эффект архитектурных инициатив?
-
-## Чек-лист самопроверки
-
-- baseline зрелости зафиксирован;
-- выбраны приоритетные capability gaps;
-- определены архитектурные принципы и governance;
-- есть roadmap и метрики результата;
-- внедрен периодический reassessment.
-
 ## Стандарты и источники
 
 - TOGAF Standard: <https://www.opengroup.org/togaf>

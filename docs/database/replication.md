@@ -82,22 +82,6 @@
 2. Разделите HA-репликацию и аналитический CDC контур.
 3. Ведите runbook: failover, switchover, rollback.
 4. Проводите регулярные game day тесты.
-
-## Контрольные вопросы
-
-1. Какие сценарии чувствительны к replication lag?
-2. Какой механизм репликации выбран и почему?
-3. Как автоматически выполняется failover?
-4. Как контролируется качество CDC потока?
-
-## Чек-лист самопроверки
-
-- выбран и обоснован тип репликации;
-- настроены lag/health метрики и алерты;
-- failover/switchover автоматизированы и протестированы;
-- CDC pipeline имеет контроль целостности;
-- read/write splitting учитывает consistency требования.
-
 ## Стандарты и источники
 
 - PostgreSQL replication: <https://www.postgresql.org/docs/current/runtime-config-replication.html>

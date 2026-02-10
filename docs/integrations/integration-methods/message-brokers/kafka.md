@@ -102,22 +102,6 @@ end
 - at-least-once: commit после успешной обработки;
 - batch processing: commit после батча;
 - при ошибке: отправка в DLQ + commit либо stop (по policy).
-
-## Контрольные вопросы
-
-1. Почему выбран partition key и как он влияет на баланс?
-2. Какие гарантия доставки и идемпотентности требуются?
-3. Как организованы retry и DLQ для проблемных событий?
-4. Какие пороги lag и rebalance считаются аварийными?
-
-## Чек-лист самопроверки
-
-- настроены `acks=all` и idempotent producer;
-- определена и протестирована offset strategy;
-- schema registry и compatibility policy внедрены;
-- метрики lag/replication/rebalance мониторятся;
-- есть runbook на failover и reprocessing.
-
 ## Стандарты и источники
 
 - Kafka docs: <https://kafka.apache.org/documentation/>

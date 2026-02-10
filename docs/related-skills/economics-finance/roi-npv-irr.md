@@ -69,27 +69,8 @@ ROI, NPV и IRR используются вместе: ROI для быстрог
 
 - [TCO](tco.md)
 - [Управление рисками](../../common-competencies/estimation-risks/risk-management.md)
-- [Приоритизация](../../requirements/management/prioritization.md)
-
-## Чек-лист самопроверки
-
-- расчет выполнен на одинаковом горизонте для всех альтернатив;
-- ставка дисконтирования обоснована;
-- учтены риски и сценарии;
-- финансовый вывод понятен стейкхолдерам.
-
-## Контрольные вопросы
-
-1. Почему высокий ROI может сочетаться с низким NPV?
-2. Как выбрать ставку дисконтирования для вашей компании?
-3. Какие параметры наиболее чувствительны в вашем расчете?
-
-## Источники
+- [Приоритизация](../../requirements/management/prioritization.md)## Источники
 
 - Brealey, Myers, Allen - Principles of Corporate Finance.
 - Investopedia (ROI/NPV/IRR): <https://www.investopedia.com/>
 - CFI финансовые модели: <https://corporatefinanceinstitute.com/>
-
-## Дата обновления
-
-Февраль 2026.

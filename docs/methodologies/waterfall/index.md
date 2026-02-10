@@ -113,23 +113,7 @@ stop
 
 - [Требования: Управление изменениями](../../requirements/management/change-management.md)
 - [Требования: Трассировка](../../requirements/management/traceability.md)
-- [Процесс разработки: Этапы SDLC](../../development-process/product-lifecycle/stages.md)
-
-## Чек-лист самопроверки
-
-- определены критерии stage-gate переходов;
-- baseline требований и change control формализованы;
-- traceability поддерживается на всем жизненном цикле;
-- риск-реестр обновляется на фазовых переходах.
-
-## Контрольные вопросы
-
-1. Чем Waterfall отличается от V-Model на практике?
-2. Когда Spiral эффективнее классического Waterfall?
-3. Какие артефакты обязательны для audit trail?
-4. Как снизить стоимость поздних изменений?
-
-## Источники
+- [Процесс разработки: Этапы SDLC](../../development-process/product-lifecycle/stages.md)## Источники
 
 - PMBOK Guide: <https://www.pmi.org/pmbok-guide-standards>
 - ISO/IEC/IEEE 12207: <https://www.iso.org/standard/63712.html>

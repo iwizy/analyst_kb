@@ -103,22 +103,6 @@ await Policy.WrapAsync(retry, breaker).ExecuteAsync(CallApi);
 - одинаковая политика для read/write операций;
 - retry на 4xx ошибки, где повтор бессмыслен;
 - отсутствие алертов по breaker и DLQ.
-
-## Контрольные вопросы
-
-1. Какие ошибки считаются transient, а какие terminal?
-2. Есть ли дифференцированные policy для критичных операций?
-3. Как система деградирует при падении внешнего API?
-4. Какие SLO-метрики подтверждают эффективность политики?
-
-## Чек-лист самопроверки
-
-- настроены timeout, retry и circuit breaker;
-- retry использует backoff + jitter;
-- DLQ и outbox/inbox покрывают асинхронные потоки;
-- есть fallback-сценарии для критичных операций;
-- метрики и алерты настроены по каждому dependency.
-
 ## Стандарты и источники
 
 - Resilience4j docs: <https://resilience4j.readme.io/>

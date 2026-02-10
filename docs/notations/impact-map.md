@@ -94,22 +94,6 @@ HOW2 --> WHAT2
 
 - Impact Mapping board в Miro/FigJam, draw.io, mind-map tools;
 - экспорт: SVG/PNG/PDF.
-
-## Контрольные вопросы
-
-1. Цель impact map измерима и привязана ко времени?
-2. Для каждого deliverable есть гипотеза влияния?
-3. Понятно ли, какие метрики подтвердят успех?
-4. Какие инициативы не имеют доказанного impact?
-
-## Чек-лист самопроверки
-
-- заполнены Why-Who-How-What;
-- есть KPI и baseline;
-- гипотезы приоритизированы;
-- связь с требованиями и roadmap прозрачна;
-- назначены владельцы экспериментов.
-
 ## Стандарты и источники
 
 - Gojko Adzic, Impact Mapping: <https://www.impactmapping.org/>

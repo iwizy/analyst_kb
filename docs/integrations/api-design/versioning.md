@@ -69,22 +69,6 @@
 - GraphQL Inspector;
 - Redocly/Stoplight для публикации changelog;
 - Kong/Apigee/Istio для traffic shaping и deprecation routing.
-
-## Контрольные вопросы
-
-1. Есть ли формальный критерий для breaking/non-breaking изменений?
-2. Как клиент узнает о deprecation и сроках sunset?
-3. Можно ли откатить новую версию без потери данных?
-4. Какие метрики версии отслеживаются в production?
-
-## Чек-лист самопроверки
-
-- выбрана и задокументирована стратегия versioning;
-- есть semver policy и release cadence;
-- compatibility checks выполняются автоматически;
-- есть migration guide и sunset policy;
-- rollout и rollback поддерживаются gateway/mesh.
-
 ## Стандарты и источники
 
 - SemVer: <https://semver.org/>

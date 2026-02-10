@@ -73,22 +73,6 @@ ORDER BY bucket;
 2. Разделите ingestion и аналитические запросы по SLA.
 3. Введите naming convention и owner для каждой метрики.
 4. Мониторьте gaps, lag и loss событий.
-
-## Контрольные вопросы
-
-1. Какие метрики критичны для SLO бизнеса?
-2. Где риски cardinality explosion?
-3. Какой retention нужен для raw и rollup слоев?
-4. Как подтверждается полнота ingestion?
-
-## Чек-лист самопроверки
-
-- модель metric/tags/fields формализована;
-- retention/downsampling настроены;
-- cardinality контролируется алертами;
-- данные защищены и доступ разграничен;
-- стоимость хранения мониторится.
-
 ## Стандарты и источники
 
 - InfluxDB docs: <https://docs.influxdata.com/>

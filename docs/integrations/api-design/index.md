@@ -75,22 +75,6 @@ stop
 - [Идемпотентность](idempotency.md)
 - [API Gateway и Service Mesh](api-gateway-and-service-mesh.md)
 - [Форматы сериализации](serialization-formats/index.md)
-
-## Контрольные вопросы
-
-1. Кто ваш primary consumer и какие сценарии для него критичны?
-2. Какие изменения вы считаете breaking для клиентов?
-3. Где в контракте фиксируются лимиты, безопасность и idempotency?
-4. Какие автоматические проверки выполняются при изменении API?
-
-## Чек-лист самопроверки
-
-- API стиль выбран по сценарию и SLA;
-- контракт согласован до реализации;
-- определены версия, deprecation и sunset policy;
-- включены security и reliability требования;
-- метрики и трассировка предусмотрены в дизайне.
-
 ## Стандарты и источники
 
 - OpenAPI: <https://spec.openapis.org/oas/latest.html>

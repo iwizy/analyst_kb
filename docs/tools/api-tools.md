@@ -117,15 +117,6 @@ stop
 - отсутствие негативных и security сценариев;
 - нет проверки обратной совместимости;
 - публикация API без примеров и migration notes.
-
-## Чек-лист самопроверки
-
-- выбран и формализован формат контракта;
-- contract review встроен в PR-процесс;
-- тесты (functional/contract/security/load) автоматизированы;
-- документация API публикуется и версионируется;
-- изменение API сопровождается policy backward compatibility.
-
 ## Источники
 
 - OpenAPI Spec: <https://spec.openapis.org/oas/latest.html>

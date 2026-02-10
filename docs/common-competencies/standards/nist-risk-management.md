@@ -55,22 +55,7 @@ NIST RMF — framework для управления рисками информа
 
 - [Информационная безопасность](../../architecture/information-security/index.md)
 - [Управление рисками](../estimation-risks/risk-management.md)
-- [Процесс разработки: ITSM/ITIL](../../development-process/feature-support/itsm-itil.md)
-
-## Чек-лист самопроверки
-
-- controls сопоставлены системным рискам;
-- результаты оценок контролей документированы;
-- continuous monitoring настроен и работает;
-- security findings влияют на backlog и release decisions.
-
-## Контрольные вопросы
-
-1. Какие шаги RMF в вашем контуре выполняются наиболее слабо?
-2. Как вы подтверждаете эффективность внедренных контролей?
-3. Как findings из мониторинга попадают в процесс изменений?
-
-## Источники
+- [Процесс разработки: ITSM/ITIL](../../development-process/feature-support/itsm-itil.md)## Источники
 
 - NIST RMF: <https://csrc.nist.gov/projects/risk-management>
 - NIST SP 800-37 (RMF guidance).

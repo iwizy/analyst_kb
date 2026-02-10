@@ -75,22 +75,6 @@ CREATE TABLE device_metrics (
 2. Ограничивайте размер партиции по времени/тенанту.
 3. Выбирайте consistency level по критичности сценария.
 4. Планируйте регулярный repair в операционном календаре.
-
-## Контрольные вопросы
-
-1. Какой запрос является основным и как под него построен ключ?
-2. Какой максимальный размер партиции в боевой нагрузке?
-3. Какие consistency levels используются для read/write?
-4. Как мониторится compaction и repair health?
-
-## Чек-лист самопроверки
-
-- модель данных построена от query patterns;
-- исключены hot partitions и oversized partitions;
-- задан replication factor и consistency policy;
-- настроены monitoring, compaction и repair;
-- обеспечены требования безопасности.
-
 ## Стандарты и источники
 
 - Apache Cassandra docs: <https://cassandra.apache.org/doc/latest/>

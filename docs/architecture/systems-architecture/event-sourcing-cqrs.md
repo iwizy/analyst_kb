@@ -86,22 +86,6 @@ Q --> RM
 2. Сразу введите versioning policy событий.
 3. Добавьте snapshotting для длинных event streams.
 4. Мониторьте projection lag и dead-letter.
-
-## Контрольные вопросы
-
-1. Какие проблемы домена CQRS/ES решают лучше обычного CRUD?
-2. Как управляется backward compatibility событий?
-3. Какой допустимый lag для read-model?
-4. Как проходит migration старых событий?
-
-## Чек-лист самопроверки
-
-- разделены command/query модели;
-- события имеют schema version и owner;
-- есть стратегия replay и snapshot;
-- настроены метрики lag/throughput/errors;
-- решение привязано к бизнес-ценности и NFR.
-
 ## Стандарты и источники
 
 - Fowler, CQRS/Event Sourcing articles.

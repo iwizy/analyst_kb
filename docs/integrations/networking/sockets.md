@@ -80,22 +80,6 @@ Server -> Server: close()
 - отсутствие timeout/keepalive;
 - слишком маленький backlog при пиковых нагрузках;
 - игнорирование TLS overhead и handshake cost.
-
-## Контрольные вопросы
-
-1. Какой режим I/O выбран и почему?
-2. Какие socket параметры тюнятся для production?
-3. Как предотвращается исчерпание соединений и портов?
-4. Какой инструмент первый при диагностике сетевого инцидента?
-
-## Чек-лист самопроверки
-
-- режим I/O соответствует ожидаемой конкуренции;
-- настроены backlog, buffers, timeouts, keepalive;
-- используется connection pooling;
-- есть стратегия TLS termination;
-- runbook диагностики покрывает socket-уровень.
-
 ## Стандарты и источники
 
 - POSIX sockets overview: <https://pubs.opengroup.org/onlinepubs/9699919799/functions/socket.html>

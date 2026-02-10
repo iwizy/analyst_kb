@@ -64,22 +64,6 @@ XML/XSD по-прежнему важен в B2B и legacy-интеграциях
 - повышайте namespace/version при breaking-change;
 - публикуйте compatibility matrix между версиями XSD;
 - тестируйте producer/consumer на старых и новых схемах.
-
-## Контрольные вопросы
-
-1. Какой namespace/versioning policy используется?
-2. Какие меры защищают XML от signature wrapping и XXE?
-3. Как тестируется совместимость XSD между релизами?
-4. Нужен ли streaming parser для больших документов?
-
-## Чек-лист самопроверки
-
-- XSD-валидация обязательна в CI и runtime;
-- namespace и версии схем документированы;
-- определены security-практики для XML;
-- есть migration guide для schema changes;
-- тесты покрывают backward compatibility.
-
 ## Стандарты и источники
 
 - XML 1.0: <https://www.w3.org/TR/xml/>

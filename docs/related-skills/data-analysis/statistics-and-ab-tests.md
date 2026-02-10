@@ -73,27 +73,8 @@
 
 - [Data-driven решения](../../common-competencies/data-driven-decisions.md)
 - [Управление продуктом](../product-management.md)
-- [Приоритизация требований](../../requirements/management/prioritization.md)
-
-## Чек-лист самопроверки
-
-- гипотеза и метрика зафиксированы до запуска;
-- рассчитаны выборка и длительность;
-- есть контроль влияющих факторов;
-- принято решение с учетом статистики и бизнес-ценности.
-
-## Контрольные вопросы
-
-1. Почему значимый результат может быть бесполезным для бизнеса?
-2. Как выбрать MDE для продукта с низким трафиком?
-3. Что делать, если эксперимент конфликтует с другим тестом?
-
-## Источники
+- [Приоритизация требований](../../requirements/management/prioritization.md)## Источники
 
 - Practical Statistics for Data Scientists.
 - Trustworthy Online Controlled Experiments (Kohavi).
 - Khan Academy Statistics: <https://www.khanacademy.org/math/statistics-probability>
-
-## Дата обновления
-
-Февраль 2026.

@@ -65,27 +65,8 @@ ML для аналитика это способ формализовать за
 
 - [Анализ данных](data-analysis/index.md)
 - [DWH и Data Lake](../database/dwh-and-data-lake.md)
-- [Требования к качеству](../requirements/quality.md)
-
-## Чек-лист самопроверки
-
-- бизнес-цель и метрика модели не противоречат друг другу;
-- определена цена false positive и false negative;
-- есть план мониторинга drift и переобучения;
-- отражены требования fairness/privacy.
-
-## Контрольные вопросы
-
-1. Почему accuracy часто плохая метрика для fraud detection?
-2. Что изменится в требованиях при высоком риске false negative?
-3. Как отличить data drift от model drift?
-
-## Источники
+- [Требования к качеству](../requirements/quality.md)## Источники
 
 - CRISP-DM overview: <https://www.datascience-pm.com/crisp-dm-2/>
 - Coursera ML (Andrew Ng): <https://www.coursera.org/learn/machine-learning>
 - Kaggle Learn: <https://www.kaggle.com/learn>
-
-## Дата обновления
-
-Февраль 2026.

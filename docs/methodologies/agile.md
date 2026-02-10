@@ -108,23 +108,7 @@ stop
 
 - [Процесс разработки: Agile-процессы и практики](../development-process/agile-processes.md)
 - [Требования: Подходы к спецификации](../requirements/specification-approaches.md)
-- [Требования: Приоритизация](../requirements/management/prioritization.md)
-
-## Чек-лист самопроверки
-
-- backlog связан с бизнес-целями и метриками;
-- user stories и AC testable;
-- у команды есть рабочие DoR/DoD;
-- ретроспективы приводят к измеримым улучшениям.
-
-## Контрольные вопросы
-
-1. Какие условия обязательны для качественного Sprint Planning?
-2. Чем Sprint Review отличается от Retrospective?
-3. Как в Agile фиксируются и проверяются NFR?
-4. Как аналитик влияет на качество backlog?
-
-## Источники
+- [Требования: Приоритизация](../requirements/management/prioritization.md)## Источники
 
 - Agile Manifesto: <https://agilemanifesto.org/>
 - Scrum Guide (актуальная публикация): <https://scrumguides.org/>

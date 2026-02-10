@@ -95,27 +95,8 @@
 
 - [Тестирование в процессе разработки](../development-process/testing/index.md)
 - [Валидация требований](../requirements/validation.md)
-- [Трассировка](../requirements/management/traceability.md)
-
-## Чек-лист самопроверки
-
-- у каждого критичного требования есть тест-кейсы;
-- AC измеримы и проверяемы;
-- определены данные для happy path и edge cases;
-- дефекты содержат шаги, фактический и ожидаемый результат.
-
-## Контрольные вопросы
-
-1. Чем acceptance testing отличается от system testing?
-2. Какие 3 риска чаще всего не покрываются тестами в интеграциях?
-3. Как аналитик должен участвовать в Three Amigos сессии?
-
-## Источники
+- [Трассировка](../requirements/management/traceability.md)## Источники
 
 - ISTQB Foundation: <https://www.istqb.org/>
 - Google Testing Blog: <https://testing.googleblog.com/>
 - Cucumber docs: <https://cucumber.io/docs/>
-
-## Дата обновления
-
-Февраль 2026.

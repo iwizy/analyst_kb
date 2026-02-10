@@ -71,22 +71,6 @@ service PaymentsService {
 - отсутствие deadlines и timeouts;
 - неразделение internal/external API;
 - игнорирование backward compatibility при изменении proto.
-
-## Контрольные вопросы
-
-1. Для каких вызовов нужен unary, а где нужен streaming?
-2. Какие deadlines установлены для критичных операций?
-3. Как проверяется совместимость proto в CI?
-4. Нужен ли grpc-gateway для внешних клиентов?
-
-## Чек-лист самопроверки
-
-- `.proto` контракты версионируются и валидируются;
-- заданы deadlines, retry policy и status mapping;
-- настроены interceptors для auth/logging/tracing;
-- учитывается совместимость схем;
-- измерены latency и throughput под нагрузкой.
-
 ## Стандарты и источники
 
 - gRPC docs: <https://grpc.io/docs/>

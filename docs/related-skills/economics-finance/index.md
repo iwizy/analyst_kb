@@ -59,27 +59,8 @@ LTV/CAC = 2.6. Для роста обычно целевой диапазон >=
 
 - [Приоритизация требований](../../requirements/management/prioritization.md)
 - [Оценка трудоемкости](../../common-competencies/estimation-risks/effort-estimation.md)
-- [Управление продуктом](../product-management.md)
-
-## Чек-лист самопроверки
-
-- входные данные и допущения зафиксированы;
-- есть минимум 2 альтернативы для сравнения;
-- рассчитаны базовый и стресс-сценарий;
-- учитываются нефинансовые факторы: регуляторика, бренд, риск.
-
-## Контрольные вопросы
-
-1. Почему ROI недостаточен без NPV при долгом горизонте?
-2. Когда метрика payback важнее IRR?
-3. Как связать WSJF с финансовыми показателями?
-
-## Источники
+- [Управление продуктом](../product-management.md)## Источники
 
 - Finance for Non-Finance Managers (Coursera).
 - The Lean Startup (Eric Ries).
 - Corporate Finance Institute: <https://corporatefinanceinstitute.com/>
-
-## Дата обновления
-
-Февраль 2026.

@@ -85,22 +85,6 @@ L4 --> L5
 
 - assessment templates, process repository (Confluence), BI dashboards;
 - артефакты: assessment report, gap log, improvement roadmap.
-
-## Контрольные вопросы
-
-1. Почему выбран именно этот целевой уровень CMMI?
-2. Какие метрики подтвердят движение к нему?
-3. Какие process areas критичны для вашего домена?
-4. Как часто проводится reassessment?
-
-## Чек-лист самопроверки
-
-- текущий уровень и gap формализованы;
-- есть целевой уровень и бизнес-обоснование;
-- roadmap инициатив утвержден;
-- KPI и владельцы назначены;
-- есть план повторной оценки.
-
 ## Стандарты и источники
 
 - CMMI model resources: <https://cmmiinstitute.com/>

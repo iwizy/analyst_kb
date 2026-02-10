@@ -89,26 +89,7 @@
 
 - [Методологии: Scrum](../../methodologies/frameworks/scrum.md)
 - [Методологии: Kanban](../../methodologies/frameworks/kanban.md)
-- [Согласование требований](../../requirements/management/coordination.md)
-
-## Чек-лист самопроверки
-
-- agenda разослана заранее;
-- у встречи есть критерий завершения;
-- решения зафиксированы по схеме owner/scope/date;
-- follow-up проведен в срок.
-
-## Контрольные вопросы
-
-1. Какую технику вы выбираете, если группа пассивна?
-2. Как предотвратить доминирование старших ролей?
-3. Что обязательно должно быть в протоколе встречи?
-
-## Источники
+- [Согласование требований](../../requirements/management/coordination.md)## Источники
 
 - Gamestorming.
 - The Facilitator's Guide to Participatory Decision-Making.
-
-## Дата обновления
-
-Февраль 2026.

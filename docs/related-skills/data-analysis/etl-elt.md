@@ -65,27 +65,8 @@ ETL/ELT это практики переноса и преобразования
 
 - [DWH](dwh.md)
 - [Репликация и backup](../../database/replication.md)
-- [Мониторинг и логирование](../../development-process/feature-support/monitoring-logging.md)
-
-## Чек-лист самопроверки
-
-- пайплайн воспроизводим и устойчив к перезапуску;
-- определены owners и SLA для каждого шага;
-- есть проверки качества данных до и после трансформации;
-- ошибка в одном шаге не приводит к "тихой" потере данных.
-
-## Контрольные вопросы
-
-1. Когда ETL лучше ELT в вашем контексте?
-2. Как вы обрабатываете опоздавшие события?
-3. Какие три алерта обязательны для продового пайплайна?
-
-## Источники
+- [Мониторинг и логирование](../../development-process/feature-support/monitoring-logging.md)## Источники
 
 - Fundamentals of Data Engineering.
 - Airflow docs: <https://airflow.apache.org/docs/>
 - dbt docs: <https://docs.getdbt.com/>
-
-## Дата обновления
-
-Февраль 2026.

@@ -61,18 +61,7 @@
 - [Грамотность](literacy.md)
 - [Управление ожиданиями](../expectation-management.md)
 - [Confluence](../../tools/confluence.md)
-
-## Контрольные вопросы
-
-1. Можно ли понять действие, срок и owner за 15 секунд чтения?
-2. Где должно жить финальное решение: в треде или в wiki?
-3. Как вы сокращаете риск двусмысленности в переписке?
-
 ## Источники
 
 - HBR Guide to Better Business Writing.
 - Microsoft Writing Style Guide.
-
-## Дата обновления
-
-Февраль 2026.

@@ -112,22 +112,6 @@ API --> ServiceA: 200 OK
 - API Security/WAF: Cloudflare, AWS WAF, NGINX App Protect;
 - Service identity: SPIRE, Istio mTLS;
 - Secrets/keys: HashiCorp Vault, AWS KMS, Azure Key Vault.
-
-## Контрольные вопросы
-
-1. Какие endpoints доступны без авторизации и почему?
-2. Для каждого endpoint определены scopes/roles?
-3. Есть ли план ротации ключей и сертификатов?
-4. Как API защищено от replay и credential stuffing?
-
-## Чек-лист самопроверки
-
-- выбран корректный OAuth/OIDC flow по типу клиента;
-- включена проверка обязательных JWT-claims;
-- настроены mTLS и автоматическая ротация ключей;
-- реализованы rate limit и WAF-политики;
-- аудит и инцидент-логирование покрывают критичные операции.
-
 ## Стандарты и источники
 
 - OAuth 2.1 draft: <https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/>

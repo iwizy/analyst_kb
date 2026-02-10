@@ -63,27 +63,8 @@ DM --> BI
 
 - [ETL/ELT](etl-elt.md)
 - [DWH и Data Lake](../../database/dwh-and-data-lake.md)
-- [Data Governance](../../database/data-governance.md)
-
-## Чек-лист самопроверки
-
-- у каждой витрины есть конкретный пользовательский вопрос;
-- формулы метрик и источники задокументированы;
-- установлены SLA обновления и проверки качества;
-- есть процесс изменения схемы и уведомления команд.
-
-## Контрольные вопросы
-
-1. Когда выбирать `star schema`, а когда `snowflake`?
-2. Почему SLA обновления витрин важно для бизнес-решений?
-3. Какие риски у метрики без владельца?
-
-## Источники
+- [Data Governance](../../database/data-governance.md)## Источники
 
 - The Data Warehouse Toolkit (Kimball & Ross).
 - Building the Data Warehouse (Inmon).
 - dbt docs: <https://docs.getdbt.com/>
-
-## Дата обновления
-
-Февраль 2026.

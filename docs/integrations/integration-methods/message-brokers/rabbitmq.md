@@ -93,22 +93,6 @@ end
 - отсутствие prefetch и saturation consumer;
 - слишком много сложных routing patterns без governance;
 - неучтенная устойчивость при отказе узла.
-
-## Контрольные вопросы
-
-1. Какой exchange type соответствует вашему паттерну маршрутизации?
-2. Как обработаются сообщения после нескольких неудачных попыток?
-3. Какие очереди должны быть quorum?
-4. Какие метрики считаются сигналом аварии?
-
-## Чек-лист самопроверки
-
-- выбран правильный exchange type и routing strategy;
-- настроены ack/nack, retry и DLQ;
-- внедрены quorum queues для критичных потоков;
-- есть мониторинг очередей и consumer здоровья;
-- подготовлены runbooks на failover и recovery.
-
 ## Стандарты и источники
 
 - RabbitMQ docs: <https://www.rabbitmq.com/documentation.html>

@@ -77,23 +77,7 @@ stop
 | Триггер | error_rate > 2% 5 минут |
 | Проверка | health endpoints, recent deploy, external API status |
 | Действия | rollback/circuit breaker/fallback |
-| Эскалация | on-call L2 -> architect -> vendor |
-
-## Чек-лист самопроверки
-
-- метрики привязаны к бизнес-сценариям;
-- алерты имеют понятные шаги реагирования;
-- логи и трейсы позволяют быстро локализовать проблему;
-- наблюдаемость интегрирована с incident-процессом.
-
-## Контрольные вопросы
-
-1. Какие 3 SLI самые важные для вашего продукта?
-2. Где хранится и как поддерживается runbook?
-3. Как вы снижаете количество ложных алертов?
-4. Как мониторинг влияет на release-go/no-go решения?
-
-## Стандарты и источники
+| Эскалация | on-call L2 -> architect -> vendor |## Стандарты и источники
 
 - OpenTelemetry: <https://opentelemetry.io/docs/>
 - Google SRE workbook (monitoring): <https://sre.google/workbook/>

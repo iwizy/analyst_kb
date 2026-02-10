@@ -79,29 +79,10 @@ Product management помогает аналитику связывать тре
 
 - [Приоритизация требований](../requirements/management/prioritization.md)
 - [Data-driven решения](../common-competencies/data-driven-decisions.md)
-- [Agile-процессы](../development-process/agile-processes.md)
-
-## Чек-лист самопроверки
-
-- каждая инициатива связана с KPI;
-- гипотеза проверяема и ограничена по времени;
-- понятны риски, допущения и зависимости;
-- после релиза проводится оценка фактического эффекта.
-
-## Контрольные вопросы
-
-1. Чем vision отличается от roadmap?
-2. Почему метрика успеха должна определяться до начала реализации?
-3. Какие признаки указывают, что backlog потерял связь с ценностью?
-
-## Источники
+- [Agile-процессы](../development-process/agile-processes.md)## Источники
 
 - Inspired (Marty Cagan).
 - Escaping the Build Trap (Melissa Perri).
 - Continuous Discovery Habits (Teresa Torres).
 - Product School: <https://productschool.com/resources>
 - Mind the Product: <https://www.mindtheproduct.com/>
-
-## Дата обновления
-
-Февраль 2026.

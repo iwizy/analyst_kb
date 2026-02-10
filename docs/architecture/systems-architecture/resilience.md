@@ -71,22 +71,6 @@
 - отсутствие метрик по breaker/open state.
 
 Кросс-ссылка: [Паттерны надежности в интеграциях](../../integrations/integration-methods/reliability-patterns.md).
-
-## Контрольные вопросы
-
-1. Какие сервисы критичны для core user journey?
-2. Какой уровень SLA нужен бизнесу и почему?
-3. Как система деградирует при падении внешнего провайдера?
-4. Когда последний раз проверялся DR-сценарий на практике?
-
-## Чек-лист самопроверки
-
-- определены SLO и error budgets;
-- реализованы timeout/retry/circuit/bulkhead;
-- есть canary/blue-green rollout;
-- есть мониторинг и runbooks;
-- проведены chaos/failover тренировки.
-
 ## Стандарты и источники
 
 - Google SRE book/workbook.

@@ -81,22 +81,6 @@ class OrderAggregate {
 2. Определите context ownership и interfaces.
 3. Зафиксируйте инварианты aggregate.
 4. Синхронизируйте DDD с [архитектурными стилями](../../systems-architecture/architecture-types/index.md).
-
-## Контрольные вопросы
-
-1. Где проходят границы bounded contexts?
-2. Какие инварианты должны быть внутри aggregate?
-3. Какие контексты взаимодействуют синхронно, какие асинхронно?
-4. Где нужен anti-corruption layer?
-
-## Чек-лист самопроверки
-
-- ubiquitous language согласован;
-- bounded contexts и owners определены;
-- aggregates и инварианты описаны;
-- context map задокументирован;
-- есть связь с требованиями и интеграциями.
-
 ## Стандарты и источники
 
 - Evans, *Domain-Driven Design*.

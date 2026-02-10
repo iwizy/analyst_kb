@@ -87,22 +87,6 @@ E --> C
 2. Не переносите одновременно code + data + org модель.
 3. Используйте feature flags и canary release.
 4. Для каждого этапа определяйте rollback plan.
-
-## Контрольные вопросы
-
-1. Какой контекст вынести первым и почему?
-2. Где риски dual-write и как их снизить?
-3. Какая метрика подтвердит успех миграции?
-4. Какой rollback сценарий есть у каждого этапа?
-
-## Чек-лист самопроверки
-
-- migration roadmap разбит на этапы;
-- определены риски и mitigations;
-- есть observability и regression guards;
-- есть plan B для каждого шага;
-- результаты этапов измеряются метриками.
-
 ## Стандарты и источники
 
 - Strangler Fig pattern (Fowler): <https://martinfowler.com/bliki/StranglerFigApplication.html>

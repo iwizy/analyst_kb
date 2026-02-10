@@ -48,23 +48,7 @@ stop
 - [Основы DevOps](../product-lifecycle/devops-basics.md)
 - [Основы CI/CD](../product-lifecycle/cicd-basics.md)
 - [Качество, документация и риски](../quality-documentation-risks.md)
-- [Интеграции: паттерны надежности](../../integrations/integration-methods/reliability-patterns.md)
-
-## Чек-лист самопроверки
-
-- эксплуатационные процессы описаны и назначены владельцы;
-- на критичные сценарии есть SLO и runbook;
-- postmortem проводится регулярно и без поиска виноватых;
-- операционные выводы превращаются в задачи развития.
-
-## Контрольные вопросы
-
-1. Какие события в вашей системе должны сразу создавать инцидент?
-2. Есть ли связь между SLO и релизными решениями?
-3. Как быстро команда может восстановить сервис при типовом сбое?
-4. Как формально фиксируются и приоритизируются reliability-улучшения?
-
-## Стандарты и источники
+- [Интеграции: паттерны надежности](../../integrations/integration-methods/reliability-patterns.md)## Стандарты и источники
 
 - ITIL 4: <https://www.axelos.com/certifications/itil-service-management>
 - Google SRE book: <https://sre.google/books/>

@@ -79,22 +79,6 @@ Bus -> Inventory: reserve stock
 - отсутствие компенсационных действий.
 
 Кросс-ссылка: [Saga и интеграционные паттерны](../../integrations/integration-methods/patterns.md).
-
-## Контрольные вопросы
-
-1. Нужен ли вам централизованный контроль процесса?
-2. Где должен жить rollback/compensation logic?
-3. Как обеспечить traceability в выбранном подходе?
-4. Какой риск SPOF в orchestration сценарии?
-
-## Чек-лист самопроверки
-
-- выбран подход под бизнес-процесс;
-- определены компенсации;
-- настроены tracing и correlation IDs;
-- есть политика versioning событий/команд;
-- определен owner процесса.
-
 ## Стандарты и источники
 
 - Temporal docs: <https://docs.temporal.io/>

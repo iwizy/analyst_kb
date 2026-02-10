@@ -148,14 +148,6 @@ where status = 'PAID'
 - запуск потоков без schema governance;
 - DLQ без процесса обработки;
 - нет end-to-end мониторинга бизнес-сценария.
-
-## Чек-лист самопроверки
-
-- выбран инструмент под конкретный интеграционный паттерн;
-- реализованы retry/DLQ/replay процедуры;
-- настроены алерты на lag, errors и retry storms;
-- есть end-to-end tracing с correlation id.
-
 ## Источники
 
 - MuleSoft: <https://www.mulesoft.com/>

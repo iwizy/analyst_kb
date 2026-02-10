@@ -87,28 +87,9 @@
 - [Процесс разработки](../development-process/index.md)
 - [Методологии](../methodologies/index.md)
 - [Интеграции](../integrations/index.md)
-- [Базы данных](../database/index.md)
-
-## Чек-лист самопроверки
-
-- выбран 1 ключевой навык на текущий квартал;
-- определены метрики эффекта до и после;
-- есть план практики в реальных задачах, а не только чтение;
-- результаты развития навыка фиксируются в decision log/ретро.
-
-## Контрольные вопросы
-
-1. Какой смежный навык даст максимальный эффект для вашего текущего проекта?
-2. Какие 2-3 метрики вы используете для оценки эффекта обучения?
-3. Где в вашем процессе не хватает связки между данными, требованиями и продуктовой ценностью?
-
-## Источники
+- [Базы данных](../database/index.md)## Источники
 
 - BABOK v3: <https://www.iiba.org/standards-and-resources/babok/>
 - PMBOK 7: <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>
 - Lean Analytics: <https://leananalyticsbook.com/>
 - Nielsen Norman Group: <https://www.nngroup.com/>
-
-## Дата обновления
-
-Февраль 2026.

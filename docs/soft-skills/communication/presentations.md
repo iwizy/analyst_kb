@@ -78,27 +78,8 @@
 
 - [Грамотность](literacy.md)
 - [Управление ожиданиями](../expectation-management.md)
-- [Управление продуктом](../../related-skills/product-management.md)
-
-## Чек-лист самопроверки
-
-- целевое решение сформулировано на первом экране;
-- есть 1-2 альтернативы с trade-off;
-- время выступления и Q&A запланированы;
-- аудитория понимает следующий шаг.
-
-## Контрольные вопросы
-
-1. Какой один вывод должен запомнить слушатель?
-2. Какие вопросы аудитория задаст первыми?
-3. Чем вы подтвердите, что рекомендация обоснована?
-
-## Источники
+- [Управление продуктом](../../related-skills/product-management.md)## Источники
 
 - Barbara Minto, The Pyramid Principle.
 - Nancy Duarte, Resonate.
 - TED Talks resources: <https://www.ted.com/participate/organize-a-local-tedx-event/tedx-organizer-guide/speakers-program/prepare-your-speakers>
-
-## Дата обновления
-
-Февраль 2026.

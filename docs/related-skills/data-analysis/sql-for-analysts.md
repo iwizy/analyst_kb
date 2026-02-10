@@ -110,27 +110,8 @@ order by dt;
 
 - [SQL в разделе БД](../../database/sql/index.md)
 - [BI и визуализация](bi-and-visualization.md)
-- [Статистика и A/B-тесты](statistics-and-ab-tests.md)
-
-## Чек-лист самопроверки
-
-- запрос воспроизводим и имеет явный период;
-- формула метрики согласована с бизнесом;
-- проверены дубликаты, пропуски и timezone;
-- зафиксирована версия запроса для отчета.
-
-## Контрольные вопросы
-
-1. Почему `COUNT(*)` и `COUNT(DISTINCT ...)` дают разный ответ?
-2. Когда нужна оконная функция вместо группировки?
-3. Какие признаки укажут, что результат искажен из-за `JOIN`?
-
-## Источники
+- [Статистика и A/B-тесты](statistics-and-ab-tests.md)## Источники
 
 - PostgreSQL documentation: <https://www.postgresql.org/docs/>
 - Mode SQL tutorial: <https://mode.com/sql-tutorial/>
 - SQL for Data Analysis (O'Reilly).
-
-## Дата обновления
-
-Февраль 2026.

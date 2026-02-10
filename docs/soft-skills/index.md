@@ -100,28 +100,9 @@ R --> T
 - [Работа с требованиями](../requirements/index.md)
 - [Процесс разработки](../development-process/index.md)
 - [Общие компетенции: планирование и время](../common-competencies/planning-time-management.md)
-- [Методологии](../methodologies/index.md)
-
-## Чек-лист самопроверки
-
-- выбран 1 soft-skill для улучшения в текущем месяце;
-- сформулирован измеримый критерий результата;
-- техника применена минимум в 2 реальных ситуациях;
-- проведена ретроспектива и обновлен план развития.
-
-## Контрольные вопросы
-
-1. Какой soft-skill сейчас сильнее всего ограничивает вашу эффективность?
-2. Какие метрики покажут улучшение через 1 месяц?
-3. Где вы чаще всего теряете договоренности: встречи, переписка, handover?
-
-## Источники
+- [Методологии](../methodologies/index.md)## Источники
 
 - Crucial Conversations.
 - Getting to Yes (Fisher, Ury).
 - Emotional Intelligence (Daniel Goleman).
 - Toastmasters resources: <https://www.toastmasters.org/resources>
-
-## Дата обновления
-
-Февраль 2026.

@@ -93,22 +93,7 @@ stop
 - спринт без четкого Sprint Goal;
 - stories без acceptance criteria;
 - ретроспективы без action items;
-- перегруз спринта сверх capacity.
-
-## Чек-лист самопроверки
-
-- у спринта есть измеримая цель;
-- backlog приоритизирован по бизнес-ценности;
-- DoR/DoD реально применяются;
-- улучшения из ретро внедряются в следующем спринте.
-
-## Контрольные вопросы
-
-1. Какие артефакты Scrum обязательны?
-2. Что делает Product Owner между спринтами?
-3. Как в Scrum учитываются NFR?
-
-## Источники
+- перегруз спринта сверх capacity.## Источники
 
 - Scrum Guide: <https://scrumguides.org/>
 - Evidence-Based Management: <https://www.scrum.org/resources/evidence-based-management-guide>

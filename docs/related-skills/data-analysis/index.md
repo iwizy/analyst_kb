@@ -76,27 +76,8 @@ E --> H : корректировка
 
 - [Data-driven решения](../../common-competencies/data-driven-decisions.md)
 - [Приоритизация требований](../../requirements/management/prioritization.md)
-- [DWH и Data Lake](../../database/dwh-and-data-lake.md)
-
-## Чек-лист самопроверки
-
-- гипотеза сформулирована до запроса в БД;
-- метрика имеет владельца и формулу;
-- данные проверены на качество;
-- вывод оформлен как решение и план проверки эффекта.
-
-## Контрольные вопросы
-
-1. В чем разница между KPI и диагностической метрикой?
-2. Почему `p-value` сам по себе не гарантирует полезность решения?
-3. Когда лучше использовать когорты, а когда сквозную воронку?
-
-## Источники
+- [DWH и Data Lake](../../database/dwh-and-data-lake.md)## Источники
 
 - Lean Analytics.
 - Storytelling with Data.
 - Google Analytics Academy: <https://analytics.google.com/analytics/academy/>
-
-## Дата обновления
-
-Февраль 2026.

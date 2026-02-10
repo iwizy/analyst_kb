@@ -83,22 +83,6 @@ CP --> B
 
 - [Интеграции: API Gateway и Service Mesh](../../integrations/api-design/api-gateway-and-service-mesh.md)
 - [Безопасность API](../../integrations/api-design/security.md)
-
-## Контрольные вопросы
-
-1. Где должна жить конкретная политика: gateway, mesh или приложение?
-2. Какие сервисы требуют mTLS и mutual auth в первую очередь?
-3. Как контролируются изменения traffic policy?
-4. Какой TCO у выбранной gateway/mesh платформы?
-
-## Чек-лист самопроверки
-
-- роли gateway и mesh разделены;
-- политики безопасности и надежности задокументированы;
-- есть observability north-south и east-west;
-- есть процесс rollout/rollback политик;
-- ownership платформы определен.
-
 ## Стандарты и источники
 
 - Envoy docs: <https://www.envoyproxy.io/docs/>

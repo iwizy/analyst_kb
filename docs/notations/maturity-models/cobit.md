@@ -95,22 +95,6 @@ R --> A
 
 - GRC-платформы, Confluence/Jira, BI dashboards;
 - артефакты: control matrix, capability report, risk register.
-
-## Контрольные вопросы
-
-1. Какие бизнес-риски покрывает выбранный процесс COBIT?
-2. Как измеряется capability maturity в динамике?
-3. Кто отвечает за выполнение и контроль процесса?
-4. Как framework интегрирован с текущими методологиями?
-
-## Чек-лист самопроверки
-
-- выбран scope внедрения по приоритетам;
-- baseline и target capability задокументированы;
-- определены KPI/KRI;
-- владельцы процессов назначены;
-- план reassessment утвержден.
-
 ## Стандарты и источники
 
 - COBIT framework: <https://www.isaca.org/resources/cobit>

@@ -77,23 +77,7 @@ stop
 - ITSM «отдельно от разработки», без единого backlog;
 - change-процесс без связи с реальными рисками;
 - база знаний не обновляется после инцидентов;
-- SLA есть, но нет SLO и operational owner.
-
-## Чек-лист самопроверки
-
-- определены сервисы, владельцы и SLA;
-- Incident/Problem/Change процессы формально описаны;
-- есть единая база знаний и runbook на критичные сценарии;
-- postmortem и problem management дают измеримые улучшения.
-
-## Контрольные вопросы
-
-1. Чем Incident отличается от Problem на практике?
-2. Какие изменения обязаны проходить CAB/CCB?
-3. Где фиксируются known errors и обходные решения?
-4. Как технический долг влияет на SLA/SLO?
-
-## Стандарты и источники
+- SLA есть, но нет SLO и operational owner.## Стандарты и источники
 
 - ITIL 4: <https://www.axelos.com/certifications/itil-service-management>
 - ISO/IEC 20000: <https://www.iso.org/standard/70636.html>

@@ -38,13 +38,6 @@ insert(word):
     node = node.next[ch]
   node.is_terminal = true
 ```
-
-## Контрольные вопросы
-
-1. Когда Trie лучше hash-set?
-2. Чем suffix array проще suffix tree?
-3. Где Aho-Corasick дает максимальный выигрыш?
-
 ## Задачи для самопроверки
 
 1. Реализуйте Trie с операциями insert/search/prefix.
