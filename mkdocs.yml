@@ -368,6 +368,7 @@ nav:
           - RUP: methodologies/frameworks/rup.md
           - Kanban: methodologies/frameworks/kanban.md
           - LeSS: methodologies/frameworks/less.md
+          - Nexus: methodologies/frameworks/nexus.md
           - PDCA: methodologies/frameworks/pdca.md
 
   - Инструменты:

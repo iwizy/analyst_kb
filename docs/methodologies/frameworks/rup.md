@@ -1,55 +1,117 @@
-# RUP
+# RUP (Rational Unified Process)
 
-RUP (Rational Unified Process) - итеративный процесс с четкими фазами, ролями и артефактами для крупных проектов.
+RUP - итеративный процесс с формальной структурой фаз, дисциплин и артефактов. Подходит для крупных программ, где нужна управляемость и трассировка.
 
-## Принципы
+## Уровни сложности
 
-- итеративность;
-- архитектура как основа;
-- управление рисками на ранних фазах;
-- управляемость артефактов и трассировка.
+### Базовый уровень
 
-## Фазы
+- знать 4 фазы RUP;
+- понимать роль итераций внутри фаз;
+- использовать базовые артефакты Vision, Use Case Model, Architecture Baseline.
 
-1. Inception.
-1. Elaboration.
-1. Construction.
-1. Transition.
+### Средний уровень
 
-## Артефакты
+- управлять переходами между фазами через критерии готовности;
+- выстраивать дисциплины требований, анализа, разработки и тестирования;
+- поддерживать traceability и change control.
 
-- vision/use-case model;
-- architecture baseline;
-- iteration plan;
-- test artifacts;
-- deployment plan.
+### Продвинутый уровень
 
-## Роли
+- адаптировать RUP под enterprise governance;
+- интегрировать RUP с Agile delivery-практиками;
+- использовать RUP для compliance-heavy программ.
 
-- analyst;
-- architect;
-- developer;
-- tester;
-- project manager.
+## Фазы RUP
 
-## Плюсы и минусы
+| Фаза | Цель | Типовые результаты |
+| --- | --- | --- |
+| Inception | обосновать проект | Vision, Business Case, high-level scope |
+| Elaboration | снять ключевые риски и стабилизировать архитектуру | Use-Case Model, Architecture Baseline, Risk List |
+| Construction | реализовать и протестировать решение | increments, test artifacts |
+| Transition | вывести в эксплуатацию | release package, training, support plan |
+
+## Дисциплины RUP
+
+- Business Modeling;
+- Requirements;
+- Analysis & Design;
+- Implementation;
+- Test;
+- Deployment;
+- Configuration & Change Management;
+- Project Management;
+- Environment.
+
+## Схема фаз и итераций
+
+```kroki-plantuml
+skinparam monochrome true
+start
+:Inception (итерации);
+:Elaboration (итерации + risk mitigation);
+:Construction (итерации + increments);
+:Transition (релиз и внедрение);
+stop
+```
+
+## Артефакты и роли
+
+| Артефакт | Назначение |
+| --- | --- |
+| Vision | целевой результат и границы |
+| Use Case Model | функциональная модель |
+| Architecture Description | архитектурный baseline |
+| Iteration Plan | план текущей итерации |
+| Risk List | управление рисками |
+| Test Plan/Report | контроль качества |
+
+Роли: business analyst, system analyst, architect, developer, tester, PM.
+
+## Плюсы и ограничения
 
 Плюсы:
 
-- сильная управляемость и audit trail;
-- подходит для сложных интеграционных инициатив.
+- сильная управляемость и прозрачность процесса;
+- хорошая совместимость с audit/compliance;
+- баланс итеративности и формального контроля.
 
-Минусы:
+Ограничения:
 
-- риск бюрократии;
-- сложнее для небольших продуктовых команд.
+- высокий overhead внедрения;
+- риск бюрократии при малых проектах;
+- требует зрелого проектного управления.
 
-## Пример подходящего проекта
+## Пример проекта
 
-Государственная или банковская система с высокими требованиями к документации и контролю изменений.
+Государственная цифровая платформа с обязательным audit trail, сложными интеграциями и многоуровневым согласованием.
 
 ## Связь с требованиями и рисками
 
-- формальные артефакты требований на каждой фазе;
-- риск-ориентированная Elaboration;
-- трассировка requirement -> design -> test -> release.
+- требования формализуются и трассируются по фазам;
+- изменения проходят controlled change process;
+- Elaboration фокусируется на закрытии архитектурных и интеграционных рисков.
+
+## Типичные ошибки
+
+- попытка применять полный RUP к малым продуктовым задачам;
+- игнорирование итеративности внутри фаз;
+- переизбыток артефактов без операционной ценности.
+
+## Чек-лист самопроверки
+
+- критерии перехода между фазами определены;
+- ключевые риски закрыты в Elaboration;
+- traceability поддерживается до тестов и релиза;
+- объем артефактов соразмерен масштабу проекта.
+
+## Контрольные вопросы
+
+1. Чем RUP отличается от классического Waterfall?
+2. Какие риски должны быть закрыты до завершения Elaboration?
+3. Какие артефакты критичны для Transition?
+
+## Источники
+
+- IBM RUP docs: <https://www.ibm.com/docs/en/rational-soft-arch>
+- Kruchten, *The Rational Unified Process*.

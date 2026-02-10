@@ -1,55 +1,113 @@
-# SAFe
+# SAFe (Scaled Agile Framework)
 
-SAFe (Scaled Agile Framework) - подход для синхронизации множества Agile-команд на уровне программы и портфеля.
+SAFe - фреймворк масштабирования Agile на уровне программы и портфеля. Полезен, когда нужно синхронизировать множество команд и сохранять управляемость зависимостей.
 
-## Принципы
+## Уровни сложности
 
-- cadence and synchronization;
-- alignment к бизнес-целям;
-- built-in quality;
-- transparency и decentralization внутри defined guardrails.
+### Базовый уровень
 
-## Этапы PI-цикла
+- знать уровни SAFe и ключевые роли;
+- понимать цель PI Planning;
+- использовать PI Objectives и dependency board.
 
-1. Подготовка PI.
-1. PI Planning.
-1. Iteration execution.
-1. System Demo.
-1. Inspect & Adapt.
+### Средний уровень
 
-## Артефакты
+- синхронизировать backlog между Portfolio/Program/Team;
+- управлять межкомандными рисками через ROAM;
+- применять System Demo и Inspect & Adapt.
 
-- Program Backlog;
-- PI Objectives;
-- dependency board;
-- portfolio roadmap.
+### Продвинутый уровень
 
-## Роли
+- внедрять Lean Portfolio Management;
+- оптимизировать flow в ART;
+- сочетать SAFe с enterprise governance и compliance.
 
-- Release Train Engineer;
-- Product Management;
-- System Architect;
-- Product Owner;
-- Agile teams.
+## Уровни SAFe
 
-## Плюсы и минусы
+- Team;
+- Program (ART);
+- Large Solution (при необходимости);
+- Portfolio.
+
+## PI-цикл SAFe
+
+```kroki-plantuml
+skinparam monochrome true
+start
+:Подготовка PI;
+:PI Planning;
+:Итерации команд;
+:System Demo;
+:Inspect & Adapt;
+:Обновление Program/Portfolio backlog;
+stop
+```
+
+## Артефакты и роли
+
+| Артефакт | Назначение |
+| --- | --- |
+| Program Backlog | список фич уровня программы |
+| PI Objectives | цели команд на PI |
+| Dependency Board | межкомандные зависимости |
+| Program Risks (ROAM) | управление программными рисками |
+
+| Роль | Ответственность |
+| --- | --- |
+| Release Train Engineer | координация ART |
+| Product Management | ценность на уровне программы |
+| System Architect | архитектурная согласованность |
+| Product Owner | приоритеты на уровне команды |
+
+## Шаблон PI Objectives (фрагмент)
+
+| Team | Objective | Business Value | Status |
+| --- | --- | --- | --- |
+| Team A | Снизить время отклика checkout на 20% | 8/10 | Planned |
+
+## Плюсы и ограничения
 
 Плюсы:
 
-- управляемость межкомандных зависимостей;
+- синхронизация большого количества команд;
+- прозрачность зависимостей и рисков;
 - единый ритм поставки на уровне программы.
 
-Минусы:
+Ограничения:
 
 - высокий организационный overhead;
-- риск формализма без продуктовой ценности.
+- риск формализма без фокуса на ценности;
+- требует зрелого лидерства и дисциплины исполнения.
 
-## Пример подходящего проекта
+## Пример проекта
 
-Крупная банковская программа цифровой трансформации с 8-12 командами и общими интеграциями.
+Крупная банковская цифровая программа с 10+ командами, общими интеграциями и жесткими сроками регуляторных изменений.
 
 ## Связь с требованиями и рисками
 
-- требования каскадируются от portfolio эпиков к team backlog;
-- program risks ведутся в PI Planning и ROAM;
-- изменения приоритетов управляются на уровне program governance.
+- требования каскадируются: Portfolio Epic -> Feature -> Story;
+- изменения управляются через backlog на каждом уровне;
+- program risks оцениваются и пересматриваются в PI cadence.
+
+## Типичные ошибки
+
+- формальный PI Planning без реального управления зависимостями;
+- слишком много локальной оптимизации команд;
+- отсутствие связи между portfolio-целями и sprint delivery.
+
+## Чек-лист самопроверки
+
+- PI Objectives согласованы с бизнес-целями;
+- dependency board актуален;
+- ROAM-практика используется по факту, а не номинально;
+- System Demo подтверждает интегрированную ценность.
+
+## Контрольные вопросы
+
+1. Какие артефакты SAFe критичны для межкомандной координации?
+2. Как PI Planning связывает стратегию и delivery?
+3. Что проверяется на Inspect & Adapt?
+
+## Источники
+
+- SAFe 6.0: <https://scaledagileframework.com/>
