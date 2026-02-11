@@ -84,6 +84,7 @@ S --> A
 
 ## Переход к разделам
 
+- [Практический playbook архитектурных решений](decision-playbook.md)
 - [Архитектура информационных систем](systems-architecture/index.md)
 - [Подходы к проектированию](design-approaches/index.md)
 - [Декомпозиция задач](task-decomposition.md)

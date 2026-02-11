@@ -280,6 +280,7 @@ nav:
 
   - Проектирование и архитектура:
       - Введение: architecture/index.md
+      - Playbook архитектурных решений: architecture/decision-playbook.md
       - Архитектура информационных систем:
           - Архитектура информационных систем: architecture/systems-architecture/index.md
           - Виды архитектур:
