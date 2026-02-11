@@ -24,7 +24,7 @@
 | --- | --- | --- | --- | --- |
 | Реляционные | [OLTP](../../glossary.md#abbr-060) SQL | ACID, SQL, строгая целостность | сложнее scale-out | PostgreSQL, MySQL, Oracle |
 | NewSQL | Distributed SQL | SQL + горизонтальное масштабирование + согласованность | сложнее эксплуатация | Spanner, CockroachDB, YugabyteDB, TiDB |
-| NewSQL | HTAP | совмещение транзакций и near-real-time аналитики | высокая стоимость и сложность модели | SingleStore, TiDB HTAP |
+| NewSQL | [HTAP](../../glossary.md#abbr-104) | совмещение транзакций и near-real-time аналитики | высокая стоимость и сложность модели | SingleStore, TiDB HTAP |
 | NoSQL | Document | гибкая схема, быстрое развитие домена | сложные аналитические join-сценарии | MongoDB, Couchbase |
 | NoSQL | Key-value | очень низкая задержка | ограниченные ad-hoc запросы | Redis, DynamoDB |
 | NoSQL | Wide-column | высокая write throughput | сложнее модель и запросы | Cassandra, ScyllaDB |
@@ -32,6 +32,7 @@
 | NoSQL | Graph | естественная модель связей | не универсальна для OLTP отчетов | Neo4j, JanusGraph |
 | NoSQL | Search | полнотекст, релевантность, агрегации | не замена primary transactional store | OpenSearch, Elasticsearch |
 | Multi-model | Document + Graph + KV | меньше интеграций между отдельными БД | vendor lock-in, сложнее тюнинг | ArangoDB, Cosmos DB |
+| Distributed Ledger | permissioned/public DLT | неизменяемый журнал и межорганизационное доверие | высокая сложность и latency | Hyperledger Fabric, Ethereum |
 | Специализированные | Vector DB | similarity search для AI и RAG | ограниченная транзакционность | Milvus, Weaviate, pgvector |
 
 ## Критерии выбора

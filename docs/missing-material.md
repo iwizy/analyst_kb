@@ -21,13 +21,13 @@
 
 ## 2. Базы данных
 
-- [ ] `TODO` Методология выбора СУБД на главной странице (нагрузка, ACID/BASE, CAP/PACELC).
-- [ ] `TODO` Расширение типов БД (NoSQL подтипы, NewSQL, distributed ledger) с кейсами.
-- [ ] `TODO` Углубление разделов по реляционным/NoSQL/NewSQL (изоляция, индексация, миграции, мониторинг).
-- [ ] `TODO` Расширение проектирования моделей (концептуальная/логическая/физическая, STAR/Snowflake, DDD).
-- [ ] `TODO` Углубление SQL (планы выполнения, транзакции, блокировки, оптимизация).
-- [ ] `TODO` Расширение масштабирования (sharding/partitioning, middleware, autoscaling).
-- [ ] `TODO` Расширение платформ данных (DWH/Lakehouse/MDM/Governance/CDC/Data Mesh).
+- [x] `DONE` Методология выбора СУБД на главной странице (нагрузка, ACID/BASE, CAP/PACELC).
+- [x] `DONE` Расширение типов БД (NoSQL подтипы, NewSQL, distributed ledger) с кейсами.
+- [x] `DONE` Углубление разделов по реляционным/NoSQL/NewSQL (изоляция, индексация, миграции, мониторинг).
+- [x] `DONE` Расширение проектирования моделей (концептуальная/логическая/физическая, STAR/Snowflake, DDD).
+- [x] `DONE` Углубление SQL (планы выполнения, транзакции, блокировки, оптимизация).
+- [x] `DONE` Расширение масштабирования (sharding/partitioning, middleware, autoscaling).
+- [x] `DONE` Расширение платформ данных (DWH/Lakehouse/MDM/Governance/CDC/Data Mesh).
 
 ## 3. Интеграции
 

@@ -28,6 +28,16 @@
 | Logical sharding | контроль доменных границ | нужна дисциплина routing | multi-tenant продукты |
 | Serverless DB | эластичность по нагрузке | ограничения по контролю/стоимости | переменная нагрузка |
 
+## Middleware для масштабирования
+
+| Инструмент | Где применяют | Что дает | Ограничения |
+| --- | --- | --- | --- |
+| Citus | PostgreSQL | distributed tables, parallel query, scale-out | требует дисциплины по distribution key |
+| Vitess | MySQL | шардирование, routing, failover tooling | сложнее операционный контур |
+| ProxySQL | MySQL | read/write split, routing, pooling | не заменяет шард-архитектуру |
+
+Практика: middleware должен быть частью архитектуры с явным SLA и runbook, а не «скрытым прокси».
+
 ## Архитектурная схема
 
 ```kroki-plantuml
@@ -52,6 +62,21 @@ PROXY --> R : read-heavy
 | --- | --- | --- |
 | Shared-nothing | лучшая горизонтальная масштабируемость | сложнее cross-shard операции |
 | Shared-disk | проще консистентность между узлами | ограничение по storage/interconnect |
+
+## Autoscaling и serverless: практический профиль
+
+| Подход | Когда применять | Риск |
+| --- | --- | --- |
+| Metric-based autoscaling | предсказуемые пики, есть observability | запаздывание scale-up при резком росте |
+| Scheduled scaling | регулярные бизнес-пики (распродажи, отчеты) | перерасход при неверном расписании |
+| Fully serverless | нестабильная нагрузка и короткие burst | холодный старт и сложный cost control |
+
+Ключевые метрики для автоскейлинга:
+
+- p95 latency;
+- queue depth/connection saturation;
+- CPU + disk IO + lock wait;
+- cost per 1k transactions.
 
 ## Типовые ошибки
 

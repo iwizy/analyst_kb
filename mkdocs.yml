@@ -154,6 +154,8 @@ nav:
           - Группировка и сортировка: database/sql/grouping-sorting.md
           - Вложенные запросы: database/sql/subqueries.md
           - Индексы: database/sql/indexes.md
+          - Транзакции, блокировки и дедлоки: database/sql/transactions-and-locking.md
+          - Планы выполнения и оптимизация SQL: database/sql/explain-and-optimization.md
           - Хранимые процедуры и пользовательские функции: database/sql/stored-procedures-and-udf.md
           - Оконные функции: database/sql/window-functions.md
       - Масштабирование БД:

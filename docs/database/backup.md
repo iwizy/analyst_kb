@@ -23,12 +23,12 @@ Backup — обязательная часть надежности данных
 ### PostgreSQL
 
 - `pg_basebackup` для full backup;
-- WAL archiving для point-in-time recovery.
+- WAL archiving для [PITR](../glossary.md#abbr-106).
 
 ### MySQL
 
 - `mysqldump` (логический), `xtrabackup` (физический);
-- binlog для PITR.
+- binlog для [PITR](../glossary.md#abbr-106).
 
 ### MongoDB
 

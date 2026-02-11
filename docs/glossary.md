@@ -144,6 +144,7 @@
 | <a id="abbr-035"></a>FTR | First Time Right | Показатель выполнения без повторной доработки. |
 | <a id="abbr-036"></a>gRPC | Google Remote Procedure Call | Протокол высокопроизводительных RPC-вызовов. |
 | <a id="abbr-037"></a>HATEOAS | Hypermedia as the Engine of Application State | Принцип REST с навигацией через гипермедиа. |
+| <a id="abbr-104"></a>HTAP | Hybrid Transactional/Analytical Processing | Подход, сочетающий транзакционную и аналитическую нагрузку в одной платформе или тесно связанном контуре. |
 | <a id="abbr-038"></a>HTTP | HyperText Transfer Protocol | Базовый протокол передачи данных в вебе. |
 | <a id="abbr-039"></a>IaC | Infrastructure as Code | Управление инфраструктурой через код и версии. |
 | <a id="abbr-040"></a>IDE | Integrated Development Environment | Интегрированная среда разработки. |
@@ -166,6 +167,7 @@
 | <a id="abbr-100"></a>NVC | Nonviolent Communication | Подход к конструктивной коммуникации без обвинений и эскалации конфликта. |
 | <a id="abbr-056"></a>OAuth | Open Authorization | Протокол авторизации доступа к ресурсам. |
 | <a id="abbr-057"></a>OIDC | OpenID Connect | Надстройка над OAuth для аутентификации. |
+| <a id="abbr-105"></a>ODS | Operational Data Store | Операционный слой консолидации данных между staging и аналитическими витринами. |
 | <a id="abbr-101"></a>OTel | OpenTelemetry | Открытый стандарт для сбора метрик, логов и трассировок. |
 | <a id="abbr-058"></a>OKR | Objectives and Key Results | Система постановки целей и измеримых результатов. |
 | <a id="abbr-059"></a>OLAP | Online Analytical Processing | Аналитическая обработка данных. |
@@ -173,6 +175,7 @@
 | <a id="abbr-061"></a>PACELC | Partition, Availability, Consistency, Else Latency/Consistency | Расширение CAP с учетом задержек в нормальном режиме. |
 | <a id="abbr-062"></a>PERT | Program Evaluation and Review Technique | Метод оценки сроков через оптимистичный/вероятный/пессимистичный сценарии. |
 | <a id="abbr-063"></a>PII | Personally Identifiable Information | Персональные данные, позволяющие идентифицировать человека. |
+| <a id="abbr-106"></a>PITR | Point-In-Time Recovery | Восстановление базы данных к конкретному моменту времени по журналам изменений. |
 | <a id="abbr-064"></a>PMBOK | Project Management Body of Knowledge | Свод знаний по управлению проектами. |
 | <a id="abbr-065"></a>PO | Product Owner | Роль, отвечающая за ценность и приоритизацию продукта. |
 | <a id="abbr-066"></a>PRD | Product Requirements Document | Документ продуктовых требований. |
