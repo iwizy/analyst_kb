@@ -371,6 +371,7 @@ nav:
 
   - Методологии разработки ПО:
       - Введение: methodologies/index.md
+      - Playbook выбора методологии: methodologies/selection-playbook.md
       - Сравнение методологий: methodologies/comparison.md
       - Гибридные подходы: methodologies/hybrid-approaches.md
       - Waterfall:

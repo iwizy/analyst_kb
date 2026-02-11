@@ -64,6 +64,7 @@
 
 ## Карта раздела
 
+- [Практический playbook выбора методологии](selection-playbook.md)
 - [Waterfall и предсказуемые варианты](waterfall/index.md)
 - [Agile-подход](agile.md)
 - [Методологии и фреймворки](frameworks/index.md)
