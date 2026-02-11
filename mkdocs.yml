@@ -275,6 +275,7 @@ nav:
           - Комбинаторика и backtracking: algorithms/advanced/combinatorial.md
           - Строковые структуры: algorithms/advanced/string-structures.md
           - Геометрические алгоритмы: algorithms/advanced/computational-geometry.md
+      - Практические сценарии: algorithms/practical-scenarios.md
       - Практика и самопроверка: algorithms/exercises.md
 
   - Проектирование и архитектура:
