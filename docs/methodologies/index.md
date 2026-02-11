@@ -98,6 +98,8 @@ stop
 - [Требования](../requirements/index.md)
 - [Проектирование и архитектура](../architecture/index.md)
 - [Интеграции](../integrations/index.md)
+- [Навигационная карта](../site-map.md)
+- [Единые шаблоны артефактов](../artifacts-templates/index.md)
 
 ## Типичные ошибки при выборе методологии
 

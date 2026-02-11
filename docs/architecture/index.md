@@ -60,6 +60,8 @@
 - [Интеграции](../integrations/index.md)
 - [Базы данных](../database/index.md)
 - [Нотации и моделирование](../notations/index.md)
+- [Навигационная карта](../site-map.md)
+- [Единые шаблоны артефактов](../artifacts-templates/index.md)
 
 ## Карта архитектурного решения
 

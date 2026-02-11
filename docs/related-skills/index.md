@@ -88,6 +88,8 @@
 - [Методологии](../methodologies/index.md)
 - [Интеграции](../integrations/index.md)
 - [Базы данных](../database/index.md)
+- [Навигационная карта](../site-map.md)
+- [Единый стиль и терминология](../editorial-style.md)
 
 ## Источники
 

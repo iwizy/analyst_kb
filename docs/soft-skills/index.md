@@ -101,6 +101,8 @@ R --> T
 - [Процесс разработки](../development-process/index.md)
 - [Общие компетенции: планирование и время](../common-competencies/planning-time-management.md)
 - [Методологии](../methodologies/index.md)
+- [Навигационная карта](../site-map.md)
+- [Единый стиль и терминология](../editorial-style.md)
 
 ## Источники
 

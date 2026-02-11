@@ -67,6 +67,8 @@ stop
 - [Процесс разработки](../development-process/index.md)
 - [Методологии разработки](../methodologies/index.md)
 - [Софт-скилы](../soft-skills/index.md)
+- [Навигационная карта](../site-map.md)
+- [Единые шаблоны артефактов](../artifacts-templates/index.md)
 
 ## Источники
 

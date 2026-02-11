@@ -159,6 +159,14 @@ B --> D : детализация реализации
 - [Карта целей](goals-map.md)
 - [Impact Map](impact-map.md)
 - [Модели зрелости](maturity-models/index.md)
+
+## Кросс-ссылки
+
+- [Требования: определение границ системы](../requirements/system-boundaries/index.md)
+- [Проектирование и архитектура](../architecture/index.md)
+- [Единый стиль и терминология](../editorial-style.md)
+- [Навигационная карта](../site-map.md)
+
 ## Стандарты и источники
 
 - UML 2.5.1 (OMG): <https://www.omg.org/spec/UML/2.5.1>
