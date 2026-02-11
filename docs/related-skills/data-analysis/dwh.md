@@ -63,7 +63,9 @@ DM --> BI
 
 - [ETL/ELT](etl-elt.md)
 - [DWH и Data Lake](../../database/dwh-and-data-lake.md)
-- [Data Governance](../../database/data-governance.md)## Источники
+- [Data Governance](../../database/data-governance.md)
+
+## Источники
 
 - The Data Warehouse Toolkit (Kimball & Ross).
 - Building the Data Warehouse (Inmon).

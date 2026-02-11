@@ -48,7 +48,9 @@ stop
 - [Основы DevOps](../product-lifecycle/devops-basics.md)
 - [Основы CI/CD](../product-lifecycle/cicd-basics.md)
 - [Качество, документация и риски](../quality-documentation-risks.md)
-- [Интеграции: паттерны надежности](../../integrations/integration-methods/reliability-patterns.md)## Стандарты и источники
+- [Интеграции: паттерны надежности](../../integrations/integration-methods/reliability-patterns.md)
+
+## Стандарты и источники
 
 - [ITIL](../../glossary.md#abbr-044) 4: <https://www.axelos.com/certifications/itil-service-management>
 - Google SRE book: <https://sre.google/books/>

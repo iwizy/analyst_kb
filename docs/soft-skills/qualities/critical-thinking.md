@@ -60,7 +60,9 @@
 
 - [Аналитическое мышление](analytical-thinking.md)
 - [Выявление рисков](../../common-competencies/estimation-risks/risk-identification.md)
-- [Data-driven решения](../../common-competencies/data-driven-decisions.md)## Источники
+- [Data-driven решения](../../common-competencies/data-driven-decisions.md)
+
+## Источники
 
 - Thinking, Fast and Slow (Daniel Kahneman).
 - Decisive (Chip Heath, Dan Heath).

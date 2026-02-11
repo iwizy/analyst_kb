@@ -65,7 +65,9 @@ ETL/ELT это практики переноса и преобразования
 
 - [DWH](dwh.md)
 - [Репликация и backup](../../database/replication.md)
-- [Мониторинг и логирование](../../development-process/feature-support/monitoring-logging.md)## Источники
+- [Мониторинг и логирование](../../development-process/feature-support/monitoring-logging.md)
+
+## Источники
 
 - Fundamentals of Data Engineering.
 - Airflow docs: <https://airflow.apache.org/docs/>

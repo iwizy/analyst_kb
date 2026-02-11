@@ -75,7 +75,9 @@ E --> H : корректировка
 
 - [Data-driven решения](../../common-competencies/data-driven-decisions.md)
 - [Приоритизация требований](../../requirements/management/prioritization.md)
-- [DWH и Data Lake](../../database/dwh-and-data-lake.md)## Источники
+- [DWH и Data Lake](../../database/dwh-and-data-lake.md)
+
+## Источники
 
 - Lean Analytics.
 - Storytelling with Data.

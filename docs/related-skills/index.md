@@ -87,7 +87,9 @@
 - [Процесс разработки](../development-process/index.md)
 - [Методологии](../methodologies/index.md)
 - [Интеграции](../integrations/index.md)
-- [Базы данных](../database/index.md)## Источники
+- [Базы данных](../database/index.md)
+
+## Источники
 
 - BABOK v3: <https://www.iiba.org/standards-and-resources/babok/>
 - [PMBOK](../glossary.md#abbr-064) 7: <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>

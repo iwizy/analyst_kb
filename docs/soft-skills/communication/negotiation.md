@@ -83,7 +83,9 @@
 
 - [Управление ожиданиями заказчика](../expectation-management.md)
 - [Приоритизация](../../requirements/management/prioritization.md)
-- [Управление конфликтами](../conflict-management.md)## Источники
+- [Управление конфликтами](../conflict-management.md)
+
+## Источники
 
 - Getting to Yes (Fisher, Ury).
 - Harvard PON resources: <https://www.pon.harvard.edu/>

@@ -59,7 +59,9 @@ LTV/CAC = 2.6. Для роста обычно целевой диапазон >=
 
 - [Приоритизация требований](../../requirements/management/prioritization.md)
 - [Оценка трудоемкости](../../common-competencies/estimation-risks/effort-estimation.md)
-- [Управление продуктом](../product-management.md)## Источники
+- [Управление продуктом](../product-management.md)
+
+## Источники
 
 - Finance for Non-Finance Managers (Coursera).
 - The Lean Startup (Eric Ries).

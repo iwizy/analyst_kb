@@ -56,7 +56,9 @@
 
 - [Требования](../../requirements/index.md)
 - [Оценка и риски](../estimation-risks/index.md)
-- [Методологии](../../methodologies/index.md)## Источники
+- [Методологии](../../methodologies/index.md)
+
+## Источники
 
 - BABOK v3 techniques catalog.
 - Lean Thinking (value stream).

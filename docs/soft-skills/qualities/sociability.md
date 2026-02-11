@@ -49,7 +49,9 @@
 
 - [Эффективная коммуникация](../communication/communication.md)
 - [Работа в команде](../teamwork.md)
-- [Участие в коммьюнити](../communication/community.md)## Источники
+- [Участие в коммьюнити](../communication/community.md)
+
+## Источники
 
 - How to Win Friends and Influence People (Dale Carnegie).
 - Never Eat Alone (Keith Ferrazzi).

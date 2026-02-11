@@ -70,7 +70,9 @@
 
 - [Ведение переговоров](communication/negotiation.md)
 - [Фасилитация встреч](communication/facilitation.md)
-- [Согласование требований](../requirements/management/coordination.md)## Источники
+- [Согласование требований](../requirements/management/coordination.md)
+
+## Источники
 
 - Thomas-Kilmann Conflict Mode Instrument.
 - Crucial Conversations.

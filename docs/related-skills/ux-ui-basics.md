@@ -80,7 +80,9 @@ UX/UI-компетенции помогают аналитику проекти�
 
 - [Работа с требованиями](../requirements/index.md)
 - [Приоритизация](../requirements/management/prioritization.md)
-- [Инструменты моделирования](../tools/modeling-tools.md)## Источники
+- [Инструменты моделирования](../tools/modeling-tools.md)
+
+## Источники
 
 - Nielsen Norman Group: <https://www.nngroup.com/>
 - Material Design: <https://m3.material.io/>

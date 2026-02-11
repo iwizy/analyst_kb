@@ -100,7 +100,9 @@ R --> T
 - [Работа с требованиями](../requirements/index.md)
 - [Процесс разработки](../development-process/index.md)
 - [Общие компетенции: планирование и время](../common-competencies/planning-time-management.md)
-- [Методологии](../methodologies/index.md)## Источники
+- [Методологии](../methodologies/index.md)
+
+## Источники
 
 - Crucial Conversations.
 - Getting to Yes (Fisher, Ury).

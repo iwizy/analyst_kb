@@ -75,7 +75,9 @@
 
 - [Софт-скилы: введение](index.md)
 - [Общие компетенции: data-driven решения](../common-competencies/data-driven-decisions.md)
-- [Методологии: ретроспективы](../development-process/agile-processes.md)## Источники
+- [Методологии: ретроспективы](../development-process/agile-processes.md)
+
+## Источники
 
 - DORA и continuous improvement practices.
 - Agile retrospectives practices.

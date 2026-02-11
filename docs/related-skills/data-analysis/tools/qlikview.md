@@ -40,7 +40,9 @@ QlikView полезен для исследовательской аналити
 
 - [Инструменты анализа данных](index.md)
 - [Tableau](tableau.md)
-- [Power BI](power-bi.md)## Источники
+- [Power BI](power-bi.md)
+
+## Источники
 
 - Qlik Help: <https://help.qlik.com/>
 - Qlik Community: <https://community.qlik.com/>

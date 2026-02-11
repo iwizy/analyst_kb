@@ -90,7 +90,9 @@
 
 - [Требования](../../requirements/index.md)
 - [Процесс разработки](../../development-process/index.md)
-- [Оценка задач и рисков](../estimation-risks/index.md)## Источники
+- [Оценка задач и рисков](../estimation-risks/index.md)
+
+## Источники
 
 - IIBA BABOK: <https://www.iiba.org/standards-and-resources/babok/>
 - PMI PMBOK: <https://www.pmi.org/pmbok-guide-standards>

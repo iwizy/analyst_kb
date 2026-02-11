@@ -42,7 +42,9 @@
 
 - [BI и визуализация](../bi-and-visualization.md)
 - [DWH](../dwh.md)
-- [Инструменты](../../../tools/index.md)## Источники
+- [Инструменты](../../../tools/index.md)
+
+## Источники
 
 - Tableau docs: <https://help.tableau.com/>
 - Power BI docs: <https://learn.microsoft.com/power-bi/>

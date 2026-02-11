@@ -89,7 +89,9 @@
 
 - [Методологии: Scrum](../../methodologies/frameworks/scrum.md)
 - [Методологии: Kanban](../../methodologies/frameworks/kanban.md)
-- [Согласование требований](../../requirements/management/coordination.md)## Источники
+- [Согласование требований](../../requirements/management/coordination.md)
+
+## Источники
 
 - Gamestorming.
 - The Facilitator's Guide to Participatory Decision-Making.

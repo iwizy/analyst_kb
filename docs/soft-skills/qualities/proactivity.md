@@ -56,7 +56,9 @@
 
 - [Ответственность](responsibility.md)
 - [Управление рисками](../../common-competencies/estimation-risks/risk-management.md)
-- [Практика и измерение](../practice-and-measurement.md)## Источники
+- [Практика и измерение](../practice-and-measurement.md)
+
+## Источники
 
 - The 7 Habits of Highly Effective People (Stephen Covey).
 - Team Topologies.

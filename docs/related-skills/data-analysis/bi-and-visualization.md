@@ -67,7 +67,9 @@ BI помогает аналитику донести решение, а не п
 
 - [Инструменты анализа данных](tools/index.md)
 - [Data-driven решения](../../common-competencies/data-driven-decisions.md)
-- [Управление продуктом](../product-management.md)## Источники
+- [Управление продуктом](../product-management.md)
+
+## Источники
 
 - Storytelling with Data.
 - Information Dashboard Design (Stephen Few).

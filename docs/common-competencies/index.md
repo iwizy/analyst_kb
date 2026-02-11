@@ -66,7 +66,9 @@ stop
 - [Требования](../requirements/index.md)
 - [Процесс разработки](../development-process/index.md)
 - [Методологии разработки](../methodologies/index.md)
-- [Софт-скилы](../soft-skills/index.md)## Источники
+- [Софт-скилы](../soft-skills/index.md)
+
+## Источники
 
 - BABOK v3: <https://www.iiba.org/standards-and-resources/babok/>
 - [PMBOK](../glossary.md#abbr-064) 7: <https://www.pmi.org/pmbok-guide-standards>

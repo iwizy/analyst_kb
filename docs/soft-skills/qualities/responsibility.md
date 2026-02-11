@@ -52,7 +52,9 @@
 
 - [Управление ожиданиями](../expectation-management.md)
 - [Приемочное тестирование](../../development-process/testing/acceptance-testing.md)
-- [Проактивность](proactivity.md)## Источники
+- [Проактивность](proactivity.md)
+
+## Источники
 
 - Extreme Ownership (Jocko Willink, Leif Babin).
 - Team accountability practices.

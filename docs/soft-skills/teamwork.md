@@ -75,7 +75,9 @@
 
 - [Фасилитация встреч](communication/facilitation.md)
 - [Управление конфликтами](conflict-management.md)
-- [Методологии: Scrum](../methodologies/frameworks/scrum.md)## Источники
+- [Методологии: Scrum](../methodologies/frameworks/scrum.md)
+
+## Источники
 
 - Team Topologies (Skelton, Pais).
 - The Five Dysfunctions of a Team (Lencioni).

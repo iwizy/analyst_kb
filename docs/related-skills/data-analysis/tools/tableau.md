@@ -42,7 +42,9 @@ Tableau подходит для интерактивной визуализац�
 
 - [BI и визуализация](../bi-and-visualization.md)
 - [Power BI](power-bi.md)
-- [QlikView](qlikview.md)## Источники
+- [QlikView](qlikview.md)
+
+## Источники
 
 - Tableau docs: <https://help.tableau.com/>
 - Tableau Learn: <https://www.tableau.com/learn>

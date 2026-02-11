@@ -65,7 +65,9 @@ ML для аналитика это способ формализовать за
 
 - [Анализ данных](data-analysis/index.md)
 - [DWH и Data Lake](../database/dwh-and-data-lake.md)
-- [Требования к качеству](../requirements/quality.md)## Источники
+- [Требования к качеству](../requirements/quality.md)
+
+## Источники
 
 - CRISP-DM overview: <https://www.datascience-pm.com/crisp-dm-2/>
 - Coursera ML (Andrew Ng): <https://www.coursera.org/learn/machine-learning>

@@ -113,7 +113,9 @@ stop
 
 - [Требования: Управление изменениями](../../requirements/management/change-management.md)
 - [Требования: Трассировка](../../requirements/management/traceability.md)
-- [Процесс разработки: Этапы SDLC](../../development-process/product-lifecycle/stages.md)## Источники
+- [Процесс разработки: Этапы SDLC](../../development-process/product-lifecycle/stages.md)
+
+## Источники
 
 - [PMBOK](../../glossary.md#abbr-064) Guide: <https://www.pmi.org/pmbok-guide-standards>
 - [ISO](../../glossary.md#abbr-043)/IEC/[IEEE](../../glossary.md#abbr-041) 12207: <https://www.iso.org/standard/63712.html>

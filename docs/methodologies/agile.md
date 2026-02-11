@@ -108,7 +108,9 @@ stop
 
 - [Процесс разработки: Agile-процессы и практики](../development-process/agile-processes.md)
 - [Требования: Подходы к спецификации](../requirements/specification-approaches.md)
-- [Требования: Приоритизация](../requirements/management/prioritization.md)## Источники
+- [Требования: Приоритизация](../requirements/management/prioritization.md)
+
+## Источники
 
 - Agile Manifesto: <https://agilemanifesto.org/>
 - Scrum Guide (актуальная публикация): <https://scrumguides.org/>

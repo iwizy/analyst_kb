@@ -66,7 +66,9 @@
 
 - [Планирование и время](../common-competencies/planning-time-management.md)
 - [Управление ожиданиями](expectation-management.md)
-- [Стресс-менеджмент](stress-management.md)## Источники
+- [Стресс-менеджмент](stress-management.md)
+
+## Источники
 
 - Getting Things Done (David Allen).
 - Deep Work (Cal Newport).

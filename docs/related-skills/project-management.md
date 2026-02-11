@@ -79,7 +79,9 @@
 - [Процесс разработки](../development-process/index.md)
 - [Методологии](../methodologies/index.md)
 - [Управление рисками](../common-competencies/estimation-risks/risk-management.md)
-- [Продвинутые специализации](advanced-specializations.md)## Источники
+- [Продвинутые специализации](advanced-specializations.md)
+
+## Источники
 
 - PMBOK 7.
 - PRINCE2 guidance.

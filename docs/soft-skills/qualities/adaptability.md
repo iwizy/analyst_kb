@@ -56,7 +56,9 @@
 
 - [Управление изменениями](../../requirements/management/change-management.md)
 - [Тайм-менеджмент](../time-management.md)
-- [Управление ожиданиями](../expectation-management.md)## Источники
+- [Управление ожиданиями](../expectation-management.md)
+
+## Источники
 
 - Antifragile (Nassim Taleb).
 - Scrum/Kanban практики адаптивного планирования.

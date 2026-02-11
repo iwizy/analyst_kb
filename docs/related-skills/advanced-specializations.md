@@ -112,7 +112,9 @@
 - [Анализ данных](data-analysis/index.md)
 - [Управление продуктом](product-management.md)
 - [Управление проектами](project-management.md)
-- [Интеграции](../integrations/index.md)## Источники
+- [Интеграции](../integrations/index.md)
+
+## Источники
 
 - Domain-Driven Design (Eric Evans).
 - Implementing Domain-Driven Design (Vaughn Vernon).

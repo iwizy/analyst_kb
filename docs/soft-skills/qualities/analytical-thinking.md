@@ -55,7 +55,9 @@
 
 - [Критическое мышление](critical-thinking.md)
 - [5 Why](../../common-competencies/techniques/five-why.md)
-- [Декомпозиция требований](../../requirements/decomposition.md)## Источники
+- [Декомпозиция требований](../../requirements/decomposition.md)
+
+## Источники
 
 - Thinking, Fast and Slow (Daniel Kahneman).
 - The Pyramid Principle (Barbara Minto).

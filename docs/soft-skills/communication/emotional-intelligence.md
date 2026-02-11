@@ -56,7 +56,9 @@
 
 - [Управление конфликтами](../conflict-management.md)
 - [Эффективная коммуникация](communication.md)
-- [Работа в команде](../teamwork.md)## Источники
+- [Работа в команде](../teamwork.md)
+
+## Источники
 
 - Daniel Goleman, Emotional Intelligence.
 - Primal Leadership (Goleman, Boyatzis, McKee).

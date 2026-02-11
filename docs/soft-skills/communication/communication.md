@@ -81,7 +81,9 @@
 
 - [Ведение переговоров](negotiation.md)
 - [Фасилитация встреч](facilitation.md)
-- [Качество требований](../../requirements/quality.md)## Источники
+- [Качество требований](../../requirements/quality.md)
+
+## Источники
 
 - Nonviolent Communication (Marshall Rosenberg).
 - Crucial Conversations.

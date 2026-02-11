@@ -49,7 +49,9 @@ Data Science дополняет аналитическую практику, к�
 
 - [Основы машинного обучения](../ml-basics.md)
 - [Статистика и A/B-тесты](statistics-and-ab-tests.md)
-- [Data-driven решения](../../common-competencies/data-driven-decisions.md)## Источники
+- [Data-driven решения](../../common-competencies/data-driven-decisions.md)
+
+## Источники
 
 - CRISP-DM.
 - Data Science for Business (Provost, Fawcett).

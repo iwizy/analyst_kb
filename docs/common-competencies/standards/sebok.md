@@ -46,6 +46,8 @@ SEBOK (Systems Engineering Body of Knowledge) — свод знаний по с�
 
 - [ISO 15288](iso-15288.md)
 - [Проектирование и архитектура](../../architecture/index.md)
-- [Требования: Границы системы](../../requirements/system-boundaries/index.md)## Источники
+- [Требования: Границы системы](../../requirements/system-boundaries/index.md)
+
+## Источники
 
 - SEBOK Wiki: <https://www.sebokwiki.org/>

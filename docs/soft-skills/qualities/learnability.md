@@ -57,7 +57,9 @@
 
 - [Продвинутые специализации](../../related-skills/advanced-specializations.md)
 - [Промпт-инжиниринг](../../related-skills/prompt-engineering.md)
-- [Участие в коммьюнити](../communication/community.md)## Источники
+- [Участие в коммьюнити](../communication/community.md)
+
+## Источники
 
 - Ultralearning (Scott Young).
 - Peak (Anders Ericsson).

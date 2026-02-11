@@ -61,7 +61,9 @@ TCO (Total Cost of Ownership) помогает увидеть полную ст�
 
 - [ROI, NPV, IRR](roi-npv-irr.md)
 - [Базы данных: выбор и проектирование](../../database/index.md)
-- [Интеграции](../../integrations/index.md)## Источники
+- [Интеграции](../../integrations/index.md)
+
+## Источники
 
 - Gartner TCO methodology.
 - FinOps Foundation: <https://www.finops.org/>

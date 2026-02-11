@@ -79,7 +79,9 @@ Product management помогает аналитику связывать тре
 
 - [Приоритизация требований](../requirements/management/prioritization.md)
 - [Data-driven решения](../common-competencies/data-driven-decisions.md)
-- [Agile-процессы](../development-process/agile-processes.md)## Источники
+- [Agile-процессы](../development-process/agile-processes.md)
+
+## Источники
 
 - Inspired (Marty Cagan).
 - Escaping the Build Trap (Melissa Perri).

@@ -59,7 +59,9 @@ def validate_token(expire_at_utc: datetime) -> bool:
 
 - [Требования](../../requirements/index.md)
 - [Тестирование](../testing/index.md)
-- [Алгоритмы](../../algorithms/index.md)## Источники
+- [Алгоритмы](../../algorithms/index.md)
+
+## Источники
 
 - Python docs: <https://docs.python.org/3/tutorial/>
 - Java docs: <https://docs.oracle.com/en/java/>

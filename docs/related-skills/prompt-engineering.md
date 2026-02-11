@@ -88,7 +88,9 @@ Prompt engineering для аналитика это управляемое ис�
 
 - [Работа с требованиями](../requirements/index.md)
 - [Основы тестирования](testing-fundamentals.md)
-- [Инструменты API](../tools/api-tools.md)## Источники
+- [Инструменты API](../tools/api-tools.md)
+
+## Источники
 
 - OpenAI docs: <https://platform.openai.com/docs>
 - DeepLearning.AI Prompt Engineering: <https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/>

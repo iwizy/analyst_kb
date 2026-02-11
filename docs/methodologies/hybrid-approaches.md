@@ -107,7 +107,9 @@ stop
 
 - [Процесс разработки: Гибридные модели](../development-process/hybrid-models.md)
 - [Требования: Управление изменениями](../requirements/management/change-management.md)
-- [Архитектура: Документирование решений](../architecture/systems-architecture/documentation-visualization.md)## Источники
+- [Архитектура: Документирование решений](../architecture/systems-architecture/documentation-visualization.md)
+
+## Источники
 
 - PMI [PMBOK](../glossary.md#abbr-064) (hybrid delivery).
 - Scrum Guide: <https://scrumguides.org/>

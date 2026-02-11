@@ -72,7 +72,9 @@ stop
 
 - [Тест-кейсы](test-cases.md)
 - [Ручное тестирование](manual-testing.md)
-- [Приемка функциональности](acceptance-testing.md)## Стандарты и источники
+- [Приемка функциональности](acceptance-testing.md)
+
+## Стандарты и источники
 
 - ISTQB Glossary: <https://glossary.istqb.org/>
 - [ISO](../../glossary.md#abbr-043)/IEC/[IEEE](../../glossary.md#abbr-041) 29119 (software testing): <https://www.iso.org/standard/45142.html>

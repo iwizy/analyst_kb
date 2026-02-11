@@ -66,7 +66,9 @@
 
 - [Сбор требований](../requirements/elicitation.md)
 - [Управление изменениями](../requirements/management/change-management.md)
-- [Приоритизация](../requirements/management/prioritization.md)## Источники
+- [Приоритизация](../requirements/management/prioritization.md)
+
+## Источники
 
 - Managing Expectations (HBR resources).
 - BABOK v3 (stakeholder engagement, requirements life cycle).

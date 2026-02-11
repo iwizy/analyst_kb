@@ -78,7 +78,9 @@
 
 - [Грамотность](literacy.md)
 - [Управление ожиданиями](../expectation-management.md)
-- [Управление продуктом](../../related-skills/product-management.md)## Источники
+- [Управление продуктом](../../related-skills/product-management.md)
+
+## Источники
 
 - Barbara Minto, The Pyramid Principle.
 - Nancy Duarte, Resonate.

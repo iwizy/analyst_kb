@@ -49,7 +49,9 @@
 
 - [Обучаемость](../qualities/learnability.md)
 - [Проведение презентаций](presentations.md)
-- [Продвинутые специализации](../../related-skills/advanced-specializations.md)## Источники
+- [Продвинутые специализации](../../related-skills/advanced-specializations.md)
+
+## Источники
 
 - BA Times community.
 - IIBA communities: <https://www.iiba.org/>

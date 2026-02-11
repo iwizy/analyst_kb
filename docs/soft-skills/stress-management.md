@@ -66,7 +66,9 @@
 
 - [Тайм-менеджмент](time-management.md)
 - [Управление конфликтами](conflict-management.md)
-- [Планирование времени](../common-competencies/planning-time-management.md)## Источники
+- [Планирование времени](../common-competencies/planning-time-management.md)
+
+## Источники
 
 - Burnout (Christina Maslach).
 - Why Zebras Don't Get Ulcers (Robert Sapolsky).

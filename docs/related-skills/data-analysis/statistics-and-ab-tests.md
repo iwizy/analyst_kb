@@ -73,7 +73,9 @@
 
 - [Data-driven решения](../../common-competencies/data-driven-decisions.md)
 - [Управление продуктом](../product-management.md)
-- [Приоритизация требований](../../requirements/management/prioritization.md)## Источники
+- [Приоритизация требований](../../requirements/management/prioritization.md)
+
+## Источники
 
 - Practical Statistics for Data Scientists.
 - Trustworthy Online Controlled Experiments (Kohavi).

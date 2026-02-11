@@ -48,7 +48,9 @@ stop
 
 - [Требования: Приоритизация](../../requirements/management/prioritization.md)
 - [Процесс разработки: Этапы SDLC](../../development-process/product-lifecycle/stages.md)
-- [Методологии: Сравнение](../../methodologies/comparison.md)## Источники
+- [Методологии: Сравнение](../../methodologies/comparison.md)
+
+## Источники
 
 - [PMBOK](../../glossary.md#abbr-064) Guide (estimation and risk).
 - Scrum Guide.

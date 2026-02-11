@@ -47,7 +47,9 @@ OLAP (Online Analytical Processing) поддерживает многомерн�
 
 - [DWH](dwh.md)
 - [BI и визуализация](bi-and-visualization.md)
-- [Data Governance](../../database/data-governance.md)## Источники
+- [Data Governance](../../database/data-governance.md)
+
+## Источники
 
 - The Data Warehouse Toolkit.
 - OLAP operations overview: <https://en.wikipedia.org/wiki/Online_analytical_processing>
