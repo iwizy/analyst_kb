@@ -367,3 +367,4 @@
 - [Структурирование требований](structuring.md)
 - [Валидация и верификация требований](validation.md)
 - [Приоритизация требований](management/prioritization.md)
+- [Единые шаблоны артефактов](../artifacts-templates/index.md)

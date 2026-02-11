@@ -309,5 +309,6 @@ Then система создает документ возврата и отпр
 - [Валидация и верификация требований](validation.md)
 - [Структурирование требований](structuring.md)
 - [Управление изменениями требований](management/change-management.md)
+- [Единые шаблоны артефактов](../artifacts-templates/index.md)
 - [BABOK](../common-competencies/standards/babok.md)
 - [IEEE](../common-competencies/standards/ieee.md)
