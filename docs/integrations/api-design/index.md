@@ -73,6 +73,7 @@ stop
 - [Безопасность API](security.md)
 - [Лимиты и квоты](rate-limiting.md)
 - [Идемпотентность](idempotency.md)
+- [Обработка ошибок API](error-handling.md)
 - [API Gateway и Service Mesh](api-gateway-and-service-mesh.md)
 - [Форматы сериализации](serialization-formats/index.md)
 ## Стандарты и источники

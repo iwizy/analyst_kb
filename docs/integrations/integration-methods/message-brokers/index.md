@@ -49,10 +49,15 @@
 | Google Pub/Sub | managed messaging в GCP |
 | Azure Service Bus | enterprise messaging в Azure |
 
+Подробное сравнение альтернатив:
+
+- [Pulsar, NATS, SQS, Pub/Sub, Service Bus](alternatives.md)
+
 ## Переход к подразделам
 
 - [Kafka](kafka.md)
 - [RabbitMQ](rabbitmq.md)
+- [Pulsar, NATS, SQS, Pub/Sub, Service Bus](alternatives.md)
 ## Стандарты и источники
 
 - Kafka docs: <https://kafka.apache.org/documentation/>

@@ -114,6 +114,12 @@ return res.status(201).json(out);
 - слишком короткий TTL для финансовых операций;
 - повтор non-idempotent операций в retry без ключа;
 - отсутствие наблюдаемости по конфликтам идемпотентности.
+
+## Смежные материалы
+
+- [Лимиты и квоты](rate-limiting.md)
+- [Обработка ошибок API](error-handling.md)
+- [Паттерны надежности](../integration-methods/reliability-patterns.md)
 ## Стандарты и источники
 
 - [RFC](../../glossary.md#abbr-072) 9110 (Idempotent Methods): <https://www.rfc-editor.org/rfc/rfc9110>

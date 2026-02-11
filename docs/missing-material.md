@@ -31,13 +31,13 @@
 
 ## 3. Интеграции
 
-- [ ] `TODO` Углубить API Design (REST/GraphQL/gRPC/JSON-RPC/SOAP/WebSockets, versioning, breaking changes).
-- [ ] `TODO` Доработать спецификации и документирование (OpenAPI/AsyncAPI/RAML/SDL/Protobuf, CI validation).
-- [ ] `TODO` Углубить безопасность (OAuth 2.1, OIDC, mTLS, JWT, scopes, key rotation, OWASP API Security).
-- [ ] `TODO` Расширить rate limiting/idempotency/error handling с реалистичными примерами.
-- [ ] `TODO` Расширить API Gateway/Service Mesh (Kong, Apigee, Istio, Linkerd).
-- [ ] `TODO` Доработать паттерны интеграции и надежности (Saga, CQRS, retry/backoff/circuit breaker/bulkhead).
-- [ ] `TODO` Углубить брокеры и транспорт (Kafka/RabbitMQ/Pulsar/NATS/SQS, file transfer, networking tuning).
+- [x] `DONE` Углубить API Design (REST/GraphQL/gRPC/JSON-RPC/SOAP/WebSockets, versioning, breaking changes).
+- [x] `DONE` Доработать спецификации и документирование (OpenAPI/AsyncAPI/RAML/SDL/Protobuf, CI validation).
+- [x] `DONE` Углубить безопасность (OAuth 2.1, OIDC, mTLS, JWT, scopes, key rotation, OWASP API Security).
+- [x] `DONE` Расширить rate limiting/idempotency/error handling с реалистичными примерами.
+- [x] `DONE` Расширить API Gateway/Service Mesh (Kong, Apigee, Istio, Linkerd).
+- [x] `DONE` Доработать паттерны интеграции и надежности (Saga, CQRS, retry/backoff/circuit breaker/bulkhead).
+- [x] `DONE` Углубить брокеры и транспорт (Kafka/RabbitMQ/Pulsar/NATS/SQS, file transfer, networking tuning).
 
 ## 4. Нотации и моделирование
 

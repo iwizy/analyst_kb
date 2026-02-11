@@ -179,6 +179,7 @@ nav:
           - Безопасность API: integrations/api-design/security.md
           - Лимиты и квоты: integrations/api-design/rate-limiting.md
           - Идемпотентность: integrations/api-design/idempotency.md
+          - Обработка ошибок API: integrations/api-design/error-handling.md
           - API Gateway и Service Mesh: integrations/api-design/api-gateway-and-service-mesh.md
           - Форматы сериализации:
               - Форматы сериализации: integrations/api-design/serialization-formats/index.md
@@ -201,6 +202,7 @@ nav:
               - Брокеры сообщений: integrations/integration-methods/message-brokers/index.md
               - Kafka: integrations/integration-methods/message-brokers/kafka.md
               - RabbitMQ: integrations/integration-methods/message-brokers/rabbitmq.md
+              - Pulsar, NATS, SQS, Pub/Sub, Service Bus: integrations/integration-methods/message-brokers/alternatives.md
           - Общая БД: integrations/integration-methods/shared-database.md
           - Обмен файлами: integrations/integration-methods/file-exchange.md
       - Сетевое взаимодействие:

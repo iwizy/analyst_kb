@@ -91,6 +91,12 @@ plugins:
 - отсутствие лимитов на "дорогие" endpoints;
 - нет telemetry: не видно, кто и где исчерпывает бюджет;
 - отсутствие коммуникации лимитов в документации.
+
+## Смежные материалы
+
+- [Идемпотентность](idempotency.md)
+- [Обработка ошибок API](error-handling.md)
+- [API Gateway и Service Mesh](api-gateway-and-service-mesh.md)
 ## Стандарты и источники
 
 - [RFC](../../glossary.md#abbr-072) 6585 (429 Too Many Requests): <https://www.rfc-editor.org/rfc/rfc6585>

@@ -120,6 +120,7 @@ GROUP BY day;
 2. Оптимизируйте по профилю нагрузки, а не по среднему времени.
 3. Регулярно обновляйте статистику и проверяйте bloat.
 4. Для top-N дорогих запросов ведите owner и SLA.
+
 ## Стандарты и источники
 
 - PostgreSQL EXPLAIN: <https://www.postgresql.org/docs/current/using-explain.html>
