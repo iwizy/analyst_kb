@@ -4,6 +4,7 @@
 
 ## Что входит в раздел
 
+- [Треки развития смежных навыков](development-paths.md)
 - [Анализ данных](data-analysis/index.md)
 - [UX/UI основы](ux-ui-basics.md)
 - [Основы тестирования](testing-fundamentals.md)
