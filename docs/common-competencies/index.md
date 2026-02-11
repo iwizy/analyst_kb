@@ -24,6 +24,7 @@
 
 ## Карта раздела
 
+- [Практическая рабочая тетрадь аналитика](practical-workbook.md)
 - [Оценка задач и рисков](estimation-risks/index.md)
 - [Планирование и управление временем](planning-time-management.md)
 - [Управление стейкхолдерами](stakeholder-management.md)
