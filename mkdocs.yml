@@ -396,6 +396,7 @@ nav:
 
   - Инструменты:
       - Введение: tools/index.md
+      - Playbook внедрения инструментов: tools/adoption-playbook.md
       - Инструменты моделирования: tools/modeling-tools.md
       - Инструменты управления требованиями: tools/requirements-tools.md
       - Инструменты API: tools/api-tools.md
