@@ -86,6 +86,7 @@ R --> T
 
 ## Структура раздела
 
+- [Ситуационный playbook](situational-playbook.md)
 - [Коммуникативные навыки](communication/index.md)
 - [Управление конфликтами](conflict-management.md)
 - [Стресс-менеджмент](stress-management.md)
