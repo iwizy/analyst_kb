@@ -159,6 +159,7 @@ B --> D : детализация реализации
 - [Карта целей](goals-map.md)
 - [Impact Map](impact-map.md)
 - [Модели зрелости](maturity-models/index.md)
+- [Практические композиции нотаций](practical-compositions.md)
 
 ## Кросс-ссылки
 

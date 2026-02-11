@@ -249,6 +249,7 @@ nav:
           - CMMI: notations/maturity-models/cmmi.md
           - COBIT: notations/maturity-models/cobit.md
           - ACMM: notations/maturity-models/acmm.md
+      - Практические композиции нотаций: notations/practical-compositions.md
 
   - Алгоритмы:
       - Введение: algorithms/index.md
