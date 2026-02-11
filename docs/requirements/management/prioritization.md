@@ -294,3 +294,5 @@ HiPPO (Highest Paid Person's Opinion) как единственный источ
 - [Управление изменениями требований](change-management.md)
 - [Поддержка актуальности требований](relevance.md)
 - [Трассировка требований](traceability.md)
+- [Управление требованиями](index.md)
+- [Единые шаблоны артефактов](../../artifacts-templates/index.md)

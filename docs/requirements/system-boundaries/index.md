@@ -124,6 +124,8 @@ Refund --> ERP : данные для учета
 - [Выявление стейкхолдеров](../stakeholders.md)
 - [Сбор требований](../elicitation.md)
 - [Управление изменениями требований](../management/change-management.md)
+- [Управление требованиями](../management/index.md)
+- [Единые шаблоны артефактов](../../artifacts-templates/index.md)
 
 ## Переход к подразделам
 

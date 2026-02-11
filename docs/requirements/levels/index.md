@@ -109,6 +109,7 @@ SR --> AT
 - [Декомпозиция требований](../decomposition.md)
 - [Трассировка требований](../management/traceability.md)
 - [Подходы к спецификации требований](../specification-approaches.md)
+- [Единые шаблоны артефактов](../../artifacts-templates/index.md)
 
 ## Переход к подразделам
 

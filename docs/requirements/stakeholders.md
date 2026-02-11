@@ -161,3 +161,5 @@
 - [Сбор требований](elicitation.md)
 - [Согласование требований](management/coordination.md)
 - [Управление изменениями требований](management/change-management.md)
+- [Управление требованиями](management/index.md)
+- [Единые шаблоны артефактов](../artifacts-templates/index.md)
