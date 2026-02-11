@@ -31,6 +31,9 @@
 
 ## Шаблоны карт и матриц
 
+Единый набор форм:
+[Stakeholder Map + RACI](../artifacts-templates/stakeholder-map-template.md).
+
 ### Stakeholder Map (шаблон)
 
 | Роль | Цель | Ожидание от проекта | Риск при невовлечении | Канал коммуникации |

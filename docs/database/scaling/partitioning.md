@@ -4,17 +4,17 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - range/list/hash partition;
 - partition pruning.
 
-### Средний
+### Средний уровень
 
 - lifecycle policy: create, detach, archive, drop;
 - локальные индексы и статистика по разделам.
 
-### Продвинутый
+### Продвинутый уровень
 
 - online repartitioning и zero-downtime миграции;
 - комбинированное партиционирование для multi-tenant.

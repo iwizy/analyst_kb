@@ -4,17 +4,17 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - различия procedure/function/trigger;
 - side effects и транзакционные границы.
 
-### Средний
+### Средний уровень
 
 - deterministic/idempotent функции;
 - контракт функции и тесты.
 
-### Продвинутый
+### Продвинутый уровень
 
 - [CI/CD](../../glossary.md#abbr-017) и rollback/roll-forward для [SQL](../../glossary.md#abbr-084)-артефактов;
 - сравнение платформ PostgreSQL/Oracle/MySQL.

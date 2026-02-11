@@ -66,7 +66,9 @@ M --> R : release cut
 - крупные PR без декомпозиции и понятного контекста;
 - долгоживущие feature-ветки;
 - merge без обязательных проверок;
-- несогласованные hotfix в обход процесса.## Стандарты и источники
+- несогласованные hotfix в обход процесса.
+
+## Стандарты и источники
 
 - Pro Git Book: <https://git-scm.com/book/en/v2>
 - Conventional Commits: <https://www.conventionalcommits.org/en/v1.0.0/>

@@ -57,6 +57,9 @@ stop
 | --- | --- | --- | --- | --- | --- | --- |
 | R-01 | 5xx > 2% от [API](../../glossary.md#abbr-005) партнера | переключить fallback, инициировать контракт review | Integration Lead | 2026-03-10 | In progress | ожидание фикса партнера |
 
+Готовый шаблон risk register:
+[Risk Register template](../../artifacts-templates/risk-register-template.md).
+
 ## [Интеграция](../../glossary.md#term-033) с backlog и sprint
 
 - risk item -> задача mitigation в backlog;
@@ -88,7 +91,9 @@ stop
 - mitigation не превращается в конкретные задачи;
 - триггеры не измеримы;
 - эскалация без подготовленных вариантов решения;
-- риск «закрыт» без проверки результата.## Источники
+- риск «закрыт» без проверки результата.
+
+## Источники
 
 - [ISO](../../glossary.md#abbr-043) 31000:2018.
 - [PMBOK](../../glossary.md#abbr-064) Guide (risk responses).

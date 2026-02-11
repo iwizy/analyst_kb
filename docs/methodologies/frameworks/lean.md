@@ -87,7 +87,9 @@ stop
 
 - улучшения «по ощущениям», без baseline-метрик;
 - фокус на локальном [KPI](../../glossary.md#abbr-047) вместо end-to-end результата;
-- отсутствие owner у инициатив улучшения.## Источники
+- отсутствие owner у инициатив улучшения.
+
+## Источники
 
 - Lean Enterprise Institute: <https://www.lean.org/>
 - Womack & Jones, *Lean Thinking*.

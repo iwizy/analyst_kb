@@ -76,7 +76,9 @@ stop
 - GitOps (декларативные deployment-модели через Git);
 - Platform Engineering (self-service платформа для команд);
 - FinOps (контроль стоимости инфраструктуры);
-- policy-as-code и security-as-code.## Стандарты и источники
+- policy-as-code и security-as-code.
+
+## Стандарты и источники
 
 - DORA research: <https://dora.dev/research/>
 - OpenTelemetry: <https://opentelemetry.io/docs/>

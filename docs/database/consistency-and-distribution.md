@@ -4,17 +4,17 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - понимать различия ACID и BASE;
 - ориентироваться в CAP-теореме и eventual consistency.
 
-### Средний
+### Средний уровень
 
 - выбирать модель консистентности (strong, causal, eventual) под домен;
 - проектировать leader/follower, quorum и multi-leader схемы.
 
-### Продвинутый
+### Продвинутый уровень
 
 - управлять конфликтами при partition и multi-region;
 - применять compensation patterns, idempotency и conflict resolution.

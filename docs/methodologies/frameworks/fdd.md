@@ -79,7 +79,9 @@ B2B-платформа с несколькими клиентскими сегм
 
 - путаница между фичей и технической задачей;
 - отсутствие единой доменной модели;
-- статус по задачам вместо статуса по фичам.## Источники
+- статус по задачам вместо статуса по фичам.
+
+## Источники
 
 - Coad, De Luca, Lefebvre, *Java Modeling in Color with [UML](../../glossary.md#abbr-092)* (истоки FDD).
 - Agile Alliance FDD overview: <https://www.agilealliance.org/glossary/fdd/>

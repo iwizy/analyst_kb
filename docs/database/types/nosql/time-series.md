@@ -4,17 +4,17 @@ TSDB оптимизированы под потоковые записи и ок
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - metric, timestamp, tags, fields;
 - retention и downsampling.
 
-### Средний
+### Средний уровень
 
 - проектирование tags без cardinality explosion;
 - continuous aggregates и [SLO](../../../glossary.md#abbr-081)-метрики.
 
-### Продвинутый
+### Продвинутый уровень
 
 - stream ingestion + TSDB + alerting;
 - multi-tenant observability platform.

@@ -99,7 +99,9 @@ stop
 - отсутствие WIP-лимитов;
 - игнорирование aging задач;
 - нет регулярных flow-review;
-- отсутствуют критерии входа/выхода из колонок.## Источники
+- отсутствуют критерии входа/выхода из колонок.
+
+## Источники
 
 - Kanban Guide: <https://kanbanguides.org/>
 - Kanban University: <https://kanban.university/>

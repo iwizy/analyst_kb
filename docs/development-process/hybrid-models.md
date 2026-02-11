@@ -108,7 +108,9 @@ stop
 
 - два независимых backlog (процессный и продуктовый);
 - конфликт ритмов: stage-gate даты не связаны со sprint cadence;
-- неясные права решения между CCB, [PO](../glossary.md#abbr-065) и delivery-лидом.## Стандарты и источники
+- неясные права решения между CCB, [PO](../glossary.md#abbr-065) и delivery-лидом.
+
+## Стандарты и источники
 
 - PMI [PMBOK](../glossary.md#abbr-064) (гибридные подходы): <https://www.pmi.org/pmbok-guide-standards>
 - Scrum Guide: <https://scrumguides.org/>

@@ -134,7 +134,9 @@ else (Нет)
   :Коррекция артефактов и mitigation;
 endif
 stop
-```## Стандарты и источники
+```
+
+## Стандарты и источники
 
 - [ISO](../../glossary.md#abbr-043)/IEC/[IEEE](../../glossary.md#abbr-041) 12207: <https://www.iso.org/standard/63712.html>
 - ISO/IEC/IEEE 29148 (требования): <https://www.iso.org/standard/72089.html>

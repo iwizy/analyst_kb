@@ -162,7 +162,9 @@ Backlog:
 - путать story points и часы без калибровки;
 - оценивать эпики без декомпозиции;
 - игнорировать non-project activities (meeting/support/incidents);
-- превращать оценку в обязательство без обновления предпосылок.## Источники
+- превращать оценку в обязательство без обновления предпосылок.
+
+## Источники
 
 - [PMBOK](../../glossary.md#abbr-064) Guide (estimating).
 - Cohn, *Agile Estimating and Planning*.

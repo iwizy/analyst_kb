@@ -4,7 +4,7 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 ```sql
 SELECT COUNT(*) AS orders_cnt,
@@ -14,7 +14,7 @@ FROM orders
 WHERE created_at >= current_date;
 ```
 
-### Средний
+### Средний уровень
 
 ```sql
 SELECT date(created_at) AS day,
@@ -27,7 +27,7 @@ GROUP BY day, status
 ORDER BY day, status;
 ```
 
-### Продвинутый
+### Продвинутый уровень
 
 - `FILTER` для условных агрегатов;
 - материализованные представления для тяжелых отчетов;

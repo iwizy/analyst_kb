@@ -4,17 +4,17 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - B-Tree для равенства/диапазонов;
 - понимание selective columns.
 
-### Средний
+### Средний уровень
 
 - compound, partial и covering indexes;
 - GIN/GiST/BRIN под специальные сценарии.
 
-### Продвинутый
+### Продвинутый уровень
 
 - bloat management, reindex strategy;
 - контроль write amplification и index debt.

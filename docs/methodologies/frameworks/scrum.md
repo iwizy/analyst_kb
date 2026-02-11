@@ -93,7 +93,9 @@ stop
 - спринт без четкого Sprint Goal;
 - stories без acceptance criteria;
 - ретроспективы без action items;
-- перегруз спринта сверх capacity.## Источники
+- перегруз спринта сверх capacity.
+
+## Источники
 
 - Scrum Guide: <https://scrumguides.org/>
 - Evidence-Based Management: <https://www.scrum.org/resources/evidence-based-management-guide>

@@ -64,7 +64,9 @@ stop
 - [Требования](../requirements/index.md): входной поток требований в SDLC.
 - [Проектирование и архитектура](../architecture/index.md): архитектурные решения и [ADR](../glossary.md#abbr-003).
 - [Интеграции](../integrations/index.md): контрактные и эксплуатационные риски интеграций.
-- [Базы данных](../database/index.md): data-модель, миграции и эксплуатация хранилищ.## Стандарты и источники
+- [Базы данных](../database/index.md): data-модель, миграции и эксплуатация хранилищ.
+
+## Стандарты и источники
 
 - [ISO](../glossary.md#abbr-043)/IEC/[IEEE](../glossary.md#abbr-041) 12207: <https://www.iso.org/standard/63712.html>
 - Scrum Guide (текущая официальная публикация): <https://scrumguides.org/>

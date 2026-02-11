@@ -4,7 +4,7 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 ```sql
 SELECT order_id,
@@ -14,7 +14,7 @@ SELECT order_id,
 FROM orders;
 ```
 
-### Средний
+### Средний уровень
 
 ```sql
 SELECT date(created_at) AS day,
@@ -25,7 +25,7 @@ GROUP BY day
 ORDER BY day;
 ```
 
-### Продвинутый
+### Продвинутый уровень
 
 - `LAG/LEAD` для анализа изменений;
 - rolling windows для трендов;

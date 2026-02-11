@@ -199,7 +199,9 @@ stop
 - отсутствие ретроспектив или невыполнение action items;
 - backlog без явной бизнес-цели;
 - stories без [AC](../glossary.md#abbr-002) и [NFR](../glossary.md#abbr-053);
-- перегрузка спринта сверх capacity.## Стандарты и источники
+- перегрузка спринта сверх capacity.
+
+## Стандарты и источники
 
 - Scrum Guide: <https://scrumguides.org/>
 - Kanban Guide: <https://kanbanguides.org/>

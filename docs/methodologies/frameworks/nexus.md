@@ -88,6 +88,8 @@ stop
 
 - недостаточное внимание к интеграции в течение спринта;
 - отсутствие прозрачного dependency board;
-- несогласованные [DoD](../../glossary.md#abbr-026) между командами.## Источники
+- несогласованные [DoD](../../glossary.md#abbr-026) между командами.
+
+## Источники
 
 - Nexus Guide: <https://www.scrum.org/resources/nexus-guide>

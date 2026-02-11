@@ -4,17 +4,17 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - shard key и routing;
 - типы шардирования: range/hash/directory.
 
-### Средний
+### Средний уровень
 
 - shard-aware clients;
 - middleware routing (Citus, Vitess, ProxySQL).
 
-### Продвинутый
+### Продвинутый уровень
 
 - online rebalancing и data migration;
 - logical sharding и hybrid-архитектуры.

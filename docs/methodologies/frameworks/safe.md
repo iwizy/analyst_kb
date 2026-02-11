@@ -93,6 +93,8 @@ stop
 
 - формальный PI Planning без реального управления зависимостями;
 - слишком много локальной оптимизации команд;
-- отсутствие связи между portfolio-целями и sprint delivery.## Источники
+- отсутствие связи между portfolio-целями и sprint delivery.
+
+## Источники
 
 - [SAFe](../../glossary.md#abbr-077) 6.0: <https://scaledagileframework.com/>

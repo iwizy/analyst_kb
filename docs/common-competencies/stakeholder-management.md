@@ -106,7 +106,9 @@
 - позднее подключение критичных стейкхолдеров;
 - одинаковая коммуникация для всех ролей;
 - устные решения без фиксации owner/date;
-- отсутствие пересмотра stakeholder map при изменениях.## Источники
+- отсутствие пересмотра stakeholder map при изменениях.
+
+## Источники
 
 - [PMBOK](../glossary.md#abbr-064) (Stakeholder Management).
 - BABOK (Elicitation & Collaboration).

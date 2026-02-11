@@ -51,7 +51,9 @@ Mind Map — техника визуальной декомпозиции тем
 
 - XMind, MindMeister;
 - Miro/Mural;
-- draw.io.## Источники
+- draw.io.
+
+## Источники
 
 - BABOK techniques.
 - Mind mapping best practices.

@@ -4,17 +4,17 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - vertical vs horizontal scaling;
 - replication для read scaling.
 
-### Средний
+### Средний уровень
 
 - партиционирование и шардирование;
 - shared-nothing vs shared-disk компромиссы.
 
-### Продвинутый
+### Продвинутый уровень
 
 - autoscaling/serverless подходы;
 - rebalancing без downtime и migration at scale.

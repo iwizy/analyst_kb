@@ -77,7 +77,9 @@ stop
 | [Триггер](../../glossary.md#term-072) | error_rate > 2% 5 минут |
 | Проверка | health endpoints, recent deploy, external API status |
 | Действия | rollback/circuit breaker/fallback |
-| Эскалация | on-call L2 -> architect -> vendor |## Стандарты и источники
+| Эскалация | on-call L2 -> architect -> vendor |
+
+## Стандарты и источники
 
 - OpenTelemetry: <https://opentelemetry.io/docs/>
 - Google SRE workbook (monitoring): <https://sre.google/workbook/>

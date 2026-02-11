@@ -68,7 +68,9 @@ Then система создает заказ со статусом NEW
 - один тест-кейс = один главный проверяемый результат;
 - отдельно вести happy-path и error-path;
 - обновлять тест-кейсы в том же цикле, что и требования;
-- использовать единые naming conventions.## Источники
+- использовать единые naming conventions.
+
+## Источники
 
 - ISTQB Test Design Techniques.
 - [ISO](../../glossary.md#abbr-043)/IEC/[IEEE](../../glossary.md#abbr-041) 29119.

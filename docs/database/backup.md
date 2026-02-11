@@ -3,17 +3,17 @@ Backup — обязательная часть надежности данных
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - full/incremental backup;
 - RPO/RTO и retention policy.
 
-### Средний
+### Средний уровень
 
 - snapshot backups (LVM/EBS);
 - offsite storage и проверка целостности.
 
-### Продвинутый
+### Продвинутый уровень
 
 - DR-план: cold/warm/hot standby;
 - автоматизированные restore drills и runbook.

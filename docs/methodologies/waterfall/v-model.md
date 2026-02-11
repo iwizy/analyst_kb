@@ -97,7 +97,9 @@ DD .. UT
 
 - неполный RTM;
 - несинхронное обновление требований и тестов;
-- позднее выявление расхождений между SRS и тест-дизайном.## Источники
+- позднее выявление расхождений между SRS и тест-дизайном.
+
+## Источники
 
 - [ISO](../../glossary.md#abbr-043)/IEC/[IEEE](../../glossary.md#abbr-041) 29148 (requirements): <https://www.iso.org/standard/72089.html>
 - ISO/IEC/IEEE 29119 (testing): <https://www.iso.org/standard/45142.html>

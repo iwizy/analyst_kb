@@ -4,7 +4,7 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 ```sql
 SELECT order_id, customer_id, total_amount
@@ -18,7 +18,7 @@ WHERE status = 'PAID';
 - выбирать только нужные поля;
 - ограничивать выдачу (`LIMIT`) в интерактивных сценариях.
 
-### Средний
+### Средний уровень
 
 ```sql
 SELECT o.order_id, c.email, o.total_amount
@@ -30,7 +30,7 @@ ORDER BY o.created_at DESC
 LIMIT 100;
 ```
 
-### Продвинутый
+### Продвинутый уровень
 
 Оптимизация IO:
 

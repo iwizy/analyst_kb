@@ -3,17 +3,17 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - primary/replica топология;
 - sync vs async replication.
 
-### Средний
+### Средний уровень
 
 - physical vs logical replication;
 - read/write splitting и sticky sessions.
 
-### Продвинутый
+### Продвинутый уровень
 
 - failover/switchover automation;
 - [CDC](../glossary.md#abbr-014) pipelines (Debezium/Kafka Connect/GoldenGate).

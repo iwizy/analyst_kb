@@ -77,7 +77,9 @@ stop
 - ITSM «отдельно от разработки», без единого backlog;
 - change-процесс без связи с реальными рисками;
 - база знаний не обновляется после инцидентов;
-- SLA есть, но нет SLO и operational owner.## Стандарты и источники
+- SLA есть, но нет SLO и operational owner.
+
+## Стандарты и источники
 
 - [ITIL](../../glossary.md#abbr-044) 4: <https://www.axelos.com/certifications/itil-service-management>
 - [ISO](../../glossary.md#abbr-043)/IEC 20000: <https://www.iso.org/standard/70636.html>

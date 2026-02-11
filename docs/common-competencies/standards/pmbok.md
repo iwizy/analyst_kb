@@ -46,6 +46,8 @@ PMBOK (Project Management Body of Knowledge) описывает принципы
 
 - «paper PMBOK» без практических решений;
 - отсутствие связи между change control и backlog;
-- управление сроками без учета рисков и зависимости команд.## Источники
+- управление сроками без учета рисков и зависимости команд.
+
+## Источники
 
 - PMBOK Guide (официальный сайт PMI): <https://www.pmi.org/pmbok-guide-standards>

@@ -58,7 +58,9 @@ if (order.totalAmount().compareTo(MAX_LIMIT) > 0) {
 - проверка только happy path;
 - игнорирование feature flags и конфигурации;
 - выводы без сопоставления с runtime-логами;
-- анализ без учета версий API и схем данных.## Источники
+- анализ без учета версий API и схем данных.
+
+## Источники
 
 - Clean Code (R. Martin).
 - Refactoring (M. Fowler).

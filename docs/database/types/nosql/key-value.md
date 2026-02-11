@@ -3,17 +3,17 @@ Key-value БД предназначены для ultra-fast доступа по 
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 - операции `GET/SET/DEL`, TTL;
 - выбор key naming strategy.
 
-### Средний
+### Средний уровень
 
 - shard key design, eviction policy, replication lag;
 - idempotency и atomic operations.
 
-### Продвинутый
+### Продвинутый уровень
 
 - multi-region кэширование, hot key mitigation, consistency tuning.
 

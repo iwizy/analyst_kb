@@ -68,7 +68,9 @@ stop
 - срочные reliability-fixes;
 - архитектурные улучшения;
 - процессные изменения (мониторинг, runbook, эскалация);
-- обучение команды и обновление документации.## Стандарты и источники
+- обучение команды и обновление документации.
+
+## Стандарты и источники
 
 - Google SRE (postmortem culture): <https://sre.google/sre-book/postmortem-culture/>
 - NIST SP 800-61: <https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final>

@@ -85,10 +85,20 @@ extra:
 nav:
   - Главная:
       - Введение: index.md
+      - Навигационная карта: site-map.md
+      - Единый стиль и терминология: editorial-style.md
       - Манифест аналитика: manifesto.md
       - Карта компетенций: competence-map.md
       - Глоссарий: glossary.md
       - План улучшений: missing-material.md
+
+  - Шаблоны артефактов:
+      - Обзор шаблонов: artifacts-templates/index.md
+      - BRD: artifacts-templates/brd-template.md
+      - SRS: artifacts-templates/srs-template.md
+      - RTM: artifacts-templates/rtm-template.md
+      - Risk Register: artifacts-templates/risk-register-template.md
+      - Stakeholder Map и RACI: artifacts-templates/stakeholder-map-template.md
 
   - Требования:
       - Введение: requirements/index.md

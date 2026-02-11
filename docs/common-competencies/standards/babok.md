@@ -56,7 +56,9 @@ BABOK (Business Analysis Body of Knowledge) описывает практики 
 
 - попытка внедрить BABOK полностью без адаптации;
 - фокус на документах вместо результата;
-- размытые границы ролей BA/[PO](../../glossary.md#abbr-065)/PM.## Источники
+- размытые границы ролей BA/[PO](../../glossary.md#abbr-065)/PM.
+
+## Источники
 
 - BABOK Guide v3: <https://www.iiba.org/standards-and-resources/babok/>
 - IIBA resources and templates.

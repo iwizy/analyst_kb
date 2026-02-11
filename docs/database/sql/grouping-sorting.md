@@ -4,7 +4,7 @@
 
 ## Уровни сложности
 
-### Базовый
+### Базовый уровень
 
 ```sql
 SELECT status, COUNT(*)
@@ -13,7 +13,7 @@ GROUP BY status
 ORDER BY status;
 ```
 
-### Средний
+### Средний уровень
 
 ```sql
 SELECT customer_id,
@@ -26,7 +26,7 @@ ORDER BY revenue DESC
 LIMIT 20;
 ```
 
-### Продвинутый
+### Продвинутый уровень
 
 - индексная поддержка `ORDER BY + LIMIT`;
 - контроль memory spill при сортировке;
