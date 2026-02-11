@@ -8,7 +8,7 @@
 - Английский термин добавляем при первом упоминании, если он отраслевой стандарт:
   `stakeholder`, `traceability`, `risk register`.
 - Сокращения оформляем через глоссарий:
-  [BRD](glossary.md#abbr-010), [SRS](glossary.md#abbr-085), [RTM](glossary.md#abbr-074), [NFR](glossary.md#abbr-053), [KPI](glossary.md#abbr-047).
+  [BRD](glossary.md#abbr-010), [SRS](glossary.md#abbr-085), [RTM](glossary.md#abbr-107), [NFR](glossary.md#abbr-053), [KPI](glossary.md#abbr-047).
 
 ## 2. Базовая структура статьи
 
