@@ -30,6 +30,7 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.indexes
+    - navigation.path
     - navigation.top
     - toc.follow
     - content.code.copy

@@ -115,6 +115,15 @@ P --> O
 2. Для критичных решений делайте [ADR](../glossary.md#abbr-003) с измеримыми критериями.
 3. Валидируйте выбор через PoC: latency, throughput, отказ и восстановление.
 4. Планируйте migration path и observability до запуска в production.
+
+## Кросс-ссылки
+
+- [Проектирование модели данных](data-modeling.md)
+- [SQL](sql/index.md)
+- [Интеграции](../integrations/index.md)
+- [Навигационная карта](../site-map.md)
+- [Единый стиль и терминология](../editorial-style.md)
+
 ## Стандарты и первоисточники
 
 - [ISO](../glossary.md#abbr-043)/IEC 9075 SQL: <https://www.iso.org/standard/76583.html>

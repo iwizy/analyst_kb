@@ -181,6 +181,13 @@ paths:
 - ведите журнал изменений шаблонов и процесса;
 - используйте комьюнити и vendor-академии для онбординга.
 
+## Кросс-ссылки
+
+- [Единые шаблоны артефактов](../artifacts-templates/index.md)
+- [Навигационная карта](../site-map.md)
+- [Процесс разработки](../development-process/index.md)
+- [Методологии разработки](../methodologies/index.md)
+
 ## Полезные сообщества и обучающие ресурсы
 
 - Atlassian University: <https://university.atlassian.com/>

@@ -87,6 +87,14 @@ I --> O
 - [Проектирование API](api-design/index.md)
 - [Способы интеграции и паттерны](integration-methods/index.md)
 - [Сетевое взаимодействие](networking/index.md)
+
+## Кросс-ссылки
+
+- [Архитектура: Синхронное и асинхронное взаимодействие](../architecture/systems-architecture/sync-async.md)
+- [Требования: Трассировка](../requirements/management/traceability.md)
+- [Инструменты интеграций](../tools/integration-tools.md)
+- [Навигационная карта](../site-map.md)
+
 ## Стандарты и источники
 
 - [RFC](../glossary.md#abbr-072) 9110 [HTTP](../glossary.md#abbr-038) Semantics: <https://www.rfc-editor.org/rfc/rfc9110>
