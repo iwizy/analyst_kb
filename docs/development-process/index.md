@@ -58,6 +58,7 @@ stop
 3. Настройте [DevOps-практики](product-lifecycle/devops-basics.md) и [CI/CD](product-lifecycle/cicd-basics.md).
 4. Зафиксируйте [контур качества, документации и рисков](quality-documentation-risks.md).
 5. Свяжите работу команды с [сопровождением и эксплуатацией](feature-support/index.md).
+6. Используйте [практические playbook’и процесса](practical-playbooks.md) для запуска в конкретном контексте.
 
 ## Кросс-ссылки
 

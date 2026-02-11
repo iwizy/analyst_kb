@@ -342,6 +342,7 @@ nav:
 
   - Процесс разработки:
       - Введение: development-process/index.md
+      - Практические playbook’и: development-process/practical-playbooks.md
       - Agile-процессы и практики: development-process/agile-processes.md
       - Гибридные модели: development-process/hybrid-models.md
       - Качество, документация и риски: development-process/quality-documentation-risks.md
