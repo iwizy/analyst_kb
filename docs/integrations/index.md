@@ -87,6 +87,7 @@ I --> O
 - [Проектирование API](api-design/index.md)
 - [Способы интеграции и паттерны](integration-methods/index.md)
 - [Сетевое взаимодействие](networking/index.md)
+- [Практические сценарии интеграций](practical-scenarios.md)
 
 ## Кросс-ссылки
 

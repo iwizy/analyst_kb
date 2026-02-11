@@ -223,6 +223,7 @@ nav:
           - TCP/IP: integrations/networking/tcp-ip.md
           - UDP: integrations/networking/udp.md
           - Сокеты: integrations/networking/sockets.md
+      - Практические сценарии интеграций: integrations/practical-scenarios.md
 
   - Нотации и моделирование:
       - Введение: notations/index.md

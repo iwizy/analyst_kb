@@ -47,6 +47,7 @@
 - [Брокеры сообщений](message-brokers/index.md)
 - [Общая БД](shared-database.md)
 - [Обмен файлами](file-exchange.md)
+- [Практические сценарии интеграций](../practical-scenarios.md)
 ## Стандарты и источники
 
 - Enterprise Integration Patterns: <https://www.enterpriseintegrationpatterns.com/>
