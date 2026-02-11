@@ -120,6 +120,7 @@ P --> O
 
 - [Проектирование модели данных](data-modeling.md)
 - [SQL](sql/index.md)
+- [Практические примеры выбора БД](practical-cases.md)
 - [Интеграции](../integrations/index.md)
 - [Навигационная карта](../site-map.md)
 - [Единый стиль и терминология](../editorial-style.md)

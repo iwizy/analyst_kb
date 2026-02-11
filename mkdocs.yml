@@ -178,6 +178,7 @@ nav:
       - Data Governance: database/data-governance.md
       - Реплицирование данных: database/replication.md
       - Бэкапирование данных: database/backup.md
+      - Практические примеры выбора БД: database/practical-cases.md
 
   - Интеграции:
       - Введение: integrations/index.md

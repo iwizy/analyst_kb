@@ -93,3 +93,4 @@
 - [NoSQL базы данных](nosql/index.md)
 - [NewSQL базы данных](newsql.md)
 - [Консистентность и распределение](../consistency-and-distribution.md)
+- [Практические примеры выбора БД](../practical-cases.md)
