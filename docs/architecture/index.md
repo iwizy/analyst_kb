@@ -58,6 +58,7 @@
 
 - [Требования](../requirements/index.md)
 - [Интеграции](../integrations/index.md)
+- [Каталог анти-паттернов: архитектура](../antipatterns/architecture.md)
 - [Базы данных](../database/index.md)
 - [Нотации и моделирование](../notations/index.md)
 - [Навигационная карта](../site-map.md)

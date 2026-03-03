@@ -101,6 +101,12 @@ nav:
       - Risk Register: artifacts-templates/risk-register-template.md
       - Stakeholder Map и RACI: artifacts-templates/stakeholder-map-template.md
 
+  - Каталог анти-паттернов:
+      - Введение: antipatterns/index.md
+      - В требованиях: antipatterns/requirements.md
+      - В интеграциях: antipatterns/integrations.md
+      - В архитектуре: antipatterns/architecture.md
+
   - Требования:
       - Введение: requirements/index.md
 

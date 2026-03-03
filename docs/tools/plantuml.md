@@ -346,14 +346,8 @@ order:
 
 #### Chart
 
-```kroki-plantuml
-@startchart
-bar
-"Q1" 10
-"Q2" 15
-"Q3" 7
-@endchart
-```
+Для количественных графиков в аналитике чаще используют [BI](../glossary.md#abbr-008)-инструменты
+(Power BI, Tableau, Metabase), а PlantUML применяют для структурных и процессных схем.
 
 ## Практика использования в аналитике
 

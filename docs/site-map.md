@@ -12,6 +12,7 @@
 6. Процесс реализации: [Процесс разработки](development-process/index.md), [Методологии разработки](methodologies/index.md)
 7. Инструментальная поддержка: [Инструменты](tools/index.md)
 8. Операционная эффективность: [Общие компетенции](common-competencies/index.md), [Смежные навыки](related-skills/index.md), [Софт-скилы](soft-skills/index.md)
+9. Профилактика типовых ошибок: [Каталог анти-паттернов](antipatterns/index.md)
 
 ## По типовым задачам
 
