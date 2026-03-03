@@ -63,6 +63,7 @@
 - [Нотации и моделирование](../notations/index.md)
 - [Навигационная карта](../site-map.md)
 - [Единые шаблоны артефактов](../artifacts-templates/index.md)
+- [Решения по шаблону](../decision-patterns/index.md)
 
 ## Карта архитектурного решения
 
@@ -86,6 +87,7 @@ S --> A
 ## Переход к разделам
 
 - [Практический playbook архитектурных решений](decision-playbook.md)
+- [Решения по шаблону (сквозной набор)](../decision-patterns/index.md)
 - [Архитектура информационных систем](systems-architecture/index.md)
 - [Подходы к проектированию](design-approaches/index.md)
 - [Декомпозиция задач](task-decomposition.md)

@@ -94,6 +94,7 @@ I --> O
 - [Архитектура: Синхронное и асинхронное взаимодействие](../architecture/systems-architecture/sync-async.md)
 - [Требования: Трассировка](../requirements/management/traceability.md)
 - [Каталог анти-паттернов: интеграции](../antipatterns/integrations.md)
+- [Решения по шаблону: API и брокеры](../decision-patterns/index.md)
 - [Инструменты интеграций](../tools/integration-tools.md)
 - [Навигационная карта](../site-map.md)
 

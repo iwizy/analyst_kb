@@ -25,6 +25,7 @@
 - [Навигационная карта](site-map.md)
 - [Единый стиль и терминология](editorial-style.md)
 - [Единые шаблоны артефактов](artifacts-templates/index.md)
+- [Решения по шаблону](decision-patterns/index.md)
 - [Глоссарий](glossary.md)
 
 ## Ограничения

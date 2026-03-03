@@ -107,6 +107,16 @@ nav:
       - В интеграциях: antipatterns/integrations.md
       - В архитектуре: antipatterns/architecture.md
 
+  - Решения по шаблону:
+      - Введение: decision-patterns/index.md
+      - Унифицированный Decision Record: decision-patterns/decision-record-template.md
+      - Стиль архитектуры: decision-patterns/architecture-style.md
+      - Стиль взаимодействия: decision-patterns/interaction-style.md
+      - API-протокол: decision-patterns/api-protocol.md
+      - Хранилище данных: decision-patterns/data-store.md
+      - Брокер сообщений: decision-patterns/message-broker.md
+      - Формат требований: decision-patterns/requirements-format.md
+
   - Требования:
       - Введение: requirements/index.md
 

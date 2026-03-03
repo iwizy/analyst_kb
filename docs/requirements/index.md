@@ -63,6 +63,7 @@
 - [Управление изменениями требований](management/change-management.md)
 - [Согласование требований](management/coordination.md)
 - [Каталог анти-паттернов: требования](../antipatterns/requirements.md)
+- [Решения по шаблону: формат требований](../decision-patterns/requirements-format.md)
 - [BABOK](../common-competencies/standards/babok.md)
 - [IEEE](../common-competencies/standards/ieee.md)
 

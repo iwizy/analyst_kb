@@ -13,6 +13,7 @@
 7. Инструментальная поддержка: [Инструменты](tools/index.md)
 8. Операционная эффективность: [Общие компетенции](common-competencies/index.md), [Смежные навыки](related-skills/index.md), [Софт-скилы](soft-skills/index.md)
 9. Профилактика типовых ошибок: [Каталог анти-паттернов](antipatterns/index.md)
+10. Быстрый выбор решений: [Решения по шаблону](decision-patterns/index.md)
 
 ## По типовым задачам
 
@@ -20,6 +21,8 @@
   [Требования](requirements/index.md) -> [Шаблоны артефактов](artifacts-templates/index.md) -> [Трассировка](requirements/management/traceability.md)
 - Подготовить интеграционный контракт:
   [Проектирование API](integrations/api-design/index.md) -> [Безопасность API](integrations/api-design/security.md) -> [Паттерны надежности](integrations/integration-methods/reliability-patterns.md)
+- Принять технологическое решение по спорной развилке:
+  [Решения по шаблону](decision-patterns/index.md) -> [Decision Record шаблон](decision-patterns/decision-record-template.md) -> [Playbook архитектурных решений](architecture/decision-playbook.md)
 - Провести архитектурный review:
   [Архитектура ИС](architecture/systems-architecture/index.md) -> [Документирование и визуализация](architecture/systems-architecture/documentation-visualization.md) -> [Зрелость и ревью](architecture/systems-architecture/maturity-reviews.md)
 - Сформировать риск-контур:
