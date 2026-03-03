@@ -113,6 +113,7 @@
 | <a id="abbr-004"></a>AHP | Analytic Hierarchy Process | Метод приоритизации через парные сравнения. |
 | <a id="abbr-005"></a>API | Application Programming Interface | Интерфейс программного взаимодействия систем. |
 | <a id="abbr-006"></a>APM | Application Performance Monitoring | Мониторинг производительности приложений. |
+| <a id="abbr-108"></a>ATAM | Architecture Tradeoff Analysis Method | Метод архитектурного ревью для анализа компромиссов и рисков по качественным атрибутам. |
 | <a id="abbr-097"></a>BASE | Basically Available, Soft state, Eventual consistency | Подход к доступности и согласованности в распределенных системах (в противовес строгому ACID). |
 | <a id="abbr-098"></a>BATNA | Best Alternative to a Negotiated Agreement | Лучшая альтернатива, если договоренность в переговорах не достигнута. |
 | <a id="abbr-007"></a>BDD | Behavior-Driven Development | Подход к разработке через описание поведения. |
